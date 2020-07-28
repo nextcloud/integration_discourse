@@ -32,6 +32,9 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCP\Http\Client\IClientService;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+use phpseclib\Crypt\RSA;
+
 class ConfigController extends Controller {
 
 
@@ -96,12 +99,19 @@ class ConfigController extends Controller {
         $configNonce = $this->config->getUserValue($this->userId, 'discourse', 'nonce', '');
         error_log('PAYLOAD '.$payload);
         error_log('CONFIGNONCE '.$configNonce);
+        error_log('NONCE '.$nonce);
+        // decrypt payload
+        $privKey = $this->config->getAppValue('discourse', 'private_key', '');
+        $rsa = new RSA();
+        $rsa->loadKey($privKey);
+        $rsadec = $rsa->decrypt($rsacipher);
+        error_log('decrypt result : '.$rsadec);
         return '3333';
         $clientID = $this->config->getAppValue('discourse', 'client_id', '');
         $clientSecret = $this->config->getAppValue('discourse', 'client_secret', '');
 
-        // anyway, reset state
-        $this->config->setUserValue($this->userId, 'discourse', 'oauth_state', '');
+        // anyway, reset nonce
+        $this->config->setUserValue($this->userId, 'discourse', 'nonce', '');
 
         if ($clientID and $clientSecret and $configState !== '' and $configState === $state) {
             $redirect_uri = $this->urlGenerator->linkToRouteAbsolute('discourse.config.oauthRedirect');

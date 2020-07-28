@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpseclib/phpseclib": "^2.0"
+    },
+    "require-dev": {
+    }
+}
