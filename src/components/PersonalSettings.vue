@@ -4,27 +4,28 @@
                 <a class="icon icon-discourse"></a>
                 {{ t('discourse', 'Discourse') }}
             </h2>
-            <p class="settings-hint">
-                {{ t('discourse', 'When you create an access token yourself, give it at least "read_user", "read_api" and "read_repository" permissions.') }}
-            </p>
             <div class="discourse-grid-form">
                 <label for="discourse-url">
                     <a class="icon icon-link"></a>
                     {{ t('discourse', 'Discourse instance address') }}
                 </label>
                 <input id="discourse-url" type="text" v-model="state.url" @input="onInput"
+                    :readonly="readonly"
+                    @focus="readonly = false"
                     :placeholder="t('discourse', 'Discourse instance address')"/>
                 <button id="discourse-oauth" v-if="showOAuth" @click="onOAuthClick">
                     <span class="icon icon-external"/>
-                    {{ t('discourse', 'Get access with OAuth') }}
+                    {{ t('discourse', 'Request Discourse access') }}
                 </button>
                 <span v-else></span>
                 <label for="discourse-token">
                     <a class="icon icon-category-auth"></a>
-                    {{ t('discourse', 'Discourse access token') }}
+                    {{ t('discourse', 'Discourse API-key') }}
                 </label>
                 <input id="discourse-token" type="password" v-model="state.token" @input="onInput"
-                    :placeholder="t('discourse', 'Get a token in Discourse settings')"/>
+                    :readonly="readonly"
+                    @focus="readonly = false"
+                    :placeholder="t('discourse', 'my-api-key')"/>
             </div>
     </div>
 </template>
@@ -46,17 +47,18 @@ export default {
     mounted() {
         const paramString = window.location.search.substr(1)
         const urlParams = new URLSearchParams(paramString)
-        const glToken = urlParams.get('discourseToken')
-        if (glToken === 'success') {
-            showSuccess(t('discourse', 'discourse.com OAuth access token successfully retrieved!'))
-        } else if (glToken === 'error') {
-            showError(t('discourse', 'discourse.com OAuth access token could not be obtained:') + ' ' + urlParams.get('message'))
+        const dscToken = urlParams.get('discourseToken')
+        if (dscToken === 'success') {
+            showSuccess(t('discourse', 'Discourse API-key successfully retrieved!'))
+        } else if (dscToken === 'error') {
+            showError(t('discourse', 'Discourse API-key could not be obtained:') + ' ' + urlParams.get('message'))
         }
     },
 
     data() {
         return {
             state: loadState('discourse', 'user-config'),
+            readonly: true,
         }
     },
 
@@ -65,13 +67,14 @@ export default {
 
     computed: {
         showOAuth() {
-            console.log(this.state.url +' '+ this.state.oauth_instance_url)
-            return (this.state.url === this.state.oauth_instance_url) && this.state.client_id && this.state.client_secret
+            return this.state.url
         },
     },
 
     methods: {
         onInput() {
+            console.log('cl id '+this.state.client_id)
+            console.log('pubkey '+this.state.public_key)
             const that = this
             delay(function() {
                 that.saveOptions()
@@ -107,16 +110,17 @@ export default {
         onOAuthClick() {
             const redirect_endpoint = generateUrl('/apps/discourse/oauth-redirect')
             const redirect_uri = OC.getProtocol() + '://' + OC.getHostName() + redirect_endpoint
-            const oauth_state = Math.random().toString(36).substring(3)
-            const request_url = this.state.url + '/oauth/authorize?client_id=' + encodeURIComponent(this.state.client_id) +
-                '&redirect_uri=' + encodeURIComponent(redirect_uri) +
-                '&response_type=code' +
-                '&state=' + encodeURIComponent(oauth_state) +
-                '&scope=' + encodeURIComponent('read_user read_api read_repository')
+            const nonce = this.makeNonce(16)
+            const request_url = this.state.url + '/user-api-key/new?client_id=' + encodeURIComponent(this.state.client_id) +
+                '&auth_redirect=' + encodeURIComponent(redirect_uri) +
+                '&application_name=Nextcloud' +
+                '&nonce=' + encodeURIComponent(nonce) +
+                '&public_key=' + encodeURIComponent(this.state.public_key) +
+                '&scopes=' + encodeURIComponent('read,notifications:get')
 
             const req = {
                 values: {
-                    oauth_state: oauth_state,
+                    nonce: nonce,
                 }
             }
             const url = generateUrl('/apps/discourse/config')
@@ -125,13 +129,21 @@ export default {
                     window.location.replace(request_url)
                 })
                 .catch(function (error) {
-                    showError(t('discourse', 'Failed to save Discourse OAuth state') +
+                    showError(t('gitlab', 'Failed to save Discourse nonce') +
                         ': ' + error.response.request.responseText
                     )
                 })
                 .then(function () {
                 })
-        }
+        },
+        makeNonce(l) {
+            let text = ''
+            var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+            for (let i=0; i < l; i++) {
+                text += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return text
+        },
     }
 }
 </script>

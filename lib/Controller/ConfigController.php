@@ -92,8 +92,11 @@ class ConfigController extends Controller {
      * @NoAdminRequired
      * @NoCSRFRequired
      */
-    public function oauthRedirect($code, $state) {
-        $configState = $this->config->getUserValue($this->userId, 'discourse', 'oauth_state', '');
+    public function oauthRedirect($payload, $nonce) {
+        $configNonce = $this->config->getUserValue($this->userId, 'discourse', 'nonce', '');
+        error_log('PAYLOAD '.$payload);
+        error_log('CONFIGNONCE '.$configNonce);
+        return '3333';
         $clientID = $this->config->getAppValue('discourse', 'client_id', '');
         $clientSecret = $this->config->getAppValue('discourse', 'client_secret', '');
 

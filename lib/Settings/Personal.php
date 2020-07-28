@@ -44,16 +44,23 @@ class Personal implements ISettings {
 
         // for OAuth
         $clientID = $this->config->getAppValue('discourse', 'client_id', '');
-        // don't expose the client secret to users
-        $clientSecret = ($this->config->getAppValue('discourse', 'client_secret', '') !== '');
-        $oauthUrl = $this->config->getAppValue('discourse', 'oauth_instance_url', '');
+        $pubKey = $this->config->getAppValue('discourse', 'public_key', '');
+        if ($clientID === '') {
+            // random string of 32 chars length
+            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $clientID = substr(str_shuffle($permitted_chars), 0, 32);
+            $this->config->setAppValue('discourse', 'client_id', $clientID);
+        }
+        if ($pubKey === '') {
+            $pubKey = md5(rand());
+            $this->config->setAppValue('discourse', 'public_key', $pubKey);
+        }
 
         $userConfig = [
             'token' => $token,
             'url' => $url,
             'client_id' => $clientID,
-            'client_secret' => $clientSecret,
-            'oauth_instance_url' => $oauthUrl,
+            'public_key' => $pubKey,
         ];
         $this->initialStateService->provideInitialState($this->appName, 'user-config', $userConfig);
         return new TemplateResponse('discourse', 'personalSettings');
