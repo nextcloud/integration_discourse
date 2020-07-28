@@ -1,0 +1,7 @@
+.icon-discourse {
+    background-image: url(./../img/app-dark.svg);
+}
+
+body.dark .icon-discourse {
+    background-image: url(./../img/app.svg);
+}
