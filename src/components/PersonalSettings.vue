@@ -4,6 +4,21 @@
                 <a class="icon icon-discourse"></a>
                 {{ t('discourse', 'Discourse') }}
             </h2>
+            <p class="settings-hint">
+                {{ t('discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}
+                <br/>
+                {{ t('discourse', 'Ask the Discourse admin to change the') }}
+                <br/>
+                <b>"allowed_user_api_auth_redirects"</b>
+                <br/>
+                {{ t('discourse', 'setting. Adding') }}
+                <br/>
+                <b>"*"</b>
+                {{ t('discourse', 'or') }}
+                <b>"{{ redirect_uri }}"</b>
+                <br/>
+                {{ t('discourse', 'as an authorized redirection URL for authentication will allow Nextcloud to authenticate.') }}
+            </p>
             <div class="discourse-grid-form">
                 <label for="discourse-url">
                     <a class="icon icon-link"></a>
@@ -59,6 +74,7 @@ export default {
         return {
             state: loadState('discourse', 'user-config'),
             readonly: true,
+            redirect_uri: OC.getProtocol() + '://' + OC.getHostName() + generateUrl('/apps/discourse/oauth-redirect')
         }
     },
 
@@ -127,7 +143,7 @@ export default {
                     window.location.replace(request_url)
                 })
                 .catch(function (error) {
-                    showError(t('gitlab', 'Failed to save Discourse nonce') +
+                    showError(t('discourse', 'Failed to save Discourse nonce') +
                         ': ' + error.response.request.responseText
                     )
                 })
