@@ -36,31 +36,33 @@ class DiscourseAPIService {
         $this->client = $clientService->newClient();
     }
 
-    public function getTodos($url, $accessToken, $since = null) {
-        $params = [
-            'action' => ['assigned', 'mentioned', 'build_failed', 'marked', 'approval_required', 'unmergeable', 'directly_addressed'],
-            'state' => 'pending',
-        ];
-        $result = $this->request($url, $accessToken, 'todos', $params);
+    public function getNotifications($url, $accessToken, $since = null) {
+        $result = $this->request($url, $accessToken, 'notifications.json', $params);
         if (!is_array($result)) {
             return $result;
         }
+        $notifications = [];
+        if (isset($result['notifications']) and is_array($result['notifications'])) {
+            foreach ($result['notifications'] as $notification) {
+                array_push($notifications, $notification);
+            }
+        }
 
-        return $result;
+        return $notifications;
     }
 
     public function getDiscourseAvatar($url) {
         return $this->client->get($url)->getBody();
     }
 
-    public function request($url, $accessToken, $clientID, $endPoint, $params = [], $method = 'GET') {
+    public function request($url, $accessToken, $endPoint, $params = [], $method = 'GET') {
         try {
             $url = $url . '/' . $endPoint;
             $options = [
                 'headers' => [
                     'User-Api-Key' => $accessToken,
-                    //'Api-Username' => $accessUsername,
-                    'User-Api-Client-Id' => $clientId,
+                    // optional
+                    //'User-Api-Client-Id' => $clientId,
                     'User-Agent' => 'Nextcloud Discourse integration'
                 ],
             ];

@@ -27,7 +27,7 @@
                         class="project-avatar"
                         :url="getNotificationImage(n)"
                         />
-                    <img class="gitlab-notification-icon" :src="getNotificationTypeImage(n)"/>
+                    <img class="discourse-notification-icon" :src="getNotificationTypeImage(n)"/>
                     <div class="notification__details">
                         <h3>
                             {{ getTargetTitle(n) }}
@@ -41,13 +41,13 @@
         </ul>
         <div v-else-if="state === 'no-token'">
             <a :href="settingsUrl">
-                {{ t('gitlab', 'Click here to configure the access to your Gitlab account.')}}
+                {{ t('discourse', 'Click here to configure the access to your Discourse account.')}}
             </a>
         </div>
         <div v-else-if="state === 'error'">
             <a :href="settingsUrl">
-                {{ t('gitlab', 'Incorrect access token.') }}
-                {{ t('gitlab', 'Click here to configure the access to your Gitlab account.')}}
+                {{ t('discourse', 'Incorrect API key.') }}
+                {{ t('discourse', 'Click here to configure the access to your Discourse account.')}}
             </a>
         </div>
         <div v-else-if="state === 'loading'" class="icon-loading-small"></div>
@@ -79,7 +79,7 @@ export default {
 
     data() {
         return {
-            gitlabUrl: null,
+            discourseUrl: null,
             notifications: [],
             locale: getLocale(),
             loop: null,
@@ -93,7 +93,7 @@ export default {
     computed: {
         lastDate() {
             const nbNotif = this.notifications.length
-            return (nbNotif > 0) ? this.notifications[0].updated_at : null
+            return (nbNotif > 0) ? this.notifications[0].created_at : null
         },
         lastMoment() {
             return moment(this.lastDate)
@@ -102,13 +102,10 @@ export default {
 
     methods: {
         async launchLoop() {
-            // get gitlab URL first
+            // get discourse URL first
             try {
-                const response = await axios.get(generateUrl('/apps/gitlab/url'))
-                this.gitlabUrl = response.data.replace(/\/+$/, '')
-                if (this.gitlabUrl === '') {
-                    this.gitlabUrl = 'https://gitlab.com'
-                }
+                const response = await axios.get(generateUrl('/apps/discourse/url'))
+                this.discourseUrl = response.data.replace(/\/+$/, '')
             } catch (error) {
                 console.log(error)
             }
@@ -123,7 +120,7 @@ export default {
                     since: this.lastDate
                 }
             }
-            axios.get(generateUrl('/apps/gitlab/todos'), req).then((response) => {
+            axios.get(generateUrl('/apps/discourse/notifications'), req).then((response) => {
                 this.processNotifications(response.data)
                 this.state = 'ok'
             }).catch((error) => {
@@ -131,7 +128,7 @@ export default {
                 if (error.response && error.response.status === 400) {
                     this.state = 'no-token'
                 } else if (error.response && error.response.status === 401) {
-                    showError(t('gitlab', 'Failed to get Gitlab notifications.'))
+                    showError(t('discourse', 'Failed to get Discourse notifications.'))
                     this.state = 'error'
                 } else {
                     // there was an error in notif processing
@@ -143,7 +140,7 @@ export default {
             if (this.lastDate) {
                 // just add those which are more recent than our most recent one
                 let i = 0
-                while (i < newNotifications.length && this.lastMoment.isBefore(newNotifications[i].updated_at)) {
+                while (i < newNotifications.length && this.lastMoment.isBefore(newNotifications[i].created_at)) {
                     i++
                 }
                 if (i > 0) {
@@ -156,17 +153,20 @@ export default {
             }
         },
         filter(notifications) {
-            return notifications
+            return notifications.filter((n) => {
+                // type 12 is badge earned
+                return (!n.read && ![12].includes(n.notification_type))
+            })
         },
         getNotificationTarget(n) {
             return n.target_url
         },
         getUniqueKey(n) {
-            return n.id + ':' + n.updated_at
+            return n.id
         },
         getNotificationImage(n) {
             return (n.project && n.project.avatar_url) ?
-                    generateUrl('/apps/gitlab/avatar?') + encodeURIComponent('url') + '=' + encodeURIComponent(n.project.avatar_url) :
+                    generateUrl('/apps/discourse/avatar?') + encodeURIComponent('url') + '=' + encodeURIComponent(n.project.avatar_url) :
                     ''
         },
         getAuthorFullName(n) {
@@ -176,72 +176,50 @@ export default {
         },
         getAuthorAvatarUrl(n) {
             return (n.author && n.author.avatar_url) ?
-                    generateUrl('/apps/gitlab/avatar?') + encodeURIComponent('url') + '=' + encodeURIComponent(n.author.avatar_url) :
+                    generateUrl('/apps/discourse/avatar?') + encodeURIComponent('url') + '=' + encodeURIComponent(n.author.avatar_url) :
                     ''
         },
         getNotificationProjectName(n) {
             return n.project.path_with_namespace
         },
         getNotificationContent(n) {
-            if (n.action_name === 'mentioned') {
-                return t('gitlab', 'You were mentioned')
-            } else if (n.action_name === 'approval_required') {
-                return t('gitlab', 'Your approval is required')
-            } else if (n.action_name === 'assigned') {
-                return t('gitlab', 'You were assigned')
-            } else if (n.action_name === 'build_failed') {
-                return t('gitlab', 'A build has failed')
-            } else if (n.action_name === 'marked') {
-                return t('gitlab', 'Marked')
-            } else if (n.action_name === 'directly_addressed') {
-                return t('gitlab', 'You were directly addressed')
-            }
-            return ''
+            return n.fancy_title
         },
         getNotificationTypeImage(n) {
-            if (n.target_type === 'MergeRequest') {
-                return generateUrl('/svg/gitlab/merge_request?color=' + this.themingColor)
-            } else if (n.target_type === 'Issue') {
-                return generateUrl('/svg/gitlab/issues?color=' + this.themingColor)
+            if (n.notification_type === 6) {
+                return generateUrl('/svg/core/actions/mail?color=' + this.themingColor)
             }
             return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
         },
         getNotificationActionChar(n) {
-            if (['Issue', 'MergeRequest'].includes(n.target_type)) {
-                if (['approval_required', 'assigned'].includes(n.action_name)) {
-                    return '👁'
-                } else if (['directly_addressed', 'mentioned'].includes(n.action_name)) {
-                    return '🗨'
-                } else if (n.action_name === 'marked') {
-                    return '✅'
-                } else if (['build_failed', 'unmergeable'].includes(n.action_name)) {
-                    return '❎'
-                }
-            }
             return ''
         },
         getSubline(n) {
-            return this.getProjectPath(n) + ' ' + this.getNotificationActionChar(n) + ' ' + this.getTargetIdentifier(n)
+            // private message
+            if (n.notification_type === 6) {
+                if (n.data.display_username && n.data.display_username !== n.data.original_username) {
+                    return n.data.display_username + '(@' + n.data.original_username + ')'
+                } else {
+                    return n.data.display_username
+                }
+            } else if (n.notification_type === 6) {
+            }
+            return ''
         },
         getTargetContent(n) {
             return n.body
         },
         getTargetTitle(n) {
-            return n.target.title
+            return n.fancy_title
         },
         getProjectPath(n) {
             return n.project.path_with_namespace
         },
         getTargetIdentifier(n) {
-            if (n.target_type === 'MergeRequest') {
-                return '!' + n.target.iid
-            } else if (n.target_type === 'Issue') {
-                return '#' + n.target.iid
-            }
             return ''
         },
         getFormattedDate(n) {
-            return moment(n.updated_at).locale(this.locale).format('LLL')
+            return moment(n.created_at).locale(this.locale).format('LLL')
         },
     },
 }
@@ -290,7 +268,7 @@ li .notification-list__entry {
             color: var(--color-text-maxcontrast);
         }
     }
-    img.gitlab-notification-icon {
+    img.discourse-notification-icon {
         position: absolute;
         width: 14px;
         height: 14px;

@@ -13,8 +13,7 @@ return [
     'routes' => [
         ['name' => 'config#oauthRedirect', 'url' => '/oauth-redirect', 'verb' => 'GET'],
         ['name' => 'config#setConfig', 'url' => '/config', 'verb' => 'PUT'],
-        ['name' => 'discourseAPI#getEvents', 'url' => '/events', 'verb' => 'GET'],
-        ['name' => 'discourseAPI#getTodos', 'url' => '/todos', 'verb' => 'GET'],
+        ['name' => 'discourseAPI#getNotifications', 'url' => '/notifications', 'verb' => 'GET'],
         ['name' => 'discourseAPI#getDiscourseUrl', 'url' => '/url', 'verb' => 'GET'],
         ['name' => 'discourseAPI#getDiscourseAvatar', 'url' => '/avatar', 'verb' => 'GET'],
     ]

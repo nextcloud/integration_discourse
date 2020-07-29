@@ -88,7 +88,7 @@ class DiscourseAPIController extends Controller {
         if ($this->accessToken === '' or $this->clientID === '') {
             return new DataResponse('', 400);
         }
-        $result = $this->discourseAPIService->getTodos($this->discourseUrl, $this->accessToken, $this->clientID, $since);
+        $result = $this->discourseAPIService->getNotifications($this->discourseUrl, $this->accessToken, $since);
         if (is_array($result)) {
             $response = new DataResponse($result);
         } else {
