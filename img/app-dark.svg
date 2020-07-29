@@ -7,43 +7,22 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="app-dark.svg"
-   id="svg18"
-   preserveAspectRatio="xMidYMid"
+   viewBox="0 -1 104 106"
    version="1.1"
-   viewBox="0 0 256 236"
-   height="236px"
-   width="256px">
+   id="svg22"
+   sodipodi:docname="app-dark.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
-     id="metadata24">
+     id="metadata26">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs
-     id="defs22">
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Invert"
-       id="filter1182">
-      <feColorMatrix
-         type="hueRotate"
-         values="180"
-         result="color1"
-         id="feColorMatrix1178" />
-      <feColorMatrix
-         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 -0.21 -0.72 -0.07 2 0 "
-         result="color2"
-         id="feColorMatrix1180" />
-    </filter>
-  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -55,43 +34,53 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
      inkscape:window-height="1051"
-     id="namedview20"
+     id="namedview24"
      showgrid="false"
-     inkscape:zoom="2"
-     inkscape:cx="-52.85503"
-     inkscape:cy="120.63456"
+     inkscape:zoom="6.2972528"
+     inkscape:cx="2.3684009"
+     inkscape:cy="50.943822"
      inkscape:window-x="0"
      inkscape:window-y="-37"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g16" />
+     inkscape:current-layer="Layer_3" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#231f20;}.cls-2{fill:#fff9ae;}.cls-3{fill:#00aeef;}.cls-4{fill:#00a94f;}.cls-5{fill:#f15d22;}.cls-6{fill:#e31b23;}</style>
+  </defs>
+  <title
+     id="title6">Discourse_logo</title>
   <g
-     id="g16"
-     transform="translate(-3.0749672e-6,4.0742876e-6)"
-     style="filter:url(#filter1182)">
-    <path
-       style="fill:#ffffff;opacity:1;fill-opacity:1"
-       inkscape:connector-curvature="0"
-       id="path2"
-       d="m 128.07485,236.07467 v 0 l 47.104,-144.970365 H 80.970849 Z" />
-    <path
-       style="fill:#ffffff;opacity:1;fill-opacity:1"
-       inkscape:connector-curvature="0"
-       id="path6"
-       d="m 14.955886,91.104427 v 0 L 0.64182857,135.15959 c -1.3056,4.01798 0.12434286,8.41996 3.54255243,10.90316 l 123.890589,90.01204 z" />
-    <path
-       style="fill:#ffffff;opacity:1;fill-opacity:1"
-       inkscape:connector-curvature="0"
-       id="path8"
-       d="M 14.955886,91.104549 H 80.970971 L 52.600076,3.7902629 c -1.4592,-4.49340957 -7.815314,-4.49219052 -9.274514,0 z" />
-    <path
-       style="fill:#ffffff;opacity:1;fill-opacity:1"
-       inkscape:connector-curvature="0"
-       id="path12"
-       d="m 241.19393,91.104427 v 0 l 14.31406,44.055163 c 1.3056,4.01798 -0.12434,8.41996 -3.54255,10.90316 l -123.89059,90.01204 z" />
-    <path
-       style="fill:#ffffff;opacity:1;fill-opacity:1"
-       inkscape:connector-curvature="0"
-       id="path14"
-       d="M 241.19393,91.104549 H 175.17885 L 203.54974,3.7902629 c 1.4592,-4.49340957 7.81532,-4.49219052 9.27452,0 z" />
+     id="Layer_2"
+     data-name="Layer 2">
+    <g
+       id="Layer_3"
+       data-name="Layer 3">
+      <path
+         d="M 51.869141 1 C 23.709141 1 -4.7369516e-15 23.83 0 52 L 0 104.81055 L 51.859375 104.75977 C 80.019375 104.75977 102.85938 81.050625 102.85938 52.890625 C 102.85938 24.730625 79.999141 1 51.869141 1 z M 52.369141 20.740234 L 52.400391 20.740234 A 31.61 31.61 0 1 1 39.400391 81.169922 L 18.859375 85.810547 L 24.580078 67.410156 A 31.62 31.62 0 0 1 52.369141 20.740234 z "
+         transform="translate(0,-1)"
+         id="path8"
+         style="fill:#000000;fill-opacity:1" />
+      <path
+         class="cls-3"
+         d="M77.45,32.12a31.6,31.6,0,0,1-38.05,48L18.86,84.82l20.91-2.47A31.6,31.6,0,0,0,77.45,32.12Z"
+         id="path12"
+         style="fill:#323232;fill-opacity:1" />
+      <path
+         class="cls-4"
+         d="M71.63,26.29A31.6,31.6,0,0,1,38.8,78L18.86,84.82,39.4,80.17A31.6,31.6,0,0,0,71.63,26.29Z"
+         id="path14"
+         style="fill:#646464;fill-opacity:1" />
+      <path
+         class="cls-5"
+         d="M26.47,67.11a31.61,31.61,0,0,1,51-35A31.61,31.61,0,0,0,24.58,66.41l-5.72,18.4Z"
+         id="path16"
+         style="fill:#646464;fill-opacity:1" />
+      <path
+         class="cls-6"
+         d="M24.58,66.41A31.61,31.61,0,0,1,71.63,26.29a31.61,31.61,0,0,0-49,39.63l-3.76,18.9Z"
+         id="path18"
+         style="fill:#323232;fill-opacity:1" />
+    </g>
   </g>
 </svg>
