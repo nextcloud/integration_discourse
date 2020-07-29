@@ -163,7 +163,7 @@ export default {
         },
         getNotificationTarget(n) {
             // private message
-            if (n.notification_type === 6) {
+            if ([6, 1].includes(n.notification_type)) {
                 return this.discourseUrl + '/t/' + n.slug + '/' + n.topic_id
             }
             return ''
@@ -178,7 +178,7 @@ export default {
             return ''
         },
         getNotificationImage(n) {
-            if (n.notification_type === 6) {
+            if ([6, 1].includes(n.notification_type)) {
                 return (n.data.original_username) ?
                     generateUrl('/apps/discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.original_username) :
                     ''
@@ -194,6 +194,8 @@ export default {
         getNotificationTypeImage(n) {
             if (n.notification_type === 6) {
                 return generateUrl('/svg/core/actions/mail?color=' + this.themingColor)
+            } else if (n.notification_type === 1) {
+                return generateUrl('/svg/core/actions/comment?color=' + this.themingColor)
             }
             return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
         },
@@ -202,7 +204,7 @@ export default {
         },
         getSubline(n) {
             // private message
-            if (n.notification_type === 6) {
+            if ([6, 1].includes(n.notification_type)) {
                 if (n.data.display_username && n.data.display_username !== n.data.original_username) {
                     return n.data.display_username + '(@' + n.data.original_username + ')'
                 } else {
