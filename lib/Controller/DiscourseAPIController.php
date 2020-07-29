@@ -59,6 +59,7 @@ class DiscourseAPIController extends Controller {
         $this->logger = $logger;
         $this->discourseAPIService = $discourseAPIService;
         $this->accessToken = $this->config->getUserValue($this->userId, 'discourse', 'token', '');
+        $this->clientID = $this->config->getUserValue($this->userId, 'discourse', 'client_id', '');
         $this->discourseUrl = $this->config->getUserValue($this->userId, 'discourse', 'url', '');
     }
 
@@ -80,31 +81,14 @@ class DiscourseAPIController extends Controller {
     }
 
     /**
-     * get event list
-     * @NoAdminRequired
-     */
-    public function getEvents($since = null) {
-        if ($this->accessToken === '') {
-            return new DataResponse('', 400);
-        }
-        $result = $this->discourseAPIService->getEvents($this->discourseUrl, $this->accessToken, $since);
-        if (is_array($result)) {
-            $response = new DataResponse($result);
-        } else {
-            $response = new DataResponse($result, 401);
-        }
-        return $response;
-    }
-
-    /**
      * get todo list
      * @NoAdminRequired
      */
-    public function getTodos($since = null) {
-        if ($this->accessToken === '') {
+    public function getNotifications($since = null) {
+        if ($this->accessToken === '' or $this->clientID === '') {
             return new DataResponse('', 400);
         }
-        $result = $this->discourseAPIService->getTodos($this->discourseUrl, $this->accessToken, $since);
+        $result = $this->discourseAPIService->getTodos($this->discourseUrl, $this->accessToken, $this->clientID, $since);
         if (is_array($result)) {
             $response = new DataResponse($result);
         } else {

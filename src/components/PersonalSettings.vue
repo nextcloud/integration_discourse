@@ -73,8 +73,6 @@ export default {
 
     methods: {
         onInput() {
-            console.log('cl id '+this.state.client_id)
-            console.log('pubkey '+this.state.public_key)
             const that = this
             delay(function() {
                 that.saveOptions()
@@ -113,10 +111,10 @@ export default {
             const nonce = this.makeNonce(16)
             const request_url = this.state.url + '/user-api-key/new?client_id=' + encodeURIComponent(this.state.client_id) +
                 '&auth_redirect=' + encodeURIComponent(redirect_uri) +
-                '&application_name=Nextcloud' +
+                '&application_name=' + encodeURIComponent('Nextclouddiscourseintegration') +
                 '&nonce=' + encodeURIComponent(nonce) +
                 '&public_key=' + encodeURIComponent(this.state.public_key) +
-                '&scopes=' + encodeURIComponent('read,notifications:get')
+                '&scopes=' + encodeURIComponent('read,write,notifications')
 
             const req = {
                 values: {
@@ -138,7 +136,7 @@ export default {
         },
         makeNonce(l) {
             let text = ''
-            var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+            var chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
             for (let i=0; i < l; i++) {
                 text += chars.charAt(Math.floor(Math.random() * chars.length));
             }

@@ -53,13 +53,14 @@ class DiscourseAPIService {
         return $this->client->get($url)->getBody();
     }
 
-    public function request($url, $accessToken, $endPoint, $params = [], $method = 'GET') {
+    public function request($url, $accessToken, $clientID, $endPoint, $params = [], $method = 'GET') {
         try {
             $url = $url . '/' . $endPoint;
             $options = [
                 'headers' => [
-                    'Api-Key'  => $accessToken,
-                    'Api-Username' => $accessUsername,
+                    'User-Api-Key' => $accessToken,
+                    //'Api-Username' => $accessUsername,
+                    'User-Api-Client-Id' => $clientId,
                     'User-Agent' => 'Nextcloud Discourse integration'
                 ],
             ];

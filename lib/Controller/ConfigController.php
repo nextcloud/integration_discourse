@@ -95,92 +95,37 @@ class ConfigController extends Controller {
      * @NoAdminRequired
      * @NoCSRFRequired
      */
-    public function oauthRedirect($payload, $nonce) {
+    public function oauthRedirect($payload) {
         $configNonce = $this->config->getUserValue($this->userId, 'discourse', 'nonce', '');
-        error_log('PAYLOAD '.$payload);
-        error_log('CONFIGNONCE '.$configNonce);
-        error_log('NONCE '.$nonce);
         // decrypt payload
         $privKey = $this->config->getAppValue('discourse', 'private_key', '');
+        $decPayload = base64_decode($payload);
         $rsa = new RSA();
+        $rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
         $rsa->loadKey($privKey);
-        $rsadec = $rsa->decrypt($rsacipher);
-        error_log('decrypt result : '.$rsadec);
-        return '3333';
-        $clientID = $this->config->getAppValue('discourse', 'client_id', '');
-        $clientSecret = $this->config->getAppValue('discourse', 'client_secret', '');
+        $rsadec = $rsa->decrypt($decPayload);
+        $payloadArray = json_decode($rsadec, true);
 
         // anyway, reset nonce
         $this->config->setUserValue($this->userId, 'discourse', 'nonce', '');
 
-        if ($clientID and $clientSecret and $configState !== '' and $configState === $state) {
-            $redirect_uri = $this->urlGenerator->linkToRouteAbsolute('discourse.config.oauthRedirect');
-            $discourseUrl = $this->config->getUserValue($this->userId, 'discourse', 'url', '');
-            $result = $this->requestOAuthAccessToken($discourseUrl, [
-                'client_id' => $clientID,
-                'client_secret' => $clientSecret,
-                'code' => $code,
-                'redirect_uri' => $redirect_uri,
-                'grant_type' => 'authorization_code'
-            ], 'POST');
-            if (is_array($result) and isset($result['access_token'])) {
-                $accessToken = $result['access_token'];
+        if (is_array($payloadArray) and $configNonce !== '' and $configNonce === $payloadArray['nonce']) {
+            if (isset($payloadArray['key'])) {
+                $accessToken = $payloadArray['key'];
                 $this->config->setUserValue($this->userId, 'discourse', 'token', $accessToken);
                 return new RedirectResponse(
                     $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'linked-accounts']) .
                     '?discourseToken=success'
                 );
             }
-            $result = $this->l->t('Error getting OAuth access token');
+            $result = $this->l->t('No API key returned by Discourse');
         } else {
-            $result = $this->l->t('Error during OAuth exchanges');
+            $result = $this->l->t('Error during authentication exchanges');
         }
         return new RedirectResponse(
             $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'linked-accounts']) .
             '?discourseToken=error&message=' . urlencode($result)
         );
-    }
-
-    private function requestOAuthAccessToken($url, $params = [], $method = 'GET') {
-        $client = $this->clientService->newClient();
-        try {
-            $url = $url . '/oauth/token';
-            $options = [
-                'headers' => [
-                    'User-Agent'  => 'Nextcloud Discourse integration',
-                ]
-            ];
-
-            if (count($params) > 0) {
-                if ($method === 'GET') {
-                    $paramsContent = http_build_query($params);
-                    $url .= '?' . $paramsContent;
-                } else {
-                    $options['body'] = $params;
-                }
-            }
-
-            if ($method === 'GET') {
-                $response = $client->get($url, $options);
-            } else if ($method === 'POST') {
-                $response = $client->post($url, $options);
-            } else if ($method === 'PUT') {
-                $response = $client->put($url, $options);
-            } else if ($method === 'DELETE') {
-                $response = $client->delete($url, $options);
-            }
-            $body = $response->getBody();
-            $respCode = $response->getStatusCode();
-
-            if ($respCode >= 400) {
-                return $this->l->t('OAuth access token refused');
-            } else {
-                return json_decode($body, true);
-            }
-        } catch (\Exception $e) {
-            $this->logger->warning('Discourse OAuth error : '.$e, array('app' => $this->appName));
-            return $e;
-        }
     }
 
 }

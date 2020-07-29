@@ -46,28 +46,23 @@ class Personal implements ISettings {
         $url = $this->config->getUserValue($this->userId, 'discourse', 'url', '');
 
         // for OAuth
-        $clientID = $this->config->getAppValue('discourse', 'client_id', '');
+        $clientID = $this->config->getUserValue($this->userId, 'discourse', 'client_id', '');
         $pubKey = $this->config->getAppValue('discourse', 'public_key', '');
         $privKey = $this->config->getAppValue('discourse', 'private_key', '');
 
         if ($clientID === '') {
             // random string of 32 chars length
-            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
             $clientID = substr(str_shuffle($permitted_chars), 0, 32);
-            $this->config->setAppValue('discourse', 'client_id', $clientID);
+            $this->config->setUserValue($this->userId, 'discourse', 'client_id', $clientID);
         }
         if ($pubKey === '' or $privKey === '') {
             $rsa = new RSA();
+            $rsa->setPrivateKeyFormat(RSA::PRIVATE_FORMAT_PKCS1);
+            $rsa->setPublicKeyFormat(RSA::PUBLIC_FORMAT_PKCS1);
             $keys = $rsa->createKey(2048);
             $pubKey = $keys['publickey'];
-            $pubKeyParts = explode("\n", $pubKey);
-            $pubKeyParts = array_splice($pubKeyParts, 1, count($pubKeyParts) - 2);
-            $pubKey = implode('', $pubKeyParts);
-
             $privKey = $keys['privatekey'];
-            $privKeyParts = explode("\n", $privKey);
-            $privKeyParts = array_splice($privKeyParts, 1, count($privKeyParts) - 2);
-            $privKey = implode('', $privKeyParts);
 
             $this->config->setAppValue('discourse', 'public_key', $pubKey);
             $this->config->setAppValue('discourse', 'private_key', $privKey);
