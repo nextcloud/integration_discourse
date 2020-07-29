@@ -51,8 +51,13 @@ class DiscourseAPIService {
         return $notifications;
     }
 
-    public function getDiscourseAvatar($url) {
-        return $this->client->get($url)->getBody();
+    public function getDiscourseAvatar($url, $accessToken, $username) {
+        $result = $this->request($url, $accessToken, 'users/'.$username.'.json');
+        if (is_array($result) and isset($result['user']) and isset($result['user']['avatar_template'])) {
+            $avatarUrl = $url . str_replace('{size}', '32', $result['user']['avatar_template']);
+            return $this->client->get($avatarUrl)->getBody();
+        }
+        return '';
     }
 
     public function request($url, $accessToken, $endPoint, $params = [], $method = 'GET') {

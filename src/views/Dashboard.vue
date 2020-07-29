@@ -26,6 +26,7 @@
                     <Avatar
                         class="project-avatar"
                         :url="getNotificationImage(n)"
+                        :user="getAuthorFullName(n)"
                         />
                     <img class="discourse-notification-icon" :src="getNotificationTypeImage(n)"/>
                     <div class="notification__details">
@@ -155,29 +156,34 @@ export default {
         filter(notifications) {
             return notifications.filter((n) => {
                 // type 12 is badge earned
-                return (!n.read && ![12].includes(n.notification_type))
+                // TODO uncomment this
+                //return (!n.read && ![12].includes(n.notification_type))
+                return (![12].includes(n.notification_type))
             })
         },
         getNotificationTarget(n) {
-            return n.target_url
+            // private message
+            if (n.notification_type === 6) {
+                return this.discourseUrl + '/t/' + n.slug + '/' + n.topic_id
+            }
+            return ''
         },
         getUniqueKey(n) {
             return n.id
         },
-        getNotificationImage(n) {
-            return (n.project && n.project.avatar_url) ?
-                    generateUrl('/apps/discourse/avatar?') + encodeURIComponent('url') + '=' + encodeURIComponent(n.project.avatar_url) :
-                    ''
-        },
         getAuthorFullName(n) {
-            return n.author.name ?
-                (n.author.name + ' (@' + n.author.username + ')') :
-                n.author.username
+            if (n.notification_type === 6) {
+                return n.data.display_username
+            }
+            return ''
         },
-        getAuthorAvatarUrl(n) {
-            return (n.author && n.author.avatar_url) ?
-                    generateUrl('/apps/discourse/avatar?') + encodeURIComponent('url') + '=' + encodeURIComponent(n.author.avatar_url) :
+        getNotificationImage(n) {
+            if (n.notification_type === 6) {
+                return (n.data.original_username) ?
+                    generateUrl('/apps/discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.original_username) :
                     ''
+            }
+            return ''
         },
         getNotificationProjectName(n) {
             return n.project.path_with_namespace
