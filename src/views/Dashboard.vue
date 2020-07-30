@@ -63,6 +63,13 @@ import { showSuccess, showError } from '@nextcloud/dialogs'
 import moment from '@nextcloud/moment'
 import { getLocale } from '@nextcloud/l10n'
 
+const TYPE_MENTION = 1
+const TYPE_LIKE = 5
+const TYPE_PRIVATE_MESSAGE = 6
+const TYPE_REPLY = 9
+const TYPE_BADGE_EARNED = 12
+const TYPE_SOLVED = 14
+
 export default {
     name: 'Dashboard',
 
@@ -155,76 +162,80 @@ export default {
         },
         filter(notifications) {
             return notifications.filter((n) => {
-                // type 12 is badge earned
-                // TODO uncomment this
-                //return (!n.read && ![12].includes(n.notification_type))
-                return (![12].includes(n.notification_type))
+                return (!n.read && ![TYPE_BADGE_EARNED].includes(n.notification_type))
             })
         },
         getNotificationTarget(n) {
-            // private message
-            if ([6, 1].includes(n.notification_type)) {
+            if ([TYPE_MENTION, TYPE_PRIVATE_MESSAGE].includes(n.notification_type)) {
                 return this.discourseUrl + '/t/' + n.slug + '/' + n.topic_id
+            } else if ([TYPE_REPLY, TYPE_LIKE, TYPE_SOLVED].includes(n.notification_type)) {
+                return this.discourseUrl + '/t/' + n.slug + '/' + n.topic_id + '/' + n.post_number
+            } else if ([TYPE_BADGE_EARNED].includes(n.notification_type)) {
+                return this.discourseUrl + '/badges/' + n.data.badge_id + '/' + n.data.badge_slug + '?username=' + n.data.username
             }
             return ''
         },
         getUniqueKey(n) {
             return n.id
         },
-        getAuthorFullName(n) {
-            if (n.notification_type === 6) {
-                return n.data.display_username
-            }
-            return ''
-        },
         getNotificationImage(n) {
-            if ([6, 1].includes(n.notification_type)) {
+            if ([TYPE_PRIVATE_MESSAGE, TYPE_MENTION, TYPE_REPLY, TYPE_LIKE].includes(n.notification_type)) {
                 return (n.data.original_username) ?
                     generateUrl('/apps/discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.original_username) :
                     ''
+            } else if ([TYPE_SOLVED].includes(n.notification_type)) {
+                return (n.data.display_username) ?
+                    generateUrl('/apps/discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.display_username) :
+                    ''
             }
+            // nothing for badges
             return ''
         },
-        getNotificationProjectName(n) {
-            return n.project.path_with_namespace
-        },
-        getNotificationContent(n) {
-            return n.fancy_title
-        },
         getNotificationTypeImage(n) {
-            if (n.notification_type === 6) {
+            if (n.notification_type === TYPE_PRIVATE_MESSAGE) {
                 return generateUrl('/svg/core/actions/mail?color=' + this.themingColor)
-            } else if (n.notification_type === 1) {
-                return generateUrl('/svg/core/actions/comment?color=' + this.themingColor)
+            } else if (n.notification_type === TYPE_MENTION) {
+                return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
+            } else if (n.notification_type === TYPE_LIKE) {
+                return generateUrl('/svg/core/actions/star?color=' + this.themingColor)
+            } else if (n.notification_type === TYPE_REPLY) {
+                return generateUrl('/svg/core/actions/history?color=' + this.themingColor)
+            } else if (n.notification_type === TYPE_BADGE_EARNED) {
+                return generateUrl('/svg/core/actions/tag?color=' + this.themingColor)
+            } else if (n.notification_type === TYPE_SOLVED) {
+                return generateUrl('/svg/core/actions/checkmark?color=' + this.themingColor)
             }
             return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
         },
-        getNotificationActionChar(n) {
-            return ''
+        getDisplayAndOriginalUsername(n) {
+            if (n.data.display_username && n.data.display_username !== n.data.original_username) {
+                return n.data.display_username + '(@' + n.data.original_username + ')'
+            } else {
+                return n.data.display_username
+            }
         },
         getSubline(n) {
-            // private message
-            if ([6, 1].includes(n.notification_type)) {
-                if (n.data.display_username && n.data.display_username !== n.data.original_username) {
-                    return n.data.display_username + '(@' + n.data.original_username + ')'
-                } else {
-                    return n.data.display_username
-                }
-            } else if (n.notification_type === 6) {
+            if ([TYPE_PRIVATE_MESSAGE, TYPE_MENTION, TYPE_LIKE, TYPE_REPLY].includes(n.notification_type)) {
+                return this.getDisplayAndOriginalUsername(n)
+            } else if (n.notification_type === TYPE_SOLVED) {
+                return '@' + n.display_username
+            } else if (n.notification_type === TYPE_BADGE_EARNED) {
+                return n.data.badge_name
             }
             return ''
         },
-        getTargetContent(n) {
-            return n.body
+        getAuthorFullName(n) {
+            if ([TYPE_PRIVATE_MESSAGE, TYPE_MENTION, TYPE_LIKE, TYPE_REPLY].includes(n.notification_type)) {
+                return n.data.original_username
+            } else if (n.notification_type === TYPE_SOLVED) {
+                return n.display_username
+            } else if (n.notification_type === TYPE_BADGE_EARNED) {
+                return '*'
+            }
+            return ''
         },
         getTargetTitle(n) {
             return n.fancy_title
-        },
-        getProjectPath(n) {
-            return n.project.path_with_namespace
-        },
-        getTargetIdentifier(n) {
-            return ''
         },
         getFormattedDate(n) {
             return moment(n.created_at).locale(this.locale).format('LLL')
