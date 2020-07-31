@@ -65,11 +65,15 @@ import { getLocale } from '@nextcloud/l10n'
 
 const TYPE_MENTION = 1
 const TYPE_REPLY = 2
+const TYPE_QUOTED = 3
+const TYPE_EDIT = 4
 const TYPE_LIKE = 5
 const TYPE_PRIVATE_MESSAGE = 6
 const TYPE_REPLY_2 = 9
+const TYPE_LINKED = 11
 const TYPE_BADGE_EARNED = 12
 const TYPE_SOLVED = 14
+const TYPE_GROUP_MENTION = 15
 
 export default {
     name: 'Dashboard',

@@ -77,7 +77,9 @@ class DiscourseAPIController extends Controller {
      * @NoCSRFRequired
      */
     public function getDiscourseAvatar($username) {
-        return new DataDisplayResponse($this->discourseAPIService->getDiscourseAvatar($this->discourseUrl, $this->accessToken, $username));
+        $response = new DataDisplayResponse($this->discourseAPIService->getDiscourseAvatar($this->discourseUrl, $this->accessToken, $username));
+        $response->cacheFor(60*60*24);
+        return $response;
     }
 
     /**
