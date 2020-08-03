@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="heart.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="0.921875"
+     inkscape:cx="182.73356"
+     inkscape:cy="224.15371"
+     inkscape:window-x="0"
+     inkscape:window-y="-37"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M 422.30727,108.89596 C 378.31544,71.406558 312.88962,78.149833 272.51025,119.81364 l -15.81459,16.29625 -15.81459,-16.29625 C 200.58198,78.149833 135.07589,71.406558 91.084041,108.89596 40.670033,151.92447 38.02089,229.15103 83.136609,275.79201 L 238.47276,436.18562 c 10.03464,10.35574 26.33089,10.35574 36.36551,0 L 430.17443,275.79201 c 45.196,-46.64098 42.54685,-123.86754 -7.86716,-166.89605 z"
+     id="path2"
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;stroke:#fffafa;stroke-width:96.99799347;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+</svg>

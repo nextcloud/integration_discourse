@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="reply.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="0.921875"
+     inkscape:cx="-113.40203"
+     inkscape:cy="283.81473"
+     inkscape:window-x="0"
+     inkscape:window-y="-37"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M 58.862103,211.13953 200.16579,89.11936 c 12.3686,-10.681832 31.86244,-2.010319 31.86244,14.58285 v 64.27004 c 128.95996,1.47644 231.21895,27.32237 231.21895,149.53604 0,49.32751 -31.77736,98.19499 -66.90337,123.74388 -10.96122,7.97304 -26.58294,-2.03361 -22.54143,-14.95778 C 410.20652,309.87244 356.53562,278.96457 232.02823,277.17262 v 70.582 c 0,16.61886 -19.5091,25.25183 -31.86244,14.58284 L 58.862103,240.30524 c -8.88828,-7.67678 -8.900323,-21.47847 0,-29.16571 z"
+     id="path5"
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:96.56899261;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+</svg>

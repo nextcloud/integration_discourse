@@ -178,17 +178,17 @@ export default {
         },
         getNotificationTypeImage(n) {
             if (n.notification_type === TYPE_PRIVATE_MESSAGE) {
-                return generateUrl('/svg/core/actions/mail?color=' + this.themingColor)
+                return generateUrl('/svg/discourse/message?color=ffffff')
             } else if (n.notification_type === TYPE_MENTION) {
-                return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
+                return generateUrl('/svg/discourse/arobase?color=ffffff')
             } else if (n.notification_type === TYPE_LIKE) {
-                return generateUrl('/svg/core/actions/starred?color=' + this.themingColor)
+                return generateUrl('/svg/discourse/heart?color=ffffff')
             } else if ([TYPE_REPLY, TYPE_REPLY_2].includes(n.notification_type)) {
-                return generateUrl('/svg/core/actions/history?color=' + this.themingColor)
+                return generateUrl('/svg/discourse/reply?color=ffffff')
             } else if (n.notification_type === TYPE_BADGE_EARNED) {
-                return generateUrl('/svg/core/actions/tag?color=' + this.themingColor)
+                return generateUrl('/svg/discourse/badge?color=ffffff')
             } else if (n.notification_type === TYPE_SOLVED) {
-                return generateUrl('/svg/core/actions/checkmark?color=' + this.themingColor)
+                return generateUrl('/svg/discourse/solved?color=ffffff')
             }
             return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
         },
