@@ -18,7 +18,7 @@ use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 
 use OCA\Discourse\Controller\PageController;
-use OCA\Discourse\Dashboard\DiscoursePanel;
+use OCA\Discourse\Dashboard\DiscourseWidget;
 
 /**
  * Class Application
@@ -39,7 +39,7 @@ class Application extends App implements IBootstrap {
     }
 
     public function register(IRegistrationContext $context): void {
-        $context->registerDashboardPanel(DiscoursePanel::class);
+        $context->registerDashboardWidget(DiscourseWidget::class);
     }
 
     public function boot(IBootContext $context): void {

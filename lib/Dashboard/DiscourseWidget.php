@@ -23,9 +23,10 @@
 
 namespace OCA\Discourse\Dashboard;
 
+use OCP\Dashboard\IWidget;
 use OCP\IL10N;
 
-class DiscoursePanel implements \OCP\Dashboard\IPanel {
+class DiscourseWidget implements IWidget {
 
 	/** @var IL10N */
 	private $l10n;
