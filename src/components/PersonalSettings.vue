@@ -21,7 +21,7 @@
                 <br/-->
                 <br/>
                 {{ t('discourse', 'Ask the Discourse admin to add') }}
-                <b>"web+nextclouddiscourse://"</b>
+                <b>"web+nextclouddiscourse://auth-redirect"</b>
                 <br/>
                 to the <b>"allowed_user_api_auth_redirects"</b> list in admin settings.
             </p>
