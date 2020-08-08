@@ -76,7 +76,7 @@ class DiscourseWidget implements IWidget {
 	 * @inheritDoc
 	 */
 	public function load(): void {
-        \OC_Util::addScript('discourse', 'dashboard');
+        \OC_Util::addScript('discourse', 'discourse-dashboard');
         \OC_Util::addStyle('discourse', 'dashboard');
     }
 }
