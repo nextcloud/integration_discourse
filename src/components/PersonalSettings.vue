@@ -6,7 +6,7 @@
             </h2>
             <p class="settings-hint">
                 {{ t('discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}
-                <br/>
+                <!--br/>
                 {{ t('discourse', 'Ask the Discourse admin to change the') }}
                 <br/>
                 <b>"allowed_user_api_auth_redirects"</b>
@@ -18,6 +18,12 @@
                 <b>"{{ redirect_uri }}"</b>
                 <br/>
                 {{ t('discourse', 'as an authorized redirection URL for authentication will allow Nextcloud to authenticate.') }}
+                <br/-->
+                <br/>
+                {{ t('discourse', 'Ask the Discourse admin to add') }}
+                <b>"web+nextclouddiscourse://"</b>
+                <br/>
+                to the <b>"allowed_user_api_auth_redirects"</b> list in admin settings.
             </p>
             <div class="discourse-grid-form">
                 <label for="discourse-url">
@@ -68,13 +74,21 @@ export default {
         } else if (dscToken === 'error') {
             showError(t('discourse', 'Discourse API-key could not be obtained:') + ' ' + urlParams.get('message'))
         }
+
+        // register protocol handler
+        if (window.isSecureContext && window.navigator.registerProtocolHandler) {
+            window.navigator.registerProtocolHandler('web+nextclouddiscourse', generateUrl('/apps/discourse/oauth-protocol-redirect') + '?url=%s', 'Nextcloud Discourse integration');
+        }
     },
 
     data() {
         return {
             state: loadState('discourse', 'user-config'),
             readonly: true,
-            redirect_uri: OC.getProtocol() + '://' + OC.getHostName() + generateUrl('/apps/discourse/oauth-redirect')
+            // TODO choose between classic redirection (requires 'allowed user api auth redirects' => * or the specific redirect_uri)
+            // and protocol handler based redirection for which 'allowed user api auth redirects' => web+nextclouddiscourse:// is enough and will work with all NC instances
+            // redirect_uri: OC.getProtocol() + '://' + OC.getHostName() + generateUrl('/apps/discourse/oauth-redirect'),
+            redirect_uri: 'web+nextclouddiscourse://auth-redirect',
         }
     },
 
@@ -122,11 +136,9 @@ export default {
                 })
         },
         onOAuthClick() {
-            const redirect_endpoint = generateUrl('/apps/discourse/oauth-redirect')
-            const redirect_uri = OC.getProtocol() + '://' + OC.getHostName() + redirect_endpoint
             const nonce = this.makeNonce(16)
             const request_url = this.state.url + '/user-api-key/new?client_id=' + encodeURIComponent(this.state.client_id) +
-                '&auth_redirect=' + encodeURIComponent(redirect_uri) +
+                '&auth_redirect=' + encodeURIComponent(this.redirect_uri) +
                 '&application_name=' + encodeURIComponent('Nextclouddiscourseintegration') +
                 '&nonce=' + encodeURIComponent(nonce) +
                 '&public_key=' + encodeURIComponent(this.state.public_key) +

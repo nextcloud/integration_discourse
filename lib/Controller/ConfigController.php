@@ -91,7 +91,18 @@ class ConfigController extends Controller {
     }
 
     /**
-     * receive oauth code and get oauth access token
+     * receive oauth encrypted payload with protocol handler redirect
+     * @NoAdminRequired
+     * @NoCSRFRequired
+     */
+    public function oauthProtocolRedirect($url) {
+        $parts = parse_url($url);
+        parse_str($parts['query'], $params);
+        return $this->oauthRedirect($params['payload']);
+    }
+
+    /**
+     * receive oauth encrypted payload
      * @NoAdminRequired
      * @NoCSRFRequired
      */
