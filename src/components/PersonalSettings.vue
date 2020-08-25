@@ -2,7 +2,7 @@
 	<div id="discourse_prefs" class="section">
 		<h2>
 			<a class="icon icon-discourse" />
-			{{ t('integration_discourse', 'Discourse') }}
+			{{ t('integration_discourse', 'Discourse integration') }}
 		</h2>
 		<p class="settings-hint">
 			{{ t('integration_discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}

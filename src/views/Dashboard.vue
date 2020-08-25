@@ -31,17 +31,19 @@ import moment from '@nextcloud/moment'
 // eslint-disable-next-line
 import { getLocale } from '@nextcloud/l10n'
 
-const TYPE_MENTION = 1
-const TYPE_REPLY = 2
-const TYPE_QUOTED = 3
-const TYPE_EDIT = 4
-const TYPE_LIKE = 5
-const TYPE_PRIVATE_MESSAGE = 6
-const TYPE_REPLY_2 = 9
-const TYPE_LINKED = 11
-const TYPE_BADGE_EARNED = 12
-const TYPE_SOLVED = 14
-const TYPE_GROUP_MENTION = 15
+const TYPES = {
+	MENTION: 1,
+	REPLY: 2,
+	QUOTED: 3,
+	EDIT: 4,
+	LIKE: 5,
+	PRIVATE_MESSAGE: 6,
+	REPLY_2: 9,
+	LINKED: 11,
+	BADGE_EARNED: 12,
+	SOLVED: 14,
+	GROUP_MENTION: 15,
+}
 
 export default {
 	name: 'Dashboard',
@@ -157,15 +159,15 @@ export default {
 		},
 		filter(notifications) {
 			return notifications.filter((n) => {
-				return (!n.read && ![TYPE_BADGE_EARNED].includes(n.notification_type))
+				return (!n.read && ![TYPES.BADGE_EARNED].includes(n.notification_type))
 			})
 		},
 		getNotificationTarget(n) {
-			if ([TYPE_MENTION, TYPE_PRIVATE_MESSAGE].includes(n.notification_type)) {
+			if ([TYPES.MENTION, TYPES.PRIVATE_MESSAGE].includes(n.notification_type)) {
 				return this.discourseUrl + '/t/' + n.slug + '/' + n.topic_id
-			} else if ([TYPE_REPLY, TYPE_REPLY_2, TYPE_LIKE, TYPE_SOLVED].includes(n.notification_type)) {
+			} else if ([TYPES.REPLY, TYPES.REPLY_2, TYPES.LIKE, TYPES.SOLVED].includes(n.notification_type)) {
 				return this.discourseUrl + '/t/' + n.slug + '/' + n.topic_id + '/' + n.post_number
-			} else if ([TYPE_BADGE_EARNED].includes(n.notification_type)) {
+			} else if ([TYPES.BADGE_EARNED].includes(n.notification_type)) {
 				return this.discourseUrl + '/badges/' + n.data.badge_id + '/' + n.data.badge_slug + '?username=' + n.data.username
 			}
 			return ''
@@ -174,11 +176,11 @@ export default {
 			return n.id
 		},
 		getNotificationImage(n) {
-			if ([TYPE_PRIVATE_MESSAGE, TYPE_MENTION, TYPE_REPLY, TYPE_REPLY_2, TYPE_LIKE].includes(n.notification_type)) {
+			if ([TYPES.PRIVATE_MESSAGE, TYPES.MENTION, TYPES.REPLY, TYPES.REPLY_2, TYPES.LIKE].includes(n.notification_type)) {
 				return (n.data.original_username)
 					? generateUrl('/apps/integration_discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.original_username)
 					: ''
-			} else if ([TYPE_SOLVED].includes(n.notification_type)) {
+			} else if ([TYPES.SOLVED].includes(n.notification_type)) {
 				return (n.data.display_username)
 					? generateUrl('/apps/integration_discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.display_username)
 					: ''
@@ -187,17 +189,17 @@ export default {
 			return ''
 		},
 		getNotificationTypeImage(n) {
-			if (n.notification_type === TYPE_PRIVATE_MESSAGE) {
+			if (n.notification_type === TYPES.PRIVATE_MESSAGE) {
 				return generateUrl('/svg/integration_discourse/message?color=ffffff')
-			} else if (n.notification_type === TYPE_MENTION) {
+			} else if (n.notification_type === TYPES.MENTION) {
 				return generateUrl('/svg/integration_discourse/arobase?color=ffffff')
-			} else if (n.notification_type === TYPE_LIKE) {
+			} else if (n.notification_type === TYPES.LIKE) {
 				return generateUrl('/svg/integration_discourse/heart?color=ffffff')
-			} else if ([TYPE_REPLY, TYPE_REPLY_2].includes(n.notification_type)) {
+			} else if ([TYPES.REPLY, TYPES.REPLY_2].includes(n.notification_type)) {
 				return generateUrl('/svg/integration_discourse/reply?color=ffffff')
-			} else if (n.notification_type === TYPE_BADGE_EARNED) {
+			} else if (n.notification_type === TYPES.BADGE_EARNED) {
 				return generateUrl('/svg/integration_discourse/badge?color=ffffff')
-			} else if (n.notification_type === TYPE_SOLVED) {
+			} else if (n.notification_type === TYPES.SOLVED) {
 				return generateUrl('/svg/integration_discourse/solved?color=ffffff')
 			}
 			return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
@@ -210,21 +212,21 @@ export default {
 			}
 		},
 		getSubline(n) {
-			if ([TYPE_PRIVATE_MESSAGE, TYPE_MENTION, TYPE_LIKE, TYPE_REPLY, TYPE_REPLY_2].includes(n.notification_type)) {
+			if ([TYPES.PRIVATE_MESSAGE, TYPES.MENTION, TYPES.LIKE, TYPES.REPLY, TYPES.REPLY_2].includes(n.notification_type)) {
 				return this.getDisplayAndOriginalUsername(n)
-			} else if (n.notification_type === TYPE_SOLVED) {
+			} else if (n.notification_type === TYPES.SOLVED) {
 				return '@' + n.display_username
-			} else if (n.notification_type === TYPE_BADGE_EARNED) {
+			} else if (n.notification_type === TYPES.BADGE_EARNED) {
 				return n.data.badge_name
 			}
 			return ''
 		},
 		getAuthorFullName(n) {
-			if ([TYPE_PRIVATE_MESSAGE, TYPE_MENTION, TYPE_LIKE, TYPE_REPLY, TYPE_REPLY_2].includes(n.notification_type)) {
+			if ([TYPES.PRIVATE_MESSAGE, TYPES.MENTION, TYPES.LIKE, TYPES.REPLY, TYPES.REPLY_2].includes(n.notification_type)) {
 				return n.data.original_username
-			} else if (n.notification_type === TYPE_SOLVED) {
+			} else if (n.notification_type === TYPES.SOLVED) {
 				return n.display_username
-			} else if (n.notification_type === TYPE_BADGE_EARNED) {
+			} else if (n.notification_type === TYPES.BADGE_EARNED) {
 				return '*'
 			}
 			return ''
