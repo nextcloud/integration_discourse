@@ -6,17 +6,17 @@
 		<template v-slot:empty-content>
 			<div v-if="state === 'no-token'">
 				<a :href="settingsUrl">
-					{{ t('discourse', 'Click here to configure the access to your Discourse account.') }}
+					{{ t('integration_discourse', 'Click here to configure the access to your Discourse account.') }}
 				</a>
 			</div>
 			<div v-else-if="state === 'error'">
 				<a :href="settingsUrl">
-					{{ t('discourse', 'Incorrect API key.') }}
-					{{ t('discourse', 'Click here to configure the access to your Discourse account.') }}
+					{{ t('integration_discourse', 'Incorrect API key.') }}
+					{{ t('integration_discourse', 'Click here to configure the access to your Discourse account.') }}
 				</a>
 			</div>
 			<div v-else-if="state === 'ok'">
-				{{ t('discourse', 'Nothing to show') }}
+				{{ t('integration_discourse', 'Nothing to show') }}
 			</div>
 		</template>
 	</DashboardWidget>
@@ -28,6 +28,7 @@ import { generateUrl } from '@nextcloud/router'
 import { DashboardWidget } from '@nextcloud/vue-dashboard'
 import { showError } from '@nextcloud/dialogs'
 import moment from '@nextcloud/moment'
+// eslint-disable-next-line
 import { getLocale } from '@nextcloud/l10n'
 
 const TYPE_MENTION = 1
@@ -106,7 +107,7 @@ export default {
 		async launchLoop() {
 			// get discourse URL first
 			try {
-				const response = await axios.get(generateUrl('/apps/discourse/url'))
+				const response = await axios.get(generateUrl('/apps/integration_discourse/url'))
 				this.discourseUrl = response.data.replace(/\/+$/, '')
 			} catch (error) {
 				console.debug(error)
@@ -122,7 +123,7 @@ export default {
 					since: this.lastDate,
 				}
 			}
-			axios.get(generateUrl('/apps/discourse/notifications'), req).then((response) => {
+			axios.get(generateUrl('/apps/integration_discourse/notifications'), req).then((response) => {
 				this.processNotifications(response.data)
 				this.state = 'ok'
 			}).catch((error) => {
@@ -130,7 +131,7 @@ export default {
 				if (error.response && error.response.status === 400) {
 					this.state = 'no-token'
 				} else if (error.response && error.response.status === 401) {
-					showError(t('discourse', 'Failed to get Discourse notifications.'))
+					showError(t('integration_discourse', 'Failed to get Discourse notifications.'))
 					this.state = 'error'
 				} else {
 					// there was an error in notif processing
@@ -175,11 +176,11 @@ export default {
 		getNotificationImage(n) {
 			if ([TYPE_PRIVATE_MESSAGE, TYPE_MENTION, TYPE_REPLY, TYPE_REPLY_2, TYPE_LIKE].includes(n.notification_type)) {
 				return (n.data.original_username)
-					? generateUrl('/apps/discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.original_username)
+					? generateUrl('/apps/integration_discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.original_username)
 					: ''
 			} else if ([TYPE_SOLVED].includes(n.notification_type)) {
 				return (n.data.display_username)
-					? generateUrl('/apps/discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.display_username)
+					? generateUrl('/apps/integration_discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.display_username)
 					: ''
 			}
 			// nothing for badges
@@ -187,17 +188,17 @@ export default {
 		},
 		getNotificationTypeImage(n) {
 			if (n.notification_type === TYPE_PRIVATE_MESSAGE) {
-				return generateUrl('/svg/discourse/message?color=ffffff')
+				return generateUrl('/svg/integration_discourse/message?color=ffffff')
 			} else if (n.notification_type === TYPE_MENTION) {
-				return generateUrl('/svg/discourse/arobase?color=ffffff')
+				return generateUrl('/svg/integration_discourse/arobase?color=ffffff')
 			} else if (n.notification_type === TYPE_LIKE) {
-				return generateUrl('/svg/discourse/heart?color=ffffff')
+				return generateUrl('/svg/integration_discourse/heart?color=ffffff')
 			} else if ([TYPE_REPLY, TYPE_REPLY_2].includes(n.notification_type)) {
-				return generateUrl('/svg/discourse/reply?color=ffffff')
+				return generateUrl('/svg/integration_discourse/reply?color=ffffff')
 			} else if (n.notification_type === TYPE_BADGE_EARNED) {
-				return generateUrl('/svg/discourse/badge?color=ffffff')
+				return generateUrl('/svg/integration_discourse/badge?color=ffffff')
 			} else if (n.notification_type === TYPE_SOLVED) {
-				return generateUrl('/svg/discourse/solved?color=ffffff')
+				return generateUrl('/svg/integration_discourse/solved?color=ffffff')
 			}
 			return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
 		},

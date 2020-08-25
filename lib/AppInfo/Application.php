@@ -27,13 +27,15 @@ use OCA\Discourse\Dashboard\DiscourseWidget;
  */
 class Application extends App implements IBootstrap {
 
+    public const APP_ID = 'integration_discourse';
+
     /**
      * Constructor
      *
      * @param array $urlParams
      */
     public function __construct(array $urlParams = []) {
-        parent::__construct('discourse', $urlParams);
+        parent::__construct(self::APP_ID, $urlParams);
 
         $container = $this->getContainer();
     }

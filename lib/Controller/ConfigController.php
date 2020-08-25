@@ -32,6 +32,8 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 use OCP\Http\Client\IClientService;
 
+use OCA\Discourse\AppInfo\Application;
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 use phpseclib\Crypt\RSA;
 
@@ -73,7 +75,7 @@ class ConfigController extends Controller {
      */
     public function setConfig($values) {
         foreach ($values as $key => $value) {
-            $this->config->setUserValue($this->userId, 'discourse', $key, $value);
+            $this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
         }
         $response = new DataResponse(1);
         return $response;
@@ -84,7 +86,7 @@ class ConfigController extends Controller {
      */
     public function setAdminConfig($values) {
         foreach ($values as $key => $value) {
-            $this->config->setAppValue('discourse', $key, $value);
+            $this->config->setAppValue(Application::APP_ID, $key, $value);
         }
         $response = new DataResponse(1);
         return $response;
@@ -107,9 +109,9 @@ class ConfigController extends Controller {
      * @NoCSRFRequired
      */
     public function oauthRedirect($payload) {
-        $configNonce = $this->config->getUserValue($this->userId, 'discourse', 'nonce', '');
+        $configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce', '');
         // decrypt payload
-        $privKey = $this->config->getAppValue('discourse', 'private_key', '');
+        $privKey = $this->config->getAppValue(Application::APP_ID, 'private_key', '');
         $decPayload = base64_decode($payload);
         $rsa = new RSA();
         $rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
@@ -118,12 +120,12 @@ class ConfigController extends Controller {
         $payloadArray = json_decode($rsadec, true);
 
         // anyway, reset nonce
-        $this->config->setUserValue($this->userId, 'discourse', 'nonce', '');
+        $this->config->setUserValue($this->userId, Application::APP_ID, 'nonce', '');
 
         if (is_array($payloadArray) and $configNonce !== '' and $configNonce === $payloadArray['nonce']) {
             if (isset($payloadArray['key'])) {
                 $accessToken = $payloadArray['key'];
-                $this->config->setUserValue($this->userId, 'discourse', 'token', $accessToken);
+                $this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
                 return new RedirectResponse(
                     $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'linked-accounts']) .
                     '?discourseToken=success'

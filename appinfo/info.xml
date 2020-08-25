@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <info>
-    <id>discourse</id>
-    <name>Discourse</name>
+    <id>integration_discourse</id>
+    <name>Discourse integration</name>
     <summary> </summary><description> </description>
     <version>0.0.1</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Discourse</namespace>
     <documentation>
-        <developer>https://nowhere.org/wikis/devdoc</developer>
+        <developer>https://github.com/nextcloud/integration_discourse/wikis/devdoc</developer>
     </documentation>
     <category>integration</category>
-    <website>https://github.com/nextcloud/discourse</website>
-    <bugs>https://github.com/nextcloud/discourse/issues</bugs>
+    <website>https://github.com/nextcloud/integration_discourse</website>
+    <bugs>https://github.com/nextcloud/integration_discourse/issues</bugs>
     <dependencies>
         <database min-version="9.4">pgsql</database>
         <database>sqlite</database>

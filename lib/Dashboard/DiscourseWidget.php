@@ -26,6 +26,8 @@ namespace OCA\Discourse\Dashboard;
 use OCP\Dashboard\IWidget;
 use OCP\IL10N;
 
+use OCA\Discourse\AppInfo\Application;
+
 class DiscourseWidget implements IWidget {
 
 	/** @var IL10N */
@@ -41,7 +43,7 @@ class DiscourseWidget implements IWidget {
 	 * @inheritDoc
 	 */
 	public function getId(): string {
-		return 'discourse';
+		return 'discourse_notifications';
 	}
 
 	/**
@@ -76,7 +78,7 @@ class DiscourseWidget implements IWidget {
 	 * @inheritDoc
 	 */
 	public function load(): void {
-        \OC_Util::addScript('discourse', 'discourse-dashboard');
-        \OC_Util::addStyle('discourse', 'dashboard');
+        \OC_Util::addScript(Application::APP_ID, Application::APP_ID . '-dashboard');
+        \OC_Util::addStyle(Application::APP_ID, 'dashboard');
     }
 }

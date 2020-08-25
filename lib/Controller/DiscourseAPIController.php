@@ -31,6 +31,7 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
 use OCA\Discourse\Service\DiscourseAPIService;
+use OCA\Discourse\AppInfo\Application;
 
 class DiscourseAPIController extends Controller {
 
@@ -58,9 +59,9 @@ class DiscourseAPIController extends Controller {
         $this->config = $config;
         $this->logger = $logger;
         $this->discourseAPIService = $discourseAPIService;
-        $this->accessToken = $this->config->getUserValue($this->userId, 'discourse', 'token', '');
-        $this->clientID = $this->config->getUserValue($this->userId, 'discourse', 'client_id', '');
-        $this->discourseUrl = $this->config->getUserValue($this->userId, 'discourse', 'url', '');
+        $this->accessToken = $this->config->getUserValue($this->userId, Application::APP_ID, 'token', '');
+        $this->clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id', '');
+        $this->discourseUrl = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
     }
 
     /**

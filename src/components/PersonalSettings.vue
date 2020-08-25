@@ -2,25 +2,25 @@
 	<div id="discourse_prefs" class="section">
 		<h2>
 			<a class="icon icon-discourse" />
-			{{ t('discourse', 'Discourse') }}
+			{{ t('integration_discourse', 'Discourse') }}
 		</h2>
 		<p class="settings-hint">
-			{{ t('discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}
+			{{ t('integration_discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}
 			<!--br>
-			{{ t('discourse', 'Ask the Discourse admin to change the') }}
+			{{ t('integration_discourse', 'Ask the Discourse admin to change the') }}
 			<br>
 			<b>"allowed_user_api_auth_redirects"</b>
 			<br>
-			{{ t('discourse', 'setting. Adding') }}
+			{{ t('integration_discourse', 'setting. Adding') }}
 			<br>
 			<b>"*"</b>
-			{{ t('discourse', 'or') }}
+			{{ t('integration_discourse', 'or') }}
 			<b>"{{ redirect_uri }}"</b>
 			<br/>
-			{{ t('discourse', 'as an authorized redirection URL for authentication will allow Nextcloud to authenticate.') }}
+			{{ t('integration_discourse', 'as an authorized redirection URL for authentication will allow Nextcloud to authenticate.') }}
 			<br-->
 			<br>
-			{{ t('discourse', 'Ask the Discourse admin to add') }}
+			{{ t('integration_discourse', 'Ask the Discourse admin to add') }}
 			<b>"web+nextclouddiscourse://auth-redirect"</b>
 			<br>
 			to the <b>"allowed_user_api_auth_redirects"</b> list in admin settings.
@@ -28,31 +28,31 @@
 		<div class="discourse-grid-form">
 			<label for="discourse-url">
 				<a class="icon icon-link" />
-				{{ t('discourse', 'Discourse instance address') }}
+				{{ t('integration_discourse', 'Discourse instance address') }}
 			</label>
 			<input id="discourse-url"
 				v-model="state.url"
 				type="text"
 				:readonly="readonly"
-				:placeholder="t('discourse', 'Discourse instance address')"
+				:placeholder="t('integration_discourse', 'Discourse instance address')"
 				@focus="readonly = false"
 				@input="onInput">
 			<button v-if="showOAuth"
 				id="discourse-oauth"
 				@click="onOAuthClick">
 				<span class="icon icon-external" />
-				{{ t('discourse', 'Request Discourse access') }}
+				{{ t('integration_discourse', 'Request Discourse access') }}
 			</button>
 			<span v-else />
 			<label for="discourse-token">
 				<a class="icon icon-category-auth" />
-				{{ t('discourse', 'Discourse API-key') }}
+				{{ t('integration_discourse', 'Discourse API-key') }}
 			</label>
 			<input id="discourse-token"
 				v-model="state.token"
 				type="password"
 				:readonly="readonly"
-				:placeholder="t('discourse', 'my-api-key')"
+				:placeholder="t('integration_discourse', 'my-api-key')"
 				@focus="readonly = false"
 				@input="onInput">
 		</div>
@@ -76,11 +76,11 @@ export default {
 
 	data() {
 		return {
-			state: loadState('discourse', 'user-config'),
+			state: loadState('integration_discourse', 'user-config'),
 			readonly: true,
 			// TODO choose between classic redirection (requires 'allowed user api auth redirects' => * or the specific redirect_uri)
 			// and protocol handler based redirection for which 'allowed user api auth redirects' => web+nextclouddiscourse:// is enough and will work with all NC instances
-			// redirect_uri: OC.getProtocol() + '://' + OC.getHostName() + generateUrl('/apps/discourse/oauth-redirect'),
+			// redirect_uri: OC.getProtocol() + '://' + OC.getHostName() + generateUrl('/apps/integration_discourse/oauth-redirect'),
 			redirect_uri: 'web+nextclouddiscourse://auth-redirect',
 		}
 	},
@@ -96,17 +96,18 @@ export default {
 
 	mounted() {
 		const paramString = window.location.search.substr(1)
+		// eslint-disable-next-line
 		const urlParams = new URLSearchParams(paramString)
 		const dscToken = urlParams.get('discourseToken')
 		if (dscToken === 'success') {
-			showSuccess(t('discourse', 'Discourse API-key successfully retrieved!'))
+			showSuccess(t('integration_discourse', 'Discourse API-key successfully retrieved!'))
 		} else if (dscToken === 'error') {
-			showError(t('discourse', 'Discourse API-key could not be obtained:') + ' ' + urlParams.get('message'))
+			showError(t('integration_discourse', 'Discourse API-key could not be obtained:') + ' ' + urlParams.get('message'))
 		}
 
 		// register protocol handler
 		if (window.isSecureContext && window.navigator.registerProtocolHandler) {
-			window.navigator.registerProtocolHandler('web+nextclouddiscourse', generateUrl('/apps/discourse/oauth-protocol-redirect') + '?url=%s', 'Nextcloud Discourse integration')
+			window.navigator.registerProtocolHandler('web+nextclouddiscourse', generateUrl('/apps/integration_discourse/oauth-protocol-redirect') + '?url=%s', 'Nextcloud Discourse integration')
 		}
 	},
 
@@ -131,14 +132,14 @@ export default {
 					url: this.state.url,
 				},
 			}
-			const url = generateUrl('/apps/discourse/config')
+			const url = generateUrl('/apps/integration_discourse/config')
 			axios.put(url, req)
 				.then((response) => {
-					showSuccess(t('discourse', 'Discourse options saved.'))
+					showSuccess(t('integration_discourse', 'Discourse options saved.'))
 				})
 				.catch((error) => {
 					showError(
-						t('discourse', 'Failed to save Discourse options')
+						t('integration_discourse', 'Failed to save Discourse options')
 						+ ': ' + error.response.request.responseText
 					)
 				})
@@ -159,14 +160,14 @@ export default {
 					nonce,
 				},
 			}
-			const url = generateUrl('/apps/discourse/config')
+			const url = generateUrl('/apps/integration_discourse/config')
 			axios.put(url, req)
 				.then((response) => {
 					window.location.replace(requestUrl)
 				})
 				.catch((error) => {
 					showError(
-						t('discourse', 'Failed to save Discourse nonce')
+						t('integration_discourse', 'Failed to save Discourse nonce')
 						+ ': ' + error.response.request.responseText
 					)
 				})
