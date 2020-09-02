@@ -2,17 +2,20 @@
 <info>
     <id>integration_discourse</id>
     <name>Discourse integration</name>
-    <summary> </summary><description> </description>
+    <summary>Integration of Discourse forum and mailing list management system</summary>
+    <description><![CDATA[Discourse integration provides a dashboard widget displaying your important notifications.]]></description>
     <version>0.0.1</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Discourse</namespace>
     <documentation>
-        <developer>https://github.com/nextcloud/integration_discourse/wikis/devdoc</developer>
+        <developer>https://github.com/eneiluj/integration_discourse/wikis</developer>
     </documentation>
     <category>integration</category>
-    <website>https://github.com/nextcloud/integration_discourse</website>
-    <bugs>https://github.com/nextcloud/integration_discourse/issues</bugs>
+    <category>dashboard</category>
+    <website>https://github.com/eneiluj/integration_discourse</website>
+    <bugs>https://github.com/eneiluj/integration_discourse/issues</bugs>
+    <screenshot>https://github.com/eneiluj/integration_discourse/raw/master/img/screenshot1.jpg</screenshot>
     <dependencies>
         <database min-version="9.4">pgsql</database>
         <database>sqlite</database>
