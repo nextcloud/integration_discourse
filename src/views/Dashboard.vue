@@ -28,7 +28,6 @@ import { generateUrl } from '@nextcloud/router'
 import { DashboardWidget } from '@nextcloud/vue-dashboard'
 import { showError } from '@nextcloud/dialogs'
 import moment from '@nextcloud/moment'
-// eslint-disable-next-line
 import { getLocale } from '@nextcloud/l10n'
 
 const TYPES = {
