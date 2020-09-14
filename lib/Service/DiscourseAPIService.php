@@ -36,9 +36,9 @@ class DiscourseAPIService {
         $this->client = $clientService->newClient();
     }
 
-    public function getNotifications($url, $accessToken, $since = null) {
+    public function getNotifications(string $url, string $accessToken, ?string $since): array {
         $result = $this->request($url, $accessToken, 'notifications.json', $params);
-        if (!is_array($result)) {
+        if (isset($result['error'])) {
             return $result;
         }
         $notifications = [];
@@ -51,16 +51,16 @@ class DiscourseAPIService {
         return $notifications;
     }
 
-    public function getDiscourseAvatar($url, $accessToken, $username) {
+    public function getDiscourseAvatar(string $url, string $accessToken, string $username): string {
         $result = $this->request($url, $accessToken, 'users/'.$username.'.json');
-        if (is_array($result) and isset($result['user']) and isset($result['user']['avatar_template'])) {
+        if (isset($result['user']) and isset($result['user']['avatar_template'])) {
             $avatarUrl = $url . str_replace('{size}', '32', $result['user']['avatar_template']);
             return $this->client->get($avatarUrl)->getBody();
         }
         return '';
     }
 
-    public function request($url, $accessToken, $endPoint, $params = [], $method = 'GET') {
+    public function request(string $url, string $accessToken, string $endPoint, ?array $params = [], ?string $method = 'GET'): array {
         try {
             $url = $url . '/' . $endPoint;
             $options = [
@@ -105,13 +105,13 @@ class DiscourseAPIService {
             $respCode = $response->getStatusCode();
 
             if ($respCode >= 400) {
-                return $this->l10n->t('Bad credentials');
+                return ['error' => $this->l10n->t('Bad credentials')];
             } else {
                 return json_decode($body, true);
             }
         } catch (\Exception $e) {
-            $this->logger->warning('Discourse API error : '.$e, array('app' => $this->appName));
-            return $e;
+            $this->logger->warning('Discourse API error : '.$e->getMessage(), array('app' => $this->appName));
+            return ['error' => $e->getMessage()];
         }
     }
 

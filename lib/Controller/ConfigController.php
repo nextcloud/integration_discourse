@@ -33,6 +33,7 @@ use OCP\AppFramework\Controller;
 use OCP\Http\Client\IClientService;
 
 use OCA\Discourse\AppInfo\Application;
+use OCA\Discourse\Service\DiscourseAPIService;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 use phpseclib\Crypt\RSA;
@@ -55,6 +56,7 @@ class ConfigController extends Controller {
                                 IURLGenerator $urlGenerator,
                                 IL10N $l,
                                 ILogger $logger,
+                                DiscourseAPIService $discourseAPIService,
                                 IClientService $clientService,
                                 $userId) {
         parent::__construct($AppName, $request);
@@ -66,6 +68,7 @@ class ConfigController extends Controller {
         $this->dbconnection = $dbconnection;
         $this->urlGenerator = $urlGenerator;
         $this->logger = $logger;
+        $this->discourseAPIService = $discourseAPIService;
         $this->clientService = $clientService;
     }
 
@@ -126,6 +129,9 @@ class ConfigController extends Controller {
             if (isset($payloadArray['key'])) {
                 $accessToken = $payloadArray['key'];
                 $this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
+                // get user info
+                $url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
+                //$info = $this->discourseAPIService->request($url, $accessToken, 'admin/users/0.json', []);
                 return new RedirectResponse(
                     $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
                     '?discourseToken=success'
