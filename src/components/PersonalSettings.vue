@@ -30,8 +30,8 @@
 				</button>
 				<span v-else />
 			</div>
-			<div v-if="connected" class="discourse-connected">
-				<label>
+			<div v-if="connected" class="discourse-grid-form">
+				<label class="discourse-connected">
 					{{ t('integration_discourse', 'Connected as {username}', { username: state.user_name }) }}
 				</label>
 				<button id="discourse-rm-cred" @click="onLogoutClick">
@@ -210,9 +210,6 @@ body.dark .icon-discourse {
 }
 #discourse-content {
 	margin-left: 40px;
-}
-#discourse-rm-cred {
-    margin-left: 10px;
 }
 .discourse-connected {
     margin-left: 35px;
