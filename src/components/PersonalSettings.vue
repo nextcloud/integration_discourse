@@ -32,7 +32,7 @@
 			</div>
 			<div v-if="connected" class="discourse-connected">
 				<label>
-					{{ t('integration_discourse', 'Connected') }}
+					{{ t('integration_discourse', 'Connected as {username}', { username: state.user_name }) }}
 				</label>
 				<button id="discourse-rm-cred" @click="onLogoutClick">
 					<span class="icon icon-close" />

@@ -131,7 +131,11 @@ class ConfigController extends Controller {
                 $this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
                 // get user info
                 $url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
-                //$info = $this->discourseAPIService->request($url, $accessToken, 'admin/users/0.json', []);
+                $info = $this->discourseAPIService->request($url, $accessToken, 'session/current.json', []);
+                if (isset($info['current_user']) && isset($info['current_user']['id']) && isset($info['current_user']['username'])) {
+                    $this->config->setUserValue($this->userId, Application::APP_ID, 'user_id', $info['current_user']['id']);
+                    $this->config->setUserValue($this->userId, Application::APP_ID, 'user_name', $info['current_user']['username']);
+                }
                 return new RedirectResponse(
                     $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
                     '?discourseToken=success'

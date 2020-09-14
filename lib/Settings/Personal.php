@@ -46,6 +46,7 @@ class Personal implements ISettings {
     public function getForm() {
         $token = $this->config->getUserValue($this->userId, Application::APP_ID, 'token', '');
         $url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
+        $userName = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name', '');
 
         // for OAuth
         $clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id', '');
@@ -75,6 +76,7 @@ class Personal implements ISettings {
             'url' => $url,
             'client_id' => $clientID,
             'public_key' => $pubKey,
+            'user_name' => $userName,
         ];
         $this->initialStateService->provideInitialState($this->appName, 'user-config', $userConfig);
         return new TemplateResponse(Application::APP_ID, 'personalSettings');
