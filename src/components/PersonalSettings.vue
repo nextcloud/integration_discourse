@@ -4,57 +4,41 @@
 			<a class="icon icon-discourse" />
 			{{ t('integration_discourse', 'Discourse integration') }}
 		</h2>
-		<p class="settings-hint">
+		<p v-if="!connected" class="settings-hint">
 			{{ t('integration_discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}
-			<!--br>
-			{{ t('integration_discourse', 'Ask the Discourse admin to change the') }}
 			<br>
-			<b>"allowed_user_api_auth_redirects"</b>
-			<br>
-			{{ t('integration_discourse', 'setting. Adding') }}
-			<br>
-			<b>"*"</b>
-			{{ t('integration_discourse', 'or') }}
-			<b>"{{ redirect_uri }}"</b>
-			<br/>
-			{{ t('integration_discourse', 'as an authorized redirection URL for authentication will allow Nextcloud to authenticate.') }}
-			<br-->
-			<br>
-			{{ t('integration_discourse', 'Ask the Discourse admin to add') }}
-			<b>"web+nextclouddiscourse://auth-redirect"</b>
-			<br>
-			to the <b>"allowed_user_api_auth_redirects"</b> list in admin settings.
+			{{ t('integration_discourse', 'Ask the Discourse admin to add this URI to the "allowed_user_api_auth_redirects" list in admin settings:') }}
+			<br><b>"web+nextclouddiscourse://auth-redirect"</b>
 		</p>
-		<div class="discourse-grid-form">
-			<label for="discourse-url">
-				<a class="icon icon-link" />
-				{{ t('integration_discourse', 'Discourse instance address') }}
-			</label>
-			<input id="discourse-url"
-				v-model="state.url"
-				type="text"
-				:readonly="readonly"
-				:placeholder="t('integration_discourse', 'Discourse instance address')"
-				@focus="readonly = false"
-				@input="onInput">
-			<button v-if="showOAuth"
-				id="discourse-oauth"
-				@click="onOAuthClick">
-				<span class="icon icon-external" />
-				{{ t('integration_discourse', 'Request Discourse access') }}
-			</button>
-			<span v-else />
-			<label for="discourse-token">
-				<a class="icon icon-category-auth" />
-				{{ t('integration_discourse', 'Discourse API-key') }}
-			</label>
-			<input id="discourse-token"
-				v-model="state.token"
-				type="password"
-				:readonly="readonly"
-				:placeholder="t('integration_discourse', 'my-api-key')"
-				@focus="readonly = false"
-				@input="onInput">
+		<div id="discourse-content">
+			<div class="discourse-grid-form">
+				<label for="discourse-url">
+					<a class="icon icon-link" />
+					{{ t('integration_discourse', 'Discourse instance address') }}
+				</label>
+				<input id="discourse-url"
+					v-model="state.url"
+					type="text"
+					:disabled="connected === true"
+					:placeholder="t('integration_discourse', 'Discourse instance address')"
+					@input="onInput">
+				<button v-if="showOAuth"
+					id="discourse-oauth"
+					@click="onOAuthClick">
+					<span class="icon icon-external" />
+					{{ t('integration_discourse', 'Connect to Discourse') }}
+				</button>
+				<span v-else />
+			</div>
+			<div v-if="connected" class="discourse-connected">
+				<label>
+					{{ t('integration_discourse', 'Connected') }}
+				</label>
+				<button id="discourse-rm-cred" @click="onLogoutClick">
+					<span class="icon icon-close" />
+					{{ t('integration_discourse', 'Disconnect from Discourse') }}
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -87,7 +71,10 @@ export default {
 
 	computed: {
 		showOAuth() {
-			return this.state.url
+			return this.state.url && !this.connected
+		},
+		connected() {
+			return this.state.token && this.state.token !== ''
 		},
 	},
 
@@ -112,6 +99,10 @@ export default {
 	},
 
 	methods: {
+		onLogoutClick() {
+			this.state.token = ''
+			this.saveOptions()
+		},
 		onInput() {
 			const that = this
 			delay(function() {
@@ -197,7 +188,6 @@ export default {
 	max-width: 900px;
 	display: grid;
 	grid-template: 1fr / 1fr 1fr 1fr;
-	margin-left: 30px;
 	button .icon {
 		margin-bottom: -1px;
 	}
@@ -217,5 +207,14 @@ export default {
 }
 body.dark .icon-discourse {
 	background-image: url(./../../img/app.svg);
+}
+#discourse-content {
+	margin-left: 40px;
+}
+#discourse-rm-cred {
+    margin-left: 10px;
+}
+.discourse-connected {
+    margin-left: 35px;
 }
 </style>

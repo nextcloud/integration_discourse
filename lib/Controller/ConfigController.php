@@ -127,7 +127,7 @@ class ConfigController extends Controller {
                 $accessToken = $payloadArray['key'];
                 $this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
                 return new RedirectResponse(
-                    $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'linked-accounts']) .
+                    $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
                     '?discourseToken=success'
                 );
             }
@@ -136,7 +136,7 @@ class ConfigController extends Controller {
             $result = $this->l->t('Error during authentication exchanges');
         }
         return new RedirectResponse(
-            $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'linked-accounts']) .
+            $this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
             '?discourseToken=error&message=' . urlencode($result)
         );
     }
