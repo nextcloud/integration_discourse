@@ -32,6 +32,7 @@
 			</div>
 			<div v-if="connected" class="discourse-grid-form">
 				<label class="discourse-connected">
+					<a class="icon icon-checkmark-color" />
 					{{ t('integration_discourse', 'Connected as {username}', { username: state.user_name }) }}
 				</label>
 				<button id="discourse-rm-cred" @click="onLogoutClick">
@@ -210,8 +211,5 @@ body.dark .icon-discourse {
 }
 #discourse-content {
 	margin-left: 40px;
-}
-.discourse-connected {
-    margin-left: 35px;
 }
 </style>
