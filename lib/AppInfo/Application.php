@@ -27,24 +27,24 @@ use OCA\Discourse\Dashboard\DiscourseWidget;
  */
 class Application extends App implements IBootstrap {
 
-    public const APP_ID = 'integration_discourse';
+	public const APP_ID = 'integration_discourse';
 
-    /**
-     * Constructor
-     *
-     * @param array $urlParams
-     */
-    public function __construct(array $urlParams = []) {
-        parent::__construct(self::APP_ID, $urlParams);
+	/**
+	 * Constructor
+	 *
+	 * @param array $urlParams
+	 */
+	public function __construct(array $urlParams = []) {
+		parent::__construct(self::APP_ID, $urlParams);
 
-        $container = $this->getContainer();
-    }
+		$container = $this->getContainer();
+	}
 
-    public function register(IRegistrationContext $context): void {
-        $context->registerDashboardWidget(DiscourseWidget::class);
-    }
+	public function register(IRegistrationContext $context): void {
+		$context->registerDashboardWidget(DiscourseWidget::class);
+	}
 
-    public function boot(IBootContext $context): void {
-    }
+	public function boot(IBootContext $context): void {
+	}
 }
 
