@@ -206,7 +206,7 @@ export default {
 	height: 23px;
 	margin-bottom: -4px;
 }
-body.dark .icon-discourse {
+body.theme--dark .icon-discourse {
 	background-image: url(./../../img/app.svg);
 }
 #discourse-content {
