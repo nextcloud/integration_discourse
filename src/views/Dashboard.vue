@@ -4,20 +4,18 @@
 		:show-more-text="title"
 		:loading="state === 'loading'">
 		<template v-slot:empty-content>
-			<div v-if="state === 'no-token'">
-				<a :href="settingsUrl">
-					{{ t('integration_discourse', 'Click here to configure the access to your Discourse account.') }}
-				</a>
-			</div>
-			<div v-else-if="state === 'error'">
-				<a :href="settingsUrl">
-					{{ t('integration_discourse', 'Incorrect API key.') }}
-					{{ t('integration_discourse', 'Click here to configure the access to your Discourse account.') }}
-				</a>
-			</div>
-			<div v-else-if="state === 'ok'">
-				{{ t('integration_discourse', 'Nothing to show') }}
-			</div>
+			<EmptyContent
+				v-if="emptyContentMessage"
+				:icon="emptyContentIcon">
+				<template #desc>
+					{{ emptyContentMessage }}
+					<div v-if="state === 'no-token' || state === 'error'" class="connect-button">
+						<a class="button" :href="settingsUrl">
+							{{ t('integration_discourse', 'Connect to Discourse') }}
+						</a>
+					</div>
+				</template>
+			</EmptyContent>
 		</template>
 	</DashboardWidget>
 </template>
@@ -29,6 +27,7 @@ import { DashboardWidget } from '@nextcloud/vue-dashboard'
 import { showError } from '@nextcloud/dialogs'
 import moment from '@nextcloud/moment'
 import { getLocale } from '@nextcloud/l10n'
+import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
 
 const TYPES = {
 	MENTION: 1,
@@ -48,7 +47,7 @@ export default {
 	name: 'Dashboard',
 
 	components: {
-		DashboardWidget,
+		DashboardWidget, EmptyContent,
 	},
 
 	props: {
@@ -94,6 +93,26 @@ export default {
 		},
 		lastMoment() {
 			return moment(this.lastDate)
+		},
+		emptyContentMessage() {
+			if (this.state === 'no-token') {
+				return t('integration_discourse', 'No Discourse account connected')
+			} else if (this.state === 'error') {
+				return t('integration_discourse', 'Error connecting to Discourse')
+			} else if (this.state === 'ok') {
+				return t('integration_discourse', 'No Discourse notifications!')
+			}
+			return ''
+		},
+		emptyContentIcon() {
+			if (this.state === 'no-token') {
+				return 'icon-discourse'
+			} else if (this.state === 'error') {
+				return 'icon-close'
+			} else if (this.state === 'ok') {
+				return 'icon-checkmark'
+			}
+			return 'icon-checkmark'
 		},
 	},
 
@@ -241,4 +260,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+::v-deep .connect-button {
+	margin-top: 10px;
+}
 </style>
