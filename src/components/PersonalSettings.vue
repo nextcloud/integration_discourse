@@ -9,6 +9,25 @@
 			<br>
 			{{ t('integration_discourse', 'Ask the Discourse admin to add this URI to the "allowed_user_api_auth_redirects" list in admin settings:') }}
 			<br><b>"web+nextclouddiscourse://auth-redirect"</b>
+			<br><br>
+			<span class="icon icon-details" />
+			{{ t('integration_discourse', 'Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse.') }}
+			<span v-if="isChromium">
+				<br>
+				{{ t('integration_discourse', 'With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open "web+nextclouddiscourse" links.') }}
+				<br>
+				{{ t('integration_discourse', 'If you don\'t see the popup, you can still click on this icon in the address bar.') }}
+				<br>
+				<img :src="chromiumImagePath">
+				<br>
+				{{ t('integration_discourse', 'Then authorize this page to open "web+nextclouddiscourse" links.') }}
+			</span>
+			<span v-else-if="isFirefox">
+				<br>
+				{{ t('integration_discourse', 'With Firefox, you should see a bar on top of this page to authorize this page to open "web+nextclouddiscourse" links.') }}
+				<br><br>
+				<img :src="firefoxImagePath">
+			</span>
 		</p>
 		<div id="discourse-content">
 			<div class="discourse-grid-form">
@@ -45,9 +64,9 @@
 
 <script>
 import { loadState } from '@nextcloud/initial-state'
-import { generateUrl } from '@nextcloud/router'
+import { generateUrl, imagePath } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
-import { delay } from '../utils'
+import { delay, detectBrowser } from '../utils'
 import { showSuccess, showError } from '@nextcloud/dialogs'
 
 export default {
@@ -66,6 +85,10 @@ export default {
 			// and protocol handler based redirection for which 'allowed user api auth redirects' => web+nextclouddiscourse:// is enough and will work with all NC instances
 			// redirect_uri: OC.getProtocol() + '://' + OC.getHostName() + generateUrl('/apps/integration_discourse/oauth-redirect'),
 			redirect_uri: 'web+nextclouddiscourse://auth-redirect',
+			chromiumImagePath: imagePath('integration_discourse', 'chromium.png'),
+			firefoxImagePath: imagePath('integration_discourse', 'firefox.png'),
+			isChromium: detectBrowser() === 'chrome',
+			isFirefox: detectBrowser() === 'firefox',
 		}
 	},
 
