@@ -96,9 +96,9 @@ export default {
 		},
 		emptyContentMessage() {
 			if (this.state === 'no-token') {
-				return t('integration_discourse', 'No Discourse account connected')
+				return t('integration_discourse', 'No Discourse account connected.')
 			} else if (this.state === 'error') {
-				return t('integration_discourse', 'Error connecting to Discourse')
+				return t('integration_discourse', 'Error connecting to Discourse.')
 			} else if (this.state === 'ok') {
 				return t('integration_discourse', 'No Discourse notifications!')
 			}
