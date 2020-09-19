@@ -153,7 +153,7 @@ export default {
 				})
 				.catch((error) => {
 					showError(
-						t('integration_discourse', 'Failed to save Discourse options')
+						t('integration_discourse', 'Failed to save Discourse options.')
 						+ ': ' + error.response.request.responseText
 					)
 				})
@@ -181,7 +181,7 @@ export default {
 				})
 				.catch((error) => {
 					showError(
-						t('integration_discourse', 'Failed to save Discourse nonce')
+						t('integration_discourse', 'Failed to save Discourse nonce.')
 						+ ': ' + error.response.request.responseText
 					)
 				})
