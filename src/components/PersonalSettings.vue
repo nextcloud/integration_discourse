@@ -22,14 +22,13 @@
 					:disabled="connected === true"
 					:placeholder="t('integration_discourse', 'Discourse instance address')"
 					@input="onInput">
-				<button v-if="showOAuth"
-					id="discourse-oauth"
-					@click="onOAuthClick">
-					<span class="icon icon-external" />
-					{{ t('integration_discourse', 'Connect to Discourse') }}
-				</button>
-				<span v-else />
 			</div>
+			<button v-if="showOAuth"
+				id="discourse-oauth"
+				@click="onOAuthClick">
+				<span class="icon icon-external" />
+				{{ t('integration_discourse', 'Connect to Discourse') }}
+			</button>
 			<div v-if="connected" class="discourse-grid-form">
 				<label class="discourse-connected">
 					<a class="icon icon-checkmark-color" />
