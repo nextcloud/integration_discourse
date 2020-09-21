@@ -4,7 +4,7 @@
     <name>Discourse integration</name>
     <summary>Integration of Discourse forum and mailing list management system</summary>
     <description><![CDATA[Discourse integration provides a dashboard widget displaying your important notifications.]]></description>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Discourse</namespace>
