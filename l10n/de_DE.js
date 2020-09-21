@@ -18,6 +18,10 @@ OC.L10N.register(
     "Discourse API-key successfully retrieved!" : "Discourse API-key erfolgreich abgerufen!",
     "Discourse API-key could not be obtained:" : "Diskurs API-Schlüssel konnte nicht abgerufen werden:",
     "Discourse options saved." : "Discourse-Einstellungen gesichert.",
+    "Failed to save Discourse options." : "Discourse-Einstellungen konnten nicht gespeichert werden.",
+    "Failed to save Discourse nonce." : "Discourse nonce konnte nicht gespeichert werden.",
+    "No Discourse account connected." : "Kein Discourse-Konto verbunden.",
+    "Error connecting to Discourse." : "Fehler bei der Verbindung mit Discourse.",
     "Failed to get Discourse notifications." : "Konnte Discours-Benachrichtigungen nicht erhalten."
 },
 "nplurals=2; plural=(n != 1);");

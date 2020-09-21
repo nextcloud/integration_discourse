@@ -1,6 +1,31 @@
 { "translations": {
+    "No API key returned by Discourse" : "Discourse tarafından bir API anahtarı döndürülmedi",
+    "Error during authentication exchanges" : "Kimlik doğrulama takasında sorun çıktı",
+    "Discourse notifications" : "Discourse bildirimleri",
     "Bad credentials" : "Kimlik doğrulama bilgileri hatalı",
     "Connected accounts" : "Bağlı hesaplar",
-    "If you don't see the popup, you can still click on this icon in the address bar." : "Açılır pencereyi görmüyorsanız, adres çubuğundaki bu simgeye tıklayabilirsiniz."
+    "Discourse integration" : "Discourse bütünleştirmesi",
+    "Integration of Discourse forum and mailing list management system" : "Discourse forum ve e-posta listesi yönetim sistemi bütünleştirmesi",
+    "Discourse integration provides a dashboard widget displaying your important notifications." : "Discourse bütünleştirmesi önemli bildirimleri görüntüleyen bir pano gereci sağlar.",
+    "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Discourse hesabınıza erişemezseniz bu durum büyük olasılıkla Discourse kopyanızın Nextcloud kopyanıza API anahtarları verme izninin olmamasıdır.",
+    "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Discourse yöneticinizden şu adresi yönetici bölümündeki \"allowed_user_api_auth_redirects\" listesine eklemesini isteyin:",
+    "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Discourse kimlik doğrulaması yapmak istiyorsanız, bu sayfanın üst kısmındaki kayıt kurallarını kabul ettiğinizden emin olun.",
+    "With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open \"web+nextclouddiscourse\" links." : "Chrome/Chromium ile, bu sayfaya \"web+nextclouddiscourse\" bağlantılarını açma izni vermek için tarayıcının sol üst kısmında bir açılır pencere görüyor olmalısınız.",
+    "If you don't see the popup, you can still click on this icon in the address bar." : "Açılır pencereyi görmüyorsanız, adres çubuğundaki bu simgeye tıklayabilirsiniz.",
+    "Then authorize this page to open \"web+nextclouddiscourse\" links." : "Ardından bu sayfaya \"web+nextclouddiscourse\" bağlantılarını açma izni verin.",
+    "With Firefox, you should see a bar on top of this page to authorize this page to open \"web+nextclouddiscourse\" links." : "Firefox ile, bu sayfaya \"web+nextclouddiscourse\" bağlantılarını açma izni vermek için bu sayfanın üst kısmında bir çubuk görüyor olmalısınız.",
+    "Discourse instance address" : "Discourse kopyası adresi",
+    "Connect to Discourse" : "Discourse ile bağlantı kur",
+    "Connected as {username}" : "{username} olarak bağlantı kuruldu",
+    "Disconnect from Discourse" : "Discourse  bağlantısını kes",
+    "Discourse API-key successfully retrieved!" : "Discourse API anahtarı alındı!",
+    "Discourse API-key could not be obtained:" : "Discourse API anahtarı alınamadı:",
+    "Discourse options saved." : "Discourse ayarları kaydedildi.",
+    "Failed to save Discourse options." : "Discourse ayarları kaydedilemedi.",
+    "Failed to save Discourse nonce." : "Discourse nonce kaydedilemedi.",
+    "No Discourse account connected." : "Bağlı bir Discourse hesabı yok",
+    "Error connecting to Discourse." : "Discourse bağlantısı kurulurken sorun çıktı.",
+    "No Discourse notifications!" : "Herhangi bir Discourse bildirimi yok!",
+    "Failed to get Discourse notifications." : "Discourse bildirimleri alınamadı."
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

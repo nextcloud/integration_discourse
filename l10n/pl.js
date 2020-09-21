@@ -23,6 +23,10 @@ OC.L10N.register(
     "Discourse API-key successfully retrieved!" : "Pomyślnie odzyskano klucz API Discourse!",
     "Discourse API-key could not be obtained:" : "Nie można uzyskać klucza API Discourse:",
     "Discourse options saved." : "Opcje Discourse zostały zapisane.",
+    "Failed to save Discourse options." : "Nie udało się zapisać opcji Discourse.",
+    "Failed to save Discourse nonce." : "Nie udało się chwilowo zapisać Discourse.",
+    "No Discourse account connected." : "Brak połączonego konta Discourse.",
+    "Error connecting to Discourse." : "Błąd podczas łączenia się z Discourse.",
     "No Discourse notifications!" : "Brak powiadomień Discourse!",
     "Failed to get Discourse notifications." : "Nie udało się uzyskać powiadomień z Discourse."
 },

@@ -21,6 +21,10 @@
     "Discourse API-key successfully retrieved!" : "Pomyślnie odzyskano klucz API Discourse!",
     "Discourse API-key could not be obtained:" : "Nie można uzyskać klucza API Discourse:",
     "Discourse options saved." : "Opcje Discourse zostały zapisane.",
+    "Failed to save Discourse options." : "Nie udało się zapisać opcji Discourse.",
+    "Failed to save Discourse nonce." : "Nie udało się chwilowo zapisać Discourse.",
+    "No Discourse account connected." : "Brak połączonego konta Discourse.",
+    "Error connecting to Discourse." : "Błąd podczas łączenia się z Discourse.",
     "No Discourse notifications!" : "Brak powiadomień Discourse!",
     "Failed to get Discourse notifications." : "Nie udało się uzyskać powiadomień z Discourse."
 },"pluralForm" :"nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);"
