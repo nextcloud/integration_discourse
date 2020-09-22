@@ -100,10 +100,17 @@ class ConfigController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-	public function oauthProtocolRedirect(string $url): RedirectResponse {
+	public function oauthProtocolRedirect(?string $url = ''): RedirectResponse {
+		if ($url === '') {
+			$result = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse(
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
+				'?discourseToken=error&message=' . urlencode($result)
+			);
+		}
 		$parts = parse_url($url);
 		parse_str($parts['query'], $params);
-		return $this->oauthRedirect($params['payload']);
+		return $this->oauthRedirect($params['payload'] ?? '');
 	}
 
 	/**
@@ -111,7 +118,14 @@ class ConfigController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-	public function oauthRedirect(string $payload): RedirectResponse {
+	public function oauthRedirect(?string $payload = ''): RedirectResponse {
+		if ($payload === '') {
+			$message = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse(
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
+				'?discourseToken=error&message=' . urlencode($message)
+			);
+		}
 		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce', '');
 		// decrypt payload
 		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key', '');
@@ -141,13 +155,13 @@ class ConfigController extends Controller {
 					'?discourseToken=success'
 				);
 			}
-			$result = $this->l->t('No API key returned by Discourse');
+			$message = $this->l->t('No API key returned by Discourse');
 		} else {
-			$result = $this->l->t('Error during authentication exchanges');
+			$message = $this->l->t('Error during authentication exchanges');
 		}
 		return new RedirectResponse(
 			$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
-			'?discourseToken=error&message=' . urlencode($result)
+			'?discourseToken=error&message=' . urlencode($message)
 		);
 	}
 
