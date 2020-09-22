@@ -76,7 +76,7 @@ class ConfigController extends Controller {
 	 * set config values
 	 * @NoAdminRequired
 	 */
-	public function setConfig($values) {
+	public function setConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
 		}
@@ -87,7 +87,7 @@ class ConfigController extends Controller {
 	/**
 	 * set admin config values
 	 */
-	public function setAdminConfig($values) {
+	public function setAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			$this->config->setAppValue(Application::APP_ID, $key, $value);
 		}
@@ -100,7 +100,7 @@ class ConfigController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-	public function oauthProtocolRedirect($url) {
+	public function oauthProtocolRedirect(string $url): RedirectResponse {
 		$parts = parse_url($url);
 		parse_str($parts['query'], $params);
 		return $this->oauthRedirect($params['payload']);
@@ -111,7 +111,7 @@ class ConfigController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-	public function oauthRedirect($payload) {
+	public function oauthRedirect(string $payload): RedirectResponse {
 		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce', '');
 		// decrypt payload
 		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key', '');
