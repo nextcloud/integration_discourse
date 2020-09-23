@@ -19,6 +19,8 @@ use OCP\AppFramework\Bootstrap\IBootstrap;
 
 use OCA\Discourse\Controller\PageController;
 use OCA\Discourse\Dashboard\DiscourseWidget;
+use OCA\Discourse\Search\DiscourseSearchTopicProvider;
+use OCA\Discourse\Search\DiscourseSearchPostProvider;
 
 /**
  * Class Application
@@ -42,6 +44,8 @@ class Application extends App implements IBootstrap {
 
 	public function register(IRegistrationContext $context): void {
 		$context->registerDashboardWidget(DiscourseWidget::class);
+		$context->registerSearchProvider(DiscourseSearchPostProvider::class);
+		$context->registerSearchProvider(DiscourseSearchTopicProvider::class);
 	}
 
 	public function boot(IBootContext $context): void {

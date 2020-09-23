@@ -37,7 +37,7 @@ class DiscourseAPIService {
 	}
 
 	public function getNotifications(string $url, string $accessToken, ?string $since): array {
-		$result = $this->request($url, $accessToken, 'notifications.json', $params);
+		$result = $this->request($url, $accessToken, 'notifications.json');
 		if (isset($result['error'])) {
 			return $result;
 		}
@@ -49,6 +49,40 @@ class DiscourseAPIService {
 		}
 
 		return $notifications;
+	}
+
+	public function searchTopics(string $url, string $accessToken, string $term, ?int $offset = 0, ?int $limit = 5): array {
+		$params = [
+			'term' => $term,
+		];
+		$result = $this->request($url, $accessToken, 'search/query.json', $params);
+		if (isset($result['error'])) {
+			return $result;
+		}
+		$results = [];
+		if (isset($result['topics']) && is_array($result['topics'])) {
+			$searchResults = array_slice($result['topics'], $offset, $limit);
+			return $searchResults;
+		}
+
+		return $results;
+	}
+
+	public function searchPosts(string $url, string $accessToken, string $term, ?int $offset = 0, ?int $limit = 5): array {
+		$params = [
+			'term' => $term,
+		];
+		$result = $this->request($url, $accessToken, 'search/query.json', $params);
+		if (isset($result['error'])) {
+			return $result;
+		}
+		$results = [];
+		if (isset($result['posts']) && is_array($result['posts'])) {
+			$searchResults = array_slice($result['posts'], $offset, $limit);
+			return $searchResults;
+		}
+
+		return $results;
 	}
 
 	public function getDiscourseAvatar(string $url, string $accessToken, string $username): string {
