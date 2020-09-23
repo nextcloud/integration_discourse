@@ -35,7 +35,7 @@ use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;
 use OCP\Search\SearchResult;
 
-class DiscourseSearchTopicProvider implements IProvider {
+class DiscourseSearchPostsProvider implements IProvider {
 
 	/** @var IAppManager */
 	private $appManager;
@@ -70,14 +70,14 @@ class DiscourseSearchTopicProvider implements IProvider {
 	 * @inheritDoc
 	 */
 	public function getId(): string {
-		return 'discourse-search-topic';
+		return 'discourse-search-post';
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getName(): string {
-		return $this->l10n->t('Discourse topics');
+		return $this->l10n->t('Discourse posts');
 	}
 
 	/**
@@ -113,12 +113,12 @@ class DiscourseSearchTopicProvider implements IProvider {
 		$discourseUrl = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'url', '');
 		$accessToken = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'token', '');
 
-		$searchEnabled = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'search_enabled', '0') === '1';
-		if ($accessToken === '' || !$searchEnabled) {
+		$searchPostsEnabled = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'search_posts_enabled', '0') === '1';
+		if ($accessToken === '' || !$searchPostsEnabled) {
 			return SearchResult::paginated($this->getName(), [], 0);
 		}
 
-		$searchResults = $this->service->searchTopics($discourseUrl, $accessToken, $term, $offset, $limit);
+		$searchResults = $this->service->searchPosts($discourseUrl, $accessToken, $term, $offset, $limit);
 
 		if (isset($searchResults['error'])) {
 			return SearchResult::paginated($this->getName(), [], 0);
@@ -146,37 +146,29 @@ class DiscourseSearchTopicProvider implements IProvider {
 	 * @return string
 	 */
 	protected function getMainText(array $entry): string {
-		return $entry['title'];
+		return $entry['blurb'] ?? $entry['username'];
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function getSubline(array $entry): string {
-		return '#' . $entry['id'] . ' (' . $entry['posts_count'] . ' ' . $this->l10n->t('posts') . ')';
+		return '#' . $entry['topic_id'];
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function getLinkToDiscourse(array $entry, string $url): string {
-		return $url . '/t/' . $entry['slug'] . '/' . $entry['id'];
+		return $url . '/t/dum/' . $entry['topic_id'];
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function getThumbnailUrl(array $entry, string $thumbnailUrl): string {
-		$lastPoster = $entry['last_poster_username'];
-		return $thumbnailUrl;
-		$initials = null;
-		if ($entry['u_firstname'] && $entry['u_lastname']) {
-			$initials = $entry['u_firstname'][0] . $entry['u_lastname'][0];
-		}
-		return isset($entry['u_image'])
-			? $this->urlGenerator->linkToRoute('integration_discourse.discourseAPI.getDiscourseAvatar', []) . '?image=' . urlencode($entry['u_image'])
-			: ($initials
-				? $this->urlGenerator->linkToRouteAbsolute('core.GuestAvatar.getAvatar', ['guestName' => $initials, 'size' => 64])
-				: $thumbnailUrl);
+		return isset($entry['username'])
+			? $this->urlGenerator->linkToRoute('integration_discourse.discourseAPI.getDiscourseAvatar', []) . '?username=' . urlencode($entry['username'])
+			: $thumbnailUrl;
 	}
 }

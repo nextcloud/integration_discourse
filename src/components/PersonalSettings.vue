@@ -61,14 +61,22 @@
 			<br>
 			<div v-if="connected" id="discourse-search-block">
 				<input
-					id="search-discourse"
+					id="search-discourse-topics"
 					type="checkbox"
 					class="checkbox"
-					:checked="state.search_enabled"
-					@input="onSearchChange">
-				<label for="search-discourse">{{ t('integration_discourse', 'Enable unified search.') }}</label>
+					:checked="state.search_topics_enabled"
+					@input="onSearchTopicsChange">
+				<label for="search-discourse-topics">{{ t('integration_discourse', 'Enable searching for topics') }}</label>
 				<br><br>
-				<p v-if="state.search_enabled" class="settings-hint">
+				<input
+					id="search-discourse-posts"
+					type="checkbox"
+					class="checkbox"
+					:checked="state.search_posts_enabled"
+					@input="onSearchPostsChange">
+				<label for="search-discourse-posts">{{ t('integration_discourse', 'Enable searching for posts') }}</label>
+				<br><br>
+				<p v-if="state.search_topics_enabled || state.search_posts_enabled" class="settings-hint">
 					<span class="icon icon-details" />
 					{{ t('integration_discourse', 'Warning, everything you type in the search bar will be sent to your Discourse instance.') }}
 				</p>
@@ -137,8 +145,12 @@ export default {
 	},
 
 	methods: {
-		onSearchChange(e) {
-			this.state.search_enabled = e.target.checked
+		onSearchTopicsChange(e) {
+			this.state.search_topics_enabled = e.target.checked
+			this.saveOptions()
+		},
+		onSearchPostsChange(e) {
+			this.state.search_posts_enabled = e.target.checked
 			this.saveOptions()
 		},
 		onLogoutClick() {
@@ -163,7 +175,8 @@ export default {
 				values: {
 					token: this.state.token,
 					url: this.state.url,
-					search_enabled: this.state.search_enabled ? '1' : '0',
+					search_topics_enabled: this.state.search_topics_enabled ? '1' : '0',
+					search_posts_enabled: this.state.search_posts_enabled ? '1' : '0',
 				},
 			}
 			const url = generateUrl('/apps/integration_discourse/config')

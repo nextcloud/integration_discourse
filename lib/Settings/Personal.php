@@ -47,7 +47,8 @@ class Personal implements ISettings {
 		$token = $this->config->getUserValue($this->userId, Application::APP_ID, 'token', '');
 		$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
 		$userName = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name', '');
-		$searchEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_enabled', '0');
+		$searchTopicsEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_topics_enabled', '0');
+		$searchPostsEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_posts_enabled', '0');
 
 		// for OAuth
 		$clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id', '');
@@ -78,7 +79,8 @@ class Personal implements ISettings {
 			'client_id' => $clientID,
 			'public_key' => $pubKey,
 			'user_name' => $userName,
-			'search_enabled' => ($searchEnabled === '1'),
+			'search_posts_enabled' => ($searchPostsEnabled === '1'),
+			'search_topics_enabled' => ($searchTopicsEnabled === '1'),
 		];
 		$this->initialStateService->provideInitialState($this->appName, 'user-config', $userConfig);
 		return new TemplateResponse(Application::APP_ID, 'personalSettings');
