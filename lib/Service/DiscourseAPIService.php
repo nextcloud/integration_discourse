@@ -53,9 +53,9 @@ class DiscourseAPIService {
 
 	public function searchTopics(string $url, string $accessToken, string $term, ?int $offset = 0, ?int $limit = 5): array {
 		$params = [
-			'term' => $term,
+			'q' => $term,
 		];
-		$result = $this->request($url, $accessToken, 'search/query.json', $params);
+		$result = $this->request($url, $accessToken, 'search.json', $params);
 		if (isset($result['error'])) {
 			return $result;
 		}
@@ -70,9 +70,9 @@ class DiscourseAPIService {
 
 	public function searchPosts(string $url, string $accessToken, string $term, ?int $offset = 0, ?int $limit = 5): array {
 		$params = [
-			'term' => $term,
+			'q' => $term,
 		];
-		$result = $this->request($url, $accessToken, 'search/query.json', $params);
+		$result = $this->request($url, $accessToken, 'search.json', $params);
 		if (isset($result['error'])) {
 			return $result;
 		}
