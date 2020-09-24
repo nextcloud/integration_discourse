@@ -143,6 +143,7 @@ class DiscourseSearchTopicsProvider implements IProvider {
 	}
 
 	/**
+	 * @param array $entry
 	 * @return string
 	 */
 	protected function getMainText(array $entry): string {
@@ -150,6 +151,7 @@ class DiscourseSearchTopicsProvider implements IProvider {
 	}
 
 	/**
+	 * @param array $entry
 	 * @return string
 	 */
 	protected function getSubline(array $entry): string {
@@ -157,6 +159,8 @@ class DiscourseSearchTopicsProvider implements IProvider {
 	}
 
 	/**
+	 * @param array $entry
+	 * @param string $url
 	 * @return string
 	 */
 	protected function getLinkToDiscourse(array $entry, string $url): string {
@@ -164,6 +168,8 @@ class DiscourseSearchTopicsProvider implements IProvider {
 	}
 
 	/**
+	 * @param array $entry
+	 * @param string $thumbnailUrl
 	 * @return string
 	 */
 	protected function getThumbnailUrl(array $entry, string $thumbnailUrl): string {

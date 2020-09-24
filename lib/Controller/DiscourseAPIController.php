@@ -67,6 +67,8 @@ class DiscourseAPIController extends Controller {
 	/**
 	 * get notification list
 	 * @NoAdminRequired
+	 *
+	 * @return DataResponse
 	 */
 	public function getDiscourseUrl(): DataResponse {
 		return new DataResponse($this->discourseUrl);
@@ -76,6 +78,9 @@ class DiscourseAPIController extends Controller {
 	 * get discourse user avatar
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
+	 *
+	 * @param string $username
+	 * @return DataDisplayResponse
 	 */
 	public function getDiscourseAvatar(string $username): DataDisplayResponse {
 		$response = new DataDisplayResponse($this->discourseAPIService->getDiscourseAvatar($this->discourseUrl, $this->accessToken, $username));
@@ -86,9 +91,12 @@ class DiscourseAPIController extends Controller {
 	/**
 	 * get todo list
 	 * @NoAdminRequired
+	 *
+	 * @param string $since
+	 * @return DataResponse
 	 */
-	public function getNotifications(?string $since): DataResponse {
-		if ($this->accessToken === '' or $this->clientID === '') {
+	public function getNotifications(string $since = ''): DataResponse {
+		if ($this->accessToken === '' || $this->clientID === '') {
 			return new DataResponse('', 400);
 		}
 		$result = $this->discourseAPIService->getNotifications($this->discourseUrl, $this->accessToken, $since);

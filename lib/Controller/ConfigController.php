@@ -75,10 +75,17 @@ class ConfigController extends Controller {
 	/**
 	 * set config values
 	 * @NoAdminRequired
+	 *
+	 * @param array $values
+	 * @return DataResponse
 	 */
 	public function setConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
+		}
+		if (isset($values['token']) && $values['token'] === '') {
+			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_id', '');
+			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_name', '');
 		}
 		$response = new DataResponse(1);
 		return $response;
@@ -86,6 +93,9 @@ class ConfigController extends Controller {
 
 	/**
 	 * set admin config values
+	 *
+	 * @param array $values
+	 * @return DataResponse
 	 */
 	public function setAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
@@ -99,8 +109,11 @@ class ConfigController extends Controller {
 	 * receive oauth encrypted payload with protocol handler redirect
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
+	 *
+	 * @param string $url
+	 * @return RedirectResponse
 	 */
-	public function oauthProtocolRedirect(?string $url = ''): RedirectResponse {
+	public function oauthProtocolRedirect(string $url = ''): RedirectResponse {
 		if ($url === '') {
 			$result = $this->l->t('Error during authentication exchanges');
 			return new RedirectResponse(
@@ -117,8 +130,11 @@ class ConfigController extends Controller {
 	 * receive oauth encrypted payload
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
+	 *
+	 * @param string $payload
+	 * @return RedirectResponse
 	 */
-	public function oauthRedirect(?string $payload = ''): RedirectResponse {
+	public function oauthRedirect(string $payload = ''): RedirectResponse {
 		if ($payload === '') {
 			$message = $this->l->t('Error during authentication exchanges');
 			return new RedirectResponse(
@@ -139,14 +155,14 @@ class ConfigController extends Controller {
 		// anyway, reset nonce
 		$this->config->setUserValue($this->userId, Application::APP_ID, 'nonce', '');
 
-		if (is_array($payloadArray) and $configNonce !== '' and $configNonce === $payloadArray['nonce']) {
+		if (is_array($payloadArray) && $configNonce !== '' && $configNonce === $payloadArray['nonce']) {
 			if (isset($payloadArray['key'])) {
 				$accessToken = $payloadArray['key'];
 				$this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
 				// get user info
 				$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
 				$info = $this->discourseAPIService->request($url, $accessToken, 'session/current.json', []);
-				if (isset($info['current_user']) && isset($info['current_user']['id']) && isset($info['current_user']['username'])) {
+				if (isset($info['current_user'], $info['current_user']['id'], $info['current_user']['username'])) {
 					$this->config->setUserValue($this->userId, Application::APP_ID, 'user_id', $info['current_user']['id']);
 					$this->config->setUserValue($this->userId, Application::APP_ID, 'user_name', $info['current_user']['username']);
 				}
@@ -164,5 +180,4 @@ class ConfigController extends Controller {
 			'?discourseToken=error&message=' . urlencode($message)
 		);
 	}
-
 }

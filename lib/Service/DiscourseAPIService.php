@@ -36,7 +36,13 @@ class DiscourseAPIService {
 		$this->client = $clientService->newClient();
 	}
 
-	public function getNotifications(string $url, string $accessToken, ?string $since): array {
+	/**
+	 * @param string $url
+	 * @param string $accessToken
+	 * @param ?string $since
+	 * @return array
+	 */
+	public function getNotifications(string $url, string $accessToken, ?string $since = null): array {
 		$result = $this->request($url, $accessToken, 'notifications.json');
 		if (isset($result['error'])) {
 			return $result;
@@ -51,7 +57,15 @@ class DiscourseAPIService {
 		return $notifications;
 	}
 
-	public function searchTopics(string $url, string $accessToken, string $term, ?int $offset = 0, ?int $limit = 5): array {
+	/**
+	 * @param string $url
+	 * @param string $accessToken
+	 * @param string $term
+	 * @param int $offset
+	 * @param int $limit
+	 * @return array
+	 */
+	public function searchTopics(string $url, string $accessToken, string $term, int $offset = 0, int $limit = 5): array {
 		$params = [
 			'q' => $term,
 		];
@@ -68,6 +82,14 @@ class DiscourseAPIService {
 		return $results;
 	}
 
+	/**
+	 * @param string $url
+	 * @param string $accessToken
+	 * @param string $term
+	 * @param int $offset
+	 * @param int $limit
+	 * @return array
+	 */
 	public function searchPosts(string $url, string $accessToken, string $term, ?int $offset = 0, ?int $limit = 5): array {
 		$params = [
 			'q' => $term,
@@ -85,6 +107,12 @@ class DiscourseAPIService {
 		return $results;
 	}
 
+	/**
+	 * @param string $url
+	 * @param string $accessToken
+	 * @param string $username
+	 * @return string
+	 */
 	public function getDiscourseAvatar(string $url, string $accessToken, string $username): string {
 		$result = $this->request($url, $accessToken, 'users/'.$username.'.json');
 		if (isset($result['user']) and isset($result['user']['avatar_template'])) {
@@ -94,7 +122,15 @@ class DiscourseAPIService {
 		return '';
 	}
 
-	public function request(string $url, string $accessToken, string $endPoint, ?array $params = [], ?string $method = 'GET'): array {
+	/**
+	 * @param string $url
+	 * @param string $accessToken
+	 * @param string $endPoint
+	 * @param array $params
+	 * @param string $method
+	 * @return array
+	 */
+	public function request(string $url, string $accessToken, string $endPoint, array $params = [], string $method = 'GET'): array {
 		try {
 			$url = $url . '/' . $endPoint;
 			$options = [

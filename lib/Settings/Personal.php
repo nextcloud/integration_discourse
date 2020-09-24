@@ -86,11 +86,11 @@ class Personal implements ISettings {
 		return new TemplateResponse(Application::APP_ID, 'personalSettings');
 	}
 
-	public function getSection() {
+	public function getSection(): string {
 		return 'connected-accounts';
 	}
 
-	public function getPriority() {
+	public function getPriority(): int {
 		return 10;
 	}
 }
