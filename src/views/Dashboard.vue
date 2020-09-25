@@ -320,9 +320,9 @@ export default {
 		getTargetTitle(n) {
 			if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX && n.data && n.data.inbox_count && n.data.group_name) {
 				if (n.data.group_name === 'admins') {
-					return t('integration_discourse', '{nb} items in your admin inbox')
+					return t('integration_discourse', '{nb} items in your admins inbox', { nb: n.data.inbox_count })
 				} else if (n.data.group_name === 'moderators') {
-					return t('integration_discourse', '{nb} items in your moderator inbox')
+					return t('integration_discourse', '{nb} items in your moderators inbox', { nb: n.data.inbox_count })
 				}
 			}
 			return n.fancy_title
