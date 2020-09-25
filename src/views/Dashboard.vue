@@ -41,6 +41,7 @@ const TYPES = {
 	BADGE_EARNED: 12,
 	SOLVED: 14,
 	GROUP_MENTION: 15,
+	MODERATOR_OR_ADMIN_INBOX: 16,
 }
 
 export default {
@@ -75,7 +76,40 @@ export default {
 			return this.discourseUrl
 		},
 		items() {
-			return this.notifications.map((n) => {
+			let notifications = this.notifications
+			// if we have multiple admin inbox items, just show the last
+			if (this.nbAdminInboxItem >= 2) {
+				let found = false
+				notifications = notifications.filter((n) => {
+					if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX && n.data && n.data.group_name === 'admins') {
+						if (found) {
+							return false
+						} else {
+							found = true
+							return true
+						}
+					}
+					return true
+				})
+			}
+
+			// if we have multiple moderator inbox items, just show the last
+			if (this.nbModeratorInboxItem >= 2) {
+				let found = false
+				notifications = notifications.filter((n) => {
+					if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX && n.data && n.data.group_name === 'moderators') {
+						if (found) {
+							return false
+						} else {
+							found = true
+							return true
+						}
+					}
+					return true
+				})
+			}
+
+			return notifications.map((n) => {
 				return {
 					id: this.getUniqueKey(n),
 					targetUrl: this.getNotificationTarget(n),
@@ -86,6 +120,24 @@ export default {
 					subText: this.getSubline(n),
 				}
 			})
+		},
+		nbAdminInboxItem() {
+			let nb = 0
+			this.notifications.forEach((n) => {
+				if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX && n.data && n.data.group_name === 'admins') {
+					nb++
+				}
+			})
+			return nb
+		},
+		nbModeratorInboxItem() {
+			let nb = 0
+			this.notifications.forEach((n) => {
+				if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX && n.data && n.data.group_name === 'moderators') {
+					nb++
+				}
+			})
+			return nb
 		},
 		lastDate() {
 			const nbNotif = this.notifications.length
@@ -177,7 +229,20 @@ export default {
 		},
 		filter(notifications) {
 			return notifications.filter((n) => {
-				return (!n.read && ![TYPES.BADGE_EARNED].includes(n.notification_type))
+				return (!n.read
+					&& [
+						TYPES.MENTION,
+						TYPES.REPLY,
+						TYPES.QUOTED,
+						TYPES.EDIT,
+						TYPES.LIKE,
+						TYPES.PRIVATE_MESSAGE,
+						TYPES.REPLY_2,
+						TYPES.LINKED,
+						TYPES.SOLVED,
+						TYPES.GROUP_MENTION,
+						TYPES.MODERATOR_OR_ADMIN_INBOX,
+					].includes(n.notification_type))
 			})
 		},
 		getNotificationTarget(n) {
@@ -203,11 +268,10 @@ export default {
 					? generateUrl('/apps/integration_discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.display_username)
 					: ''
 			}
-			// nothing for badges
 			return ''
 		},
 		getNotificationTypeImage(n) {
-			if (n.notification_type === TYPES.PRIVATE_MESSAGE) {
+			if ([TYPES.PRIVATE_MESSAGE, TYPES.MODERATOR_OR_ADMIN_INBOX].includes(n.notification_type)) {
 				return generateUrl('/svg/integration_discourse/message?color=ffffff')
 			} else if (n.notification_type === TYPES.MENTION) {
 				return generateUrl('/svg/integration_discourse/arobase?color=ffffff')
@@ -236,6 +300,8 @@ export default {
 				return '@' + n.display_username
 			} else if (n.notification_type === TYPES.BADGE_EARNED) {
 				return n.data.badge_name
+			} else if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX) {
+				return ''
 			}
 			return ''
 		},
@@ -246,10 +312,19 @@ export default {
 				return n.display_username
 			} else if (n.notification_type === TYPES.BADGE_EARNED) {
 				return '*'
+			} else if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX) {
+				return '!'
 			}
 			return ''
 		},
 		getTargetTitle(n) {
+			if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX && n.data && n.data.inbox_count && n.data.group_name) {
+				if (n.data.group_name === 'admins') {
+					return t('integration_discourse', '{nb} items in your admin inbox')
+				} else if (n.data.group_name === 'moderators') {
+					return t('integration_discourse', '{nb} items in your moderator inbox')
+				}
+			}
 			return n.fancy_title
 		},
 		getFormattedDate(n) {
