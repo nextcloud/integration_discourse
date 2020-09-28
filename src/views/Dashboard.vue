@@ -276,7 +276,7 @@ export default {
 			return ''
 		},
 		getNotificationTypeImage(n) {
-			if ([TYPES.PRIVATE_MESSAGE, TYPES.MODERATOR_OR_ADMIN_INBOX].includes(n.notification_type)) {
+			if ([TYPES.PRIVATE_MESSAGE].includes(n.notification_type)) {
 				return generateUrl('/svg/integration_discourse/message?color=ffffff')
 			} else if (n.notification_type === TYPES.MENTION) {
 				return generateUrl('/svg/integration_discourse/arobase?color=ffffff')
@@ -288,6 +288,8 @@ export default {
 				return generateUrl('/svg/integration_discourse/badge?color=ffffff')
 			} else if (n.notification_type === TYPES.SOLVED) {
 				return generateUrl('/svg/integration_discourse/solved?color=ffffff')
+			} else if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX) {
+				return generateUrl('/svg/integration_discourse/group?color=ffffff')
 			}
 			return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
 		},
