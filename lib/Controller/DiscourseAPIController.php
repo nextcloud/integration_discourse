@@ -62,16 +62,25 @@ class DiscourseAPIController extends Controller {
 		$this->accessToken = $this->config->getUserValue($this->userId, Application::APP_ID, 'token', '');
 		$this->clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id', '');
 		$this->discourseUrl = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
+		$this->discourseUsername = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name', '');
 	}
 
 	/**
-	 * get notification list
 	 * @NoAdminRequired
 	 *
 	 * @return DataResponse
 	 */
 	public function getDiscourseUrl(): DataResponse {
 		return new DataResponse($this->discourseUrl);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 *
+	 * @return DataResponse
+	 */
+	public function getDiscourseUsername(): DataResponse {
+		return new DataResponse($this->discourseUsername);
 	}
 
 	/**

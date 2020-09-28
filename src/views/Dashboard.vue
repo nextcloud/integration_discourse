@@ -61,6 +61,7 @@ export default {
 	data() {
 		return {
 			discourseUrl: null,
+			username: '',
 			notifications: [],
 			locale: getLocale(),
 			loop: null,
@@ -73,7 +74,7 @@ export default {
 
 	computed: {
 		showMoreUrl() {
-			return this.discourseUrl
+			return this.discourseUrl + '/u/' + this.username + '/notifications'
 		},
 		items() {
 			let notifications = this.notifications
@@ -177,10 +178,12 @@ export default {
 
 	methods: {
 		async launchLoop() {
-			// get discourse URL first
+			// get discourse URL and username first
 			try {
 				const response = await axios.get(generateUrl('/apps/integration_discourse/url'))
 				this.discourseUrl = response.data.replace(/\/+$/, '')
+				const responseU = await axios.get(generateUrl('/apps/integration_discourse/username'))
+				this.username = responseU.data.replace(/\/+$/, '')
 			} catch (error) {
 				console.debug(error)
 			}
@@ -252,6 +255,8 @@ export default {
 				return this.discourseUrl + '/t/' + n.slug + '/' + n.topic_id + '/' + n.post_number
 			} else if ([TYPES.BADGE_EARNED].includes(n.notification_type)) {
 				return this.discourseUrl + '/badges/' + n.data.badge_id + '/' + n.data.badge_slug + '?username=' + n.data.username
+			} else if ([TYPES.MODERATOR_OR_ADMIN_INBOX].includes(n.notification_type)) {
+				return this.discourseUrl + '/u/' + this.username + '/messages'
 			}
 			return ''
 		},
