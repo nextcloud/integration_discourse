@@ -248,9 +248,9 @@ export default {
 	width: 100%;
 }
 .discourse-grid-form {
-	max-width: 900px;
+	max-width: 600px;
 	display: grid;
-	grid-template: 1fr / 1fr 1fr 1fr;
+	grid-template: 1fr / 1fr 1fr;
 	button .icon {
 		margin-bottom: -1px;
 	}
