@@ -140,7 +140,14 @@ export default {
 
 		// register protocol handler
 		if (window.isSecureContext && window.navigator.registerProtocolHandler) {
-			window.navigator.registerProtocolHandler('web+nextclouddiscourse', generateUrl('/apps/integration_discourse/oauth-protocol-redirect') + '?url=%s', 'Nextcloud Discourse integration')
+			const ncUrl = window.location.protocol
+				+ '//' + window.location.hostname
+				+ window.location.pathname.replace('settings/user/connected-accounts', '').replace('/index.php/', '')
+			window.navigator.registerProtocolHandler(
+				'web+nextclouddiscourse',
+				generateUrl('/apps/integration_discourse/oauth-protocol-redirect') + '?url=%s',
+				t('integration_discourse', 'Nextcloud Discourse integration on {ncUrl}', { ncUrl })
+			)
 		}
 	},
 
