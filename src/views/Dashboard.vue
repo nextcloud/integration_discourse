@@ -272,6 +272,8 @@ export default {
 				return (n.data.display_username)
 					? generateUrl('/apps/integration_discourse/avatar?') + encodeURIComponent('username') + '=' + encodeURIComponent(n.data.display_username)
 					: ''
+			} else if ([TYPES.MODERATOR_OR_ADMIN_INBOX].includes(n.notification_type)) {
+				return generateUrl('/apps/integration_discourse/avatar?') + 'username=system'
 			}
 			return ''
 		},
@@ -295,16 +297,16 @@ export default {
 		},
 		getDisplayAndOriginalUsername(n) {
 			if (n.data.display_username && n.data.display_username !== n.data.original_username) {
-				return n.data.display_username + '(@' + n.data.original_username + ')'
+				return n.data.display_username + ' (@' + n.data.original_username + ')'
 			} else {
-				return n.data.display_username
+				return '@' + n.data.display_username
 			}
 		},
 		getSubline(n) {
 			if ([TYPES.PRIVATE_MESSAGE, TYPES.MENTION, TYPES.LIKE, TYPES.REPLY, TYPES.REPLY_2].includes(n.notification_type)) {
 				return this.getDisplayAndOriginalUsername(n)
 			} else if (n.notification_type === TYPES.SOLVED) {
-				return '@' + n.display_username
+				return '@' + n.data.display_username
 			} else if (n.notification_type === TYPES.BADGE_EARNED) {
 				return n.data.badge_name
 			} else if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX) {
