@@ -189,7 +189,7 @@ export default {
 			const url = generateUrl('/apps/integration_discourse/config')
 			axios.put(url, req)
 				.then((response) => {
-					showSuccess(t('integration_discourse', 'Discourse options saved.'))
+					showSuccess(t('integration_discourse', 'Discourse options saved'))
 				})
 				.catch((error) => {
 					showError(
