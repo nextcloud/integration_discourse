@@ -1,7 +1,11 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Error during authentication exchanges" : "Errore durante le negoziazioni dell'autenticazione",
     "Discourse notifications" : "Notifiche Discourse",
+    "Discourse posts" : "Commenti di Discourse",
+    "Discourse topics" : "Argomenti di Discourse",
+    "posts" : "commenti",
     "Bad credentials" : "Credenziali non valide",
     "Connected accounts" : "Account connessi",
     "Discourse integration" : "Integrazione Discourse",
@@ -9,7 +13,15 @@ OC.L10N.register(
     "Connect to Discourse" : "Connetti a Discourse",
     "Connected as {username}" : "Connesso come {username}",
     "Disconnect from Discourse" : "Disconnetti da Discourse",
-    "Discourse options saved." : "Opzioni di Discourse salvate.",
-    "No Discourse notifications!" : "Nessuna notifica Discourse!"
+    "Enable searching for topics" : "Abilita la ricerca degli argomenti",
+    "Enable searching for posts" : "Abilita la ricerca dei commenti",
+    "Successfully connected to Discourse!" : "Connesso correttamente a Discourse!",
+    "Nextcloud Discourse integration on {ncUrl}" : "Integrazione Discourse di Nextcloud su {ncUrl}",
+    "Discourse options saved" : "Opzioni di Discourse salvate",
+    "Failed to save Discourse options" : "Salvataggio delle opzioni di Discourse non riuscito",
+    "No Discourse account connected" : "Nessun account Discourse connesso",
+    "Error connecting to Discourse" : "Errore durante la connessione a Discourse",
+    "No Discourse notifications!" : "Nessuna notifica Discourse!",
+    "Failed to get Discourse notifications" : "Impossibile ricevere le notifiche di Discourse"
 },
 "nplurals=2; plural=(n != 1);");

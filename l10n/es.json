@@ -1,0 +1,6 @@
+{ "translations": {
+    "posts" : "entradas",
+    "Bad credentials" : "Credenciales incorrectas",
+    "Connected accounts" : "Cuentas conectadas"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

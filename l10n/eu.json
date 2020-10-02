@@ -1,0 +1,6 @@
+{ "translations": {
+    "posts" : "mezuak",
+    "Bad credentials" : "Kredentzial okerrak",
+    "Connected accounts" : "Konektaturiko kontuak"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

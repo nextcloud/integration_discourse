@@ -1,9 +1,10 @@
 OC.L10N.register(
     "integration_discourse",
     {
-    "No API key returned by Discourse" : "Nenhuma chave de API retornada pelo Discourse",
     "Error during authentication exchanges" : "Erro durante as trocas de autenticação",
+    "No API key returned by Discourse" : "Nenhuma chave de API retornada pelo Discourse",
     "Discourse notifications" : "Notificações do Discourse",
+    "posts" : "posts",
     "Bad credentials" : "Credenciais erradas",
     "Connected accounts" : "Contas conectadas",
     "Discourse integration" : "Integração do Discourse",
@@ -16,9 +17,8 @@ OC.L10N.register(
     "Connect to Discourse" : "Conectar ao Discourse",
     "Connected as {username}" : "Conectado como {username}",
     "Disconnect from Discourse" : "Desconectar do Discourse",
-    "Discourse API-key successfully retrieved!" : "Chave da API do Discourse recuperada com sucesso!",
     "Discourse API-key could not be obtained:" : "Chave da API do Discourse não pôde ser obtida:",
-    "Discourse options saved." : "Opções do Discourse salvas.",
-    "Failed to get Discourse notifications." : "Erro ao obter as notificações do Discourse."
+    "Failed to save Discourse options" : "Erro ao salvar as opções do Discourse",
+    "Failed to save Discourse nonce" : "Erro ao salvar o Discourse nonce"
 },
 "nplurals=2; plural=(n > 1);");
