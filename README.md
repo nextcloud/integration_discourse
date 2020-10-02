@@ -1,3 +1,4 @@
 # Discourse integration into Nextcloud
 
-🗨️ This app adds a dashboard item to see your main Discourse notifications.
+🗨️ Discourse integration provides a dashboard widget displaying your important notifications
+and the ability to find topics and posts with Nextcloud's unified search.
