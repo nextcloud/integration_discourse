@@ -157,23 +157,23 @@ export default {
 	methods: {
 		onSearchTopicsChange(e) {
 			this.state.search_topics_enabled = e.target.checked
-			this.saveOptions()
+			this.saveOptions(false)
 		},
 		onSearchPostsChange(e) {
 			this.state.search_posts_enabled = e.target.checked
-			this.saveOptions()
+			this.saveOptions(false)
 		},
 		onLogoutClick() {
 			this.state.token = ''
-			this.saveOptions()
+			this.saveOptions(true)
 		},
 		onInput() {
 			const that = this
 			delay(function() {
-				that.saveOptions()
+				that.saveOptions(true)
 			}, 2000)()
 		},
-		saveOptions() {
+		saveOptions(authOptions) {
 			if (this.state.url !== '' && !this.state.url.startsWith('https://')) {
 				if (this.state.url.startsWith('http://')) {
 					this.state.url = this.state.url.replace('http://', 'https://')
@@ -181,13 +181,17 @@ export default {
 					this.state.url = 'https://' + this.state.url
 				}
 			}
-			const req = {
-				values: {
+			const req = {}
+			if (authOptions) {
+				req.values = {
 					token: this.state.token,
 					url: this.state.url,
+				}
+			} else {
+				req.values = {
 					search_topics_enabled: this.state.search_topics_enabled ? '1' : '0',
 					search_posts_enabled: this.state.search_posts_enabled ? '1' : '0',
-				},
+				}
 			}
 			const url = generateUrl('/apps/integration_discourse/config')
 			axios.put(url, req)
