@@ -11,7 +11,6 @@ OC.L10N.register(
     "Connected accounts" : "Verbundene Konten",
     "Discourse integration" : "Discourse-Einbindung",
     "Integration of Discourse forum and mailing list management system" : "Integration des Discourse-Forums und des Mailinglisten-Managementsystems",
-    "Discourse integration provides a dashboard widget displaying your important notifications." : "Die Diskursintegration bietet ein Dashboard-Widget, in dem Deine wichtigen Benachrichtigungen angezeigt werden.",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Wenn Du keinen Zugriff auf Dein Discourse-Konto erhätst, liegt dies wahrscheinlich daran, dass Deine Discourse-Instanz nicht berechtigt ist, API-Schlüssel für Deine Nextcloud-Instanz zu vergeben.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Bitte den Diskourse-Administrator, diese URI in den Administratoreinstellungen zur Liste \"allow_user_api_auth_redirects\" hinzuzufügen:",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Stelle sicher, dass du die Protokollregistrierung oben auf dieser Seite akzeptiert hast, wenn du dich bei Discourse authentifizieren möchtest.",

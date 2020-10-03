@@ -9,7 +9,6 @@
     "Connected accounts" : "Comptes connectades",
     "Discourse integration" : "Integració de Discourse",
     "Integration of Discourse forum and mailing list management system" : "Integració del Fòrum de Discourse i sistema de gestió de llistes de correu",
-    "Discourse integration provides a dashboard widget displaying your important notifications." : "La integració de Discourse proporciona un estri d'escriptori digital que mostra les notificacions importants.",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Si no teniu accés al vostre compte de Discourse, probablement és perquè la seva instància de Discourse no està autoritzada per donar claus d'API a la instància Nextcloud.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Demaneu a l'administrador de Discourse que afegeixi aquest URI a la llista \"allowed_user_api_auth_redirects\" a la configuració de l'administrador:",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Assegureu-vos que heu acceptat el registre del protocol a la part superior d'aquesta pàgina si voleu autenticar-vos a Discourse.",

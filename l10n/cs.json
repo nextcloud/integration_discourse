@@ -9,7 +9,6 @@
     "Connected accounts" : "Propojené účty",
     "Discourse integration" : "Napojení na Discourse",
     "Integration of Discourse forum and mailing list management system" : "Napojení na systém správy diskuzních fór a e-mailových konferencí Discourse",
-    "Discourse integration provides a dashboard widget displaying your important notifications." : "Napojení na Discourse poskytuje ovládací prvek na přehled, zobrazující důležitá upozornění pro vás.",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Pokud se vám nedaří získat přístup ke svému účtu na Discourse, je to nejspíš proto, že daná instance Discourse není pověřená dávat klíče k API vámi využívané instanci Nextcloud.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Požádejte správce Discourse o přidání této URI do seznamu „allowed_user_api_auth_redirects“ v nastaveních pro správu:",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Nezapomeňte přijmout registraci protokolu na začátku této stránky, aby se bylo možné ověřovat vůči Discourse.",

@@ -11,7 +11,6 @@ OC.L10N.register(
     "Connected accounts" : "Bağlı hesaplar",
     "Discourse integration" : "Discourse bütünleştirmesi",
     "Integration of Discourse forum and mailing list management system" : "Discourse forum ve e-posta listesi yönetim sistemi bütünleştirmesi",
-    "Discourse integration provides a dashboard widget displaying your important notifications." : "Discourse bütünleştirmesi önemli bildirimleri görüntüleyen bir pano gereci sağlar.",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Discourse hesabınıza erişemezseniz bu durum büyük olasılıkla Discourse kopyanızın Nextcloud kopyanıza API anahtarları verme izninin olmamasıdır.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Discourse yöneticinizden şu adresi yönetici bölümündeki \"allowed_user_api_auth_redirects\" listesine eklemesini isteyin:",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Discourse kimlik doğrulaması yapmak istiyorsanız, bu sayfanın üst kısmındaki kayıt kurallarını kabul ettiğinizden emin olun.",
