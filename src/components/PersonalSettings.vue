@@ -47,6 +47,8 @@
 			</div>
 			<button v-if="showOAuth"
 				id="discourse-oauth"
+				:class="{ loading: loading }"
+				:disabled="loading === true"
 				@click="onOAuthClick">
 				<span class="icon icon-external" />
 				{{ t('integration_discourse', 'Connect to Discourse') }}
@@ -106,7 +108,7 @@ export default {
 	data() {
 		return {
 			state: loadState('integration_discourse', 'user-config'),
-			readonly: true,
+			loading: false,
 			// TODO choose between classic redirection (requires 'allowed user api auth redirects' => * or the specific redirect_uri)
 			// and protocol handler based redirection for which 'allowed user api auth redirects' => web+nextclouddiscourse:// is enough and will work with all NC instances
 			// redirect_uri: OC.getProtocol() + '://' + OC.getHostName() + generateUrl('/apps/integration_discourse/oauth-redirect'),
@@ -168,6 +170,7 @@ export default {
 			this.saveOptions(true)
 		},
 		onInput() {
+			this.loading = true
 			const that = this
 			delay(function() {
 				that.saveOptions(true)
@@ -205,6 +208,7 @@ export default {
 					)
 				})
 				.then(() => {
+					this.loading = false
 				})
 		},
 		onOAuthClick() {
