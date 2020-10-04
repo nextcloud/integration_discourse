@@ -240,6 +240,21 @@ export default {
 				})
 		},
 		makeNonce(l) {
+			if (window.isSecureContext && window.crypto && window.crypto.getRandomValues) {
+				return this.makeSecureNonce(l)
+			} else {
+				return this.makeSimpleNonce(l)
+			}
+		},
+		makeSecureNonce(l) {
+			const charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._~'
+			const result = []
+			window.crypto.getRandomValues(new Uint8Array(l)).forEach((c) => {
+				result.push(charset[c % charset.length])
+			})
+			return result.join('')
+		},
+		makeSimpleNonce(l) {
 			let text = ''
 			const chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
 			for (let i = 0; i < l; i++) {
