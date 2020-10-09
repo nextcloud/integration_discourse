@@ -48,7 +48,7 @@ class DiscourseAPIService {
 			return $result;
 		}
 		$notifications = [];
-		if (isset($result['notifications']) and is_array($result['notifications'])) {
+		if (isset($result['notifications']) && is_array($result['notifications'])) {
 			foreach ($result['notifications'] as $notification) {
 				array_push($notifications, $notification);
 			}
@@ -115,7 +115,7 @@ class DiscourseAPIService {
 	 */
 	public function getDiscourseAvatar(string $url, string $accessToken, string $username): string {
 		$result = $this->request($url, $accessToken, 'users/'.$username.'.json');
-		if (isset($result['user']) and isset($result['user']['avatar_template'])) {
+		if (isset($result['user']) && isset($result['user']['avatar_template'])) {
 			$avatarUrl = $url . str_replace('{size}', '32', $result['user']['avatar_template']);
 			return $this->client->get($avatarUrl)->getBody();
 		}
