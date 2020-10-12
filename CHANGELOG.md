@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 0.0.4 – 2020-10-12
+### Changed
+- various small improvements in backend
+
+### Fixed
+- use browser's real cryto tool to make a nonce
+
 ## 0.0.3 – 2020-10-02
 ### Added
 - handle more notification types
