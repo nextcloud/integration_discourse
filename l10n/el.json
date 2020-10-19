@@ -1,9 +1,29 @@
 { "translations": {
+    "Discourse notifications" : "Ειδοποιήσεις Discourse",
+    "Discourse posts" : "Δημοσιεύσεις Discourse",
+    "Discourse topics" : "Θέματα Discourse",
     "posts" : "δημοσιεύσεις",
     "Bad credentials" : "Εσφαλμένα διαπιστευτήρια",
     "Connected accounts" : "Συνδεδεμένοι λογαριασμοί",
+    "Discourse integration" : "Ενσωμάτωση Discourse",
+    "Integration of Discourse forum and mailing list management system" : "Ενσωμάτωση του φόρουμ Discourse και του συστήματος διαχείρισης λίστας αλληλογραφίας",
+    "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Εάν αποτύχετε να αποκτήσετε πρόσβαση στον λογαριασμό σας στο Discourse, αυτό πιθανότατα οφείλεται στο γεγονός ότι η εγκατάσταση του Discourse δεν είναι εξουσιοδοτημένη να παρέχει κλειδιά API στην εγκατάσταση Nextcloud σας.",
+    "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Βεβαιωθείτε ότι έχετε αποδεχτεί την εγγραφή πρωτοκόλλου στην κορυφή αυτής της σελίδας εάν θέλετε να πιστοποιηθείτε στο Discourse.",
     "If you don't see the popup, you can still click on this icon in the address bar." : "Εάν δεν βλέπετε το αναδυόμενο παράθυρο, μπορείτε ακόμα να κάνετε κλικ σε αυτό το εικονίδιο στη γραμμή διευθύνσεων.",
     "If you still don't manage to get the protocol registered, check your settings on this page:" : "Εάν εξακολουθείτε να μην εγγράψατε το πρωτόκολλο, ελέγξτε τις ρυθμίσεις σας σε αυτήν τη σελίδα:",
-    "Connected as {username}" : "Συνδεδεμένος ως {username}"
+    "Discourse instance address" : "Διεύθυνση εγκατάστασης Discourse",
+    "Connect to Discourse" : "Σύνδεση στο Discourse",
+    "Connected as {username}" : "Συνδεδεμένος ως {username}",
+    "Disconnect from Discourse" : "Αποσύνδεση από το Discourse",
+    "Enable searching for topics" : "Ενεργοποίηση αναζήτησης θεμάτων",
+    "Enable searching for posts" : "Ενεργοποίηση αναζήτησης δημοσιεύσεων",
+    "Successfully connected to Discourse!" : "Επιτυχημένη σύνδεση στο Discourse!",
+    "Nextcloud Discourse integration on {ncUrl}" : "Ενσωμάτωση Discourse Nextcloud στο {ncUrl}",
+    "Discourse options saved" : "Αποθηκεύτηκαν οι επιλογές του Discourse",
+    "Failed to save Discourse options" : "Αποτυχία αποθήκευσης επιλογών Discourse",
+    "No Discourse account connected" : "Κανένας συνδεδεμένος λογαριασμός Discourse",
+    "Error connecting to Discourse" : "Σφάλμα σύνδεσης στο Discourse",
+    "No Discourse notifications!" : "Καμία ειδοποίηση Discourse!",
+    "Failed to get Discourse notifications" : "Αποτυχία λήψης ειδοποιήσεων Discourse"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
