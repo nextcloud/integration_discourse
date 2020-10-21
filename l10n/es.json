@@ -1,4 +1,5 @@
 { "translations": {
+    "Error during authentication exchanges" : "Error durante el intercambio de autentificación",
     "posts" : "entradas",
     "Bad credentials" : "Credenciales incorrectas",
     "Connected accounts" : "Cuentas conectadas",

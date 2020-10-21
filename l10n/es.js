@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Error during authentication exchanges" : "Error durante el intercambio de autentificación",
     "posts" : "entradas",
     "Bad credentials" : "Credenciales incorrectas",
     "Connected accounts" : "Cuentas conectadas",
