@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 0.0.5 – 2020-10-22
+### Added
+- automatic releases
+
+### Changed
+- use Webpack 5 and style lint
+
 ## 0.0.4 – 2020-10-12
 ### Changed
 - various small improvements in backend
