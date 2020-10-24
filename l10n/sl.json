@@ -6,7 +6,7 @@
     "posts" : "objave",
     "Bad credentials" : "Neustrezna poverila",
     "Connected accounts" : "Povezani računi",
-    "Discourse integration" : "Podpora za račune Discourse",
+    "Discourse integration" : "Podpora Discourse",
     "Integration of Discourse forum and mailing list management system" : "Podpora za dostop do foruma in upravljalnika dopisnega seznama Discourse",
     "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Podpora za Twitter omogoča gradnike za prikazovanje pomembnih obvestil in\nmožnost iskanja tem in objav z enotnim iskalnikom Nextcloud.",
     "Discourse instance address" : "Naslov povezave Discourse",
