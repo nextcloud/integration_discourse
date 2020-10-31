@@ -3,6 +3,6 @@ OC.L10N.register(
     {
     "posts" : "帖子",
     "Bad credentials" : "不好的证书",
-    "Connected accounts" : "账号已连接"
+    "Connected accounts" : "关联账号"
 },
 "nplurals=1; plural=0;");
