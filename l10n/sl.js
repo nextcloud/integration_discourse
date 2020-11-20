@@ -11,6 +11,8 @@ OC.L10N.register(
     "Discourse integration" : "Podpora Discourse",
     "Integration of Discourse forum and mailing list management system" : "Podpora za dostop do foruma in upravljalnika dopisnega seznama Discourse",
     "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Podpora za Twitter omogoča gradnike za prikazovanje pomembnih obvestil in\nmožnost iskanja tem in objav z enotnim iskalnikom Nextcloud.",
+    "If you don't see the popup, you can still click on this icon in the address bar." : "Če se pojavno okno ne pokaže, je to še vedno mogoče odpreti s klikom na ikono v naslovni vrstici.",
+    "Then authorize this page to open \"web+nextclouddiscourse\" links." : "Nato overite to stran za odpiranje povezav »web+nextclouddiscourse«.",
     "Discourse instance address" : "Naslov povezave do računa Discourse",
     "Connect to Discourse" : "Poveži z računom Discourse",
     "Connected as {username}" : "Povezan je uporabniški račun {username}",
@@ -20,9 +22,12 @@ OC.L10N.register(
     "Successfully connected to Discourse!" : "Povezava z računom Discourse je uspešno vzpostavljena!",
     "Discourse options saved" : "Nastavitve Discourse so shranjene",
     "Failed to save Discourse options" : "Shranjevanje nastavitev Discourse je spodletelo",
+    "Failed to save Discourse nonce" : "Shranjevanje enkratnice Discourse je spodletelo",
     "No Discourse account connected" : "Ni še povezanega računa Discourse",
     "Error connecting to Discourse" : "Napaka povezovanja z računom Discourse",
     "No Discourse notifications!" : "Ni obvestil Discourse!",
-    "Failed to get Discourse notifications" : "Pridobivanje obvestil Discourse je spodletelo"
+    "Failed to get Discourse notifications" : "Pridobivanje obvestil Discourse je spodletelo",
+    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["v skrbniškem predalu je {nb} sporočilo","v skrbniškem predalu sta {nb} sporočili","v skrbniškem predalu so {nb} sporočila","v skrbniškem predalu je {nb} sporočil"],
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["v moderatorskem predalu je {nb} sporočilo","v moderatorskem predalu sta {nb} sporočili","v moderatorskem predalu so {nb} sporočila","v moderatorskem predalu je {nb} sporočil"]
 },
 "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);");
