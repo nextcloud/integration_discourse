@@ -9,7 +9,7 @@
     "Connected accounts" : "Bağlı hesaplar",
     "Discourse integration" : "Discourse bütünleştirmesi",
     "Integration of Discourse forum and mailing list management system" : "Discourse forum ve e-posta listesi yönetim sistemi bütünleştirmesi",
-    "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Discourse bütünleştirmesi önemli bildirimler ile Nextcloud birleşik araması ile\n    başlık ve iletileri arama özelliğini görüntüleyen bir pano gereci sağlar.",
+    "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Discourse bütünleştirmesi önemli bildirimlerin yanında Nextcloud birleşik araması ile\n    başlık ve iletileri arama özelliğini görüntüleyen bir pano bileşeni sağlar.",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Discourse hesabınıza erişemezseniz bu durum büyük olasılıkla Discourse kopyanızın Nextcloud kopyanıza API anahtarları verme izninin olmamasıdır.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Discourse yöneticinizden şu adresi yönetici bölümündeki \"allowed_user_api_auth_redirects\" listesine eklemesini isteyin:",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Discourse kimlik doğrulaması yapmak istiyorsanız, bu sayfanın üst kısmındaki kayıt kurallarını kabul ettiğinizden emin olun.",
