@@ -6,6 +6,7 @@ OC.L10N.register(
     "Bad credentials" : "Virheelliset kirjautumistiedot",
     "Connected accounts" : "Yhdistetyt tilit",
     "Discourse integration" : "Discourse-integraatio",
+    "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Discourse-integraatio tarjoaa sekä konsoliin pienoissovelluksen, joka näyttää tärkeät ilmoituksesi,\n    että mahdollisuuden etsiä aiheita ja postauksia Nextcloudin yhtenäisestä hausta.",
     "Discourse instance address" : "Discourse-instanssin osoite",
     "Connect to Discourse" : "Yhdistä Discourseen",
     "Connected as {username}" : "Yhdistetty käyttäjänä {username}",
