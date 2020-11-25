@@ -1,10 +1,30 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Error during authentication exchanges" : "Klaida tapatybės nustatymo apsikeitimo metu",
     "No API key returned by Discourse" : "„Discourse“ negrąžino jokio API rakto",
     "Discourse notifications" : "„Discourse“ pranešimai",
+    "Discourse posts" : "„Discourse“ įrašai",
+    "Discourse topics" : "„Discourse“ temos",
+    "posts" : "įrašai",
     "Bad credentials" : "Blogi prisijungimo duomenys",
+    "Connected accounts" : "Prijungtos paskyros",
     "Discourse integration" : "„Discourse“ integracija",
-    "Discourse instance address" : "„Discourse“ egzemplioriaus adresas"
+    "Discourse instance address" : "„Discourse“ egzemplioriaus adresas",
+    "Connect to Discourse" : "Prisijungti prie „Discourse“",
+    "Connected as {username}" : "Prisijungta kaip {username}",
+    "Disconnect from Discourse" : "Atsijungti nuo „Discourse“",
+    "Enable searching for topics" : "Įjungti temų paiešką",
+    "Enable searching for posts" : "Įjungti įrašų paiešką",
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Įspėjimas: viskas, ką rašysite paieškos juostoje, bus siunčiama į jūsų „Discourse“ egzempliorių.",
+    "Successfully connected to Discourse!" : "Sėkmingai prisijungta prie „Discourse“!",
+    "Discourse API-key could not be obtained:" : "Nepavyko gauti „Discourse“ API rakto:",
+    "Nextcloud Discourse integration on {ncUrl}" : "Nextcloud „Discourse“ integracija ties {ncUrl}",
+    "Discourse options saved" : "„Discourse“ parinktys įrašytos",
+    "Failed to save Discourse options" : "Nepavyko įrašyti „Discourse“ parinkčių",
+    "No Discourse account connected" : "Neprijungta jokia „Discourse“ paskyra",
+    "Error connecting to Discourse" : "Klaida jungiantis prie „Discourse“",
+    "No Discourse notifications!" : "Nėra „Discourse“ pranešimų!",
+    "Failed to get Discourse notifications" : "Nepavyko gauti „Discourse“ pranešimų"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");
