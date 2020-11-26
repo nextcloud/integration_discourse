@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "posts" : "објави",
     "Bad credentials" : "Неточни акредитиви",
     "Connected accounts" : "Поврзани сметки"
 },
