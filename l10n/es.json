@@ -30,6 +30,7 @@
     "Nextcloud Discourse integration on {ncUrl}" : "Integración con Discourse de Nextcloud en {ncUrl}",
     "Discourse options saved" : "Opciones de Discourse guardadas",
     "Failed to save Discourse options" : "Fallo al guardar las opciones de Discourse",
+    "Failed to save Discourse nonce" : "Fallo al guardar nonce de Discourse",
     "No Discourse account connected" : "No hay ninguna cuenta de Discourse conectada",
     "Error connecting to Discourse" : "Error al conectar con Discourse",
     "No Discourse notifications!" : "No hay notificaciones de Discourse.",
