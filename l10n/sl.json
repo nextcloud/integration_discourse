@@ -1,5 +1,6 @@
 { "translations": {
     "Error during authentication exchanges" : "Napaka med izmenjavo podatkov",
+    "No API key returned by Discourse" : "Strežnik Discourse ni vrnil ključna vmesnika API",
     "Discourse notifications" : "Obvestila Discourse",
     "Discourse posts" : "Objave Discourse",
     "Discourse topics" : "Teme Discourse",
@@ -19,7 +20,9 @@
     "Disconnect from Discourse" : "Prekini povezavo s programom Discourse",
     "Enable searching for topics" : "Omogoči iskanje med temami",
     "Enable searching for posts" : "Omogoči iskanje med objavami",
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Opozorilo! Karkoli vpišete v iskalno polje bo poslano na strežnik Discourse.",
     "Successfully connected to Discourse!" : "Povezava z računom Discourse je uspešno vzpostavljena!",
+    "Discourse API-key could not be obtained:" : "Ključa Discourse API ni mogoče pridobiti:",
     "Nextcloud Discourse integration on {ncUrl}" : "Združevalnik Discourse na naslovu {ncUrl}",
     "Discourse options saved" : "Nastavitve Discourse so shranjene",
     "Failed to save Discourse options" : "Shranjevanje nastavitev Discourse je spodletelo",
