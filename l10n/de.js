@@ -37,7 +37,7 @@ OC.L10N.register(
     "Error connecting to Discourse" : "Fehler bei der Verbindung mit Discourse",
     "No Discourse notifications!" : "Keine Discourse-Benachrichtigungen!",
     "Failed to get Discourse notifications" : "Fehler beim Abruf der Discourse-Benachrichtigungen",
-    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} Eintrag in Ihrem Deinem-Posteingang","{nb} Einträge in Ihrem Deinem-Posteingang"],
+    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} Eintrag in Ihrem Deinem-Posteingang","{nb} Einträge in Deinem Posteingang"],
     "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} Element in Deinem Moderatoren-Posteingang","{nb} Elemente in Deinem Moderatoren-Posteingang"]
 },
 "nplurals=2; plural=(n != 1);");
