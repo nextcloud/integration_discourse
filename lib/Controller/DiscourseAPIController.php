@@ -105,7 +105,7 @@ class DiscourseAPIController extends Controller {
 	 * @return DataResponse
 	 */
 	public function getNotifications(string $since = ''): DataResponse {
-		if ($this->accessToken === '' || $this->clientID === '') {
+		if ($this->accessToken === '' || $this->clientID === '' || !preg_match('/^(https?:\/\/)?[A-Za-z0-9]+\.[A-Za-z0-9].*/', $this->discourseUrl)) {
 			return new DataResponse('', 400);
 		}
 		$result = $this->discourseAPIService->getNotifications($this->discourseUrl, $this->accessToken, $since);

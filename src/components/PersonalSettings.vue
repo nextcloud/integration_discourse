@@ -159,24 +159,18 @@ export default {
 	methods: {
 		onSearchTopicsChange(e) {
 			this.state.search_topics_enabled = e.target.checked
-			this.saveOptions(false)
+			this.saveOptions({ search_topics_enabled: this.state.search_topics_enabled ? '1' : '0' })
 		},
 		onSearchPostsChange(e) {
 			this.state.search_posts_enabled = e.target.checked
-			this.saveOptions(false)
+			this.saveOptions({ search_posts_enabled: this.state.search_posts_enabled ? '1' : '0' })
 		},
 		onLogoutClick() {
 			this.state.token = ''
-			this.saveOptions(true)
+			this.saveOptions({ token: this.state.token, url: this.state.url })
 		},
 		onInput() {
 			this.loading = true
-			const that = this
-			delay(function() {
-				that.saveOptions(true)
-			}, 2000)()
-		},
-		saveOptions(authOptions) {
 			if (this.state.url !== '' && !this.state.url.startsWith('https://')) {
 				if (this.state.url.startsWith('http://')) {
 					this.state.url = this.state.url.replace('http://', 'https://')
@@ -184,17 +178,19 @@ export default {
 					this.state.url = 'https://' + this.state.url
 				}
 			}
-			const req = {}
-			if (authOptions) {
-				req.values = {
-					token: this.state.token,
-					url: this.state.url,
+			delay(() => {
+				const pattern = /^(https?:\/\/)?[A-Za-z0-9]+\.[A-Za-z0-9].*/
+				if (pattern.test(this.state.url)) {
+					this.saveOptions({ url: this.state.url })
+				} else {
+					showError(t('integration_discourse', 'Discourse URL is invalid'))
+					this.loading = false
 				}
-			} else {
-				req.values = {
-					search_topics_enabled: this.state.search_topics_enabled ? '1' : '0',
-					search_posts_enabled: this.state.search_posts_enabled ? '1' : '0',
-				}
+			}, 2000)()
+		},
+		saveOptions(values) {
+			const req = {
+				values,
 			}
 			const url = generateUrl('/apps/integration_discourse/config')
 			axios.put(url, req)
