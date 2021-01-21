@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 0.0.7 – 2021-01-21
+### Fixed
+- avoid using invalid Discourse URL
+
 ## 0.0.6 – 2021-01-01
 ### Changed
 - bump js libs
