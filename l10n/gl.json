@@ -28,6 +28,7 @@
     "Successfully connected to Discourse!" : "Conectou satisfactoriamente con Discourse.",
     "Discourse API-key could not be obtained:" : "Non foi posíbel obter a clave da API de Discourse",
     "Nextcloud Discourse integration on {ncUrl}" : "Integración do Discourse de Nextcloud en {ncUrl}",
+    "Discourse URL is invalid" : "O URL de Discourse non é válido",
     "Discourse options saved" : "Gardáronse as opcións de Discourse",
     "Failed to save Discourse options" : "Produciuse un fallo ao gardar as opcións do Discourse.",
     "Failed to save Discourse nonce" : "Produciuse un fallo ao gardar o «nonce» do Discourse.",

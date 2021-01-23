@@ -30,6 +30,7 @@ OC.L10N.register(
     "Successfully connected to Discourse!" : "Discourse ile bağlantı kuruldu!",
     "Discourse API-key could not be obtained:" : "Discourse API anahtarı alınamadı:",
     "Nextcloud Discourse integration on {ncUrl}" : "{ncUrl} üzerinde Nextcloud Discourse bütünleştirmesi",
+    "Discourse URL is invalid" : "Discourse adresi geçersiz",
     "Discourse options saved" : "Discourse ayarları kaydedildi",
     "Failed to save Discourse options" : "Discourse ayarları kaydedilemedi",
     "Failed to save Discourse nonce" : "Discourse nonce kaydedilemedi",
