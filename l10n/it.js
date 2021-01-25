@@ -30,6 +30,7 @@ OC.L10N.register(
     "Successfully connected to Discourse!" : "Connesso correttamente a Discourse!",
     "Discourse API-key could not be obtained:" : "Impossibile ottenere la chiave API di Discourse:",
     "Nextcloud Discourse integration on {ncUrl}" : "Integrazione Discourse di Nextcloud su {ncUrl}",
+    "Discourse URL is invalid" : "L'URL Discourse non è valido",
     "Discourse options saved" : "Opzioni di Discourse salvate",
     "Failed to save Discourse options" : "Salvataggio delle opzioni di Discourse non riuscito",
     "Failed to save Discourse nonce" : "Salvataggio del nonce di Discourse non riuscito",
