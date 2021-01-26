@@ -30,6 +30,7 @@ OC.L10N.register(
     "Successfully connected to Discourse!" : "Succesvol verbonden met Discourse!",
     "Discourse API-key could not be obtained:" : "Discourse API-sleutel kon niet opgehaald worden:",
     "Nextcloud Discourse integration on {ncUrl}" : "Nextcloud Discourse integratie op {ncUrl}",
+    "Discourse URL is invalid" : "Discourse URL is ongeldig",
     "Discourse options saved" : "Discourse opties opgeslagen",
     "Failed to save Discourse options" : "Opslaan Discourse-opties mislukt",
     "Failed to save Discourse nonce" : "Opslaan Discourse nonce mislukt",
