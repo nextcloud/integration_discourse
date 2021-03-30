@@ -173,7 +173,6 @@ class DiscourseSearchTopicsProvider implements IProvider {
 	 * @return string
 	 */
 	protected function getThumbnailUrl(array $entry, string $thumbnailUrl): string {
-		$lastPoster = $entry['last_poster_username'];
 		return $thumbnailUrl;
 		$initials = null;
 		if ($entry['u_firstname'] && $entry['u_lastname']) {
