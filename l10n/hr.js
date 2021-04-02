@@ -30,6 +30,7 @@ OC.L10N.register(
     "Successfully connected to Discourse!" : "Uspješno povezivanje s Discourseom!",
     "Discourse API-key could not be obtained:" : "Nije moguće dohvatiti API-ključ Discoursea:",
     "Nextcloud Discourse integration on {ncUrl}" : "Nextcloud Discourse integracija na {ncUrl}",
+    "Discourse URL is invalid" : "URL Discoursea je nevažeći",
     "Discourse options saved" : "Spremljene postavke Discoursea",
     "Failed to save Discourse options" : "Spremanje postavki Discoursea nije uspjelo",
     "Failed to save Discourse nonce" : "Nije uspjelo spremanje Discourse nonce",
