@@ -23,7 +23,7 @@ OC.L10N.register(
     "Discourse instance address" : "Discourse kopyası adresi",
     "Connect to Discourse" : "Discourse ile bağlantı kur",
     "Connected as {username}" : "{username} olarak bağlantı kuruldu",
-    "Disconnect from Discourse" : "Discourse  bağlantısını kes",
+    "Disconnect from Discourse" : "Discourse bağlantısını kes",
     "Enable searching for topics" : "Başlıklarda arama yapılabilsin",
     "Enable searching for posts" : "İletilerde arama yapılabilsin",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uyarı, arama çubuğuna yazdığınız her şey Discourse kopyanıza gönderilecek.",
