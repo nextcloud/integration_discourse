@@ -70,6 +70,7 @@ export default {
 			settingsUrl: generateUrl('/settings/user/connected-accounts'),
 			themingColor: OCA.Theming ? OCA.Theming.color.replace('#', '') : '0082C9',
 			hovered: {},
+			windowVisibility: true,
 		}
 	},
 
@@ -170,14 +171,35 @@ export default {
 		},
 	},
 
+	watch: {
+		windowVisibility(newValue) {
+			if (newValue) {
+				this.launchLoop()
+			} else {
+				this.stopLoop()
+			}
+		},
+	},
+
+	beforeDestroy() {
+		document.removeEventListener('visibilitychange', this.changeWindowVisibility)
+	},
+
 	beforeMount() {
 		this.launchLoop()
+		document.addEventListener('visibilitychange', this.changeWindowVisibility)
 	},
 
 	mounted() {
 	},
 
 	methods: {
+		changeWindowVisibility() {
+			this.windowVisibility = !document.hidden
+		},
+		stopLoop() {
+			clearInterval(this.loop)
+		},
 		async launchLoop() {
 			// get discourse URL and username first
 			try {
