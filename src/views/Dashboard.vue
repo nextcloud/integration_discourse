@@ -118,6 +118,7 @@ export default {
 					targetUrl: this.getNotificationTarget(n),
 					avatarUrl: this.getNotificationImage(n),
 					avatarUsername: this.getAuthorFullName(n),
+					avatarIsNoUser: true,
 					overlayIconUrl: this.getNotificationTypeImage(n),
 					mainText: this.getTargetTitle(n),
 					subText: this.getSubline(n),
@@ -298,7 +299,7 @@ export default {
 			} else if ([TYPES.MODERATOR_OR_ADMIN_INBOX].includes(n.notification_type)) {
 				return generateUrl('/apps/integration_discourse/avatar?') + 'username=system'
 			}
-			return ''
+			return undefined
 		},
 		getNotificationTypeImage(n) {
 			if ([TYPES.PRIVATE_MESSAGE].includes(n.notification_type)) {
