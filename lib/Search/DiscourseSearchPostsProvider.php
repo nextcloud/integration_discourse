@@ -45,12 +45,21 @@ class DiscourseSearchPostsProvider implements IProvider {
 
 	/** @var IURLGenerator */
 	private $urlGenerator;
+	/**
+	 * @var IConfig
+	 */
+	private $config;
+	/**
+	 * @var DiscourseAPIService
+	 */
+	private $service;
 
 	/**
 	 * CospendSearchProvider constructor.
 	 *
 	 * @param IAppManager $appManager
 	 * @param IL10N $l10n
+	 * @param IConfig $config
 	 * @param IURLGenerator $urlGenerator
 	 * @param DiscourseAPIService $service
 	 */
@@ -105,13 +114,13 @@ class DiscourseSearchPostsProvider implements IProvider {
 		$offset = $query->getCursor();
 		$offset = $offset ? intval($offset) : 0;
 
-		$theme = $this->config->getUserValue($user->getUID(), 'accessibility', 'theme', '');
+		$theme = $this->config->getUserValue($user->getUID(), 'accessibility', 'theme');
 		$thumbnailUrl = ($theme === 'dark')
 			? $this->urlGenerator->imagePath(Application::APP_ID, 'app.svg')
 			: $this->urlGenerator->imagePath(Application::APP_ID, 'app-dark.svg');
 
-		$discourseUrl = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'url', '');
-		$accessToken = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'token', '');
+		$discourseUrl = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'url');
+		$accessToken = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'token');
 
 		$searchPostsEnabled = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'search_posts_enabled', '0') === '1';
 		if ($accessToken === '' || !$searchPostsEnabled) {
@@ -124,7 +133,7 @@ class DiscourseSearchPostsProvider implements IProvider {
 			return SearchResult::paginated($this->getName(), [], 0);
 		}
 
-		$formattedResults = \array_map(function (array $entry) use ($thumbnailUrl, $discourseUrl): DiscourseSearchResultEntry {
+		$formattedResults = array_map(function (array $entry) use ($thumbnailUrl, $discourseUrl): DiscourseSearchResultEntry {
 			return new DiscourseSearchResultEntry(
 				$this->getThumbnailUrl($entry, $thumbnailUrl),
 				$this->getMainText($entry),

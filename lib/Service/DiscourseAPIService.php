@@ -11,28 +11,39 @@
 
 namespace OCA\Discourse\Service;
 
+use Exception;
 use OCP\IL10N;
 use Psr\Log\LoggerInterface;
 use OCP\Http\Client\IClientService;
 
 class DiscourseAPIService {
-
-	private $l10n;
+	/**
+	 * @var string
+	 */
+	private $appName;
+	/**
+	 * @var LoggerInterface
+	 */
 	private $logger;
+	/**
+	 * @var IL10N
+	 */
+	private $l10n;
+	/**
+	 * @var \OCP\Http\Client\IClient
+	 */
+	private $client;
 
 	/**
 	 * Service to make requests to Discourse v3 (JSON) API
 	 */
-	public function __construct (
-		string $appName,
-		LoggerInterface $logger,
-		IL10N $l10n,
-		IClientService $clientService
-	) {
+	public function __construct (string $appName,
+								LoggerInterface $logger,
+								IL10N $l10n,
+								IClientService $clientService) {
 		$this->appName = $appName;
-		$this->l10n = $l10n;
 		$this->logger = $logger;
-		$this->clientService = $clientService;
+		$this->l10n = $l10n;
 		$this->client = $clientService->newClient();
 	}
 
@@ -75,8 +86,7 @@ class DiscourseAPIService {
 		}
 		$results = [];
 		if (isset($result['topics']) && is_array($result['topics'])) {
-			$searchResults = array_slice($result['topics'], $offset, $limit);
-			return $searchResults;
+			return array_slice($result['topics'], $offset, $limit);
 		}
 
 		return $results;
@@ -86,8 +96,8 @@ class DiscourseAPIService {
 	 * @param string $url
 	 * @param string $accessToken
 	 * @param string $term
-	 * @param int $offset
-	 * @param int $limit
+	 * @param int|null $offset
+	 * @param int|null $limit
 	 * @return array
 	 */
 	public function searchPosts(string $url, string $accessToken, string $term, ?int $offset = 0, ?int $limit = 5): array {
@@ -100,8 +110,7 @@ class DiscourseAPIService {
 		}
 		$results = [];
 		if (isset($result['posts']) && is_array($result['posts'])) {
-			$searchResults = array_slice($result['posts'], $offset, $limit);
-			return $searchResults;
+			return array_slice($result['posts'], $offset, $limit);
 		}
 
 		return $results;
@@ -170,6 +179,8 @@ class DiscourseAPIService {
 				$response = $this->client->put($url, $options);
 			} else if ($method === 'DELETE') {
 				$response = $this->client->delete($url, $options);
+			} else {
+				return ['error' => $this->l10n->t('Bad HTTP method')];
 			}
 			$body = $response->getBody();
 			$respCode = $response->getStatusCode();
@@ -179,10 +190,9 @@ class DiscourseAPIService {
 			} else {
 				return json_decode($body, true);
 			}
-		} catch (\Exception $e) {
+		} catch (Exception $e) {
 			$this->logger->warning('Discourse API error : '.$e->getMessage(), array('app' => $this->appName));
 			return ['error' => $e->getMessage()];
 		}
 	}
-
 }

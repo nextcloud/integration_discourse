@@ -11,21 +11,8 @@
 
 namespace OCA\Discourse\Controller;
 
-use OCP\App\IAppManager;
-use OCP\Files\IAppData;
 use OCP\AppFramework\Http\DataDisplayResponse;
-
-use OCP\IURLGenerator;
 use OCP\IConfig;
-use OCP\IServerContainer;
-use OCP\IL10N;
-
-use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\RedirectResponse;
-
-use OCP\AppFramework\Http\ContentSecurityPolicy;
-
-use Psr\Log\LoggerInterface;
 use OCP\IRequest;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
@@ -35,34 +22,48 @@ use OCA\Discourse\AppInfo\Application;
 
 class DiscourseAPIController extends Controller {
 
-
-	private $userId;
+	/**
+	 * @var IConfig
+	 */
 	private $config;
-	private $dbconnection;
-	private $dbtype;
+	/**
+	 * @var DiscourseAPIService
+	 */
+	private $discourseAPIService;
+	/**
+	 * @var string|null
+	 */
+	private $userId;
+	/**
+	 * @var string
+	 */
+	private $accessToken;
+	/**
+	 * @var string
+	 */
+	private $clientID;
+	/**
+	 * @var string
+	 */
+	private $discourseUrl;
+	/**
+	 * @var string
+	 */
+	private $discourseUsername;
 
-	public function __construct($AppName,
+	public function __construct(string $appName,
 								IRequest $request,
-								IServerContainer $serverContainer,
 								IConfig $config,
-								IL10N $l10n,
-								IAppManager $appManager,
-								IAppData $appData,
-								LoggerInterface $logger,
 								DiscourseAPIService $discourseAPIService,
-								$userId) {
-		parent::__construct($AppName, $request);
-		$this->userId = $userId;
-		$this->l10n = $l10n;
-		$this->appData = $appData;
-		$this->serverContainer = $serverContainer;
+								?string $userId) {
+		parent::__construct($appName, $request);
 		$this->config = $config;
-		$this->logger = $logger;
 		$this->discourseAPIService = $discourseAPIService;
-		$this->accessToken = $this->config->getUserValue($this->userId, Application::APP_ID, 'token', '');
-		$this->clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id', '');
-		$this->discourseUrl = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
-		$this->discourseUsername = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name', '');
+		$this->userId = $userId;
+		$this->accessToken = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
+		$this->clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id');
+		$this->discourseUrl = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
+		$this->discourseUsername = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name');
 	}
 
 	/**

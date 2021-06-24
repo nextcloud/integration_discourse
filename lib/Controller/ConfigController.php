@@ -11,26 +11,13 @@
 
 namespace OCA\Discourse\Controller;
 
-use OCP\App\IAppManager;
-use OCP\Files\IAppData;
-use OCP\AppFramework\Http\DataDisplayResponse;
-
 use OCP\IURLGenerator;
 use OCP\IConfig;
-use OCP\IServerContainer;
 use OCP\IL10N;
-use Psr\Log\LoggerInterface;
-
-use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\RedirectResponse;
-
-use OCP\AppFramework\Http\ContentSecurityPolicy;
-
 use OCP\IRequest;
-use OCP\IDBConnection;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
-use OCP\Http\Client\IClientService;
 
 use OCA\Discourse\AppInfo\Application;
 use OCA\Discourse\Service\DiscourseAPIService;
@@ -40,36 +27,40 @@ use phpseclib\Crypt\RSA;
 
 class ConfigController extends Controller {
 
-
-	private $userId;
+	/**
+	 * @var IConfig
+	 */
 	private $config;
-	private $dbconnection;
-	private $dbtype;
+	/**
+	 * @var IURLGenerator
+	 */
+	private $urlGenerator;
+	/**
+	 * @var IL10N
+	 */
+	private $l;
+	/**
+	 * @var DiscourseAPIService
+	 */
+	private $discourseAPIService;
+	/**
+	 * @var string|null
+	 */
+	private $userId;
 
-	public function __construct($AppName,
+	public function __construct(string $appName,
 								IRequest $request,
-								IServerContainer $serverContainer,
 								IConfig $config,
-								IAppManager $appManager,
-								IAppData $appData,
-								IDBConnection $dbconnection,
 								IURLGenerator $urlGenerator,
 								IL10N $l,
-								LoggerInterface $logger,
 								DiscourseAPIService $discourseAPIService,
-								IClientService $clientService,
-								$userId) {
-		parent::__construct($AppName, $request);
-		$this->l = $l;
-		$this->userId = $userId;
-		$this->appData = $appData;
-		$this->serverContainer = $serverContainer;
+								?string $userId) {
+		parent::__construct($appName, $request);
 		$this->config = $config;
-		$this->dbconnection = $dbconnection;
 		$this->urlGenerator = $urlGenerator;
-		$this->logger = $logger;
+		$this->l = $l;
 		$this->discourseAPIService = $discourseAPIService;
-		$this->clientService = $clientService;
+		$this->userId = $userId;
 	}
 
 	/**
@@ -87,8 +78,7 @@ class ConfigController extends Controller {
 			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_id', '');
 			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_name', '');
 		}
-		$response = new DataResponse(1);
-		return $response;
+		return new DataResponse(1);
 	}
 
 	/**
@@ -101,8 +91,7 @@ class ConfigController extends Controller {
 		foreach ($values as $key => $value) {
 			$this->config->setAppValue(Application::APP_ID, $key, $value);
 		}
-		$response = new DataResponse(1);
-		return $response;
+		return new DataResponse(1);
 	}
 
 	/**
@@ -142,9 +131,9 @@ class ConfigController extends Controller {
 				'?discourseToken=error&message=' . urlencode($message)
 			);
 		}
-		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce', '');
+		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce');
 		// decrypt payload
-		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key', '');
+		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key');
 		$decPayload = base64_decode($payload);
 		$rsa = new RSA();
 		$rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
@@ -160,7 +149,7 @@ class ConfigController extends Controller {
 				$accessToken = $payloadArray['key'];
 				$this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
 				// get user info
-				$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
+				$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
 				$info = $this->discourseAPIService->request($url, $accessToken, 'session/current.json', []);
 				if (isset($info['current_user'], $info['current_user']['id'], $info['current_user']['username'])) {
 					$this->config->setUserValue($this->userId, Application::APP_ID, 'user_id', $info['current_user']['id']);
