@@ -2,13 +2,9 @@
 namespace OCA\Discourse\Settings;
 
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\IRequest;
-use OCP\IL10N;
+use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\Settings\ISettings;
-use OCP\Util;
-use OCP\IURLGenerator;
-use OCP\IInitialStateService;
 
 use OCA\Discourse\AppInfo\Application;
 
@@ -17,24 +13,22 @@ use phpseclib\Crypt\RSA;
 
 class Personal implements ISettings {
 
-	private $request;
+	/**
+	 * @var IConfig
+	 */
 	private $config;
-	private $dataDirPath;
-	private $urlGenerator;
-	private $l;
+	/**
+	 * @var IInitialState
+	 */
+	private $initialStateService;
+	/**
+	 * @var string|null
+	 */
+	private $userId;
 
-	public function __construct(
-						string $appName,
-						IL10N $l,
-						IRequest $request,
-						IConfig $config,
-						IURLGenerator $urlGenerator,
-						IInitialStateService $initialStateService,
-						$userId) {
-		$this->appName = $appName;
-		$this->urlGenerator = $urlGenerator;
-		$this->request = $request;
-		$this->l = $l;
+	public function __construct(IConfig $config,
+								IInitialState $initialStateService,
+								?string $userId) {
 		$this->config = $config;
 		$this->initialStateService = $initialStateService;
 		$this->userId = $userId;
@@ -43,17 +37,17 @@ class Personal implements ISettings {
 	/**
 	 * @return TemplateResponse
 	 */
-	public function getForm() {
-		$token = $this->config->getUserValue($this->userId, Application::APP_ID, 'token', '');
-		$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url', '');
-		$userName = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name', '');
+	public function getForm(): TemplateResponse {
+		$token = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
+		$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
+		$userName = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name');
 		$searchTopicsEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_topics_enabled', '0');
 		$searchPostsEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_posts_enabled', '0');
 
 		// for OAuth
-		$clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id', '');
-		$pubKey = $this->config->getAppValue(Application::APP_ID, 'public_key', '');
-		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key', '');
+		$clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id');
+		$pubKey = $this->config->getAppValue(Application::APP_ID, 'public_key');
+		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key');
 
 		if ($clientID === '') {
 			// random string of 32 chars length
@@ -82,7 +76,7 @@ class Personal implements ISettings {
 			'search_posts_enabled' => ($searchPostsEnabled === '1'),
 			'search_topics_enabled' => ($searchTopicsEnabled === '1'),
 		];
-		$this->initialStateService->provideInitialState($this->appName, 'user-config', $userConfig);
+		$this->initialStateService->provideInitialState('user-config', $userConfig);
 		return new TemplateResponse(Application::APP_ID, 'personalSettings');
 	}
 
