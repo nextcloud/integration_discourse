@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "Discourse 帖子",
     "Discourse topics" : "Discourse 主題",
     "posts" : "帖子",
+    "Bad HTTP method" : "不正確的 HTTP 方法",
     "Bad credentials" : "錯誤的身分驗證",
     "Connected accounts" : "已連線的帳號",
     "Discourse integration" : "Discourse 整合",

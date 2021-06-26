@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "Příspěvky v Discourse",
     "Discourse topics" : "Témata v Discourse",
     "posts" : "zprávy",
+    "Bad HTTP method" : "Nesprávná HTTP metoda",
     "Bad credentials" : "Nesprávné přihlašovací údaje",
     "Connected accounts" : "Propojené účty",
     "Discourse integration" : "Napojení na Discourse",
