@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "Discourse iletileri",
     "Discourse topics" : "Discourse başlıkları",
     "posts" : "ileti",
+    "Bad HTTP method" : "HTTP yöntemi hatalı",
     "Bad credentials" : "Kimlik doğrulama bilgileri hatalı",
     "Connected accounts" : "Bağlı hesaplar",
     "Discourse integration" : "Discourse bütünleştirmesi",
