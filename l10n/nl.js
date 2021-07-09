@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "Discourse berichten",
     "Discourse topics" : "Discourse onderwerpen",
     "posts" : "berichten",
+    "Bad HTTP method" : "Foute HTTP methode",
     "Bad credentials" : "Foute inloggegevens",
     "Connected accounts" : "Verbonden accounts",
     "Discourse integration" : "Discourse integratie",
