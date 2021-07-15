@@ -1,0 +1,28 @@
+{ "translations": {
+    "Discourse notifications" : "Discourse upozornenia",
+    "Discourse posts" : "Discourse príspevky",
+    "Discourse topics" : "Discourse témy",
+    "posts" : "príspevky",
+    "Bad HTTP method" : "Zlá metóda HTTP",
+    "Bad credentials" : "Nesprávne prihlasovacie údaje",
+    "Connected accounts" : "Prepojené účty",
+    "Discourse integration" : "Discourse integrácia",
+    "Discourse instance address" : "Adresa inštancie Discourse",
+    "Connect to Discourse" : "Pripojiť k Discourse",
+    "Connected as {username}" : "Pripojený ako {username}",
+    "Disconnect from Discourse" : "Odpojiť od Discourse",
+    "Enable searching for topics" : "Povoliť vyhľadávanie tém",
+    "Enable searching for posts" : "Povoliť vyhľadávanie príspevkov",
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Varovanie, všetko čo napíšete do vyhľadávania bude odoslané do Discourse inštancie.",
+    "Successfully connected to Discourse!" : "Úspešne pripojené k Discourse!",
+    "Discourse API-key could not be obtained:" : "Discourse kľúč k API sa nepodarilo získať:",
+    "Nextcloud Discourse integration on {ncUrl}" : "Integrácia Nextcloud Discourse na {ncUrl}",
+    "Discourse URL is invalid" : "Discourse URL je neplatná",
+    "Discourse options saved" : "Nastavenia Discourse boli uložené",
+    "Failed to save Discourse options" : "Nepodarilo sa uložiť nastavenia Discourse",
+    "No Discourse account connected" : "Nie je pripojený žiadny Discourse účet",
+    "Error connecting to Discourse" : "Chyba pri pripájaní k Discourse",
+    "No Discourse notifications!" : "Žiadne upozornenia z Discourse!",
+    "Failed to get Discourse notifications" : "Chyba pri získavaní upozornení z Discourse"
+},"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
+}
