@@ -1,6 +1,8 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Error during authentication exchanges" : "Chyba počas výmeny autentifikácie",
+    "No API key returned by Discourse" : "Discurse nevrátil žiadny API kľúč",
     "Discourse notifications" : "Discourse upozornenia",
     "Discourse posts" : "Discourse príspevky",
     "Discourse topics" : "Discourse témy",
@@ -9,6 +11,9 @@ OC.L10N.register(
     "Bad credentials" : "Nesprávne prihlasovacie údaje",
     "Connected accounts" : "Prepojené účty",
     "Discourse integration" : "Discourse integrácia",
+    "Integration of Discourse forum and mailing list management system" : "Integrácia s Discourse diskusným fórom a systémom správy mailinglistu",
+    "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Integrácia s Discourse poskytuje miniaplikáciu pre dashboard ktorá zobrazuje vaše najdôležitejšie oznámenia.\n   a schopnosť nájsť témy a príspevky pomocou zjednoteného vyhľadávania Nextcloudu.",
+    "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Ak sa chcete autentizovať v Discourse, uistite sa, že ste prijali registráciu protokolu v hornej časti tejto stránky.",
     "Discourse instance address" : "Adresa inštancie Discourse",
     "Connect to Discourse" : "Pripojiť k Discourse",
     "Connected as {username}" : "Pripojený ako {username}",
