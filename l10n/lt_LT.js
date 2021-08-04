@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "„Discourse“ įrašai",
     "Discourse topics" : "„Discourse“ temos",
     "posts" : "įrašai",
+    "Bad HTTP method" : "Blogas HTTP metodas",
     "Bad credentials" : "Blogi prisijungimo duomenys",
     "Connected accounts" : "Prijungtos paskyros",
     "Discourse integration" : "„Discourse“ integracija",
