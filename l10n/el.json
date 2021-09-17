@@ -5,6 +5,7 @@
     "Discourse posts" : "Δημοσιεύσεις Discourse",
     "Discourse topics" : "Θέματα Discourse",
     "posts" : "δημοσιεύσεις",
+    "Bad HTTP method" : "Κακή μέθοδος HTTP",
     "Bad credentials" : "Εσφαλμένα διαπιστευτήρια",
     "Connected accounts" : "Συνδεδεμένοι λογαριασμοί",
     "Discourse integration" : "Ενσωμάτωση Discourse",
@@ -28,12 +29,15 @@
     "Successfully connected to Discourse!" : "Επιτυχημένη σύνδεση στο Discourse!",
     "Discourse API-key could not be obtained:" : "Δεν ήταν δυνατή η λήψη του κλειδιού API του Discourse:",
     "Nextcloud Discourse integration on {ncUrl}" : "Ενσωμάτωση Discourse Nextcloud στο {ncUrl}",
+    "Discourse URL is invalid" : "Μη έγκυρη URL του Discourse",
     "Discourse options saved" : "Αποθηκεύτηκαν οι επιλογές του Discourse",
     "Failed to save Discourse options" : "Αποτυχία αποθήκευσης επιλογών Discourse",
     "Failed to save Discourse nonce" : "Αποτυχία αποθήκευσης του Discourse nonce",
     "No Discourse account connected" : "Κανένας συνδεδεμένος λογαριασμός Discourse",
     "Error connecting to Discourse" : "Σφάλμα σύνδεσης στο Discourse",
     "No Discourse notifications!" : "Καμία ειδοποίηση Discourse!",
-    "Failed to get Discourse notifications" : "Αποτυχία λήψης ειδοποιήσεων Discourse"
+    "Failed to get Discourse notifications" : "Αποτυχία λήψης ειδοποιήσεων Discourse",
+    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} αντικείμενο στα εισερχόμενα του διαχειριστή σας","{nb} αντικείμενα στα εισερχόμενα του διαχειριστή σας"],
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} αντικείμενο στα εισερχόμενα εποπτών σας","{nb} αντικείμενα στα εισερχόμενα εποπτών σας"]
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
