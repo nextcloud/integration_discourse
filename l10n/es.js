@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "Entradas de Discourse",
     "Discourse topics" : "Temas de Discourse",
     "posts" : "entradas",
+    "Bad HTTP method" : "Método HTTP incorrecto",
     "Bad credentials" : "Credenciales incorrectas",
     "Connected accounts" : "Cuentas conectadas",
     "Discourse integration" : "Integración con Discourse",
