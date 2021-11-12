@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.2 – 2021-11-12
+### Changed
+- bump max NC version to 24
+- improve release action
+- clarify package dependencies
+
 ## 1.0.1 – 2021-06-28
 ### Changed
 - stop polling widget content when document is hidden
