@@ -120,15 +120,30 @@ class DiscourseAPIService {
 	 * @param string $url
 	 * @param string $accessToken
 	 * @param string $username
-	 * @return string
+	 * @return array
 	 */
-	public function getDiscourseAvatar(string $url, string $accessToken, string $username): string {
+	public function getDiscourseAvatar(string $url, string $accessToken, string $username): array {
 		$result = $this->request($url, $accessToken, 'users/'.$username.'.json');
 		if (isset($result['user']) && isset($result['user']['avatar_template'])) {
 			$avatarUrl = $url . str_replace('{size}', '32', $result['user']['avatar_template']);
-			return $this->client->get($avatarUrl)->getBody();
+			try {
+				$response = $this->client->get($avatarUrl);
+				$avatar = ['content' => $response->getBody()];
+				file_put_contents('/tmp/a', json_encode($response->getHeaders()));
+				$ct = $response->getHeader('Content-Type');
+				if ($ct) {
+					if (is_array($ct) && count($ct) > 0) {
+						$ct = $ct[0];
+					}
+					$avatar['mime'] = $ct;
+				}
+				return $avatar;
+			} catch (Exception $e) {
+				$this->logger->warning('Discourse API error : '.$e->getMessage(), array('app' => $this->appName));
+				return ['content' => ''];
+			}
 		}
-		return '';
+		return [];
 	}
 
 	/**

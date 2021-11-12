@@ -11,6 +11,7 @@
 
 namespace OCA\Discourse\Controller;
 
+use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\IConfig;
 use OCP\IRequest;
@@ -93,7 +94,12 @@ class DiscourseAPIController extends Controller {
 	 * @return DataDisplayResponse
 	 */
 	public function getDiscourseAvatar(string $username): DataDisplayResponse {
-		$response = new DataDisplayResponse($this->discourseAPIService->getDiscourseAvatar($this->discourseUrl, $this->accessToken, $username));
+		$avatar = $this->discourseAPIService->getDiscourseAvatar($this->discourseUrl, $this->accessToken, $username);
+		$headers = [];
+		if (isset($avatar['mime'])) {
+			$headers['Content-Type'] = $avatar['mime'];
+		}
+		$response = new DataDisplayResponse($avatar['content'] ?? '', Http::STATUS_OK, $headers);
 		$response->cacheFor(60*60*24);
 		return $response;
 	}
