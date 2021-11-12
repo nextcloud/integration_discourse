@@ -5,7 +5,7 @@
     <summary>Integration of Discourse forum and mailing list management system</summary>
     <description><![CDATA[Discourse integration provides a dashboard widget displaying your important notifications
     and the ability to find topics and posts with Nextcloud's unified search.]]></description>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Discourse</namespace>
@@ -18,9 +18,6 @@
     <bugs>https://github.com/nextcloud/integration_discourse/issues</bugs>
     <screenshot>https://github.com/nextcloud/integration_discourse/raw/master/img/screenshot1.jpg</screenshot>
     <dependencies>
-        <database min-version="9.4">pgsql</database>
-        <database>sqlite</database>
-        <database min-version="5.5">mysql</database>
         <nextcloud min-version="22" max-version="24"/>
     </dependencies>
     <settings>
