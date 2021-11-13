@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Discourse notifications" : "Discourse-ilmoitukset",
     "posts" : "julkaisut",
+    "Bad HTTP method" : "Virheellinen HTTP-metodi",
     "Bad credentials" : "Virheelliset kirjautumistiedot",
     "Connected accounts" : "Yhdistetyt tilit",
     "Discourse integration" : "Discourse-integraatio",
