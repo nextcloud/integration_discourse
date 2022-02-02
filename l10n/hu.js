@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "Discourse bejegyzések",
     "Discourse topics" : "Discourse témák",
     "posts" : "bejegyzések",
+    "Bad HTTP method" : "Hibás HTTP metódus",
     "Bad credentials" : "Hibás hitelesítő adatok",
     "Connected accounts" : "Kapcsolt fiókok",
     "Discourse integration" : "Discourse integráció",
