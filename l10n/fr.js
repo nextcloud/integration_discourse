@@ -42,4 +42,4 @@ OC.L10N.register(
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} élément dans votre boîte de réception administrateurs","{nb} éléments dans votre boîte de réception administrateurs"],
     "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} élément dans votre boîte de réception modérateurs","{nb} éléments dans votre boîte de réception modérateurs"]
 },
-"nplurals=3; plural=(n==0 || n==1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
+"nplurals=2; plural=(n > 1);");
