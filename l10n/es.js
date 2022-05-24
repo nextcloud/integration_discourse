@@ -39,7 +39,7 @@ OC.L10N.register(
     "Error connecting to Discourse" : "Error al conectar con Discourse",
     "No Discourse notifications!" : "No hay notificaciones de Discourse.",
     "Failed to get Discourse notifications" : "Fallo al obtener las notificaciones de Discourse",
-    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} ítem en tu bandeja de entrada de administración","{nb} ítems en tu bandeja de entrada de administración"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} ítem en tu bandeja de entrada de moderación","{nb} ítems en tu bandeja de entrada de moderación"]
+    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} ítem en tu bandeja de entrada de administración","{nb} ítems en tu bandeja de entrada de administración","{nb} ítems en tu bandeja de entrada de administración"],
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} ítem en tu bandeja de entrada de moderación","{nb} ítems en tu bandeja de entrada de moderación","{nb} ítems en tu bandeja de entrada de moderación"]
 },
-"nplurals=2; plural=(n != 1);");
+"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
