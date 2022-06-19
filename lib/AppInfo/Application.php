@@ -17,6 +17,7 @@ use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCA\Discourse\Dashboard\DiscourseWidget;
 use OCA\Discourse\Search\DiscourseSearchTopicsProvider;
 use OCA\Discourse\Search\DiscourseSearchPostsProvider;
+use OCP\Util;
 
 /**
  * Class Application
@@ -43,6 +44,7 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function boot(IBootContext $context): void {
+		Util::addStyle(self::APP_ID, 'discourse-search');
 	}
 }
 

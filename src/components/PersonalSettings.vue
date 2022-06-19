@@ -45,23 +45,27 @@
 					:placeholder="t('integration_discourse', 'Discourse instance address')"
 					@input="onInput">
 			</div>
-			<button v-if="showOAuth"
+			<Button v-if="showOAuth"
 				id="discourse-oauth"
 				:class="{ loading: loading }"
 				:disabled="loading === true"
 				@click="onOAuthClick">
-				<span class="icon icon-external" />
+				<template #icon>
+					<OpenInNewIcon />
+				</template>
 				{{ t('integration_discourse', 'Connect to Discourse') }}
-			</button>
+			</Button>
 			<div v-if="connected" class="discourse-grid-form">
 				<label class="discourse-connected">
 					<a class="icon icon-checkmark-color" />
 					{{ t('integration_discourse', 'Connected as {username}', { username: state.user_name }) }}
 				</label>
-				<button id="discourse-rm-cred" @click="onLogoutClick">
-					<span class="icon icon-close" />
+				<Button id="discourse-rm-cred" @click="onLogoutClick">
+					<template #icon>
+						<CloseIcon />
+					</template>
 					{{ t('integration_discourse', 'Disconnect from Discourse') }}
-				</button>
+				</Button>
 			</div>
 			<br>
 			<div v-if="connected" id="discourse-search-block">
@@ -91,6 +95,9 @@
 </template>
 
 <script>
+import OpenInNewIcon from 'vue-material-design-icons/OpenInNew'
+import CloseIcon from 'vue-material-design-icons/Close'
+import Button from '@nextcloud/vue/dist/Components/Button'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
@@ -102,6 +109,9 @@ export default {
 	name: 'PersonalSettings',
 
 	components: {
+		Button,
+		OpenInNewIcon,
+		CloseIcon,
 	},
 
 	props: [],
@@ -295,6 +305,7 @@ export default {
 	background-size: 23px 23px;
 	height: 23px;
 	margin-bottom: -4px;
+	filter: var(--background-invert-if-dark);
 }
 
 body.theme--dark .icon-discourse {

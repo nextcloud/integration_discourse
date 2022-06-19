@@ -10,8 +10,13 @@
 				<template #desc>
 					{{ emptyContentMessage }}
 					<div v-if="state === 'no-token' || state === 'error'" class="connect-button">
-						<a class="button" :href="settingsUrl">
-							{{ t('integration_discourse', 'Connect to Discourse') }}
+						<a :href="settingsUrl">
+							<Button>
+								<template #icon>
+									<LoginVariantIcon />
+								</template>
+								{{ t('integration_discourse', 'Connect to Discourse') }}
+							</Button>
 						</a>
 					</div>
 				</template>
@@ -21,8 +26,10 @@
 </template>
 
 <script>
+import LoginVariantIcon from 'vue-material-design-icons/LoginVariant'
+import Button from '@nextcloud/vue/dist/Components/Button'
 import axios from '@nextcloud/axios'
-import { generateUrl } from '@nextcloud/router'
+import { generateUrl, imagePath } from '@nextcloud/router'
 import { DashboardWidget } from '@nextcloud/vue-dashboard'
 import { showError } from '@nextcloud/dialogs'
 import '@nextcloud/dialogs/styles/toast.scss'
@@ -49,7 +56,10 @@ export default {
 	name: 'Dashboard',
 
 	components: {
-		DashboardWidget, EmptyContent,
+		DashboardWidget,
+		EmptyContent,
+		Button,
+		LoginVariantIcon,
 	},
 
 	props: {
@@ -68,7 +78,6 @@ export default {
 			loop: null,
 			state: 'loading',
 			settingsUrl: generateUrl('/settings/user/connected-accounts'),
-			themingColor: OCA.Theming ? OCA.Theming.color.replace('#', '') : '0082C9',
 			hovered: {},
 			windowVisibility: true,
 		}
@@ -303,21 +312,21 @@ export default {
 		},
 		getNotificationTypeImage(n) {
 			if ([TYPES.PRIVATE_MESSAGE].includes(n.notification_type)) {
-				return generateUrl('/svg/integration_discourse/message?color=ffffff')
+				return imagePath('integration_discourse', 'message.svg')
 			} else if (n.notification_type === TYPES.MENTION) {
-				return generateUrl('/svg/integration_discourse/arobase?color=ffffff')
+				return imagePath('integration_discourse', 'arobase.svg')
 			} else if (n.notification_type === TYPES.LIKE) {
-				return generateUrl('/svg/integration_discourse/heart?color=ffffff')
+				return imagePath('integration_discourse', 'heart.svg')
 			} else if ([TYPES.REPLY, TYPES.REPLY_2].includes(n.notification_type)) {
-				return generateUrl('/svg/integration_discourse/reply?color=ffffff')
+				return imagePath('integration_discourse', 'reply.svg')
 			} else if (n.notification_type === TYPES.BADGE_EARNED) {
-				return generateUrl('/svg/integration_discourse/badge?color=ffffff')
+				return imagePath('integration_discourse', 'badge.svg')
 			} else if (n.notification_type === TYPES.SOLVED) {
-				return generateUrl('/svg/integration_discourse/solved?color=ffffff')
+				return imagePath('integration_discourse', 'solved.svg')
 			} else if (n.notification_type === TYPES.MODERATOR_OR_ADMIN_INBOX) {
-				return generateUrl('/svg/integration_discourse/group?color=ffffff')
+				return imagePath('integration_discourse', 'group.svg')
 			}
-			return generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
+			return imagePath('integration_discourse', 'sound-border.svg')
 		},
 		getDisplayAndOriginalUsername(n) {
 			if (n.data.display_username && n.data.display_username !== n.data.original_username) {
