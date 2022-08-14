@@ -29,7 +29,7 @@
     "Successfully connected to Discourse!" : "Úspěšně spojeno s Discourse!",
     "Discourse API-key could not be obtained:" : "Nepodařilo se získat klíč k API Discourse:",
     "Nextcloud Discourse integration on {ncUrl}" : "Napojení Nextcloud na Discourse na adrese {ncUrl}",
-    "Discourse URL is invalid" : "URL Discourse je neplatná",
+    "Discourse URL is invalid" : "URL adresa Discourse není platná",
     "Discourse options saved" : "Předvolby pro Discourse uloženy",
     "Failed to save Discourse options" : "Nepodařilo se uložit předvolby pro Discourse",
     "Failed to save Discourse nonce" : "Nepodařilo se uložit Discourse nonce",
