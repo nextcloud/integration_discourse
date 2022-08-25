@@ -1,7 +1,7 @@
 <template>
 	<div id="discourse_prefs" class="section">
 		<h2>
-			<a class="icon icon-discourse" />
+			<DiscourseIcon />
 			{{ t('integration_discourse', 'Discourse integration') }}
 		</h2>
 		<p v-if="!connected" class="settings-hint">
@@ -9,9 +9,13 @@
 			<br>
 			{{ t('integration_discourse', 'Ask the Discourse admin to add this URI to the "allowed_user_api_auth_redirects" list in admin settings:') }}
 			<br><b>"web+nextclouddiscourse://auth-redirect"</b>
-			<br><br>
-			<span class="icon icon-details" />
+		</p>
+		<br>
+		<p v-if="!connected" class="settings-hint line">
+			<InformationOutlineIcon :size="20" />
 			{{ t('integration_discourse', 'Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse.') }}
+		</p>
+		<p v-if="!connected" class="settings-hint">
 			<span v-if="isChromium">
 				<br>
 				{{ t('integration_discourse', 'With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open "web+nextclouddiscourse" links.') }}
@@ -33,9 +37,9 @@
 			</span>
 		</p>
 		<div id="discourse-content">
-			<div class="discourse-grid-form">
+			<div class="line">
 				<label for="discourse-url">
-					<a class="icon icon-link" />
+					<EarthIcon :size="20" />
 					{{ t('integration_discourse', 'Discourse instance address') }}
 				</label>
 				<input id="discourse-url"
@@ -55,12 +59,12 @@
 				</template>
 				{{ t('integration_discourse', 'Connect to Discourse') }}
 			</NcButton>
-			<div v-if="connected" class="discourse-grid-form">
+			<div v-if="connected" class="line">
 				<label class="discourse-connected">
-					<a class="icon icon-checkmark-color" />
+					<CheckIcon :size="20" />
 					{{ t('integration_discourse', 'Connected as {username}', { username: state.user_name }) }}
 				</label>
-				<NcButton id="discourse-rm-cred" @click="onLogoutClick">
+				<NcButton @click="onLogoutClick">
 					<template #icon>
 						<CloseIcon />
 					</template>
@@ -69,24 +73,19 @@
 			</div>
 			<br>
 			<div v-if="connected" id="discourse-search-block">
-				<input
-					id="search-discourse-topics"
-					type="checkbox"
-					class="checkbox"
+				<CheckboxRadioSwitch
 					:checked="state.search_topics_enabled"
-					@input="onSearchTopicsChange">
-				<label for="search-discourse-topics">{{ t('integration_discourse', 'Enable searching for topics') }}</label>
-				<br><br>
-				<input
-					id="search-discourse-posts"
-					type="checkbox"
-					class="checkbox"
+					@update:checked="onCheckboxChanged($event, 'search_topics_enabled')">
+					{{ t('integration_discourse', 'Enable unified search for topics') }}
+				</CheckboxRadioSwitch>
+				<CheckboxRadioSwitch
 					:checked="state.search_posts_enabled"
-					@input="onSearchPostsChange">
-				<label for="search-discourse-posts">{{ t('integration_discourse', 'Enable searching for posts') }}</label>
-				<br><br>
-				<p v-if="state.search_topics_enabled || state.search_posts_enabled" class="settings-hint">
-					<span class="icon icon-details" />
+					@update:checked="onCheckboxChanged($event, 'search_posts_enabled')">
+					{{ t('integration_discourse', 'Enable searching for posts') }}
+				</CheckboxRadioSwitch>
+				<br>
+				<p v-if="state.search_topics_enabled || state.search_posts_enabled" class="settings-hint line">
+					<InformationOutlineIcon :size="20" />
 					{{ t('integration_discourse', 'Warning, everything you type in the search bar will be sent to your Discourse instance.') }}
 				</p>
 			</div>
@@ -95,14 +94,19 @@
 </template>
 
 <script>
+import CheckIcon from 'vue-material-design-icons/Check.vue'
+import EarthIcon from 'vue-material-design-icons/Earth.vue'
+import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
 import OpenInNewIcon from 'vue-material-design-icons/OpenInNew.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import NcButton from '@nextcloud/vue/dist/Components/Button.js'
+import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch.js'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import { delay, detectBrowser } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
+import DiscourseIcon from './icons/DiscourseIcon.vue'
 
 const browser = detectBrowser()
 
@@ -110,9 +114,14 @@ export default {
 	name: 'PersonalSettings',
 
 	components: {
+		DiscourseIcon,
 		NcButton,
+		CheckboxRadioSwitch,
 		OpenInNewIcon,
 		CloseIcon,
+		InformationOutlineIcon,
+		EarthIcon,
+		CheckIcon,
 	},
 
 	props: [],
@@ -176,6 +185,10 @@ export default {
 		onSearchPostsChange(e) {
 			this.state.search_posts_enabled = e.target.checked
 			this.saveOptions({ search_posts_enabled: this.state.search_posts_enabled ? '1' : '0' })
+		},
+		onCheckboxChanged(newValue, key) {
+			this.state[key] = newValue
+			this.saveOptions({ [key]: this.state[key] ? '1' : '0' })
 		},
 		onLogoutClick() {
 			this.state.token = ''
@@ -275,46 +288,38 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.discourse-grid-form label {
-	line-height: 38px;
-}
+#discourse_prefs {
+	h2 {
+		display: flex;
+		align-items: center;
+		.discourse-icon {
+			margin-right: 8px;
+		}
+	}
 
-.discourse-grid-form input {
-	width: 100%;
-}
+	.line {
+		display: flex;
+		align-items: center;
+		> label {
+			width: 300px;
+			display: flex;
+			align-items: center;
+			span {
+				margin-right: 4px;
+			}
+		}
+		> input {
+			width: 250px;
+		}
+		&.settings-hint {
+			span {
+				margin-right: 4px;
+			}
+		}
+	}
 
-.discourse-grid-form {
-	max-width: 600px;
-	display: grid;
-	grid-template: 1fr / 1fr 1fr;
-	button .icon {
-		margin-bottom: -1px;
+	#discourse-content {
+		margin-left: 40px;
 	}
 }
-
-#discourse_prefs .icon {
-	display: inline-block;
-	width: 32px;
-}
-
-#discourse_prefs .grid-form .icon {
-	margin-bottom: -3px;
-}
-
-.icon-discourse {
-	background-image: url(./../../img/app-dark.svg);
-	background-size: 23px 23px;
-	height: 23px;
-	margin-bottom: -4px;
-	filter: var(--background-invert-if-dark);
-}
-
-body.theme--dark .icon-discourse {
-	background-image: url(./../../img/app.svg);
-}
-
-#discourse-content {
-	margin-left: 40px;
-}
-
 </style>
