@@ -41,6 +41,7 @@ class Personal implements ISettings {
 		$token = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
 		$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
 		$userName = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name');
+		$navigationEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'navigation_enabled', '0');
 		$searchTopicsEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_topics_enabled', '0');
 		$searchPostsEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_posts_enabled', '0');
 
@@ -73,6 +74,7 @@ class Personal implements ISettings {
 			'client_id' => $clientID,
 			'public_key' => $pubKey,
 			'user_name' => $userName,
+			'navigation_enabled' => ($navigationEnabled === '1'),
 			'search_posts_enabled' => ($searchPostsEnabled === '1'),
 			'search_topics_enabled' => ($searchTopicsEnabled === '1'),
 		];

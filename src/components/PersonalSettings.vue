@@ -37,6 +37,11 @@
 			</span>
 		</p>
 		<div id="discourse-content">
+			<CheckboxRadioSwitch
+				:checked="state.navigation_enabled"
+				@update:checked="onCheckboxChanged($event, 'navigation_enabled')">
+				{{ t('integration_discourse', 'Enable navigation link') }}
+			</CheckboxRadioSwitch>
 			<div class="line">
 				<label for="discourse-url">
 					<EarthIcon :size="20" />
@@ -178,14 +183,6 @@ export default {
 	},
 
 	methods: {
-		onSearchTopicsChange(e) {
-			this.state.search_topics_enabled = e.target.checked
-			this.saveOptions({ search_topics_enabled: this.state.search_topics_enabled ? '1' : '0' })
-		},
-		onSearchPostsChange(e) {
-			this.state.search_posts_enabled = e.target.checked
-			this.saveOptions({ search_posts_enabled: this.state.search_posts_enabled ? '1' : '0' })
-		},
 		onCheckboxChanged(newValue, key) {
 			this.state[key] = newValue
 			this.saveOptions({ [key]: this.state[key] ? '1' : '0' })
