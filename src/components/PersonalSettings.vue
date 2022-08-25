@@ -45,7 +45,7 @@
 					:placeholder="t('integration_discourse', 'Discourse instance address')"
 					@input="onInput">
 			</div>
-			<Button v-if="showOAuth"
+			<NcButton v-if="showOAuth"
 				id="discourse-oauth"
 				:class="{ loading: loading }"
 				:disabled="loading === true"
@@ -54,18 +54,18 @@
 					<OpenInNewIcon />
 				</template>
 				{{ t('integration_discourse', 'Connect to Discourse') }}
-			</Button>
+			</NcButton>
 			<div v-if="connected" class="discourse-grid-form">
 				<label class="discourse-connected">
 					<a class="icon icon-checkmark-color" />
 					{{ t('integration_discourse', 'Connected as {username}', { username: state.user_name }) }}
 				</label>
-				<Button id="discourse-rm-cred" @click="onLogoutClick">
+				<NcButton id="discourse-rm-cred" @click="onLogoutClick">
 					<template #icon>
 						<CloseIcon />
 					</template>
 					{{ t('integration_discourse', 'Disconnect from Discourse') }}
-				</Button>
+				</NcButton>
 			</div>
 			<br>
 			<div v-if="connected" id="discourse-search-block">
@@ -95,21 +95,22 @@
 </template>
 
 <script>
-import OpenInNewIcon from 'vue-material-design-icons/OpenInNew'
-import CloseIcon from 'vue-material-design-icons/Close'
-import Button from '@nextcloud/vue/dist/Components/Button'
+import OpenInNewIcon from 'vue-material-design-icons/OpenInNew.vue'
+import CloseIcon from 'vue-material-design-icons/Close.vue'
+import NcButton from '@nextcloud/vue/dist/Components/Button.js'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
-import { delay, detectBrowser } from '../utils'
+import { delay, detectBrowser } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
-import '@nextcloud/dialogs/styles/toast.scss'
+
+const browser = detectBrowser()
 
 export default {
 	name: 'PersonalSettings',
 
 	components: {
-		Button,
+		NcButton,
 		OpenInNewIcon,
 		CloseIcon,
 	},
@@ -126,8 +127,8 @@ export default {
 			redirect_uri: 'web+nextclouddiscourse://auth-redirect',
 			chromiumImagePath: imagePath('integration_discourse', 'chromium.png'),
 			firefoxImagePath: imagePath('integration_discourse', 'firefox.png'),
-			isChromium: detectBrowser() === 'chrome',
-			isFirefox: detectBrowser() === 'firefox',
+			isChromium: browser === 'chrome',
+			isFirefox: browser === 'firefox',
 		}
 	},
 
