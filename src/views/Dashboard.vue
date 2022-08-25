@@ -5,8 +5,10 @@
 		:loading="state === 'loading'">
 		<template #empty-content>
 			<EmptyContent
-				v-if="emptyContentMessage"
-				:icon="emptyContentIcon">
+				v-if="emptyContentMessage">
+				<template #icon>
+					<component :is="emptyContentIcon" />
+				</template>
 				<template #desc>
 					{{ emptyContentMessage }}
 					<div v-if="state === 'no-token' || state === 'error'" class="connect-button">
@@ -27,6 +29,10 @@
 
 <script>
 import LoginVariantIcon from 'vue-material-design-icons/LoginVariant.vue'
+import CheckIcon from 'vue-material-design-icons/Check.vue'
+import CloseIcon from 'vue-material-design-icons/Close.vue'
+
+import DiscourseIcon from '../components/icons/DiscourseIcon.vue'
 
 import NcButton from '@nextcloud/vue/dist/Components/Button.js'
 import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent.js'
@@ -172,13 +178,13 @@ export default {
 		},
 		emptyContentIcon() {
 			if (this.state === 'no-token') {
-				return 'icon-discourse'
+				return DiscourseIcon
 			} else if (this.state === 'error') {
-				return 'icon-close'
+				return CloseIcon
 			} else if (this.state === 'ok') {
-				return 'icon-checkmark'
+				return CheckIcon
 			}
-			return 'icon-checkmark'
+			return CheckIcon
 		},
 	},
 

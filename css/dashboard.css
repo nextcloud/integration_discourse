@@ -1,8 +1,8 @@
 .icon-discourse {
-    background-image: url(./../img/app-dark.svg);
+    background-image: url('../img/app-dark.svg');
 	filter: var(--background-invert-if-dark);
 }
 
 body.theme--dark .icon-discourse {
-    background-image: url(./../img/app.svg);
+    background-image: url('../img/app.svg');
 }

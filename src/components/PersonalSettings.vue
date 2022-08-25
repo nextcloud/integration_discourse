@@ -94,10 +94,10 @@
 </template>
 
 <script>
-import CheckIcon from 'vue-material-design-icons/Check.vue'
 import EarthIcon from 'vue-material-design-icons/Earth.vue'
 import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
 import OpenInNewIcon from 'vue-material-design-icons/OpenInNew.vue'
+import CheckIcon from 'vue-material-design-icons/Check.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import NcButton from '@nextcloud/vue/dist/Components/Button.js'
 import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch.js'
