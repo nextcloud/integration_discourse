@@ -6,6 +6,7 @@ OC.L10N.register(
     "posts" : "投稿",
     "Bad credentials" : "不正な資格情報",
     "Connected accounts" : "接続済みアカウント",
+    "Enable navigation link" : "ナビゲーションリンクを有効化",
     "Connect to Discourse" : "Discourseに接続",
     "Connected as {username}" : "{username}として接続しました",
     "Disconnect from Discourse" : "Discourseから接続を解除",

@@ -25,7 +25,6 @@ OC.L10N.register(
     "Connect to Discourse" : "Verbinden met Discourse",
     "Connected as {username}" : "Verbonden als {username}",
     "Disconnect from Discourse" : "Verbinding met Discourse verbreken",
-    "Enable searching for topics" : "Inschakelen zoeken naar onderwerpen",
     "Enable searching for posts" : "Inschakelen zoeken naar berichten",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Let op: alles wat je intypt in de zoekbalk wordt naar de Discourseserver gestuurd.",
     "Successfully connected to Discourse!" : "Succesvol verbonden met Discourse!",

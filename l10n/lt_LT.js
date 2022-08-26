@@ -15,7 +15,6 @@ OC.L10N.register(
     "Connect to Discourse" : "Prisijungti prie „Discourse“",
     "Connected as {username}" : "Prisijungta kaip {username}",
     "Disconnect from Discourse" : "Atsijungti nuo „Discourse“",
-    "Enable searching for topics" : "Įjungti temų paiešką",
     "Enable searching for posts" : "Įjungti įrašų paiešką",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Įspėjimas: viskas, ką rašysite paieškos juostoje, bus siunčiama į jūsų „Discourse“ egzempliorių.",
     "Successfully connected to Discourse!" : "Sėkmingai prisijungta prie „Discourse“!",

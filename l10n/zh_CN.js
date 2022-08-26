@@ -21,11 +21,11 @@ OC.L10N.register(
     "Then authorize this page to open \"web+nextclouddiscourse\" links." : "然后授权这此页面打开 “web+nextcloudtwitter” 链接。 ",
     "If you still don't manage to get the protocol registered, check your settings on this page:" : "如果您仍然不能成功注册协议，请在此页面检查您的设置:",
     "With Firefox, you should see a bar on top of this page to authorize this page to open \"web+nextclouddiscourse\" links." : "在Firefox中，您应该会在页面顶部看到一个授权该页面打开“web+nextcloudtwitter”链接的栏。",
+    "Enable navigation link" : "启用应用图标链接至实例",
     "Discourse instance address" : "Discourse 实例地址",
     "Connect to Discourse" : "连接到 Discourse",
     "Connected as {username}" : "以 {用户名}连接成功",
     "Disconnect from Discourse" : "与 Discourse 断开连接",
-    "Enable searching for topics" : "启用主题搜寻",
     "Discourse API-key could not be obtained:" : "无法获取 Discourse API-key：",
     "Error connecting to Discourse" : "在连接到会话时发生错误",
     "No Discourse notifications!" : "暂无会话通知"
