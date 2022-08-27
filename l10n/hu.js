@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discourse",
     "Error during authentication exchanges" : "Hiba történt a hitelesítési üzenetváltás során",
     "No API key returned by Discourse" : "A Discourse nem adott vissza API-kulcsot",
     "Discourse notifications" : "Discourse értesítések",
@@ -26,6 +27,7 @@ OC.L10N.register(
     "Connect to Discourse" : "Kapcsolódás a Discourse-hoz",
     "Connected as {username}" : "Kapcsolódva {user} felhasználóként",
     "Disconnect from Discourse" : "Kapcsolat bontása a Discourse-szal",
+    "Enable unified search for topics" : "Egyesített kereső engedélyezése a témákhoz",
     "Enable searching for posts" : "Bejegyzések keresésének engedélyezése",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Figyelem, minden amit a keresősávba ír, el lesz küldve a Discourse példányához.",
     "Successfully connected to Discourse!" : "Sikeresen csatlakozott a Discourse-hoz!",

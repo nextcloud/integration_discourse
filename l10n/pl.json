@@ -24,6 +24,7 @@
     "Connect to Discourse" : "Połącz z Discourse",
     "Connected as {username}" : "Połączono jako {username}",
     "Disconnect from Discourse" : "Rozłącz się z Discoursem",
+    "Enable unified search for topics" : "Włącz ujednolicone wyszukiwanie tematów",
     "Enable searching for posts" : "Włącz wyszukiwanie postów",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uwaga, wszystko, co wpiszesz w pasku wyszukiwania, zostanie wysłane do Twojej instancji Discourse.",
     "Successfully connected to Discourse!" : "Pomyślnie połączono z Discoursem!",
