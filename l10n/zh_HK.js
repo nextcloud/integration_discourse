@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discourse 帖子",
     "Error during authentication exchanges" : "驗證交換時發生錯誤",
     "No API key returned by Discourse" : "Discourse 沒有返回API密鑰",
     "Discourse notifications" : "Discourse 通知",
@@ -26,6 +27,7 @@ OC.L10N.register(
     "Connect to Discourse" : "連線至 Discourse",
     "Connected as {username}" : "以 {user} 身分連線",
     "Disconnect from Discourse" : "與 Discourse 斷開連線",
+    "Enable unified search for topics" : "啟用統一搜尋主題",
     "Enable searching for posts" : "啟用帖子搜尋",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "警告，您在搜尋列中輸入的所有東西都會傳送到 Discourse。",
     "Successfully connected to Discourse!" : "與 Discourse 連線成功！",

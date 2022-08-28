@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discourse",
     "Error during authentication exchanges" : "Kimlik doğrulama takasında sorun çıktı",
     "No API key returned by Discourse" : "Discourse tarafından bir API anahtarı döndürülmedi",
     "Discourse notifications" : "Discourse bildirimleri",
@@ -26,6 +27,7 @@ OC.L10N.register(
     "Connect to Discourse" : "Discourse ile bağlantı kur",
     "Connected as {username}" : "{username} olarak bağlantı kuruldu",
     "Disconnect from Discourse" : "Discourse bağlantısını kes",
+    "Enable unified search for topics" : "Konular için birleşik arama yapılabilsin",
     "Enable searching for posts" : "İletilerde arama yapılabilsin",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uyarı, arama çubuğuna yazdığınız her şey Discourse kopyanıza gönderilecek.",
     "Successfully connected to Discourse!" : "Discourse ile bağlantı kuruldu!",
