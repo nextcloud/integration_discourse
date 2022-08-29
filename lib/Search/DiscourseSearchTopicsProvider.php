@@ -54,15 +54,6 @@ class DiscourseSearchTopicsProvider implements IProvider {
 	 */
 	private $service;
 
-	/**
-	 * CospendSearchProvider constructor.
-	 *
-	 * @param IAppManager $appManager
-	 * @param IL10N $l10n
-	 * @param IConfig $config
-	 * @param IURLGenerator $urlGenerator
-	 * @param DiscourseAPIService $service
-	 */
 	public function __construct(IAppManager $appManager,
 								IL10N $l10n,
 								IConfig $config,
