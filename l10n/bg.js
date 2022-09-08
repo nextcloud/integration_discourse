@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discourse /форум с отворен код и софтуерно приложение за управление на пощенски списъци/",
     "Error during authentication exchanges" : "Грешка по време на обмен на удостоверяване",
     "No API key returned by Discourse" : "Не е върнат API ключ от Discourse/форум с отворен код и софтуерно приложение за управление на пощенски списъци/",
     "Discourse notifications" : "Discourse известия",
@@ -26,6 +27,7 @@ OC.L10N.register(
     "Connect to Discourse" : "Свързване с Discourse",
     "Connected as {username}" : "Свързване, като  {username}",
     "Disconnect from Discourse" : "Прекъсване на връзката с  Discourse",
+    "Enable unified search for topics" : "Активиране на унифицирано търсене на теми",
     "Enable searching for posts" : "Активиране на търсенето на публикации",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Предупреждение, всичко, което въведете в лентата за търсене, ще бъде изпратено до вашия екземпляр на Discourse.",
     "Successfully connected to Discourse!" : "Успешно свързване с Discourse!",
