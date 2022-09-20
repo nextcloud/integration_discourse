@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discourse",
     "Error during authentication exchanges" : "Errorea autentifikazio trukeak egitean",
     "No API key returned by Discourse" : "Discourse-k ez du API gakorik itzuli",
     "Discourse notifications" : "Discourse jakinarazpenak",
