@@ -27,6 +27,7 @@ OC.L10N.register(
     "Connect to Discourse" : "Konektatu Discoursera",
     "Connected as {username}" : "{username} gisa konektatuta",
     "Disconnect from Discourse" : "Deskonektatu Discoursetik",
+    "Enable unified search for topics" : "Gaitu bilaketa bateratua gaientzako",
     "Enable searching for posts" : "Gaitu argitalpenak bilatzea",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Abisua: bilaketa-barran idazten duzun guztia zure Discourse instantziara bidaliko da.",
     "Successfully connected to Discourse!" : "Discourse-ra behar bezala konektatu da!",
