@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discourse",
     "Error during authentication exchanges" : "Chyba počas výmeny autentifikácie",
     "No API key returned by Discourse" : "Discurse nevrátil žiadny API kľúč",
     "Discourse notifications" : "Discourse upozornenia",
@@ -26,6 +27,7 @@ OC.L10N.register(
     "Connect to Discourse" : "Pripojiť k Discourse",
     "Connected as {username}" : "Pripojený ako {username}",
     "Disconnect from Discourse" : "Odpojiť od Discourse",
+    "Enable unified search for topics" : "Zapnúť jednotné vyhľadávanie tém",
     "Enable searching for posts" : "Povoliť vyhľadávanie príspevkov",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Varovanie, všetko čo napíšete do vyhľadávania bude odoslané do Discourse inštancie.",
     "Successfully connected to Discourse!" : "Úspešne pripojené k Discourse!",
