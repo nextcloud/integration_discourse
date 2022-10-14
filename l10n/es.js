@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discourse",
     "Error during authentication exchanges" : "Error durante el intercambio de autentificación",
     "No API key returned by Discourse" : "Discourse no ha devuelto ninguna clave API",
     "Discourse notifications" : "Notificaciones de Díscourse",
@@ -26,6 +27,7 @@ OC.L10N.register(
     "Connect to Discourse" : "Conectar a Discourse",
     "Connected as {username}" : "Conectado como {username}",
     "Disconnect from Discourse" : "Desconectar de Discourse",
+    "Enable unified search for topics" : "Activar la búsqueda unificada de temas",
     "Enable searching for posts" : "Activar la búsqueda de entradas",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Atención, todo lo que escribas en la barra de búsqueda será enviado a tu instancia de Discourse.",
     "Successfully connected to Discourse!" : "Conectado con éxito a Discourse.",
