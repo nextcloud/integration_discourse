@@ -27,6 +27,8 @@ OC.L10N.register(
     "Connected as {username}" : "以 {用户名}连接成功",
     "Disconnect from Discourse" : "与 Discourse 断开连接",
     "Discourse API-key could not be obtained:" : "无法获取 Discourse API-key：",
+    "Discourse URL is invalid" : "Discourse URL 无效",
+    "Discourse options saved" : "Discourse 选项已保存",
     "Failed to save Discourse options" : "保存 Discourse 选项失败",
     "Failed to save Discourse nonce" : "保存 Discourse nonce 失败",
     "No Discourse account connected" : "没有已连接的Discourse账号",
