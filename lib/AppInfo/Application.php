@@ -10,6 +10,7 @@
 namespace OCA\Discourse\AppInfo;
 
 use Closure;
+use OCA\Discourse\Reference\DiscourseReferenceProvider;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Bootstrap\IBootContext;
@@ -25,11 +26,6 @@ use OCP\IURLGenerator;
 use OCP\IUserSession;
 use OCP\Util;
 
-/**
- * Class Application
- *
- * @package OCA\Discourse\AppInfo
- */
 class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_discourse';
@@ -38,11 +34,6 @@ class Application extends App implements IBootstrap {
 	 */
 	private $config;
 
-	/**
-	 * Constructor
-	 *
-	 * @param array $urlParams
-	 */
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);
 
@@ -54,6 +45,7 @@ class Application extends App implements IBootstrap {
 		$context->registerDashboardWidget(DiscourseWidget::class);
 		$context->registerSearchProvider(DiscourseSearchPostsProvider::class);
 		$context->registerSearchProvider(DiscourseSearchTopicsProvider::class);
+		$context->registerReferenceProvider(DiscourseReferenceProvider::class);
 	}
 
 	public function boot(IBootContext $context): void {
@@ -79,6 +71,7 @@ class Application extends App implements IBootstrap {
 						'id' => self::APP_ID,
 						'order' => 10,
 						'href' => $discourseUrl,
+						'target' => '_blank',
 						'icon' => $urlGenerator->imagePath(self::APP_ID, 'app.svg'),
 						'name' => $l10n->t('Discourse'),
 					];

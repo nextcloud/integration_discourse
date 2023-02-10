@@ -121,7 +121,7 @@ class DiscourseSearchTopicsProvider implements IProvider {
 
 		$formattedResults = array_map(function (array $entry) use ($discourseUrl): DiscourseSearchResultEntry {
 			return new DiscourseSearchResultEntry(
-				'',
+				$this->getThumbnailUrl($entry),
 				$this->getMainText($entry),
 				$this->getSubline($entry),
 				$this->getLinkToDiscourse($entry, $discourseUrl),
@@ -164,19 +164,11 @@ class DiscourseSearchTopicsProvider implements IProvider {
 
 	/**
 	 * @param array $entry
-	 * @param string $thumbnailUrl
 	 * @return string
 	 */
-	protected function getThumbnailUrl(array $entry, string $thumbnailUrl): string {
-		return $thumbnailUrl;
-//		$initials = null;
-//		if ($entry['u_firstname'] && $entry['u_lastname']) {
-//			$initials = $entry['u_firstname'][0] . $entry['u_lastname'][0];
-//		}
-//		return isset($entry['u_image'])
-//			? $this->urlGenerator->linkToRoute('integration_discourse.discourseAPI.getDiscourseAvatar', []) . '?image=' . urlencode($entry['u_image'])
-//			: ($initials
-//				? $this->urlGenerator->linkToRouteAbsolute('core.GuestAvatar.getAvatar', ['guestName' => $initials, 'size' => 64])
-//				: $thumbnailUrl);
+	protected function getThumbnailUrl(array $entry): string {
+		return $this->urlGenerator->getAbsoluteURL(
+			$this->urlGenerator->imagePath(Application::APP_ID, 'app-dark.svg')
+		);
 	}
 }

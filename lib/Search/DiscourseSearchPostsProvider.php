@@ -183,7 +183,7 @@ class DiscourseSearchPostsProvider implements IProvider {
 	 */
 	protected function getThumbnailUrl(array $entry, string $thumbnailUrl): string {
 		return isset($entry['username'])
-			? $this->urlGenerator->linkToRoute('integration_discourse.discourseAPI.getDiscourseAvatar', []) . '?username=' . urlencode($entry['username'])
+			? $this->urlGenerator->linkToRouteAbsolute('integration_discourse.discourseAPI.getDiscourseAvatar', ['username' => $entry['username']])
 			: $thumbnailUrl;
 	}
 }

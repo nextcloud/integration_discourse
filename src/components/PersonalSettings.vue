@@ -37,11 +37,11 @@
 			</span>
 		</p>
 		<div id="discourse-content">
-			<CheckboxRadioSwitch
+			<NcCheckboxRadioSwitch
 				:checked="state.navigation_enabled"
 				@update:checked="onCheckboxChanged($event, 'navigation_enabled')">
 				{{ t('integration_discourse', 'Enable navigation link') }}
-			</CheckboxRadioSwitch>
+			</NcCheckboxRadioSwitch>
 			<div class="line">
 				<label for="discourse-url">
 					<EarthIcon :size="20" />
@@ -78,16 +78,16 @@
 			</div>
 			<br>
 			<div v-if="connected" id="discourse-search-block">
-				<CheckboxRadioSwitch
+				<NcCheckboxRadioSwitch
 					:checked="state.search_topics_enabled"
 					@update:checked="onCheckboxChanged($event, 'search_topics_enabled')">
 					{{ t('integration_discourse', 'Enable unified search for topics') }}
-				</CheckboxRadioSwitch>
-				<CheckboxRadioSwitch
+				</NcCheckboxRadioSwitch>
+				<NcCheckboxRadioSwitch
 					:checked="state.search_posts_enabled"
 					@update:checked="onCheckboxChanged($event, 'search_posts_enabled')">
 					{{ t('integration_discourse', 'Enable searching for posts') }}
-				</CheckboxRadioSwitch>
+				</NcCheckboxRadioSwitch>
 				<br>
 				<p v-if="state.search_topics_enabled || state.search_posts_enabled" class="settings-hint line">
 					<InformationOutlineIcon :size="20" />
@@ -104,8 +104,10 @@ import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline
 import OpenInNewIcon from 'vue-material-design-icons/OpenInNew.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
-import NcButton from '@nextcloud/vue/dist/Components/Button.js'
-import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch.js'
+
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
@@ -121,7 +123,7 @@ export default {
 	components: {
 		DiscourseIcon,
 		NcButton,
-		CheckboxRadioSwitch,
+		NcCheckboxRadioSwitch,
 		OpenInNewIcon,
 		CloseIcon,
 		InformationOutlineIcon,
