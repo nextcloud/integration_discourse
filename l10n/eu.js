@@ -5,6 +5,7 @@ OC.L10N.register(
     "Error during authentication exchanges" : "Errorea autentifikazio trukeak egitean",
     "No API key returned by Discourse" : "Discourse-k ez du API gakorik itzuli",
     "Discourse notifications" : "Discourse jakinarazpenak",
+    "Discourse topics and posts" : "Diskurtso-gaiak eta mezuak",
     "Discourse posts" : "Discourse argitalpenak",
     "Discourse topics" : "Discourse gaiak",
     "posts" : "mezuak",

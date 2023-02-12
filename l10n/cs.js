@@ -5,6 +5,7 @@ OC.L10N.register(
     "Error during authentication exchanges" : "Chyba při výměnách informací v rámci ověření se",
     "No API key returned by Discourse" : "Discourse nevrátilo žádný API klíč",
     "Discourse notifications" : "Upozorňování z Discourse",
+    "Discourse topics and posts" : "Témata a příspěvky v Discourse",
     "Discourse posts" : "Příspěvky v Discourse",
     "Discourse topics" : "Témata v Discourse",
     "posts" : "zprávy",
