@@ -3,6 +3,7 @@
     "Error during authentication exchanges" : "驗證交換時發生錯誤",
     "No API key returned by Discourse" : "Discourse 沒有返回API密鑰",
     "Discourse notifications" : "Discourse 通知",
+    "Discourse topics and posts" : "Discourse 主題和帖文",
     "Discourse posts" : "Discourse 帖子",
     "Discourse topics" : "Discourse 主題",
     "posts" : "帖子",
