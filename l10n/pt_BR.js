@@ -5,6 +5,7 @@ OC.L10N.register(
     "Error during authentication exchanges" : "Erro durante as trocas de autenticação",
     "No API key returned by Discourse" : "Nenhuma chave de API retornada pelo Discourse",
     "Discourse notifications" : "Notificações do Discourse",
+    "Discourse topics and posts" : "Tópicos e postagens do discussão ",
     "Discourse posts" : "Postagens do Discourse",
     "Discourse topics" : "Tópicos do Discourse",
     "posts" : "posts",
