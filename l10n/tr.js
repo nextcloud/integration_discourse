@@ -5,6 +5,7 @@ OC.L10N.register(
     "Error during authentication exchanges" : "Kimlik doğrulama takasında sorun çıktı",
     "No API key returned by Discourse" : "Discourse tarafından bir API anahtarı döndürülmedi",
     "Discourse notifications" : "Discourse bildirimleri",
+    "Discourse topics and posts" : "Discourse konuları ve iletileri",
     "Discourse posts" : "Discourse iletileri",
     "Discourse topics" : "Discourse başlıkları",
     "posts" : "ileti",
