@@ -5,6 +5,7 @@ OC.L10N.register(
     "Error during authentication exchanges" : "Грешка по време на обмен на удостоверяване",
     "No API key returned by Discourse" : "Не е върнат API ключ от Discourse/форум с отворен код и софтуерно приложение за управление на пощенски списъци/",
     "Discourse notifications" : "Discourse известия",
+    "Discourse topics and posts" : "Теми и публикации в Discourse",
     "Discourse posts" : "Discourse  публикации",
     "Discourse topics" : "Discourse теми",
     "posts" : "Публикации",
