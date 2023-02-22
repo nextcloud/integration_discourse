@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.0 – 2023-02-22
+### Changed
+- implement reference provider to search for topics and posts
+- NC 26 compat
+- use @nextcloud/vue 7.6.1
+
 ## 1.0.4 – 2022-08-25
 ### Added
 - optional navigation link
