@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## 2.0.0 – 2023-02-22
+## 2.0.1 – 2023-02-22
 ### Changed
 - implement reference provider to search for topics and posts
 - NC 26 compat
