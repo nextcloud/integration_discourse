@@ -28,7 +28,7 @@
     "Disconnect from Discourse" : "Прекини везу са Discourse",
     "Enable unified search for topics" : "Укључи обједињену претрагу за теме",
     "Enable searching for posts" : "Укључи претрагу објава",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Упозорење, све што куцате у линији за претрагу се шаље вашој  Discourse инстанци.",
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Упозорење, све што куцате у линији за претрагу се шаље вашој Discourse инстанци.",
     "Successfully connected to Discourse!" : "Успешно је успостављена веза са Discourse!",
     "Discourse API-key could not be obtained:" : "Није могао да се добије Discourse API кључ:",
     "Nextcloud Discourse integration on {ncUrl}" : "Nextcloud Discourse интеграција на {ncUrl}",
