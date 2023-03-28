@@ -5,6 +5,7 @@ OC.L10N.register(
     "Error during authentication exchanges" : "Hiba történt a hitelesítési üzenetváltás során",
     "No API key returned by Discourse" : "A Discourse nem adott vissza API-kulcsot",
     "Discourse notifications" : "Discourse értesítések",
+    "Discourse topics and posts" : "Discourse témák és bejegyzések",
     "Discourse posts" : "Discourse bejegyzések",
     "Discourse topics" : "Discourse témák",
     "posts" : "bejegyzések",
