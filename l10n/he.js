@@ -7,6 +7,7 @@ OC.L10N.register(
     "Discourse posts" : "פוסטים ב-Discourse",
     "Discourse topics" : "נושאי Discourse",
     "posts" : "פוסטים",
+    "Bad HTTP method" : "שגיאה במתודת HTTP",
     "Bad credentials" : "פרטי גישה שגויים",
     "Connected accounts" : "חשבונות מחוברים",
     "Discourse integration" : "שילוב Discourse",
