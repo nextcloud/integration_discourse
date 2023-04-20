@@ -29,16 +29,9 @@ use OCP\Util;
 class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_discourse';
-	/**
-	 * @var mixed
-	 */
-	private $config;
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);
-
-		$container = $this->getContainer();
-		$this->config = $container->get(IConfig::class);
 	}
 
 	public function register(IRegistrationContext $context): void {
@@ -53,14 +46,14 @@ class Application extends App implements IBootstrap {
 		Util::addStyle(self::APP_ID, 'discourse-search');
 	}
 
-	public function registerNavigation(IUserSession $userSession): void {
+	public function registerNavigation(IUserSession $userSession, IConfig $config): void {
 		$user = $userSession->getUser();
 		if ($user !== null) {
 			$userId = $user->getUID();
 			$container = $this->getContainer();
 
-			if ($this->config->getUserValue($userId, self::APP_ID, 'navigation_enabled', '0') === '1') {
-				$discourseUrl = $this->config->getUserValue($userId, self::APP_ID, 'url', '');
+			if ($config->getUserValue($userId, self::APP_ID, 'navigation_enabled', '0') === '1') {
+				$discourseUrl = $config->getUserValue($userId, self::APP_ID, 'url', '');
 				if ($discourseUrl === '') {
 					return;
 				}

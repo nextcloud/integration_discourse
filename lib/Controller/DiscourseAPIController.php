@@ -23,44 +23,17 @@ use OCA\Discourse\AppInfo\Application;
 
 class DiscourseAPIController extends Controller {
 
-	/**
-	 * @var IConfig
-	 */
-	private $config;
-	/**
-	 * @var DiscourseAPIService
-	 */
-	private $discourseAPIService;
-	/**
-	 * @var string|null
-	 */
-	private $userId;
-	/**
-	 * @var string
-	 */
-	private $accessToken;
-	/**
-	 * @var string
-	 */
-	private $clientID;
-	/**
-	 * @var string
-	 */
-	private $discourseUrl;
-	/**
-	 * @var string
-	 */
-	private $discourseUsername;
+	private string $accessToken;
+	private string $clientID;
+	private string $discourseUrl;
+	private string $discourseUsername;
 
-	public function __construct(string $appName,
-								IRequest $request,
-								IConfig $config,
-								DiscourseAPIService $discourseAPIService,
-								?string $userId) {
+	public function __construct(string                      $appName,
+								IRequest                    $request,
+								private IConfig             $config,
+								private DiscourseAPIService $discourseAPIService,
+								private ?string             $userId) {
 		parent::__construct($appName, $request);
-		$this->config = $config;
-		$this->discourseAPIService = $discourseAPIService;
-		$this->userId = $userId;
 		$this->accessToken = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
 		$this->clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id');
 		$this->discourseUrl = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');

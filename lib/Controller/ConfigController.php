@@ -23,44 +23,20 @@ use OCA\Discourse\AppInfo\Application;
 use OCA\Discourse\Service\DiscourseAPIService;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+
+use OCP\PreConditionNotMetException;
 use phpseclib\Crypt\RSA;
 
 class ConfigController extends Controller {
 
-	/**
-	 * @var IConfig
-	 */
-	private $config;
-	/**
-	 * @var IURLGenerator
-	 */
-	private $urlGenerator;
-	/**
-	 * @var IL10N
-	 */
-	private $l;
-	/**
-	 * @var DiscourseAPIService
-	 */
-	private $discourseAPIService;
-	/**
-	 * @var string|null
-	 */
-	private $userId;
-
 	public function __construct(string $appName,
 								IRequest $request,
-								IConfig $config,
-								IURLGenerator $urlGenerator,
-								IL10N $l,
-								DiscourseAPIService $discourseAPIService,
-								?string $userId) {
+								private IConfig $config,
+								private IURLGenerator $urlGenerator,
+								private IL10N $l,
+								private DiscourseAPIService $discourseAPIService,
+								private ?string $userId) {
 		parent::__construct($appName, $request);
-		$this->config = $config;
-		$this->urlGenerator = $urlGenerator;
-		$this->l = $l;
-		$this->discourseAPIService = $discourseAPIService;
-		$this->userId = $userId;
 	}
 
 	/**
@@ -69,6 +45,7 @@ class ConfigController extends Controller {
 	 *
 	 * @param array $values
 	 * @return DataResponse
+	 * @throws PreConditionNotMetException
 	 */
 	public function setConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
@@ -122,6 +99,7 @@ class ConfigController extends Controller {
 	 *
 	 * @param string $payload
 	 * @return RedirectResponse
+	 * @throws PreConditionNotMetException
 	 */
 	public function oauthRedirect(string $payload = ''): RedirectResponse {
 		if ($payload === '') {

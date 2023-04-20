@@ -34,36 +34,15 @@ use OCP\IUser;
 use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;
 use OCP\Search\SearchResult;
+use OCP\Search\SearchResultEntry;
 
 class DiscourseSearchTopicsProvider implements IProvider {
 
-	/** @var IAppManager */
-	private $appManager;
-
-	/** @var IL10N */
-	private $l10n;
-
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/**
-	 * @var IConfig
-	 */
-	private $config;
-	/**
-	 * @var DiscourseAPIService
-	 */
-	private $service;
-
-	public function __construct(IAppManager $appManager,
-								IL10N $l10n,
-								IConfig $config,
-								IURLGenerator $urlGenerator,
-								DiscourseAPIService $service) {
-		$this->appManager = $appManager;
-		$this->l10n = $l10n;
-		$this->config = $config;
-		$this->urlGenerator = $urlGenerator;
-		$this->service = $service;
+	public function __construct(private IAppManager         $appManager,
+								private IL10N               $l10n,
+								private IConfig             $config,
+								private IURLGenerator       $urlGenerator,
+								private DiscourseAPIService $discourseAPIService) {
 	}
 
 	/**
@@ -113,14 +92,14 @@ class DiscourseSearchTopicsProvider implements IProvider {
 			return SearchResult::paginated($this->getName(), [], 0);
 		}
 
-		$searchResults = $this->service->searchTopics($discourseUrl, $accessToken, $term, $offset, $limit);
+		$searchResults = $this->discourseAPIService->searchTopics($discourseUrl, $accessToken, $term, $offset, $limit);
 
 		if (isset($searchResults['error'])) {
 			return SearchResult::paginated($this->getName(), [], 0);
 		}
 
-		$formattedResults = array_map(function (array $entry) use ($discourseUrl): DiscourseSearchResultEntry {
-			return new DiscourseSearchResultEntry(
+		$formattedResults = array_map(function (array $entry) use ($discourseUrl): SearchResultEntry {
+			return new SearchResultEntry(
 				$this->getThumbnailUrl($entry),
 				$this->getMainText($entry),
 				$this->getSubline($entry),

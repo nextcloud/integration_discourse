@@ -4,6 +4,7 @@ namespace OCA\Discourse\Settings;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
+use OCP\PreConditionNotMetException;
 use OCP\Settings\ISettings;
 
 use OCA\Discourse\AppInfo\Application;
@@ -13,29 +14,14 @@ use phpseclib\Crypt\RSA;
 
 class Personal implements ISettings {
 
-	/**
-	 * @var IConfig
-	 */
-	private $config;
-	/**
-	 * @var IInitialState
-	 */
-	private $initialStateService;
-	/**
-	 * @var string|null
-	 */
-	private $userId;
-
-	public function __construct(IConfig $config,
-								IInitialState $initialStateService,
-								?string $userId) {
-		$this->config = $config;
-		$this->initialStateService = $initialStateService;
-		$this->userId = $userId;
+	public function __construct(private IConfig $config,
+								private IInitialState $initialStateService,
+								private ?string $userId) {
 	}
 
 	/**
 	 * @return TemplateResponse
+	 * @throws PreConditionNotMetException
 	 */
 	public function getForm(): TemplateResponse {
 		$token = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
@@ -56,7 +42,7 @@ class Personal implements ISettings {
 			$clientID = substr(str_shuffle($permitted_chars), 0, 32);
 			$this->config->setUserValue($this->userId, Application::APP_ID, 'client_id', $clientID);
 		}
-		if ($pubKey === '' or $privKey === '') {
+		if ($pubKey === '' || $privKey === '') {
 			$rsa = new RSA();
 			$rsa->setPrivateKeyFormat(RSA::PRIVATE_FORMAT_PKCS1);
 			$rsa->setPublicKeyFormat(RSA::PUBLIC_FORMAT_PKCS1);

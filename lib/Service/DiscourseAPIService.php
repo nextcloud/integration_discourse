@@ -12,38 +12,24 @@
 namespace OCA\Discourse\Service;
 
 use Exception;
+use OCA\Discourse\AppInfo\Application;
+use OCP\Http\Client\IClient;
 use OCP\IL10N;
 use Psr\Log\LoggerInterface;
 use OCP\Http\Client\IClientService;
+use Throwable;
 
+/**
+ * Service to make requests to Discourse v3 (JSON) API
+ */
 class DiscourseAPIService {
-	/**
-	 * @var string
-	 */
-	private $appName;
-	/**
-	 * @var LoggerInterface
-	 */
-	private $logger;
-	/**
-	 * @var IL10N
-	 */
-	private $l10n;
-	/**
-	 * @var \OCP\Http\Client\IClient
-	 */
-	private $client;
 
-	/**
-	 * Service to make requests to Discourse v3 (JSON) API
-	 */
-	public function __construct (string $appName,
-								LoggerInterface $logger,
-								IL10N $l10n,
-								IClientService $clientService) {
-		$this->appName = $appName;
-		$this->logger = $logger;
-		$this->l10n = $l10n;
+	private IClient $client;
+
+	public function __construct (string                  $appName,
+								 private LoggerInterface $logger,
+								 private IL10N           $l10n,
+								 IClientService          $clientService) {
 		$this->client = $clientService->newClient();
 	}
 
@@ -61,7 +47,7 @@ class DiscourseAPIService {
 		$notifications = [];
 		if (isset($result['notifications']) && is_array($result['notifications'])) {
 			foreach ($result['notifications'] as $notification) {
-				array_push($notifications, $notification);
+				$notifications[] = $notification;
 			}
 		}
 
@@ -129,7 +115,6 @@ class DiscourseAPIService {
 			try {
 				$response = $this->client->get($avatarUrl);
 				$avatar = ['content' => $response->getBody()];
-				file_put_contents('/tmp/a', json_encode($response->getHeaders()));
 				$ct = $response->getHeader('Content-Type');
 				if ($ct) {
 					if (is_array($ct) && count($ct) > 0) {
@@ -138,8 +123,8 @@ class DiscourseAPIService {
 					$avatar['mime'] = $ct;
 				}
 				return $avatar;
-			} catch (Exception $e) {
-				$this->logger->warning('Discourse API error : '.$e->getMessage(), array('app' => $this->appName));
+			} catch (Exception | Throwable $e) {
+				$this->logger->warning('Discourse API error : '.$e->getMessage(), ['app' => Application::APP_ID]);
 				return ['content' => ''];
 			}
 		}
@@ -205,8 +190,8 @@ class DiscourseAPIService {
 			} else {
 				return json_decode($body, true);
 			}
-		} catch (Exception $e) {
-			$this->logger->warning('Discourse API error : '.$e->getMessage(), array('app' => $this->appName));
+		} catch (Exception | Throwable $e) {
+			$this->logger->warning('Discourse API error : '.$e->getMessage(), ['app' => Application::APP_ID]);
 			return ['error' => $e->getMessage()];
 		}
 	}
