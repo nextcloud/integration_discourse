@@ -6,6 +6,7 @@ OC.L10N.register(
     "posts" : "投稿",
     "Bad credentials" : "不正な資格情報",
     "Connected accounts" : "接続済みアカウント",
+    "If you don't see the popup, you can still click on this icon in the address bar." : "ポップアップが表示されない場合、アドレスバーのこのアイコンをクリックしてください。",
     "Enable navigation link" : "ナビゲーションリンクを有効化",
     "Connect to Discourse" : "Discourseに接続",
     "Connected as {username}" : "{username}として接続しました",
