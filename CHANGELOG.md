@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.2 - 2023-05-17
+
+Maintenance update
+
+### Added
+
+- Added Nextcloud 27 support
+
 ## 2.0.1 – 2023-02-22
 ### Changed
 - implement reference provider to search for topics and posts
