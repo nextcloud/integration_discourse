@@ -27,10 +27,11 @@
     "Discourse API-key could not be obtained:" : "无法获取 Discourse API-key：",
     "Discourse URL is invalid" : "Discourse URL 无效",
     "Discourse options saved" : "Discourse 选项已保存",
-    "Failed to save Discourse options" : "保存 Discourse 选项失败",
-    "Failed to save Discourse nonce" : "保存 Discourse nonce 失败",
+    "Failed to save Discourse options" : "保存Discourse选项失败",
+    "Failed to save Discourse nonce" : "保存Discourse nonce失败",
     "No Discourse account connected" : "没有已连接的Discourse账号",
     "Error connecting to Discourse" : "在连接到会话时发生错误",
-    "No Discourse notifications!" : "暂无会话通知"
+    "No Discourse notifications!" : "暂无会话通知",
+    "Failed to get Discourse notifications" : "获取Discourse通知失败"
 },"pluralForm" :"nplurals=1; plural=0;"
 }
