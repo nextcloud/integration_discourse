@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.3 - 2023-05-31
+
+### Fixed
+
+- vendor dir was excluded from the release archive
+
 ## 2.0.2 - 2023-05-17
 
 Maintenance update
