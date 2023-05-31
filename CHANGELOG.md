@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.4 - 2023-05-31
+
+### Fixed
+
+- Add missing composer install in krankerl config
+
 ## 2.0.3 - 2023-05-31
 
 ### Fixed
