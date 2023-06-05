@@ -11,8 +11,11 @@
  *
  */
 
-__webpack_nonce__ = btoa(OC.requestToken) // eslint-disable-line
-__webpack_public_path__ = OC.linkTo('integration_discourse', 'js/') // eslint-disable-line
+import { linkTo } from '@nextcloud/router'
+import { getRequestToken } from '@nextcloud/auth'
+
+__webpack_nonce__ = btoa(getRequestToken()) // eslint-disable-line
+__webpack_public_path__ = linkTo('integration_discourse', 'js/') // eslint-disable-line
 
 OCA.Dashboard.register('discourse_notifications', async (el, { widget }) => {
 	const { default: Vue } = await import(/* webpackChunkName: "dashboard-lazy" */'vue')
