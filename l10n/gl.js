@@ -28,7 +28,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Desconectar de Discourse",
     "Enable searching for posts" : "Activar a busca de mensaxes",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Advertencia, todo o que escriba na barra de buscas enviarase á súa instancia de Discourse.",
-    "Successfully connected to Discourse!" : "Conectou satisfactoriamente con Discourse.",
+    "Successfully connected to Discourse!" : "Conectou satisfactoriamente con Discourse!",
     "Discourse API-key could not be obtained:" : "Non foi posíbel obter a chave da API de Discourse",
     "Nextcloud Discourse integration on {ncUrl}" : "Integración do Discourse de Nextcloud en {ncUrl}",
     "Discourse URL is invalid" : "O URL de Discourse non é válido",
