@@ -4,6 +4,7 @@ OC.L10N.register(
     "Bad HTTP method" : "옳지 않은 HTTP 메소드",
     "Bad credentials" : "잘못된 자격 증명",
     "Connected accounts" : "계정 연결됨",
-    "No Discourse account connected" : "연결된 Discourse 계정이 없음"
+    "No Discourse account connected" : "연결된 Discourse 계정이 없음",
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["중재자 수신함에 {nb}개 항목이 있음"]
 },
 "nplurals=1; plural=0;");
