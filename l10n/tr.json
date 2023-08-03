@@ -37,7 +37,7 @@
     "Failed to save Discourse options" : "Discourse ayarları kaydedilemedi",
     "Failed to save Discourse nonce" : "Discourse nonce kaydedilemedi",
     "No Discourse account connected" : "Bağlı bir Discourse hesabı yok",
-    "Error connecting to Discourse" : "Discourse bağlantısı kurulurken sorun çıktı",
+    "Error connecting to Discourse" : "Discourse ile bağlantı kurulurken sorun çıktı",
     "No Discourse notifications!" : "Herhangi bir Discourse bildirimi yok!",
     "Failed to get Discourse notifications" : "Discourse bildirimleri alınamadı",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["Yöneticilerinizin gelen kutularında {nb} öge var","Yöneticilerinizin gelen kutularında {nb} öge var"],
