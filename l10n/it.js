@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_discourse",
     {
+    "Discourse" : "Discorso",
     "Error during authentication exchanges" : "Errore durante le negoziazioni dell'autenticazione",
     "No API key returned by Discourse" : "Nessuna chiave API restituita da Discourse",
     "Discourse notifications" : "Notifiche Discourse",
