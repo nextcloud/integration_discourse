@@ -1,6 +1,6 @@
 {
     "require": {
-        "phpseclib/phpseclib": "^2.0.28"
+        "phpseclib/phpseclib": "^3.0.34"
     },
     "require-dev": {
     }
