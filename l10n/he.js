@@ -39,6 +39,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "אין הודעות Discourse!",
     "Failed to get Discourse notifications" : "קבלת התראות Discourse נכשלה",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} פריט בתיבת הדואר הנכנס של המנהלים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנהלים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנהלים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנהלים שלך"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} פריט בתיבת הדואר הנכנס של המנחים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנחים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנחים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנחים שלך"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} פריט בתיבת הדואר הנכנס של המנחים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנחים שלך","{nb} פריטים בתיבת הדואר הנכנס של המנחים שלך"]
 },
-"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;");
+"nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;");
