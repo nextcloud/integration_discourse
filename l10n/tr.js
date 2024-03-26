@@ -2,7 +2,7 @@ OC.L10N.register(
     "integration_discourse",
     {
     "Discourse" : "Discourse",
-    "Error during authentication exchanges" : "Kimlik doğrulama alış verişinde sorun çıktı",
+    "Error during authentication exchanges" : "Kimlik doğrulama alışverişinde sorun çıktı",
     "No API key returned by Discourse" : "Discourse tarafından bir API anahtarı döndürülmedi",
     "Discourse notifications" : "Discourse bildirimleri",
     "Discourse topics and posts" : "Discourse konuları ve iletileri",
