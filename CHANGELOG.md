@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.6 - 2024-03-28
+
+### Changed
+
+- Support Nextcloud 29
+- Update npm pkgs
+- Use dashboard widget component from nextcloud/vue
+
 ## 2.0.5 - 2023-12-11
 
 Maintenance update
