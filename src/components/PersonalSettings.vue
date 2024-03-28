@@ -179,7 +179,7 @@ export default {
 			window.navigator.registerProtocolHandler(
 				'web+nextclouddiscourse',
 				generateUrl('/apps/integration_discourse/oauth-protocol-redirect') + '?url=%s',
-				t('integration_discourse', 'Nextcloud Discourse integration on {ncUrl}', { ncUrl })
+				t('integration_discourse', 'Nextcloud Discourse integration on {ncUrl}', { ncUrl }),
 			)
 		}
 	},
@@ -222,10 +222,8 @@ export default {
 					showSuccess(t('integration_discourse', 'Discourse options saved'))
 				})
 				.catch((error) => {
-					showError(
-						t('integration_discourse', 'Failed to save Discourse options')
-						+ ': ' + error.response.request.responseText
-					)
+					showError(t('integration_discourse', 'Failed to save Discourse options'))
+					console.error(error)
 				})
 				.then(() => {
 					this.loading = false
@@ -251,10 +249,8 @@ export default {
 					window.location.replace(requestUrl)
 				})
 				.catch((error) => {
-					showError(
-						t('integration_discourse', 'Failed to save Discourse nonce')
-						+ ': ' + error.response.request.responseText
-					)
+					showError(t('integration_discourse', 'Failed to save Discourse nonce'))
+					console.error(error)
 				})
 				.then(() => {
 				})

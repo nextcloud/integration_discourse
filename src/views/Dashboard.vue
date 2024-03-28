@@ -1,5 +1,5 @@
 <template>
-	<DashboardWidget :items="items"
+	<NcDashboardWidget :items="items"
 		:show-more-url="showMoreUrl"
 		:show-more-text="title"
 		:loading="state === 'loading'">
@@ -24,7 +24,7 @@
 				</template>
 			</NcEmptyContent>
 		</template>
-	</DashboardWidget>
+	</NcDashboardWidget>
 </template>
 
 <script>
@@ -36,10 +36,10 @@ import DiscourseIcon from '../components/icons/DiscourseIcon.vue'
 
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
+import NcDashboardWidget from '@nextcloud/vue/dist/Components/NcDashboardWidget.js'
 
 import axios from '@nextcloud/axios'
 import { generateUrl, imagePath } from '@nextcloud/router'
-import { DashboardWidget } from '@nextcloud/vue-dashboard'
 import { showError } from '@nextcloud/dialogs'
 import moment from '@nextcloud/moment'
 import { getLocale } from '@nextcloud/l10n'
@@ -63,7 +63,7 @@ export default {
 	name: 'Dashboard',
 
 	components: {
-		DashboardWidget,
+		NcDashboardWidget,
 		NcEmptyContent,
 		NcButton,
 		LoginVariantIcon,
