@@ -1,0 +1,6 @@
+{ "translations": {
+    "posts" : "artículos",
+    "Failed to save Discourse options" : "Nun se puen guardar les opciones de Discourse",
+    "Failed to get Discourse notifications" : "Nun se puen consiguir los avisos de Discourse"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
