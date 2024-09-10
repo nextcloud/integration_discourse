@@ -24,6 +24,7 @@
     "Connect to Discourse" : "Подключиться к Discourse",
     "Connected as {username}" : "Подключено под именем {username}",
     "Disconnect from Discourse" : "Отключиться от Discourse",
+    "Enable unified search for topics" : "Включить унифицированный поиск по темам",
     "Enable searching for posts" : "Включить поиск сообщений",
     "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Предупреждение, все, что вы вводите в строке поиска, будет отправлено в ваш сервер Discourse.",
     "Successfully connected to Discourse!" : "Успешно подключено к Discourse!",
