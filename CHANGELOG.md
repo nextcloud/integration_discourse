@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.1.0 - 2024-09-16
+
+Maintenance update
+
+### Changed
+
+- Drop support for NC 26, 27
+- Update pkgs
+
 ## 2.0.7 – 2024-04-24
 
 Maintenance update
