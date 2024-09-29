@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 app_name=integration_discourse
 app_version=$(version)
 project_dir=.
