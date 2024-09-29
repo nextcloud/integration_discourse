@@ -1,3 +1,7 @@
+<!--
+  - SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: CC0-1.0
+-->
 # Discourse integration into Nextcloud
 
 🗨️ Discourse integration provides a dashboard widget displaying your important notifications
