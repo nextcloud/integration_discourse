@@ -11,7 +11,7 @@
     "Discourse integration" : "Discourse 整合",
     "Integration of Discourse forum and mailing list management system" : "Discourse 论坛与邮件管理系统的整合",
     "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Discourse 插件提供了一个仪表板小插件，可以显示您的重要通知\n以及使用 Nextcloud 的统一搜索功能查找主题和帖子的能力。",
-    "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "如果你无法连接自己的 Discourse 账户，则可能是因为您的 Discourse 实例无权向您的 Nextcloud 实例提供API密钥。",
+    "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "如果你无法访问自己的 Discourse 账号，则可能是因为你的 Discourse 实例未批准向你的 Nextcloud 实例提供 API 密钥。",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "要求 Discourse 管理员将此 URI 添加到管理员设置的 “allowed_user_api_auth_redirects” 列表中：",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "如果您想进行 Discourse 身份验证，请确保您接受了在此页面顶部的协议注册。",
     "With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open \"web+nextclouddiscourse\" links." : "使用 Chrome / Chromium 时，您应该能在浏览器的左上角看到一個弹出窗口，以授权该页面打开 “web+nextclouddiscourse” 链接。",
