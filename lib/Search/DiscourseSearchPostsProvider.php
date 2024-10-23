@@ -19,14 +19,18 @@ use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;
 use OCP\Search\SearchResult;
 use OCP\Search\SearchResultEntry;
+use OCP\Security\ICrypto;
 
 class DiscourseSearchPostsProvider implements IProvider {
 
-	public function __construct(private IAppManager         $appManager,
-								private IL10N               $l10n,
-								private IConfig             $config,
-								private IURLGenerator       $urlGenerator,
-								private DiscourseAPIService $discourseAPIService) {
+	public function __construct(
+		private IAppManager $appManager,
+		private IL10N $l10n,
+		private IConfig $config,
+		private ICrypto $crypto,
+		private IURLGenerator $urlGenerator,
+		private DiscourseAPIService $discourseAPIService
+	) {
 	}
 
 	/**
@@ -75,6 +79,9 @@ class DiscourseSearchPostsProvider implements IProvider {
 
 		$discourseUrl = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'url');
 		$accessToken = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'token');
+		if ($accessToken !== '') {
+			$accessToken = $this->crypto->decrypt($accessToken);
+		}
 
 		$searchPostsEnabled = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'search_posts_enabled', '0') === '1';
 		if ($accessToken === '' || !$searchPostsEnabled) {

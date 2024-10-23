@@ -6,6 +6,7 @@
 
 namespace OCA\Discourse\Controller;
 
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\IURLGenerator;
 use OCP\IConfig;
 use OCP\IL10N;
@@ -20,28 +21,32 @@ use OCA\Discourse\Service\DiscourseAPIService;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use OCP\PreConditionNotMetException;
+use OCP\Security\ICrypto;
 use phpseclib\Crypt\RSA;
 
 class ConfigController extends Controller {
 
-	public function __construct(string $appName,
-								IRequest $request,
-								private IConfig $config,
-								private IURLGenerator $urlGenerator,
-								private IL10N $l,
-								private DiscourseAPIService $discourseAPIService,
-								private ?string $userId) {
+	public function __construct(
+		string $appName,
+		IRequest $request,
+		private IConfig $config,
+		private ICrypto $crypto,
+		private IURLGenerator $urlGenerator,
+		private IL10N $l,
+		private DiscourseAPIService $discourseAPIService,
+		private ?string $userId
+	) {
 		parent::__construct($appName, $request);
 	}
 
 	/**
 	 * set config values
-	 * @NoAdminRequired
 	 *
 	 * @param array $values
 	 * @return DataResponse
 	 * @throws PreConditionNotMetException
 	 */
+	#[NoAdminRequired]
 	public function setConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
@@ -107,6 +112,9 @@ class ConfigController extends Controller {
 		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce');
 		// decrypt payload
 		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key');
+		if ($privKey !== '') {
+			$privKey = $this->crypto->decrypt($privKey);
+		}
 		$decPayload = base64_decode($payload);
 		$rsa = new RSA();
 		$rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
@@ -120,6 +128,9 @@ class ConfigController extends Controller {
 		if (is_array($payloadArray) && $configNonce !== '' && $configNonce === $payloadArray['nonce']) {
 			if (isset($payloadArray['key'])) {
 				$accessToken = $payloadArray['key'];
+				if ($accessToken !== '') {
+					$accessToken = $this->crypto->encrypt($accessToken);
+				}
 				$this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
 				// get user info
 				$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
