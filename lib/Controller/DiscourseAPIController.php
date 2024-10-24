@@ -15,6 +15,7 @@ use OCP\AppFramework\Controller;
 
 use OCA\Discourse\Service\DiscourseAPIService;
 use OCA\Discourse\AppInfo\Application;
+use OCP\Security\ICrypto;
 
 class DiscourseAPIController extends Controller {
 
@@ -23,14 +24,23 @@ class DiscourseAPIController extends Controller {
 	private string $discourseUrl;
 	private string $discourseUsername;
 
-	public function __construct(string                      $appName,
-								IRequest                    $request,
-								private IConfig             $config,
-								private DiscourseAPIService $discourseAPIService,
-								private ?string             $userId) {
+	public function __construct(
+		string $appName,
+		IRequest $request,
+		private IConfig $config,
+		ICrypto $crypto,
+		private DiscourseAPIService $discourseAPIService,
+		private ?string $userId
+	) {
 		parent::__construct($appName, $request);
 		$this->accessToken = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
+		if ($this->accessToken !== '') {
+			$this->accessToken = $crypto->decrypt($this->accessToken);
+		}
 		$this->clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id');
+		if ($this->clientID !== '') {
+			$this->clientID = $crypto->decrypt($this->clientID);
+		}
 		$this->discourseUrl = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
 		$this->discourseUsername = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name');
 	}

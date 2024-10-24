@@ -10,6 +10,7 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\PreConditionNotMetException;
+use OCP\Security\ICrypto;
 use OCP\Settings\ISettings;
 
 use OCA\Discourse\AppInfo\Application;
@@ -19,9 +20,12 @@ use phpseclib\Crypt\RSA;
 
 class Personal implements ISettings {
 
-	public function __construct(private IConfig $config,
-								private IInitialState $initialStateService,
-								private ?string $userId) {
+	public function __construct(
+		private IConfig $config,
+		private ICrypto $crypto,
+		private IInitialState $initialStateService,
+		private ?string $userId
+	) {
 	}
 
 	/**
@@ -30,6 +34,9 @@ class Personal implements ISettings {
 	 */
 	public function getForm(): TemplateResponse {
 		$token = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
+		if ($token !== '') {
+			$token = $this->crypto->decrypt($token);
+		}
 		$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
 		$userName = $this->config->getUserValue($this->userId, Application::APP_ID, 'user_name');
 		$navigationEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'navigation_enabled', '0');
@@ -38,13 +45,19 @@ class Personal implements ISettings {
 
 		// for OAuth
 		$clientID = $this->config->getUserValue($this->userId, Application::APP_ID, 'client_id');
+		if ($clientID !== '') {
+			$clientID = $this->crypto->decrypt($clientID);
+		}
 		$pubKey = $this->config->getAppValue(Application::APP_ID, 'public_key');
 		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key');
+		if ($privKey !== '') {
+			$privKey = $this->crypto->decrypt($privKey);
+		}
 
 		if ($clientID === '') {
 			// random string of 32 chars length
 			$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
-			$clientID = substr(str_shuffle($permitted_chars), 0, 32);
+			$clientID = $this->crypto->encrypt(substr(str_shuffle($permitted_chars), 0, 32));
 			$this->config->setUserValue($this->userId, Application::APP_ID, 'client_id', $clientID);
 		}
 		if ($pubKey === '' || $privKey === '') {
@@ -53,7 +66,7 @@ class Personal implements ISettings {
 			$rsa->setPublicKeyFormat(RSA::PUBLIC_FORMAT_PKCS1);
 			$keys = $rsa->createKey(2048);
 			$pubKey = $keys['publickey'];
-			$privKey = $keys['privatekey'];
+			$privKey = $this->crypto->encrypt($keys['privatekey']);
 
 			$this->config->setAppValue(Application::APP_ID, 'public_key', $pubKey);
 			$this->config->setAppValue(Application::APP_ID, 'private_key', $privKey);
