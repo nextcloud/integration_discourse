@@ -7,6 +7,8 @@
 namespace OCA\Discourse\Controller;
 
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+use OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired;
 use OCP\IURLGenerator;
 use OCP\IConfig;
 use OCP\IL10N;
@@ -59,6 +61,18 @@ class ConfigController extends Controller {
 	}
 
 	/**
+	 * @throws PreConditionNotMetException
+	 */
+	#[NoAdminRequired]
+	#[PasswordConfirmationRequired]
+	public function setSensitiveConfig(array $values): DataResponse {
+		foreach ($values as $key => $value) {
+			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
+		}
+		return new DataResponse('');
+	}
+
+	/**
 	 * set admin config values
 	 *
 	 * @param array $values
@@ -73,12 +87,12 @@ class ConfigController extends Controller {
 
 	/**
 	 * receive oauth encrypted payload with protocol handler redirect
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 *
 	 * @param string $url
 	 * @return RedirectResponse
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
 	public function oauthProtocolRedirect(string $url = ''): RedirectResponse {
 		if ($url === '') {
 			$result = $this->l->t('Error during authentication exchanges');
@@ -94,13 +108,13 @@ class ConfigController extends Controller {
 
 	/**
 	 * receive oauth encrypted payload
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 *
 	 * @param string $payload
 	 * @return RedirectResponse
 	 * @throws PreConditionNotMetException
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
 	public function oauthRedirect(string $payload = ''): RedirectResponse {
 		if ($payload === '') {
 			$message = $this->l->t('Error during authentication exchanges');
