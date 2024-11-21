@@ -118,6 +118,7 @@ import { generateUrl, imagePath } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import { delay, detectBrowser } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
+import { confirmPassword } from '@nextcloud/password-confirmation'
 import DiscourseIcon from './icons/DiscourseIcon.vue'
 
 const browser = detectBrowser()
@@ -192,11 +193,12 @@ export default {
 	methods: {
 		onCheckboxChanged(newValue, key) {
 			this.state[key] = newValue
-			this.saveOptions({ [key]: this.state[key] ? '1' : '0' })
+			this.saveOptions({ [key]: this.state[key] ? '1' : '0' }, false)
 		},
 		onLogoutClick() {
-			this.state.token = ''
-			this.saveOptions({ token: this.state.token, url: this.state.url })
+			this.saveOptions({ token: '', url: this.state.url }).then(() => {
+				this.state.token = ''
+			})
 		},
 		onInput() {
 			this.loading = true
@@ -217,12 +219,17 @@ export default {
 				}
 			}, 2000)()
 		},
-		saveOptions(values) {
+		async saveOptions(values, sensitive = true) {
+			if (sensitive) {
+				await confirmPassword()
+			}
 			const req = {
 				values,
 			}
-			const url = generateUrl('/apps/integration_discourse/config')
-			axios.put(url, req)
+			const url = sensitive
+				? generateUrl('/apps/integration_discourse/sensitive-config')
+				: generateUrl('/apps/integration_discourse/config')
+			return axios.put(url, req)
 				.then((response) => {
 					showSuccess(t('integration_discourse', 'Discourse options saved'))
 				})
