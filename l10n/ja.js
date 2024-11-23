@@ -4,6 +4,7 @@ OC.L10N.register(
     "Discourse notifications" : "Discourse通知",
     "Discourse posts" : "Discourse記事",
     "posts" : "投稿",
+    "Bad HTTP method" : "不正なHTTPメソッド",
     "Bad credentials" : "不正な資格情報",
     "Connected accounts" : "接続済みアカウント",
     "If you don't see the popup, you can still click on this icon in the address bar." : "ポップアップが表示されない場合、アドレスバーのこのアイコンをクリックしてください。",
