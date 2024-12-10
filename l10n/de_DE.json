@@ -22,7 +22,7 @@
     "If you still don't manage to get the protocol registered, check your settings on this page:" : "Wenn es Ihnen immer noch nicht gelingt, das Protokoll zu registrieren, überprüfen Sie Ihre Einstellungen auf dieser Seite:",
     "With Firefox, you should see a bar on top of this page to authorize this page to open \"web+nextclouddiscourse\" links." : "Bei Firefox sollte oben auf dieser Seite eine Leiste angezeigt werden, um diese Seite zum Öffnen von \"web+nextclouddiscourse\" -Links zu autorisieren.",
     "Enable navigation link" : "Navigations-Link aktivieren",
-    "Discourse instance address" : "Adresse der Discours-Instanz",
+    "Discourse instance address" : "Adresse der Discourse-Instanz",
     "Connect to Discourse" : "Mit Discourse verbunden",
     "Connected as {username}" : "Verbunden als {username}",
     "Disconnect from Discourse" : "Von Discourse trennen",
