@@ -26,7 +26,7 @@ OC.L10N.register(
     "Enable navigation link" : "يول باشلاش ئۇلانمىسىنى قوزغىتىڭ",
     "Discourse instance address" : "مىسال ئادرېسى",
     "Connect to Discourse" : "سۆزلىشىشكە ئۇلاڭ",
-    "Connected as {username}" : "{ئىشلەتكۈچى ئىسمى as قىلىپ ئۇلاندى",
+    "Connected as {username}" : "{username} ئىسمى as قىلىپ ئۇلاندى",
     "Disconnect from Discourse" : "سۆزلىشىشتىن ئۈزۈڭ",
     "Enable unified search for topics" : "تېمىنى بىرلىككە كەلتۈرۈشنى قوزغىتىڭ",
     "Enable searching for posts" : "يازمىلارنى ئىزدەشنى قوزغىتىڭ",
