@@ -79,6 +79,11 @@ export default {
 			type: String,
 			required: true,
 		},
+		widgetType: {
+			type: String,
+			required: false,
+			default: () => 'unread',
+		},
 	},
 
 	data() {
@@ -268,16 +273,22 @@ export default {
 				}
 				if (i > 0) {
 					const toAdd = this.filter(newNotifications.slice(0, i))
+					console.debug('Adding ' + toAdd.length + ' new notifications')
 					this.notifications = toAdd.concat(this.notifications)
 				}
 			} else {
 				// first time we don't check the date
+				console.debug('First time fetching ' + newNotifications.length + ' notifications: ', this.filter(newNotifications))
 				this.notifications = this.filter(newNotifications)
 			}
 		},
 		filter(notifications) {
 			return notifications.filter((n) => {
-				return (!n.read
+				let isUnread = true
+				if (this.widgetType === 'read') {
+					isUnread = false
+				}
+				return (!n.read === isUnread
 					&& [
 						TYPES.MENTION,
 						TYPES.REPLY,
