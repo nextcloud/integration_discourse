@@ -52,18 +52,20 @@
 					<EarthIcon :size="20" />
 					{{ t('integration_discourse', 'Discourse instance address') }}
 				</label>
-				<input id="discourse-url"
+				<NcTextField
+					id="discourse-url"
 					v-model="state.url"
-					type="text"
 					:disabled="connected === true"
 					:placeholder="t('integration_discourse', 'Discourse instance address')"
-					@input="onInput">
+					:helper-text="instanceUrlHelperText"
+					style="width: fit-content;"
+					@input="onInput" />
 			</div>
 			<NcButton v-if="showOAuth"
-				id="discourse-oauth"
-				:class="{ loading: loading }"
-				:disabled="loading === true"
-				@click="onOAuthClick">
+					  id="discourse-oauth"
+					  :class="{ loading: loading }"
+					  :disabled="loading === true"
+					  @click="onOAuthClick">
 				<template #icon>
 					<OpenInNewIcon />
 				</template>
@@ -112,6 +114,7 @@ import CloseIcon from 'vue-material-design-icons/Close.vue'
 
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcInputField.js'
 
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'
@@ -130,6 +133,7 @@ export default {
 		DiscourseIcon,
 		NcButton,
 		NcCheckboxRadioSwitch,
+		NcTextField,
 		OpenInNewIcon,
 		CloseIcon,
 		InformationOutlineIcon,
@@ -160,6 +164,12 @@ export default {
 		},
 		connected() {
 			return this.state.token && this.state.token !== ''
+		},
+		instanceUrlHelperText() {
+			if (this.connected) {
+				return ''
+			}
+			return t('integration_discourse', 'For example, https://help.nextcloud.com')
 		},
 	},
 
