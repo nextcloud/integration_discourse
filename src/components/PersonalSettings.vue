@@ -16,10 +16,21 @@
 			<br><b>"web+nextclouddiscourse://auth-redirect"</b>
 		</p>
 		<br>
-		<p v-if="!connected" class="settings-hint line">
-			<InformationOutlineIcon :size="20" />
-			{{ t('integration_discourse', 'Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse.') }}
-		</p>
+		<div v-if="!connected">
+			<p class="settings-hint line">
+				<InformationOutlineIcon :size="20" />
+				{{ t('integration_discourse', 'Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse.') }}
+			</p>
+			<p>
+				{{ t('integration_discourse', 'Use the button below to trigger the custom protocol handler registration. If no prompt appears, make sure it is not already registered.') }}
+			</p>
+			<NcButton @click="registerProtocol">
+				<template #icon>
+					<Protocol :size="20" />
+				</template>
+				{{ t('integration_discourse', 'Register protocol handler') }}
+			</NcButton>
+		</div>
 		<p v-if="!connected" class="settings-hint">
 			<span v-if="isChromium">
 				<br>
@@ -52,12 +63,14 @@
 					<EarthIcon :size="20" />
 					{{ t('integration_discourse', 'Discourse instance address') }}
 				</label>
-				<input id="discourse-url"
+				<NcTextField
+					id="discourse-url"
 					v-model="state.url"
-					type="text"
 					:disabled="connected === true"
 					:placeholder="t('integration_discourse', 'Discourse instance address')"
-					@input="onInput">
+					:helper-text="instanceUrlHelperText"
+					style="width: fit-content;"
+					@input="onInput" />
 			</div>
 			<NcButton v-if="showOAuth"
 				id="discourse-oauth"
@@ -109,9 +122,11 @@ import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline
 import OpenInNewIcon from 'vue-material-design-icons/OpenInNew.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
+import Protocol from 'vue-material-design-icons/Protocol.vue'
 
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcInputField.js'
 
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'
@@ -130,11 +145,13 @@ export default {
 		DiscourseIcon,
 		NcButton,
 		NcCheckboxRadioSwitch,
+		NcTextField,
 		OpenInNewIcon,
 		CloseIcon,
 		InformationOutlineIcon,
 		EarthIcon,
 		CheckIcon,
+		Protocol,
 	},
 
 	props: [],
@@ -160,6 +177,12 @@ export default {
 		},
 		connected() {
 			return this.state.token && this.state.token !== ''
+		},
+		instanceUrlHelperText() {
+			if (this.connected) {
+				return ''
+			}
+			return t('integration_discourse', 'For example, https://help.nextcloud.com')
 		},
 	},
 
@@ -289,6 +312,20 @@ export default {
 				text += chars.charAt(Math.floor(Math.random() * chars.length))
 			}
 			return text
+		},
+		registerProtocol() {
+			if (window.isSecureContext && window.navigator.registerProtocolHandler) {
+				const ncUrl = window.location.protocol
+					+ '//' + window.location.hostname
+					+ window.location.pathname.replace('settings/user/connected-accounts', '').replace('/index.php/', '')
+				window.navigator.registerProtocolHandler(
+					'web+nextclouddiscourse',
+					generateUrl('/apps/integration_discourse/oauth-protocol-redirect') + '?url=%s',
+					t('integration_discourse', 'Nextcloud Discourse integration on {ncUrl}', { ncUrl }),
+				)
+			} else {
+				showError(t('integration_discourse', 'Protocol handler registration requires a secure context (https) or is not supported by your browser'))
+			}
 		},
 	},
 }

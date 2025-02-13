@@ -7,6 +7,7 @@
 namespace OCA\Discourse\AppInfo;
 
 use Closure;
+use OCA\Discourse\Dashboard\DiscourseReadNotificationsWidget;
 use OCA\Discourse\Reference\DiscourseReferenceProvider;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
@@ -33,6 +34,7 @@ class Application extends App implements IBootstrap {
 
 	public function register(IRegistrationContext $context): void {
 		$context->registerDashboardWidget(DiscourseWidget::class);
+		$context->registerDashboardWidget(DiscourseReadNotificationsWidget::class);
 		$context->registerSearchProvider(DiscourseSearchPostsProvider::class);
 		$context->registerSearchProvider(DiscourseSearchTopicsProvider::class);
 		$context->registerReferenceProvider(DiscourseReferenceProvider::class);

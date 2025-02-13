@@ -143,9 +143,9 @@ class ConfigController extends Controller {
 			if (isset($payloadArray['key'])) {
 				$accessToken = $payloadArray['key'];
 				if ($accessToken !== '') {
-					$accessToken = $this->crypto->encrypt($accessToken);
+					$encryptedAccessToken = $this->crypto->encrypt($accessToken);
+					$this->config->setUserValue($this->userId, Application::APP_ID, 'token', $encryptedAccessToken);
 				}
-				$this->config->setUserValue($this->userId, Application::APP_ID, 'token', $accessToken);
 				// get user info
 				$url = $this->config->getUserValue($this->userId, Application::APP_ID, 'url');
 				$info = $this->discourseAPIService->request($url, $accessToken, 'session/current.json', []);
