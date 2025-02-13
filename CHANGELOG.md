@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.3.0 - 2025-02-13
+
+### Added
+
+- Helper text to instance URL in Personal settings
+- Second Dashboard widget to show already read notifications
+- Option to manually trigger custom protocol handler registration if prompt is not shown on page load
+
+### Fixed
+
+- Fixed incorrect encrypted token handling (regression)
+
+
 ## 2.1.0 - 2024-09-16
 
 Maintenance update
