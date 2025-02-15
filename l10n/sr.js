@@ -4,6 +4,7 @@ OC.L10N.register(
     "Discourse" : "Discourse",
     "Error during authentication exchanges" : "Грешка приликом размене аутентификације",
     "No API key returned by Discourse" : "Discourse није вратио ниједан API кључ",
+    "Discourse read notifications" : "Discourse обавештења о читању",
     "Discourse notifications" : "Discourse обавештења",
     "Discourse topics and posts" : "Discourse теме и објаве",
     "Discourse posts" : "Discourse објаве",
