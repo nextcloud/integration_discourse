@@ -45,7 +45,7 @@
     "Error connecting to Discourse" : "Fehler bei der Verbindung mit Discourse",
     "No Discourse notifications!" : "Keine Discourse-Benachrichtigungen!",
     "Failed to get Discourse notifications" : "Fehler beim Abruf der Discourse-Benachrichtigungen",
-    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} Eintrag in Ihrem Admin-Posteingang","{nb} Einträge in Ihrem Admin-Posteingang"],
+    "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} Eintrag in Ihrem Administration-Posteingang","{nb} Einträge in Ihrem Administration-Posteingang"],
     "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} Element in Ihrem Moderatoren-Posteingang","{nb} Elemente in Ihrem Moderatoren-Posteingang"]
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
