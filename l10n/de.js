@@ -22,7 +22,7 @@ OC.L10N.register(
     "Nextcloud Discourse integration on {ncUrl}" : "Discourse-Einbindung in Nextcloud auf {ncUrl}",
     "Discourse URL is invalid" : "Discourse-URL ist ungültig",
     "Discourse options saved" : "Discourse-Einstellungen gesichert",
-    "Failed to save Discourse options" : "Fehler beim Speichern der Discourse-Einstellungen",
+    "Failed to save Discourse options" : "Discourse-Einstellungen konnten nicht gespeichert werden",
     "Failed to save Discourse nonce" : "Discourse-Nonce konnte nicht gespeichert werden",
     "Protocol handler registration requires a secure context (https) or is not supported by your browser" : "Die Registrierung des Protokollhandlers erfordert einen sicheren Kontext (https) oder wird von Ihrem Browser nicht unterstützt",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Wenn du keinen Zugriff auf dein Discourse-Konto erhältst, liegt dies wahrscheinlich daran, dass deine Discourse-Instanz nicht berechtigt ist, API-Schlüssel für deine Nextcloud-Instanz zu vergeben.",
@@ -46,7 +46,7 @@ OC.L10N.register(
     "No Discourse account connected" : "Kein Discourse-Konto verbunden",
     "Error connecting to Discourse" : "Fehler bei der Verbindung mit Discourse",
     "No Discourse notifications!" : "Keine Discourse-Benachrichtigungen!",
-    "Failed to get Discourse notifications" : "Fehler beim Abruf der Discourse-Benachrichtigungen",
+    "Failed to get Discourse notifications" : "Discourse-Benachrichtigungen konnten nicht abgerufen werden",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} Eintrag in Deinem-Posteingang","{nb} Einträge in deinem Posteingang"],
     "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} Element in deinem Moderatoren-Posteingang","{nb} Elemente in deinem Moderatoren-Posteingang"]
 },
