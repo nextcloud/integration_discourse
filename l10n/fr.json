@@ -13,6 +13,7 @@
     "Discourse integration" : "Intégration de Discourse",
     "Integration of Discourse forum and mailing list management system" : "Intégration du système de gestion de forum et mailing list Discourse",
     "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "L'intégration de Discourse fournit un widget de tableau de bord affichant vos notifications importantes\net la possibilité de trouver des sujets et des messages avec la recherche unifiée de Nextcloud.",
+    "For example, https://help.nextcloud.com" : "Par exemple : https://help.nextcloud.com",
     "Successfully connected to Discourse!" : "Connexion à Discourse réussie !",
     "Discourse API-key could not be obtained:" : "La clé API n'a pas pu être obtenue :",
     "Nextcloud Discourse integration on {ncUrl}" : "Intégration de Discourse sur {ncUrl}",
