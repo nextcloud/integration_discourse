@@ -18,7 +18,7 @@
     "Discourse options saved" : "Discourse opties opgeslagen",
     "Failed to save Discourse options" : "Opslaan Discourse-opties mislukt",
     "Failed to save Discourse nonce" : "Opslaan Discourse nonce mislukt",
-    "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Als je geen toegang krijgt tot je Discourse account, dan is dat vermoedelijk doordat je Discourse server niet is geautoriseerd om API keys aan he Nextcloud server te verstrekken.",
+    "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Als je geen toegang krijgt tot je Discourse account, dan is dat vermoedelijk doordat je Discourse server niet is geautoriseerd om API-sleutels aan he Nextcloud server te verstrekken.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Vraag de Discourse beheerder om deze URI aan de \"allowed_user_api_auth_redirects\" lijst in admin settings toe te voegen:",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Accepteer de protocol-registratie bovenaan deze pagina om authenticatie bij Discourse mogelijk te maken.",
     "With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open \"web+nextclouddiscourse\" links." : "In Chrome/Chromium zou je linksboven in de browser een pop-up moeten zien om deze pagina toestemming te geven om \"web+nextclouddiscourse\" links te openen.",
