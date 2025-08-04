@@ -5,6 +5,7 @@ OC.L10N.register(
     "Bad HTTP method" : "Nederīgs HTTP pieprasījuma veids",
     "Bad credentials" : "Nederīgi pieteikšanās dati",
     "Connected accounts" : "Sasaistītie konti",
+    "For example, https://help.nextcloud.com" : "Piemēram, https://help.nextcloud.com",
     "Connected as {username}" : "Savienojies kā {username}",
     "No Discourse account connected" : "Nav sasaistītu Discourse kontu"
 },
