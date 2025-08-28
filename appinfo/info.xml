@@ -22,7 +22,7 @@
     <bugs>https://github.com/nextcloud/integration_discourse/issues</bugs>
     <screenshot>https://github.com/nextcloud/integration_discourse/raw/main/img/screenshot1.jpg</screenshot>
     <dependencies>
-        <nextcloud min-version="28" max-version="31"/>
+        <nextcloud min-version="28" max-version="32"/>
     </dependencies>
     <settings>
         <personal>OCA\Discourse\Settings\Personal</personal>
