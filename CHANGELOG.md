@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.4.0 - 2025-08-29
+
+### Added
+- search providers marked as external sources 
+
+### Changed
+- npm packages updated 
+- max NC version bumped to 32
+
 ## 2.3.0 - 2025-02-13
 
 ### Added
