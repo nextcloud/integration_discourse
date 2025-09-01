@@ -15,14 +15,13 @@ use OCP\IL10N;
 use OCP\IConfig;
 use OCP\IURLGenerator;
 use OCP\IUser;
-use OCP\Search\IExternalProvider;
 use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;
 use OCP\Search\SearchResult;
 use OCP\Search\SearchResultEntry;
 use OCP\Security\ICrypto;
 
-class DiscourseSearchPostsProvider implements IProvider, IExternalProvider {
+class DiscourseSearchPostsProvider implements IProvider {
 
 	public function __construct(
 		private IAppManager $appManager,
@@ -147,9 +146,5 @@ class DiscourseSearchPostsProvider implements IProvider, IExternalProvider {
 		return isset($entry['username'])
 			? $this->urlGenerator->linkToRouteAbsolute('integration_discourse.discourseAPI.getDiscourseAvatar', ['username' => $entry['username']])
 			: $thumbnailUrl;
-	}
-
-	public function isExternalProvider(): bool {
-		return True;
 	}
 }
