@@ -15,14 +15,13 @@ use OCP\IL10N;
 use OCP\IConfig;
 use OCP\IURLGenerator;
 use OCP\IUser;
-use OCP\Search\IExternalProvider;
 use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;
 use OCP\Search\SearchResult;
 use OCP\Search\SearchResultEntry;
 use OCP\Security\ICrypto;
 
-class DiscourseSearchTopicsProvider implements IProvider, IExternalProvider {
+class DiscourseSearchTopicsProvider implements IProvider {
 
 	public function __construct(
 		private IAppManager $appManager,
@@ -141,9 +140,5 @@ class DiscourseSearchTopicsProvider implements IProvider, IExternalProvider {
 		return $this->urlGenerator->getAbsoluteURL(
 			$this->urlGenerator->imagePath(Application::APP_ID, 'app-dark.svg')
 		);
-	}
-
-	public function isExternalProvider(): bool {
-		return True;
 	}
 }
