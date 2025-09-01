@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.4.1 - 2025-09-01
+
+### Changed
+
+- Keep NC 31 as max supported NC version for integration_discourse v2.x.x
+
+### Fixed
+
+- Do not use `OCP\Search\IExternalProvider` before 32
+
 ## 2.4.0 - 2025-08-29
 
 ### Added
