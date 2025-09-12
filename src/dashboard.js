@@ -3,35 +3,34 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { getCSPNonce } from '@nextcloud/auth'
-import Vue from 'vue'
-import './bootstrap.js'
-import Dashboard from './views/Dashboard.vue'
-
-__webpack_nonce__ = getCSPNonce() // eslint-disable-line
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async () => {
 	if (!OCA.Dashboard) {
 		return
 	}
+	const { createApp } = await import('vue')
+	const { default: Dashboard } = await import('./views/Dashboard.vue')
 
-	OCA.Dashboard.register('discourse_notifications', (el, { widget }) => {
-		const View = Vue.extend(Dashboard)
-		return new View({
-			propsData: {
+	OCA.Dashboard.register('discourse_notifications', async (el, { widget }) => {
+		const app = createApp(
+			Dashboard,
+			{
 				title: widget.title,
 				widgetType: 'unread',
 			},
-		}).$mount(el)
+		)
+		app.mixin({ methods: { t, n } })
+		app.mount(el)
 	})
 
-	OCA.Dashboard.register('discourse_notifications_read', (el, { widget }) => {
-		const View = Vue.extend(Dashboard)
-		return new View({
-			propsData: {
+	OCA.Dashboard.register('discourse_notifications_read', async (el, { widget }) => {
+		const app = createApp(
+			Dashboard,
+			{
 				title: widget.title,
 				widgetType: 'read',
 			},
-		}).$mount(el)
+		)
+		app.mixin({ methods: { t, n } })
+		app.mount(el)
 	})
 })
