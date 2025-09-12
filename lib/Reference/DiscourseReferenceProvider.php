@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,11 +7,11 @@
 
 namespace OCA\Discourse\Reference;
 
-use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
-use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Discourse\AppInfo\Application;
+use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
+use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
@@ -20,17 +21,19 @@ class DiscourseReferenceProvider extends ADiscoverableReferenceProvider implemen
 	private const RICH_OBJECT_TOPIC_TYPE = Application::APP_ID . '_topic';
 	private const RICH_OBJECT_POST_TYPE = Application::APP_ID . '_post';
 
-	public function __construct(private IConfig $config,
-								private IL10N $l10n,
-								private IURLGenerator $urlGenerator,
-								private ReferenceManager $referenceManager,
-								private ?string $userId) {
+	public function __construct(
+		private IConfig $config,
+		private IL10N $l10n,
+		private IURLGenerator $urlGenerator,
+		private ReferenceManager $referenceManager,
+		private ?string $userId,
+	) {
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getId(): string	{
+	public function getId(): string {
 		return 'discourse-topics-posts';
 	}
 
@@ -44,7 +47,7 @@ class DiscourseReferenceProvider extends ADiscoverableReferenceProvider implemen
 	/**
 	 * @inheritDoc
 	 */
-	public function getOrder(): int	{
+	public function getOrder(): int {
 		return 10;
 	}
 

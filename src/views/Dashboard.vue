@@ -39,9 +39,9 @@ import CloseIcon from 'vue-material-design-icons/Close.vue'
 
 import DiscourseIcon from '../components/icons/DiscourseIcon.vue'
 
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
-import NcDashboardWidget from '@nextcloud/vue/dist/Components/NcDashboardWidget.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
+import NcDashboardWidget from '@nextcloud/vue/components/NcDashboardWidget'
 
 import axios from '@nextcloud/axios'
 import { generateUrl, imagePath } from '@nextcloud/router'
@@ -208,7 +208,7 @@ export default {
 		},
 	},
 
-	beforeDestroy() {
+	beforeUnmount() {
 		document.removeEventListener('visibilitychange', this.changeWindowVisibility)
 	},
 
@@ -400,7 +400,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-::v-deep .connect-button {
-	margin-top: 10px;
-}
+// nothing
 </style>

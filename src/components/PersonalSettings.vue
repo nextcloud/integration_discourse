@@ -54,8 +54,8 @@
 		</p>
 		<div id="discourse-content">
 			<NcCheckboxRadioSwitch
-				:checked="state.navigation_enabled"
-				@update:checked="onCheckboxChanged($event, 'navigation_enabled')">
+				:model-value="state.navigation_enabled"
+				@update:model-value="onCheckboxChanged($event, 'navigation_enabled')">
 				{{ t('integration_discourse', 'Enable navigation link') }}
 			</NcCheckboxRadioSwitch>
 			<div class="line">
@@ -70,7 +70,7 @@
 					:placeholder="t('integration_discourse', 'Discourse instance address')"
 					:helper-text="instanceUrlHelperText"
 					style="width: fit-content;"
-					@input="onInput" />
+					@update:model-value="onInput" />
 			</div>
 			<NcButton v-if="showOAuth"
 				id="discourse-oauth"
@@ -97,13 +97,13 @@
 			<br>
 			<div v-if="connected" id="discourse-search-block">
 				<NcCheckboxRadioSwitch
-					:checked="state.search_topics_enabled"
-					@update:checked="onCheckboxChanged($event, 'search_topics_enabled')">
+					:model-value="state.search_topics_enabled"
+					@update:model-value="onCheckboxChanged($event, 'search_topics_enabled')">
 					{{ t('integration_discourse', 'Enable unified search for topics') }}
 				</NcCheckboxRadioSwitch>
 				<NcCheckboxRadioSwitch
-					:checked="state.search_posts_enabled"
-					@update:checked="onCheckboxChanged($event, 'search_posts_enabled')">
+					:model-value="state.search_posts_enabled"
+					@update:model-value="onCheckboxChanged($event, 'search_posts_enabled')">
 					{{ t('integration_discourse', 'Enable searching for posts') }}
 				</NcCheckboxRadioSwitch>
 				<br>
@@ -124,9 +124,9 @@ import CheckIcon from 'vue-material-design-icons/Check.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import Protocol from 'vue-material-design-icons/Protocol.vue'
 
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcInputField.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcTextField from '@nextcloud/vue/components/NcInputField'
 
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'

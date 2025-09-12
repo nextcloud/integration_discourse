@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,17 +7,19 @@
 
 namespace OCA\Discourse\Dashboard;
 
+use OCA\Discourse\AppInfo\Application;
 use OCP\Dashboard\IWidget;
 use OCP\IL10N;
 use OCP\IURLGenerator;
-use OCP\Util;
 
-use OCA\Discourse\AppInfo\Application;
+use OCP\Util;
 
 class DiscourseReadNotificationsWidget implements IWidget {
 
-	public function __construct(private IL10N $l10n,
-								private IURLGenerator $url) {
+	public function __construct(
+		private IL10N $l10n,
+		private IURLGenerator $url,
+	) {
 	}
 
 	/**
@@ -31,7 +34,7 @@ class DiscourseReadNotificationsWidget implements IWidget {
 	 */
 	public function getTitle(): string {
 		return $this->l10n->t('Discourse read notifications');
-		}
+	}
 
 	/**
 	 * @inheritDoc

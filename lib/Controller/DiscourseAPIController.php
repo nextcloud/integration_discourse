@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,15 +7,15 @@
 
 namespace OCA\Discourse\Controller;
 
+use OCA\Discourse\AppInfo\Application;
+use OCA\Discourse\Service\DiscourseAPIService;
+use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
+use OCP\AppFramework\Http\DataResponse;
+
 use OCP\IConfig;
 use OCP\IRequest;
-use OCP\AppFramework\Http\DataResponse;
-use OCP\AppFramework\Controller;
-
-use OCA\Discourse\Service\DiscourseAPIService;
-use OCA\Discourse\AppInfo\Application;
 use OCP\Security\ICrypto;
 
 class DiscourseAPIController extends Controller {
@@ -30,7 +31,7 @@ class DiscourseAPIController extends Controller {
 		private IConfig $config,
 		ICrypto $crypto,
 		private DiscourseAPIService $discourseAPIService,
-		private ?string $userId
+		private ?string $userId,
 	) {
 		parent::__construct($appName, $request);
 		$this->accessToken = $this->config->getUserValue($this->userId, Application::APP_ID, 'token');
@@ -78,7 +79,7 @@ class DiscourseAPIController extends Controller {
 			$headers['Content-Type'] = $avatar['mime'];
 		}
 		$response = new DataDisplayResponse($avatar['content'] ?? '', Http::STATUS_OK, $headers);
-		$response->cacheFor(60*60*24);
+		$response->cacheFor(60 * 60 * 24);
 		return $response;
 	}
 
