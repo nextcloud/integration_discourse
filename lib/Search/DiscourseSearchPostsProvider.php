@@ -8,11 +8,11 @@ declare(strict_types=1);
 
 namespace OCA\Discourse\Search;
 
-use OCA\Discourse\Service\DiscourseAPIService;
 use OCA\Discourse\AppInfo\Application;
+use OCA\Discourse\Service\DiscourseAPIService;
 use OCP\App\IAppManager;
-use OCP\IL10N;
 use OCP\IConfig;
+use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUser;
 use OCP\Search\IExternalProvider;
@@ -30,7 +30,7 @@ class DiscourseSearchPostsProvider implements IProvider, IExternalProvider {
 		private IConfig $config,
 		private ICrypto $crypto,
 		private IURLGenerator $urlGenerator,
-		private DiscourseAPIService $discourseAPIService
+		private DiscourseAPIService $discourseAPIService,
 	) {
 	}
 
@@ -150,6 +150,6 @@ class DiscourseSearchPostsProvider implements IProvider, IExternalProvider {
 	}
 
 	public function isExternalProvider(): bool {
-		return True;
+		return true;
 	}
 }

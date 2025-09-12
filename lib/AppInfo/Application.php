@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -8,15 +9,15 @@ namespace OCA\Discourse\AppInfo;
 
 use Closure;
 use OCA\Discourse\Dashboard\DiscourseReadNotificationsWidget;
+use OCA\Discourse\Dashboard\DiscourseWidget;
 use OCA\Discourse\Reference\DiscourseReferenceProvider;
+use OCA\Discourse\Search\DiscourseSearchPostsProvider;
+use OCA\Discourse\Search\DiscourseSearchTopicsProvider;
 use OCP\AppFramework\App;
-use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
-
-use OCA\Discourse\Dashboard\DiscourseWidget;
-use OCA\Discourse\Search\DiscourseSearchTopicsProvider;
-use OCA\Discourse\Search\DiscourseSearchPostsProvider;
+use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\INavigationManager;
@@ -72,4 +73,3 @@ class Application extends App implements IBootstrap {
 		}
 	}
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,14 +7,14 @@
 
 namespace OCA\Discourse\Settings;
 
+use OCA\Discourse\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\PreConditionNotMetException;
 use OCP\Security\ICrypto;
-use OCP\Settings\ISettings;
 
-use OCA\Discourse\AppInfo\Application;
+use OCP\Settings\ISettings;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 use phpseclib\Crypt\RSA;
@@ -24,7 +25,7 @@ class Personal implements ISettings {
 		private IConfig $config,
 		private ICrypto $crypto,
 		private IInitialState $initialStateService,
-		private ?string $userId
+		private ?string $userId,
 	) {
 	}
 

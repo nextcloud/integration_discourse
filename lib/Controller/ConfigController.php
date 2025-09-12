@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,19 +7,19 @@
 
 namespace OCA\Discourse\Controller;
 
+use OCA\Discourse\AppInfo\Application;
+use OCA\Discourse\Service\DiscourseAPIService;
+use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired;
-use OCP\IURLGenerator;
+use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\RedirectResponse;
 use OCP\IConfig;
 use OCP\IL10N;
-use OCP\AppFramework\Http\RedirectResponse;
-use OCP\IRequest;
-use OCP\AppFramework\Http\DataResponse;
-use OCP\AppFramework\Controller;
 
-use OCA\Discourse\AppInfo\Application;
-use OCA\Discourse\Service\DiscourseAPIService;
+use OCP\IRequest;
+use OCP\IURLGenerator;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -36,7 +37,7 @@ class ConfigController extends Controller {
 		private IURLGenerator $urlGenerator,
 		private IL10N $l,
 		private DiscourseAPIService $discourseAPIService,
-		private ?string $userId
+		private ?string $userId,
 	) {
 		parent::__construct($appName, $request);
 	}
@@ -97,8 +98,8 @@ class ConfigController extends Controller {
 		if ($url === '') {
 			$result = $this->l->t('Error during authentication exchanges');
 			return new RedirectResponse(
-				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
-				'?discourseToken=error&message=' . urlencode($result)
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+				. '?discourseToken=error&message=' . urlencode($result)
 			);
 		}
 		$parts = parse_url($url);
@@ -119,8 +120,8 @@ class ConfigController extends Controller {
 		if ($payload === '') {
 			$message = $this->l->t('Error during authentication exchanges');
 			return new RedirectResponse(
-				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
-				'?discourseToken=error&message=' . urlencode($message)
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+				. '?discourseToken=error&message=' . urlencode($message)
 			);
 		}
 		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce');
@@ -154,8 +155,8 @@ class ConfigController extends Controller {
 					$this->config->setUserValue($this->userId, Application::APP_ID, 'user_name', $info['current_user']['username']);
 				}
 				return new RedirectResponse(
-					$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
-					'?discourseToken=success'
+					$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+					. '?discourseToken=success'
 				);
 			}
 			$message = $this->l->t('No API key returned by Discourse');
@@ -163,8 +164,8 @@ class ConfigController extends Controller {
 			$message = $this->l->t('Error during authentication exchanges');
 		}
 		return new RedirectResponse(
-			$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) .
-			'?discourseToken=error&message=' . urlencode($message)
+			$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+			. '?discourseToken=error&message=' . urlencode($message)
 		);
 	}
 }

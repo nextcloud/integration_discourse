@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -9,9 +10,9 @@ namespace OCA\Discourse\Service;
 use Exception;
 use OCA\Discourse\AppInfo\Application;
 use OCP\Http\Client\IClient;
+use OCP\Http\Client\IClientService;
 use OCP\IL10N;
 use Psr\Log\LoggerInterface;
-use OCP\Http\Client\IClientService;
 use Throwable;
 
 /**
@@ -21,10 +22,12 @@ class DiscourseAPIService {
 
 	private IClient $client;
 
-	public function __construct (string                  $appName,
-								 private LoggerInterface $logger,
-								 private IL10N           $l10n,
-								 IClientService          $clientService) {
+	public function __construct(
+		string $appName,
+		private LoggerInterface $logger,
+		private IL10N $l10n,
+		IClientService $clientService,
+	) {
 		$this->client = $clientService->newClient();
 	}
 
@@ -104,7 +107,7 @@ class DiscourseAPIService {
 	 * @return array
 	 */
 	public function getDiscourseAvatar(string $url, string $accessToken, string $username): array {
-		$result = $this->request($url, $accessToken, 'users/'.$username.'.json');
+		$result = $this->request($url, $accessToken, 'users/' . $username . '.json');
 		if (isset($result['user']) && isset($result['user']['avatar_template'])) {
 			$avatarUrl = $url . str_replace('{size}', '32', $result['user']['avatar_template']);
 			try {
@@ -115,8 +118,8 @@ class DiscourseAPIService {
 					$avatar['mime'] = $ct;
 				}
 				return $avatar;
-			} catch (Exception | Throwable $e) {
-				$this->logger->warning('Discourse API error : '.$e->getMessage(), ['app' => Application::APP_ID]);
+			} catch (Exception|Throwable $e) {
+				$this->logger->warning('Discourse API error : ' . $e->getMessage(), ['app' => Application::APP_ID]);
 				return ['content' => ''];
 			}
 		}
@@ -165,11 +168,11 @@ class DiscourseAPIService {
 
 			if ($method === 'GET') {
 				$response = $this->client->get($url, $options);
-			} else if ($method === 'POST') {
+			} elseif ($method === 'POST') {
 				$response = $this->client->post($url, $options);
-			} else if ($method === 'PUT') {
+			} elseif ($method === 'PUT') {
 				$response = $this->client->put($url, $options);
-			} else if ($method === 'DELETE') {
+			} elseif ($method === 'DELETE') {
 				$response = $this->client->delete($url, $options);
 			} else {
 				return ['error' => $this->l10n->t('Bad HTTP method')];
@@ -182,8 +185,8 @@ class DiscourseAPIService {
 			} else {
 				return json_decode($body, true);
 			}
-		} catch (Exception | Throwable $e) {
-			$this->logger->warning('Discourse API error : '.$e->getMessage(), ['app' => Application::APP_ID]);
+		} catch (Exception|Throwable $e) {
+			$this->logger->warning('Discourse API error : ' . $e->getMessage(), ['app' => Application::APP_ID]);
 			return ['error' => $e->getMessage()];
 		}
 	}
