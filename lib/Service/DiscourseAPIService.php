@@ -112,9 +112,6 @@ class DiscourseAPIService {
 				$avatar = ['content' => $response->getBody()];
 				$ct = $response->getHeader('Content-Type');
 				if ($ct) {
-					if (is_array($ct) && count($ct) > 0) {
-						$ct = $ct[0];
-					}
 					$avatar['mime'] = $ct;
 				}
 				return $avatar;

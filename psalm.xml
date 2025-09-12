@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+  - SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<psalm
+	errorBaseline="tests/psalm-baseline.xml"
+	errorLevel="4"
+	findUnusedBaselineEntry="true"
+	findUnusedCode="false"
+	resolveFromConfigFile="true"
+	ensureOverrideAttribute="false"
+	phpVersion="8.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://getpsalm.org/schema/config"
+	xsi:schemaLocation="https://getpsalm.org/schema/config vendor-bin/psalm/vendor/vimeo/psalm/config.xsd"
+>
+	<projectFiles>
+		<directory name="lib" />
+		<ignoreFiles>
+			<directory name="vendor" />
+		</ignoreFiles>
+	</projectFiles>
+	<extraFiles>
+		<directory name="vendor" />
+	</extraFiles>
+	<issueHandlers>
+		<LessSpecificReturnStatement errorLevel="error"/>
+		<LessSpecificReturnType errorLevel="error"/>
+		<LessSpecificImplementedReturnType errorLevel="error"/>
+		<MoreSpecificReturnType errorLevel="error"/>
+		<UndefinedClass>
+			<errorLevel type="suppress">
+				<referencedClass name="OC\Collaboration\Reference\ReferenceManager" />
+				<referencedClass name="Symfony\Component\Console\Command\Command" />
+				<referencedClass name="GuzzleHttp\Exception\ServerException" />
+				<referencedClass name="GuzzleHttp\Exception\ClientException" />
+				<referencedClass name="OCP\TaskProcessing\ISynchronousProvider" />
+				<referencedClass name="OCP\TaskProcessing\EShapeType" />
+				<referencedClass name="OCP\TaskProcessing\TaskTypes\TextToTextProofread" />
+				<referencedClass name="OCP\TaskProcessing\TaskTypes\TextToTextChatWithTools" />
+				<referencedClass name="OCP\TaskProcessing\TaskTypes\AudioToAudioChat" />
+			</errorLevel>
+		</UndefinedClass>
+	</issueHandlers>
+</psalm>
