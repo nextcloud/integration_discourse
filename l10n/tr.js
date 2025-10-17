@@ -23,7 +23,7 @@ OC.L10N.register(
     "Discourse URL is invalid" : "Discourse adresi geçersiz",
     "Discourse options saved" : "Discourse ayarları kaydedildi",
     "Failed to save Discourse options" : "Discourse ayarları kaydedilemedi",
-    "Failed to save Discourse nonce" : "Discourse nonce kaydedilemedi",
+    "Failed to save Discourse nonce" : "Discourse rastgele kodu kaydedilemedi",
     "Protocol handler registration requires a secure context (https) or is not supported by your browser" : "İletişim kuralı işleyicisi kaydı, güvenli bir bağlam (https) gerektiriyor veya tarayıcınız tarafından desteklenmiyor",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Discourse hesabınıza erişemezseniz bu durum büyük olasılıkla Discourse kopyanızın Nextcloud kopyanıza API anahtarları verme izninin olmamasıdır.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Discourse yöneticinizden şu adresi yönetici bölümündeki \"allowed_user_api_auth_redirects\" listesine eklemesini isteyin:",
