@@ -1,0 +1,12 @@
+OC.L10N.register(
+    "integration_discourse",
+    {
+    "Bad HTTP method" : "HTTP method ບໍ່ຖືກຕ້ອງ",
+    "Bad credentials" : "ຂໍ້ມູນຢືນຢັນຕົວຕົນບໍ່ຖືກຕ້ອງ",
+    "Connected accounts" : "ບັນຊີທີ່ເຊື່ອມຕໍ່",
+    "If you don't see the popup, you can still click on this icon in the address bar." : "ຖ້າທ່ານບໍ່ເຫັນປັອບອັບ, ທ່ານຍັງສາມາດຄລິກທີ່ໄອຄອນນີ້ໃນແຖບທີ່ຢູ່ໄດ້.",
+    "If you still don't manage to get the protocol registered, check your settings on this page:" : "ຖ້າທ່ານຍັງບໍ່ສາມາດລົງທະບຽນໂປຣໂຕຄໍໄດ້, ໃຫ້ກວດສອບການຕັ້ງຄ່າຂອງທ່ານໃນໜ້ານີ້:",
+    "Enable navigation link" : "ເປີດໃຊ້ລິ້ງນຳທາງ",
+    "Connected as {username}" : "ເຊື່ອມຕໍ່ໃນຊື່ {username}"
+},
+"nplurals=1; plural=0;");
