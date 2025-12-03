@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 3.1.0 - 2025-12-03
+
+### Changed
+
+- Migrate to Vue 3 and nextcloud/vue 9 @julien-nc [#85](https://github.com/nextcloud/integration_discourse/pull/85)
+- Add support for Nextcloud 33
+
 ## 3.0.0 - 2025-09-01
 
 ### Changed
