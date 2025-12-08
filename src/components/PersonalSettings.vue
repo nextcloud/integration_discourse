@@ -9,69 +9,59 @@
 			<DiscourseIcon />
 			{{ t('integration_discourse', 'Discourse integration') }}
 		</h2>
-		<p v-if="!connected" class="settings-hint">
-			{{ t('integration_discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}
-			<br>
-			{{ t('integration_discourse', 'Ask the Discourse admin to add this URI to the "allowed_user_api_auth_redirects" list in admin settings:') }}
-			<br><b>"web+nextclouddiscourse://auth-redirect"</b>
-		</p>
-		<br>
-		<div v-if="!connected">
-			<p class="settings-hint line">
-				<InformationOutlineIcon :size="20" />
-				{{ t('integration_discourse', 'Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse.') }}
-			</p>
-			<p>
-				{{ t('integration_discourse', 'Use the button below to trigger the custom protocol handler registration. If no prompt appears, make sure it is not already registered.') }}
-			</p>
-			<NcButton @click="registerProtocol">
-				<template #icon>
-					<Protocol :size="20" />
-				</template>
-				{{ t('integration_discourse', 'Register protocol handler') }}
-			</NcButton>
-		</div>
-		<p v-if="!connected" class="settings-hint">
-			<span v-if="isChromium">
-				<br>
-				{{ t('integration_discourse', 'With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open "web+nextclouddiscourse" links.') }}
-				<br>
-				{{ t('integration_discourse', 'If you don\'t see the popup, you can still click on this icon in the address bar.') }}
-				<br>
-				<img :src="chromiumImagePath">
-				<br>
-				{{ t('integration_discourse', 'Then authorize this page to open "web+nextclouddiscourse" links.') }}
-				<br>
-				{{ t('integration_discourse', 'If you still don\'t manage to get the protocol registered, check your settings on this page:') }}
-				<b>chrome://settings/handlers</b>
-			</span>
-			<span v-else-if="isFirefox">
-				<br>
-				{{ t('integration_discourse', 'With Firefox, you should see a bar on top of this page to authorize this page to open "web+nextclouddiscourse" links.') }}
-				<br><br>
-				<img :src="firefoxImagePath">
-			</span>
-		</p>
 		<div id="discourse-content">
-			<NcCheckboxRadioSwitch
+			<NcNoteCard v-if="!connected" type="info">
+				{{ t('integration_discourse', 'If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance.') }}
+				<br>
+				{{ t('integration_discourse', 'Ask the Discourse admin to add this URI to the "allowed_user_api_auth_redirects" list in admin settings:') }}
+				<br><b>"web+nextclouddiscourse://auth-redirect"</b>
+			</NcNoteCard>
+			<NcNoteCard v-if="!connected" type="info">
+				{{ t('integration_discourse', 'Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse.') }}
+				<br>
+				{{ t('integration_discourse', 'Use the button below to trigger the custom protocol handler registration. If no prompt appears, make sure it is not already registered.') }}
+				<NcButton @click="registerProtocol">
+					<template #icon>
+						<Protocol :size="20" />
+					</template>
+					{{ t('integration_discourse', 'Register protocol handler') }}
+				</NcButton>
+				<span v-if="isChromium">
+					<br>
+					{{ t('integration_discourse', 'With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open "web+nextclouddiscourse" links.') }}
+					<br>
+					{{ t('integration_discourse', 'If you don\'t see the popup, you can still click on this icon in the address bar.') }}
+					<br>
+					<img :src="chromiumImagePath">
+					<br>
+					{{ t('integration_discourse', 'Then authorize this page to open "web+nextclouddiscourse" links.') }}
+					<br>
+					{{ t('integration_discourse', 'If you still don\'t manage to get the protocol registered, check your settings on this page:') }}
+					<b>chrome://settings/handlers</b>
+				</span>
+				<span v-else-if="isFirefox">
+					<br>
+					{{ t('integration_discourse', 'With Firefox, you should see a bar on top of this page to authorize this page to open "web+nextclouddiscourse" links.') }}
+					<br><br>
+					<img :src="firefoxImagePath">
+				</span>
+			</NcNoteCard>
+			<NcFormBoxSwitch
 				:model-value="state.navigation_enabled"
 				@update:model-value="onCheckboxChanged($event, 'navigation_enabled')">
 				{{ t('integration_discourse', 'Enable navigation link') }}
-			</NcCheckboxRadioSwitch>
-			<div class="line">
-				<label for="discourse-url">
+			</NcFormBoxSwitch>
+			<NcTextField
+				v-model="state.url"
+				:label="t('integration_discourse', 'Discourse instance address')"
+				:readonly="connected === true"
+				:placeholder="t('integration_discourse', 'Discourse instance address')"
+				:helper-text="instanceUrlHelperText"
+				@update:model-value="onInput">
+				<template #icon>
 					<EarthIcon :size="20" />
-					{{ t('integration_discourse', 'Discourse instance address') }}
-				</label>
-				<NcTextField
-					id="discourse-url"
-					v-model="state.url"
-					:disabled="connected === true"
-					:placeholder="t('integration_discourse', 'Discourse instance address')"
-					:helper-text="instanceUrlHelperText"
-					style="width: fit-content;"
-					@update:model-value="onInput" />
-			</div>
+				</template>
+			</NcTextField>
 			<NcButton v-if="showOAuth"
 				id="discourse-oauth"
 				:class="{ loading: loading }"
@@ -82,7 +72,7 @@
 				</template>
 				{{ t('integration_discourse', 'Connect to Discourse') }}
 			</NcButton>
-			<div v-if="connected" class="line">
+			<div v-if="connected" class="connected-block">
 				<label class="discourse-connected">
 					<CheckIcon :size="20" />
 					{{ t('integration_discourse', 'Connected as {username}', { username: state.user_name }) }}
@@ -94,23 +84,22 @@
 					{{ t('integration_discourse', 'Disconnect from Discourse') }}
 				</NcButton>
 			</div>
-			<br>
 			<div v-if="connected" id="discourse-search-block">
-				<NcCheckboxRadioSwitch
-					:model-value="state.search_topics_enabled"
-					@update:model-value="onCheckboxChanged($event, 'search_topics_enabled')">
-					{{ t('integration_discourse', 'Enable unified search for topics') }}
-				</NcCheckboxRadioSwitch>
-				<NcCheckboxRadioSwitch
-					:model-value="state.search_posts_enabled"
-					@update:model-value="onCheckboxChanged($event, 'search_posts_enabled')">
-					{{ t('integration_discourse', 'Enable searching for posts') }}
-				</NcCheckboxRadioSwitch>
-				<br>
-				<p v-if="state.search_topics_enabled || state.search_posts_enabled" class="settings-hint line">
-					<InformationOutlineIcon :size="20" />
-					{{ t('integration_discourse', 'Warning, everything you type in the search bar will be sent to your Discourse instance.') }}
-				</p>
+				<NcFormBox>
+					<NcFormBoxSwitch
+						:model-value="state.search_topics_enabled"
+						@update:model-value="onCheckboxChanged($event, 'search_topics_enabled')">
+						{{ t('integration_discourse', 'Enable unified search for topics') }}
+					</NcFormBoxSwitch>
+					<NcFormBoxSwitch
+						:model-value="state.search_posts_enabled"
+						@update:model-value="onCheckboxChanged($event, 'search_posts_enabled')">
+						{{ t('integration_discourse', 'Enable searching for posts') }}
+					</NcFormBoxSwitch>
+				</NcFormBox>
+				<NcNoteCard v-if="state.search_topics_enabled || state.search_posts_enabled" type="warning">
+					{{ t('integration_discourse', 'Everything you type in the search bar will be sent to your Discourse instance.') }}
+				</NcNoteCard>
 			</div>
 		</div>
 	</div>
@@ -118,15 +107,16 @@
 
 <script>
 import EarthIcon from 'vue-material-design-icons/Earth.vue'
-import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
 import OpenInNewIcon from 'vue-material-design-icons/OpenInNew.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import Protocol from 'vue-material-design-icons/Protocol.vue'
 
 import NcButton from '@nextcloud/vue/components/NcButton'
-import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
 import NcTextField from '@nextcloud/vue/components/NcInputField'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
+import NcFormBox from '@nextcloud/vue/components/NcFormBox'
+import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'
 
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl, imagePath } from '@nextcloud/router'
@@ -144,11 +134,12 @@ export default {
 	components: {
 		DiscourseIcon,
 		NcButton,
-		NcCheckboxRadioSwitch,
 		NcTextField,
+		NcNoteCard,
+		NcFormBox,
+		NcFormBoxSwitch,
 		OpenInNewIcon,
 		CloseIcon,
-		InformationOutlineIcon,
 		EarthIcon,
 		CheckIcon,
 		Protocol,
@@ -336,34 +327,32 @@ export default {
 	h2 {
 		display: flex;
 		align-items: center;
-		.discourse-icon {
-			margin-right: 8px;
-		}
+		gap: 8px;
+		justify-content: start;
 	}
 
-	.line {
+	.connected-block {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		gap: 4px;
+		align-items: start;
 		> label {
-			width: 300px;
 			display: flex;
 			align-items: center;
-			span {
-				margin-right: 4px;
-			}
-		}
-		> input {
-			width: 250px;
-		}
-		&.settings-hint {
-			span {
-				margin-right: 4px;
-			}
+			gap: 4px;
 		}
 	}
 
 	#discourse-content {
 		margin-left: 40px;
+		max-width: 800px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+
+		img {
+			width: 100%;
+		}
 	}
 }
 </style>

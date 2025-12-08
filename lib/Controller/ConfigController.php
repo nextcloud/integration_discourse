@@ -15,6 +15,7 @@ use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\RedirectResponse;
+use OCP\IAppConfig;
 use OCP\IConfig;
 use OCP\IL10N;
 
@@ -33,6 +34,7 @@ class ConfigController extends Controller {
 		string $appName,
 		IRequest $request,
 		private IConfig $config,
+		private IAppConfig $appConfig,
 		private ICrypto $crypto,
 		private IURLGenerator $urlGenerator,
 		private IL10N $l,
@@ -74,19 +76,6 @@ class ConfigController extends Controller {
 	}
 
 	/**
-	 * set admin config values
-	 *
-	 * @param array $values
-	 * @return DataResponse
-	 */
-	public function setAdminConfig(array $values): DataResponse {
-		foreach ($values as $key => $value) {
-			$this->config->setAppValue(Application::APP_ID, $key, $value);
-		}
-		return new DataResponse(1);
-	}
-
-	/**
 	 * receive oauth encrypted payload with protocol handler redirect
 	 *
 	 * @param string $url
@@ -125,11 +114,7 @@ class ConfigController extends Controller {
 			);
 		}
 		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce');
-		// decrypt payload
-		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key');
-		if ($privKey !== '') {
-			$privKey = $this->crypto->decrypt($privKey);
-		}
+		$privKey = $this->appConfig->getValueString(Application::APP_ID, 'private_key', lazy: true);
 		$decPayload = base64_decode($payload);
 		$rsa = new RSA();
 		$rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);

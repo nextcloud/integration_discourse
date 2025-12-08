@@ -10,6 +10,7 @@ namespace OCA\Discourse\Settings;
 use OCA\Discourse\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
+use OCP\IAppConfig;
 use OCP\IConfig;
 use OCP\PreConditionNotMetException;
 use OCP\Security\ICrypto;
@@ -23,6 +24,7 @@ class Personal implements ISettings {
 
 	public function __construct(
 		private IConfig $config,
+		private IAppConfig $appConfig,
 		private ICrypto $crypto,
 		private IInitialState $initialStateService,
 		private ?string $userId,
@@ -49,11 +51,8 @@ class Personal implements ISettings {
 		if ($clientID !== '') {
 			$clientID = $this->crypto->decrypt($clientID);
 		}
-		$pubKey = $this->config->getAppValue(Application::APP_ID, 'public_key');
-		$privKey = $this->config->getAppValue(Application::APP_ID, 'private_key');
-		if ($privKey !== '') {
-			$privKey = $this->crypto->decrypt($privKey);
-		}
+		$pubKey = $this->appConfig->getValueString(Application::APP_ID, 'public_key', lazy: true);
+		$privKey = $this->appConfig->getValueString(Application::APP_ID, 'private_key', lazy: true);
 
 		if ($clientID === '') {
 			// random string of 32 chars length
@@ -67,10 +66,10 @@ class Personal implements ISettings {
 			$rsa->setPublicKeyFormat(RSA::PUBLIC_FORMAT_PKCS1);
 			$keys = $rsa->createKey(2048);
 			$pubKey = $keys['publickey'];
-			$privKey = $this->crypto->encrypt($keys['privatekey']);
+			$privKey = $keys['privatekey'];
 
-			$this->config->setAppValue(Application::APP_ID, 'public_key', $pubKey);
-			$this->config->setAppValue(Application::APP_ID, 'private_key', $privKey);
+			$this->appConfig->setValueString(Application::APP_ID, 'public_key', $pubKey, lazy: true);
+			$this->appConfig->setValueString(Application::APP_ID, 'private_key', $privKey, lazy: true, sensitive: true);
 		}
 
 		$userConfig = [
