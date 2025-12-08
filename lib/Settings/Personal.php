@@ -66,7 +66,7 @@ class Personal implements ISettings {
 			$rsa->setPublicKeyFormat(RSA::PUBLIC_FORMAT_PKCS1);
 			$keys = $rsa->createKey(2048);
 			$pubKey = $keys['publickey'];
-			$privKey = $this->crypto->encrypt($keys['privatekey']);
+			$privKey = $keys['privatekey'];
 
 			$this->appConfig->setValueString(Application::APP_ID, 'public_key', $pubKey, lazy: true);
 			$this->appConfig->setValueString(Application::APP_ID, 'private_key', $privKey, lazy: true, sensitive: true);
