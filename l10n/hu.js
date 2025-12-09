@@ -37,12 +37,12 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Kapcsolat bontása a Discourse-szal",
     "Enable unified search for topics" : "Egyesített kereső engedélyezése a témákhoz",
     "Enable searching for posts" : "Bejegyzések keresésének engedélyezése",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Figyelem, minden amit a keresősávba ír, el lesz küldve a Discourse példányához.",
     "No Discourse account connected" : "Nincs Discourse-fiók csatlakoztatva",
     "Error connecting to Discourse" : "Hiba történt a Discourse-hoz történő csatlakozáskor",
     "No Discourse notifications!" : "Nincsenek Discourse-értesítések.",
     "Failed to get Discourse notifications" : "A Discourse értesítések lekérése sikertelen",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} elem az adminisztrátorok postaládájában","{nb} elem az adminisztrátorok postaládájában"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elem a moderátorok postaládájában","{nb} elem a moderátorok postaládájában"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elem a moderátorok postaládájában","{nb} elem a moderátorok postaládájában"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Figyelem, minden amit a keresősávba ír, el lesz küldve a Discourse példányához."
 },
 "nplurals=2; plural=(n != 1);");

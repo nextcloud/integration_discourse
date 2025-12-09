@@ -36,12 +36,12 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Rozłącz się z Discoursem",
     "Enable unified search for topics" : "Włącz ujednolicone wyszukiwanie tematów",
     "Enable searching for posts" : "Włącz wyszukiwanie postów",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uwaga, wszystko, co wpiszesz w pasku wyszukiwania, zostanie wysłane do Twojej instancji Discourse.",
     "No Discourse account connected" : "Brak połączonego konta Discourse",
     "Error connecting to Discourse" : "Błąd podczas łączenia z Discoursem",
     "No Discourse notifications!" : "Brak powiadomień Discourse!",
     "Failed to get Discourse notifications" : "Nie udało się pobrać powiadomień Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} pozycja w skrzynce odbiorczej administratorów","{nb} pozycje w skrzynce odbiorczej administratorów","{nb} pozycji w skrzynce odbiorczej administratorów","{nb} pozycji w skrzynce odbiorczej administratorów"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} pozycja w skrzynce odbiorczej moderatorów","{nb} pozycje w skrzynce odbiorczej moderatorów","{nb} pozycji w skrzynce odbiorczej moderatorów","{nb} pozycji w skrzynce odbiorczej moderatorów"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} pozycja w skrzynce odbiorczej moderatorów","{nb} pozycje w skrzynce odbiorczej moderatorów","{nb} pozycji w skrzynce odbiorczej moderatorów","{nb} pozycji w skrzynce odbiorczej moderatorów"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uwaga, wszystko, co wpiszesz w pasku wyszukiwania, zostanie wysłane do Twojej instancji Discourse."
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");

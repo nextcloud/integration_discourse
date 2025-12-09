@@ -34,12 +34,12 @@ OC.L10N.register(
     "Connected as {username}" : "Connètidu comente {username}",
     "Disconnect from Discourse" : "Disconnete dae Discourse",
     "Enable searching for posts" : "Ativa sa chirca de is publicatziones",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Avisu: totu su chi iscries in s'istanca de chirca s'at a imbiare a s'istàntzia Discourse tua.",
     "No Discourse account connected" : "Perunu contu Discourse connètidu",
     "Error connecting to Discourse" : "Errore connetende a Discourse",
     "No Discourse notifications!" : "Peruna notìfica de Discourse!",
     "Failed to get Discourse notifications" : "No at fatu a retzire is notìficas de Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} elementu in sa safata de amministratzione","{nb} elementos in sa safata de amministratzione"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elementu in sa safata de moderatzione","{nb} elementos in sa safata de moderatzione"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elementu in sa safata de moderatzione","{nb} elementos in sa safata de moderatzione"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Avisu: totu su chi iscries in s'istanca de chirca s'at a imbiare a s'istàntzia Discourse tua."
 },
 "nplurals=2; plural=(n != 1);");

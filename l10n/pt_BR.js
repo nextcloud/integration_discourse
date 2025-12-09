@@ -42,12 +42,12 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Desconectar do Discourse",
     "Enable unified search for topics" : "Ativar a pesquisa unificada para tópicos",
     "Enable searching for posts" : "Ativar a pesquisa por postagens",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Atenção, tudo o que você digitar na barra de pesquisa será enviado para a sua instância do Discourse.",
     "No Discourse account connected" : "Nenhuma conta do Discourse conectada",
     "Error connecting to Discourse" : "Erro ao conectar ao Discourse",
     "No Discourse notifications!" : "Sem notificações do Discourse!",
     "Failed to get Discourse notifications" : "Erro ao obter as notificações do Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} item na caixa de entrada do administrador","{nb} itens na caixa de entrada do administrador","{nb} itens na caixa de entrada do administrador"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item na caixa de entrada de moderadores","{nb} itens na caixa de entrada de moderadores","{nb} itens na caixa de entrada de moderadores"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item na caixa de entrada de moderadores","{nb} itens na caixa de entrada de moderadores","{nb} itens na caixa de entrada de moderadores"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Atenção, tudo o que você digitar na barra de pesquisa será enviado para a sua instância do Discourse."
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

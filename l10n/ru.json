@@ -33,12 +33,12 @@
     "Disconnect from Discourse" : "Отключиться от Discourse",
     "Enable unified search for topics" : "Включить унифицированный поиск по темам",
     "Enable searching for posts" : "Включить поиск сообщений",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Предупреждение, все, что вы вводите в строке поиска, будет отправлено в ваш сервер Discourse.",
     "No Discourse account connected" : "Учетная запись Discourse не подключена",
     "Error connecting to Discourse" : "Ошибка при подключении к Discourse",
     "No Discourse notifications!" : "Нет уведомлений Discourse!",
     "Failed to get Discourse notifications" : "Не удалось получить уведомления Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} элемент в вашем почтовом ящике администратора","{nb} элемента в вашем почтовом ящике администратора","{nb} элементов в вашем почтовом ящике администратора","{nb} элементов в вашем почтовом ящике администратора"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} элемент в вашем почтовом ящике модератора","{nb} элемента в вашем почтовом ящике модератора","{nb} элементов в вашем почтовом ящике модератора","{nb} элементов в вашем почтовом ящике модератора"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} элемент в вашем почтовом ящике модератора","{nb} элемента в вашем почтовом ящике модератора","{nb} элементов в вашем почтовом ящике модератора","{nb} элементов в вашем почтовом ящике модератора"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Предупреждение, все, что вы вводите в строке поиска, будет отправлено в ваш сервер Discourse."
 },"pluralForm" :"nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 }

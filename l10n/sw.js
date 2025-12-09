@@ -42,12 +42,12 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Tenganisha kutoka kwa Majadiliano",
     "Enable unified search for topics" : "Washa utafutaji wa pamoja wa mada",
     "Enable searching for posts" : "Washa utafutaji wa machapisho",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Onyo, kila kitu unachoandika kwenye upau wa kutafutia kitatumwa kwa mfano wako wa Discourse.",
     "No Discourse account connected" : "Hakuna akaunti ya mazungumzo iliyounganishwa",
     "Error connecting to Discourse" : "Hitilafu katika kuunganisha kwenye mazungumzo",
     "No Discourse notifications!" : "Hakuna arifa za Mazungumzo!",
     "Failed to get Discourse notifications" : "Imeshindwa kupata arifa za Majadiliano",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} item in your admins inbox","{nb} vipengee kwenye kikasha chako cha wasimamizi"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item in your moderators inbox","{nb} vipengee katika kisanduku pokezi cha wasimamizi wako"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item in your moderators inbox","{nb} vipengee katika kisanduku pokezi cha wasimamizi wako"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Onyo, kila kitu unachoandika kwenye upau wa kutafutia kitatumwa kwa mfano wako wa Discourse."
 },
 "nplurals=2; plural=(n != 1);");

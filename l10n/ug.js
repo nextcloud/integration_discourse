@@ -37,10 +37,10 @@ OC.L10N.register(
     "Disconnect from Discourse" : "سۆزلىشىشتىن ئۈزۈڭ",
     "Enable unified search for topics" : "تېمىنى بىرلىككە كەلتۈرۈشنى قوزغىتىڭ",
     "Enable searching for posts" : "يازمىلارنى ئىزدەشنى قوزغىتىڭ",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "ئاگاھلاندۇرۇش ، ئىزدەش ستونىغا يازغانلىرىڭىزنىڭ ھەممىسى سىزنىڭ سۆزلىشىش ئۈلگىڭىزگە ئەۋەتىلىدۇ.",
     "No Discourse account connected" : "مۇنازىرە ھېساباتى ئۇلانمىدى",
     "Error connecting to Discourse" : "سۆزلىشىشكە ئۇلىنىشتا خاتالىق",
     "No Discourse notifications!" : "مۇھاكىمە ئۇقتۇرۇشى يوق!",
-    "Failed to get Discourse notifications" : "مۇھاكىمە ئۇقتۇرۇشىغا ئېرىشەلمىدى"
+    "Failed to get Discourse notifications" : "مۇھاكىمە ئۇقتۇرۇشىغا ئېرىشەلمىدى",
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "ئاگاھلاندۇرۇش ، ئىزدەش ستونىغا يازغانلىرىڭىزنىڭ ھەممىسى سىزنىڭ سۆزلىشىش ئۈلگىڭىزگە ئەۋەتىلىدۇ."
 },
 "nplurals=2; plural=(n != 1);");

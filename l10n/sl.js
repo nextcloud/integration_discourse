@@ -34,12 +34,12 @@ OC.L10N.register(
     "Connected as {username}" : "Povezan je uporabniški račun {username}",
     "Disconnect from Discourse" : "Prekini povezavo s programom Discourse",
     "Enable searching for posts" : "Omogoči iskanje med objavami",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Opozorilo! Karkoli vpišete v iskalno polje bo poslano na strežnik Discourse.",
     "No Discourse account connected" : "Ni še povezanega računa Discourse",
     "Error connecting to Discourse" : "Napaka povezovanja z računom Discourse",
     "No Discourse notifications!" : "Ni obvestil Discourse!",
     "Failed to get Discourse notifications" : "Pridobivanje obvestil Discourse je spodletelo",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["v skrbniškem predalu je {nb} sporočilo","v skrbniškem predalu sta {nb} sporočili","v skrbniškem predalu so {nb} sporočila","v skrbniškem predalu je {nb} sporočil"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["v moderatorskem predalu je {nb} sporočilo","v moderatorskem predalu sta {nb} sporočili","v moderatorskem predalu so {nb} sporočila","v moderatorskem predalu je {nb} sporočil"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["v moderatorskem predalu je {nb} sporočilo","v moderatorskem predalu sta {nb} sporočili","v moderatorskem predalu so {nb} sporočila","v moderatorskem predalu je {nb} sporočil"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Opozorilo! Karkoli vpišete v iskalno polje bo poslano na strežnik Discourse."
 },
 "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);");
