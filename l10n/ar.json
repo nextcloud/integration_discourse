@@ -40,12 +40,12 @@
     "Disconnect from Discourse" : "قطع الاتصال عن منصة المحادثات Disourse ",
     "Enable unified search for topics" : "تمكين البحث الموحد عن المواضيع",
     "Enable searching for posts" : "تمكين البحث عن المنشورات",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "تحذير، سيتم إرسال كل ما تكتبه في شريط البحث إلى مثيل منصة المحادثات Discourse الخاص بك.",
     "No Discourse account connected" : "لا يوجد حساب متصل لمنصة المحادثات Discourse",
     "Error connecting to Discourse" : "خطأ في الاتصال بمنصة المحادثات Discourse",
     "No Discourse notifications!" : "لا توجد إخطارات لمنصة المحادثات Discourse!",
     "Failed to get Discourse notifications" : "فشل الحصول على إشعارات منصة المحادثات Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} عناصر في صندوق بريد مسئوليك","{nb} عنصر في صندوق بريد مسئوليك","{nb} عناصر في صندوق بريد مسئوليك","{nb} عناصر في صندوق بريد مسئوليك","{nb} عناصر في صندوق بريد مسئوليك","{nb} عناصر في صندوق بريد مسئوليك"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عنصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد المشرفين التابعين لك"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عنصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد الميسرين التابعين لك","{nb} عناصر في صندوق بريد المشرفين التابعين لك"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "تحذير، سيتم إرسال كل ما تكتبه في شريط البحث إلى مثيل منصة المحادثات Discourse الخاص بك."
 },"pluralForm" :"nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 }

@@ -40,12 +40,12 @@
     "Disconnect from Discourse" : "Discourse bağlantısını kes",
     "Enable unified search for topics" : "Konular için birleşik arama yapılabilsin",
     "Enable searching for posts" : "İletilerde arama yapılabilsin",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uyarı, arama çubuğuna yazdığınız her şey Discourse kopyanıza gönderilecek.",
     "No Discourse account connected" : "Bağlı bir Discourse hesabı yok",
     "Error connecting to Discourse" : "Discourse ile bağlantı kurulurken sorun çıktı",
     "No Discourse notifications!" : "Herhangi bir Discourse bildirimi yok!",
     "Failed to get Discourse notifications" : "Discourse bildirimleri alınamadı",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["Yöneticilerinizin gelen kutularında {nb} öge var","Yöneticilerinizin gelen kutularında {nb} öge var"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["Sorumlularınızın gelen kutularında {nb} öge var","Sorumlularınızın gelen kutularında {nb} öge var"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["Sorumlularınızın gelen kutularında {nb} öge var","Sorumlularınızın gelen kutularında {nb} öge var"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uyarı, arama çubuğuna yazdığınız her şey Discourse kopyanıza gönderilecek."
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

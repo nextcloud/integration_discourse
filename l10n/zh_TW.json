@@ -40,12 +40,12 @@
     "Disconnect from Discourse" : "與 Discourse 斷開連線",
     "Enable unified search for topics" : "對主題啟用統一搜尋",
     "Enable searching for posts" : "啟用搜尋貼文",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "警告，您在搜尋列中輸入的所有東西都會傳送 Discourse 站台。",
     "No Discourse account connected" : "未連結至 Discourse 帳號",
     "Error connecting to Discourse" : "連結至 Discourse 時發生錯誤",
     "No Discourse notifications!" : "無 Discourse 通知！",
     "Failed to get Discourse notifications" : "取得 Discourse 通知失敗",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} 個項目在您的管理員收件匣中"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} 個項目在您的版主收件匣中"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} 個項目在您的版主收件匣中"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "警告，您在搜尋列中輸入的所有東西都會傳送 Discourse 站台。"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

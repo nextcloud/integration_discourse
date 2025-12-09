@@ -32,12 +32,12 @@
     "Connected as {username}" : "Povezan kao {username}",
     "Disconnect from Discourse" : "Odspoji se s Discoursea",
     "Enable searching for posts" : "Omogući traženje objava",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Upozorenje, sve što upišete u traku za pretraživanje bit će poslano vašoj instanci Discoursea.",
     "No Discourse account connected" : "Nema povezanih Discourse računa",
     "Error connecting to Discourse" : "Pogreška pri povezivanju s Discourseom",
     "No Discourse notifications!" : "Nema Discourse obavijesti!",
     "Failed to get Discourse notifications" : "Dohvaćanje Discourse obavijesti nije uspjelo",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} poruka u dolaznom sandučiću administratora","{nb} poruke u dolaznom sandučiću administratora","{nb} poruka u dolaznom sandučiću administratora"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} poruka u dolaznom sandučiću moderatora","{nb} poruke u dolaznom sandučiću moderatora","{nb} poruka u dolaznom sandučiću moderatora"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} poruka u dolaznom sandučiću moderatora","{nb} poruke u dolaznom sandučiću moderatora","{nb} poruka u dolaznom sandučiću moderatora"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Upozorenje, sve što upišete u traku za pretraživanje bit će poslano vašoj instanci Discoursea."
 },"pluralForm" :"nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 }

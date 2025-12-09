@@ -19,10 +19,10 @@
     "Connected as {username}" : "Prisijungta kaip {username}",
     "Disconnect from Discourse" : "Atsijungti nuo „Discourse“",
     "Enable searching for posts" : "Įjungti įrašų paiešką",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Įspėjimas: viskas, ką rašysite paieškos juostoje, bus siunčiama į jūsų „Discourse“ egzempliorių.",
     "No Discourse account connected" : "Neprijungta jokia „Discourse“ paskyra",
     "Error connecting to Discourse" : "Klaida jungiantis prie „Discourse“",
     "No Discourse notifications!" : "Nėra „Discourse“ pranešimų!",
-    "Failed to get Discourse notifications" : "Nepavyko gauti „Discourse“ pranešimų"
+    "Failed to get Discourse notifications" : "Nepavyko gauti „Discourse“ pranešimų",
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Įspėjimas: viskas, ką rašysite paieškos juostoje, bus siunčiama į jūsų „Discourse“ egzempliorių."
 },"pluralForm" :"nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"
 }

@@ -31,10 +31,10 @@
     "Connected as {username}" : "S'ha connectat com a {username}",
     "Disconnect from Discourse" : "Desconnecta de Discourse",
     "Enable searching for posts" : "Habilita la cerca de publicacions",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Avis, tot el que escriviu a la barra de cerca s'enviarà a la vostra instància de Discourse.",
     "No Discourse account connected" : "No hi ha cap compte de Discourse connectat",
     "Error connecting to Discourse" : "S'ha produït un error en connectar-se a Discourse",
     "No Discourse notifications!" : "No hi ha notificacions de Discourse!",
-    "Failed to get Discourse notifications" : "No s'han pogut rebre les notificacions de Discourse."
+    "Failed to get Discourse notifications" : "No s'han pogut rebre les notificacions de Discourse.",
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Avis, tot el que escriviu a la barra de cerca s'enviarà a la vostra instància de Discourse."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

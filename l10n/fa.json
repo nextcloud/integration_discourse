@@ -35,12 +35,12 @@
     "Disconnect from Discourse" : "Disconnect from Discourse",
     "Enable unified search for topics" : "Enable unified search for topics",
     "Enable searching for posts" : "Enable searching for posts",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Warning, everything you type in the search bar will be sent to your Discourse instance.",
     "No Discourse account connected" : "No Discourse account connected",
     "Error connecting to Discourse" : "Error connecting to Discourse",
     "No Discourse notifications!" : "No Discourse notifications!",
     "Failed to get Discourse notifications" : "Failed to get Discourse notifications",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} item in your admins inbox","{nb} items in your admins inbox"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item in your moderators inbox","{nb} items in your moderators inbox"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item in your moderators inbox","{nb} items in your moderators inbox"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Warning, everything you type in the search bar will be sent to your Discourse instance."
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

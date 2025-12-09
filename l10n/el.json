@@ -40,12 +40,12 @@
     "Disconnect from Discourse" : "Αποσύνδεση από το Discourse",
     "Enable unified search for topics" : "Ενεργοποίηση ενοποιημένης αναζήτησης για θέματα",
     "Enable searching for posts" : "Ενεργοποίηση αναζήτησης δημοσιεύσεων",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Προειδοποίηση, όλα όσα πληκτρολογείτε στη γραμμή αναζήτησης θα σταλούν στην παρουσία του Discourse.",
     "No Discourse account connected" : "Κανένας συνδεδεμένος λογαριασμός Discourse",
     "Error connecting to Discourse" : "Σφάλμα σύνδεσης στο Discourse",
     "No Discourse notifications!" : "Καμία ειδοποίηση Discourse!",
     "Failed to get Discourse notifications" : "Αποτυχία λήψης ειδοποιήσεων Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} αντικείμενο στα εισερχόμενα του διαχειριστή σας","{nb} αντικείμενα στα εισερχόμενα του διαχειριστή σας"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} αντικείμενο στα εισερχόμενα εποπτών σας","{nb} αντικείμενα στα εισερχόμενα εποπτών σας"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} αντικείμενο στα εισερχόμενα εποπτών σας","{nb} αντικείμενα στα εισερχόμενα εποπτών σας"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Προειδοποίηση, όλα όσα πληκτρολογείτε στη γραμμή αναζήτησης θα σταλούν στην παρουσία του Discourse."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

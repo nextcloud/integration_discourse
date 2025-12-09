@@ -42,12 +42,12 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Odpojit od Discourse",
     "Enable unified search for topics" : "Zahrnout vyhledávání v tématech do celkového sjednoceného vyhledávání",
     "Enable searching for posts" : "Zapnout vyhledávání v příspěvcích",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Varování – cokoli zadáte do kolonky vyhledávání bude odesláno vámi využívané instanci Discourse.",
     "No Discourse account connected" : "Nepřipojen žádný Discourse účet",
     "Error connecting to Discourse" : "Chyba při připojování k Discourse",
     "No Discourse notifications!" : "Žádná upozornění z Discourse!",
     "Failed to get Discourse notifications" : "Nepodařilo se získat upozornění z Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} položka ve vaší schránce správce","{nb} položky ve vaší schránce správce","{nb} položek ve vaší schránce správce","{nb} položky ve vaší schránce správce"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} položka ve vaší schránce správce","{nb} položky ve vaší schránce správce","{nb} položek ve vaší schránce správce","{nb} položky ve vaší schránce správce"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} položka ve vaší schránce správce","{nb} položky ve vaší schránce správce","{nb} položek ve vaší schránce správce","{nb} položky ve vaší schránce správce"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Varování – cokoli zadáte do kolonky vyhledávání bude odesláno vámi využívané instanci Discourse."
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

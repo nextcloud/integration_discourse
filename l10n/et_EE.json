@@ -40,12 +40,12 @@
     "Disconnect from Discourse" : "Katkesta Discourse'i ühendus",
     "Enable unified search for topics" : "Kasuta teemade üldotsingut",
     "Enable searching for posts" : "Luba postituste otsimist",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Hoiatus, kõik otsinguribale sisestatud andmed saadetakse Discourse'i serverile.",
     "No Discourse account connected" : "Ükski Discourse'i kasutajakonto pole ühendatud",
     "Error connecting to Discourse" : "Viga ühendamisel Discourse'iga",
     "No Discourse notifications!" : "Discourse'i teavitusi pole!",
     "Failed to get Discourse notifications" : "Discourse'i teavituse laadimine ei õnnestunud",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} teade sinu peakasutaja postkastis","{nb} teadet sinu peakasutaja postkastis"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} teade sinu moderaatori postkastis","{nb} teadet sinu moderaatori postkastis"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} teade sinu moderaatori postkastis","{nb} teadet sinu moderaatori postkastis"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Hoiatus, kõik otsinguribale sisestatud andmed saadetakse Discourse'i serverile."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

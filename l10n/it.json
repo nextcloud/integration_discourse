@@ -34,12 +34,12 @@
     "Connected as {username}" : "Connesso come {username}",
     "Disconnect from Discourse" : "Disconnetti da Discourse",
     "Enable searching for posts" : "Abilita la ricerca dei commenti",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Attenzione, tutto ciò che digiti nella barra di ricerca sarà inviato alla tua istanza di Discourse.",
     "No Discourse account connected" : "Nessun account Discourse connesso",
     "Error connecting to Discourse" : "Errore durante la connessione a Discourse",
     "No Discourse notifications!" : "Nessuna notifica Discourse!",
     "Failed to get Discourse notifications" : "Impossibile ricevere le notifiche di Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} elemento nella casella degli amministratori","{nb} elementi nella casella degli amministratori","{nb} elementi nella casella degli amministratori"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elemento nella casella degli moderatori","{nb} elementi nella casella degli moderatori","{nb} elementi nella casella degli moderatori"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elemento nella casella degli moderatori","{nb} elementi nella casella degli moderatori","{nb} elementi nella casella degli moderatori"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Attenzione, tutto ciò che digiti nella barra di ricerca sarà inviato alla tua istanza di Discourse."
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

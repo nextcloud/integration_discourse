@@ -37,12 +37,12 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Koble fra Discourse",
     "Enable unified search for topics" : "Aktiver enhetlig søk for emner",
     "Enable searching for posts" : "Aktiver søking etter innlegg",
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Advarsel, alt du skriver i søkefeltet vil bli sendt til Discourse-forekomsten din.",
     "No Discourse account connected" : "Ingen Discourse-konto tilkoblet",
     "Error connecting to Discourse" : "Feil ved tilkobling til Discourse",
     "No Discourse notifications!" : "Ingen Discourse-varsler!",
     "Failed to get Discourse notifications" : "Henting av Discourse-varsler feilet",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} element i administratorinnboksen din","{nb} elementer i administratorinnboksen din"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} element i moderatorinnboksen din","{nb} elementer i moderatorinnboksen din"]
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} element i moderatorinnboksen din","{nb} elementer i moderatorinnboksen din"],
+    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Advarsel, alt du skriver i søkefeltet vil bli sendt til Discourse-forekomsten din."
 },
 "nplurals=2; plural=(n != 1);");
