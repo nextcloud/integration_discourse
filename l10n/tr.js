@@ -42,6 +42,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Discourse bağlantısını kes",
     "Enable unified search for topics" : "Konular için birleşik arama yapılabilsin",
     "Enable searching for posts" : "İletilerde arama yapılabilsin",
+    "Everything you type in the search bar will be sent to your Discourse instance." : "Arama çubuğuna yazdığınız her şey Discourse kopyanıza gönderilir.",
     "No Discourse account connected" : "Bağlı bir Discourse hesabı yok",
     "Error connecting to Discourse" : "Discourse ile bağlantı kurulurken sorun çıktı",
     "No Discourse notifications!" : "Herhangi bir Discourse bildirimi yok!",
