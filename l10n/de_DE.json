@@ -40,6 +40,7 @@
     "Disconnect from Discourse" : "Von Discourse trennen",
     "Enable unified search for topics" : "Einheitliche Suche nach Themen aktivieren",
     "Enable searching for posts" : "Suche nach Beiträgen aktivieren",
+    "Everything you type in the search bar will be sent to your Discourse instance." : "Alles, was Sie in die Suchleiste eingeben, wird an Ihre Discourse-Instanz gesendet.",
     "No Discourse account connected" : "Kein Discourse-Konto verbunden",
     "Error connecting to Discourse" : "Fehler bei der Verbindung mit Discourse",
     "No Discourse notifications!" : "Keine Discourse-Benachrichtigungen!",

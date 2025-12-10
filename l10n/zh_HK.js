@@ -42,6 +42,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "與 Discourse 斷開連線",
     "Enable unified search for topics" : "啟用統一搜尋主題",
     "Enable searching for posts" : "啟用帖子搜尋",
+    "Everything you type in the search bar will be sent to your Discourse instance." : "您在搜尋列中輸入的所有東西都會傳送到 您的 Discourse 實例。",
     "No Discourse account connected" : "未連線至 Discourse 帳號",
     "Error connecting to Discourse" : "連線至 Discourse 時發生錯誤",
     "No Discourse notifications!" : "無 Discourse 通知！",
