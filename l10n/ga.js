@@ -42,6 +42,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Dícheangail ón Discourse",
     "Enable unified search for topics" : "Cumasaigh cuardach aontaithe le haghaidh topaicí",
     "Enable searching for posts" : "Cumasaigh cuardach do phoist",
+    "Everything you type in the search bar will be sent to your Discourse instance." : "Seolfar gach rud a chlóscríobhann tú sa bharra cuardaigh chuig d’eispéireas Discourse.",
     "No Discourse account connected" : "Níl aon chuntas dioscúrsa ceangailte",
     "Error connecting to Discourse" : "Earráid ag nascadh le Discourse",
     "No Discourse notifications!" : "Gan fógraí dioscúrsa!",
