@@ -24,7 +24,7 @@ OC.L10N.register(
     "Discourse options saved" : "Discourse-Einstellungen gesichert",
     "Failed to save Discourse options" : "Discourse-Einstellungen konnten nicht gespeichert werden",
     "Failed to save Discourse nonce" : "Discourse-Nonce konnte nicht gespeichert werden",
-    "Protocol handler registration requires a secure context (https) or is not supported by your browser" : "Die Registrierung des Protokollhandlers erfordert einen sicheren Kontext (https) oder wird von Ihrem Browser nicht unterstützt",
+    "Protocol handler registration requires a secure context (https) or is not supported by your browser" : "Die Registrierung des Protokollhandlers erfordert einen sicheren Kontext (https) oder wird von deinem Browser nicht unterstützt",
     "If you fail getting access to your Discourse account, this is probably because your Discourse instance is not authorized to give API keys to your Nextcloud instance." : "Wenn du keinen Zugriff auf dein Discourse-Konto erhältst, liegt dies wahrscheinlich daran, dass deine Discourse-Instanz nicht berechtigt ist, API-Schlüssel für deine Nextcloud-Instanz zu vergeben.",
     "Ask the Discourse admin to add this URI to the \"allowed_user_api_auth_redirects\" list in admin settings:" : "Bitte die Diskourse-Administration, diese URI in den Administrationseinstellungen zur Liste \"allow_user_api_auth_redirects\" hinzuzufügen:",
     "Make sure you accepted the protocol registration on top of this page if you want to authenticate to Discourse." : "Stelle sicher, dass du die Protokollregistrierung oben auf dieser Seite akzeptiert hast, wenn du dich bei Discourse authentifizieren möchtest.",
