@@ -42,6 +42,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Odpojit od Discourse",
     "Enable unified search for topics" : "Zahrnout vyhledávání v tématech do celkového sjednoceného vyhledávání",
     "Enable searching for posts" : "Zapnout vyhledávání v příspěvcích",
+    "Everything you type in the search bar will be sent to your Discourse instance." : "Cokoli zadáte do kolonky vyhledávání bude odesláno vámi využívané instanci Discourse.",
     "No Discourse account connected" : "Nepřipojen žádný Discourse účet",
     "Error connecting to Discourse" : "Chyba při připojování k Discourse",
     "No Discourse notifications!" : "Žádná upozornění z Discourse!",
