@@ -46,7 +46,6 @@
     "No Discourse notifications!" : "Keine Discourse-Benachrichtigungen!",
     "Failed to get Discourse notifications" : "Discourse-Benachrichtigungen konnten nicht abgerufen werden",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} Eintrag in Deinem-Posteingang","{nb} Einträge in deinem Posteingang"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} Element in deinem Moderatoren-Posteingang","{nb} Elemente in deinem Moderatoren-Posteingang"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Achtung, alles, was du in die Suchleiste eingibst, wird an deine Discourse-Instanz gesendet."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} Element in deinem Moderatoren-Posteingang","{nb} Elemente in deinem Moderatoren-Posteingang"]
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

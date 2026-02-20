@@ -42,7 +42,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "Ez dago Discourse jakinarazpenik!",
     "Failed to get Discourse notifications" : "Ezin izan da Discourse-ren jakinarazpenik lortu",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} elementuak zure administratzaileen sarrera-ontzian ","{nb} elementuak zure administratzaileen sarrera-ontzian"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elementuak zure moderatzaileen sarrera-ontzian","{nb} elementuak zure moderatzaileen sarrera-ontzian"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Abisua: bilaketa-barran idazten duzun guztia zure Discourse instantziara bidaliko da."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elementuak zure moderatzaileen sarrera-ontzian","{nb} elementuak zure moderatzaileen sarrera-ontzian"]
 },
 "nplurals=2; plural=(n != 1);");

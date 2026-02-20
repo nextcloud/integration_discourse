@@ -40,7 +40,6 @@
     "No Discourse notifications!" : "Без Discourse известия!",
     "Failed to get Discourse notifications" : "Неуспешно получаване на Discourse известия",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} елемента във входящата кутия на администраторите","{nb} елемента във входящата поща на администраторите"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} елемента във входящата поща на модераторите ","{nb} елемента във входящата поща на модераторите"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Предупреждение, всичко, което въведете в лентата за търсене, ще бъде изпратено до вашия екземпляр на Discourse."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} елемента във входящата поща на модераторите ","{nb} елемента във входящата поща на модераторите"]
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

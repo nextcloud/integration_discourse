@@ -47,7 +47,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "Discourse'i teavitusi pole!",
     "Failed to get Discourse notifications" : "Discourse'i teavituse laadimine ei õnnestunud",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} teade sinu peakasutaja postkastis","{nb} teadet sinu peakasutaja postkastis"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} teade sinu moderaatori postkastis","{nb} teadet sinu moderaatori postkastis"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Hoiatus, kõik otsinguribale sisestatud andmed saadetakse Discourse'i serverile."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} teade sinu moderaatori postkastis","{nb} teadet sinu moderaatori postkastis"]
 },
 "nplurals=2; plural=(n != 1);");

@@ -45,7 +45,6 @@
     "No Discourse notifications!" : "Нема Discourse обавештења!",
     "Failed to get Discourse notifications" : "Нису могла да се добију Discourse обавештења",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} ставка у вашем админ долазном сандучету","{nb} ставке у вашем админ долазном сандучету","{nb} ставки у вашем админ долазном сандучету"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} ставка у вашем модераторском долазном сандучету","{nb} ставке у вашем модераторском долазном сандучету","{nb} ставки у вашем модераторском долазном сандучету"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Упозорење, све што куцате у линији за претрагу се шаље вашој Discourse инстанци."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} ставка у вашем модераторском долазном сандучету","{nb} ставке у вашем модераторском долазном сандучету","{nb} ставки у вашем модераторском долазном сандучету"]
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 }

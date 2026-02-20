@@ -47,7 +47,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "ບໍ່ມີການແຈ້ງເຕືອນຈາກ Discourse!",
     "Failed to get Discourse notifications" : "ຮັບການແຈ້ງເຕືອນຈາກ Discourse ລົ້ມເຫຼວ",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} ລາຍການໃນກ່ອງຈົດໝາຍຜູ້ເບິ່ງແຍງລະບົບຂອງທ່ານ"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} ລາຍການໃນກ່ອງຈົດໝາຍຜູ້សម្រັບសម្រួលຂອງທ່ານ"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "ຄຳເຕືອນ, ທຸກຢ່າງທີ່ທ່ານພິມໃນແຖບຄົ້ນຫາຈະຖືກສົ່ງໄປທີ່ອິນສະແຕນ Discourse ຂອງທ່ານ."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} ລາຍການໃນກ່ອງຈົດໝາຍຜູ້សម្រັບសម្រួលຂອງທ່ານ"]
 },
 "nplurals=1; plural=0;");

@@ -48,7 +48,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "Non hai notificacións de Discourse.",
     "Failed to get Discourse notifications" : "Produciuse un fallo ao obter as notificacións de Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} elemento na caixa de entrada dos administradores","{nb} elementos na caixa de entrada dos administradores"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elemento na caixa de entrada dos moderadores","{nb} elementos na caixa de entrada dos moderadores"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Advertencia, todo o que escriba na barra de buscas enviarase á súa instancia de Discourse."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elemento na caixa de entrada dos moderadores","{nb} elementos na caixa de entrada dos moderadores"]
 },
 "nplurals=2; plural=(n != 1);");

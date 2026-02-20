@@ -48,7 +48,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "مۇھاكىمە ئۇقتۇرۇشى يوق!",
     "Failed to get Discourse notifications" : "مۇھاكىمە ئۇقتۇرۇشىغا ئېرىشەلمىدى",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["باشقۇرغۇچى خەت ساندۇقىڭىزدا {nb} تۈر بار","باشقۇرغۇچى خەت ساندۇقىڭىزدا {nb} تۈر بار"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["مۇرەسسەلەشتۈرگۈچى خەت ساندۇقىڭىزدا {nb} تۈر بار","مۇرەسسەلەشتۈرگۈچى خەت ساندۇقىڭىزدا {nb} تۈر بار"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "ئاگاھلاندۇرۇش ، ئىزدەش ستونىغا يازغانلىرىڭىزنىڭ ھەممىسى سىزنىڭ سۆزلىشىش ئۈلگىڭىزگە ئەۋەتىلىدۇ."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["مۇرەسسەلەشتۈرگۈچى خەت ساندۇقىڭىزدا {nb} تۈر بار","مۇرەسسەلەشتۈرگۈچى خەت ساندۇقىڭىزدا {nb} تۈر بار"]
 },
 "nplurals=2; plural=(n != 1);");

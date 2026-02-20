@@ -48,7 +48,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "Gan fógraí dioscúrsa!",
     "Failed to get Discourse notifications" : "Theip ar fhógraí Dioscúrsa a fháil",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} mír i mbosca isteach do riarthóirí","{nb} mír i mbosca isteach do riarthóirí","{nb} mír i mbosca isteach do riarthóirí","{nb} mír i mbosca isteach do riarthóirí","{nb} mír i mbosca isteach do riarthóirí"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Rabhadh, seolfar gach rud a chlóscríobhann tú sa bharra cuardaigh chuig do chás Dioscúrsa."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí","{nb} mír i do bhosca isteach modhnóirí"]
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

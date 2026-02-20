@@ -37,7 +37,6 @@
     "No Discourse notifications!" : "Geen Discourse meldingen!",
     "Failed to get Discourse notifications" : "Kon Discource meldingen niet ophalen.",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} bericht in je beheerdersinbox","{nb} berichten in je beheerdersinbox"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} bericht in je moderatorinbox","{nb} berichten in je moderatorinbox"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Let op: alles wat je intypt in de zoekbalk wordt naar de Discourseserver gestuurd."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} bericht in je moderatorinbox","{nb} berichten in je moderatorinbox"]
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -48,7 +48,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "無 Discourse 通知！",
     "Failed to get Discourse notifications" : "未能獲取 Discourse 通知",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} 個項目在您的管理員收件箱中"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} 個項目在您的主持人收件箱中"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "警告，您在搜尋列中輸入的所有東西都會傳送到 Discourse。"
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} 個項目在您的主持人收件箱中"]
 },
 "nplurals=1; plural=0;");

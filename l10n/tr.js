@@ -48,7 +48,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "Herhangi bir Discourse bildirimi yok!",
     "Failed to get Discourse notifications" : "Discourse bildirimleri alınamadı",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["Yöneticilerinizin gelen kutularında {nb} öge var","Yöneticilerinizin gelen kutularında {nb} öge var"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["Sorumlularınızın gelen kutularında {nb} öge var","Sorumlularınızın gelen kutularında {nb} öge var"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Uyarı, arama çubuğuna yazdığınız her şey Discourse kopyanıza gönderilecek."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["Sorumlularınızın gelen kutularında {nb} öge var","Sorumlularınızın gelen kutularında {nb} öge var"]
 },
 "nplurals=2; plural=(n > 1);");

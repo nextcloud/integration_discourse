@@ -47,7 +47,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "Žiadne upozornenia z Discourse!",
     "Failed to get Discourse notifications" : "Chyba pri získavaní upozornení z Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} položka vo vašej doručenej pošte pre administrátorov","{nb} položiek vo vašej doručenej pošte pre administrátorov","{nb} položiek vo vašej doručenej pošte pre administrátorov","{nb} položiek vo vašej doručenej pošte pre administrátorov"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} položka vo vašej doručenej pošte pre moderátorov","{nb} položiek vo vašej doručenej pošte pre moderátorov","{nb} položiek vo vašej doručenej pošte pre moderátorov","{nb} položiek vo vašej doručenej pošte pre moderátorov"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Varovanie, všetko čo napíšete do vyhľadávania bude odoslané do Discourse inštancie."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} položka vo vašej doručenej pošte pre moderátorov","{nb} položiek vo vašej doručenej pošte pre moderátorov","{nb} položiek vo vašej doručenej pošte pre moderátorov","{nb} položiek vo vašej doručenej pošte pre moderátorov"]
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

@@ -42,7 +42,6 @@ OC.L10N.register(
     "No Discourse notifications!" : "¡No hay notificaciones de Discourse!",
     "Failed to get Discourse notifications" : "Error al obtener las notificaciones de Discourse",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} elemento en la bandeja de entrada de tus administradores","{nb} elementos en la bandeja de entrada de tus administradores","{nb} elementos en la bandeja de entrada de tus administradores"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elemento en la bandeja de entrada de tus moderadores","{nb} elementos en la bandeja de entrada de tus moderadores","{nb} elementos en la bandeja de entrada de tus moderadores"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Advertencia, todo lo que escribas en la barra de búsqueda se enviará a tu instancia de Discourse."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} elemento en la bandeja de entrada de tus moderadores","{nb} elementos en la bandeja de entrada de tus moderadores","{nb} elementos en la bandeja de entrada de tus moderadores"]
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

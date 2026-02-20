@@ -46,7 +46,6 @@
     "No Discourse notifications!" : "No Discourse notifications!",
     "Failed to get Discourse notifications" : "Failed to get Discourse notifications",
     "_{nb} item in your admins inbox_::_{nb} items in your admins inbox_" : ["{nb} item in your admins inbox","{nb} items in your admins inbox"],
-    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item in your moderators inbox","{nb} items in your moderators inbox"],
-    "Warning, everything you type in the search bar will be sent to your Discourse instance." : "Warning, everything you type in the search bar will be sent to your Discourse instance."
+    "_{nb} item in your moderators inbox_::_{nb} items in your moderators inbox_" : ["{nb} item in your moderators inbox","{nb} items in your moderators inbox"]
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
