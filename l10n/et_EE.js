@@ -42,6 +42,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Katkesta Discourse'i ühendus",
     "Enable unified search for topics" : "Kasuta teemade üldotsingut",
     "Enable searching for posts" : "Luba postituste otsimist",
+    "Everything you type in the search bar will be sent to your Discourse instance." : "Hoiatus, kõik otsinguribale sisestatud andmed saadetakse sinu valitud Discourse'i serverile.",
     "No Discourse account connected" : "Ükski Discourse'i kasutajakonto pole ühendatud",
     "Error connecting to Discourse" : "Viga ühendamisel Discourse'iga",
     "No Discourse notifications!" : "Discourse'i teavitusi pole!",
