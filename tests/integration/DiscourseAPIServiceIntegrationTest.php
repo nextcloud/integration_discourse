@@ -42,7 +42,10 @@ class DiscourseAPIServiceIntegrationTest extends TestCase {
 		$this->assertIsArray($result);
 		$this->assertArrayNotHasKey('error', $result);
 
+		$this->assertGreaterThan(0, count($result), 'test requires at least one notification');
+
 		if (count($result) > 0) {
+			// echo json_encode($result, JSON_PRETTY_PRINT);
 			$notification = $result[0];
 			$this->assertArrayHasKey('id', $notification);
 			$this->assertArrayHasKey('notification_type', $notification);
