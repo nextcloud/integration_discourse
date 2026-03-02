@@ -12,6 +12,39 @@ use OCP\Server;
 use PHPUnit\Framework\Attributes\Group;
 use Test\TestCase;
 
+/**
+ * Notification type constants matching src/views/Dashboard.vue TYPES
+ */
+const TYPES_MENTION = 1;
+const TYPES_REPLY = 2;
+const TYPES_QUOTED = 3;
+const TYPES_EDIT = 4;
+const TYPES_LIKE = 5;
+const TYPES_PRIVATE_MESSAGE = 6;
+const TYPES_REPLY_2 = 9;
+const TYPES_LINKED = 11;
+const TYPES_BADGE_EARNED = 12;
+const TYPES_SOLVED = 14;
+const TYPES_GROUP_MENTION = 15;
+const TYPES_MODERATOR_OR_ADMIN_INBOX = 16;
+
+/**
+ * All notification types handled by the Dashboard widget
+ */
+const DASHBOARD_TYPES = [
+	TYPES_MENTION,
+	TYPES_REPLY,
+	TYPES_QUOTED,
+	TYPES_EDIT,
+	TYPES_LIKE,
+	TYPES_PRIVATE_MESSAGE,
+	TYPES_REPLY_2,
+	TYPES_LINKED,
+	TYPES_SOLVED,
+	TYPES_GROUP_MENTION,
+	TYPES_MODERATOR_OR_ADMIN_INBOX,
+];
+
 #[Group('DB')]
 class DiscourseAPIServiceIntegrationTest extends TestCase {
 
@@ -34,6 +67,11 @@ class DiscourseAPIServiceIntegrationTest extends TestCase {
 		}
 	}
 
+	/**
+	 * Test that getNotifications returns a valid array and that every notification
+	 * has the fields required by the Dashboard.vue computed properties and methods
+	 * so that rendering won't crash.
+	 */
 	public function testGetNotifications(): void {
 		$this->requireCredentials();
 
@@ -42,16 +80,94 @@ class DiscourseAPIServiceIntegrationTest extends TestCase {
 		$this->assertIsArray($result);
 		$this->assertArrayNotHasKey('error', $result);
 
-		$this->assertGreaterThan(0, count($result), 'test requires at least one notification');
+		$this->assertGreaterThan(0, count($result), 'test data requires at least one notification');
 
-		if (count($result) > 0) {
-			// echo json_encode($result, JSON_PRETTY_PRINT);
-			$notification = $result[0];
-			$this->assertArrayHasKey('id', $notification);
-			$this->assertArrayHasKey('notification_type', $notification);
-			$this->assertArrayHasKey('read', $notification);
-			$this->assertArrayHasKey('created_at', $notification);
-			$this->assertArrayHasKey('slug', $notification);
+		foreach ($result as $i => $n) {
+			$prefix = "notification[$i] (id=" . ($n['id'] ?? '?') . ', type=' . ($n['notification_type'] ?? '?') . ')';
+
+			// Fields accessed by every notification in Dashboard.vue:
+			// getUniqueKey -> n.id
+			// filter -> n.read, n.notification_type
+			// getTargetTitle -> n.fancy_title (fallback)
+			// getFormattedDate -> n.created_at
+			// getNotificationTarget -> n.slug
+			// items computed -> all above methods
+			$this->assertArrayHasKey('id', $n, "$prefix: missing 'id'");
+			$this->assertArrayHasKey('notification_type', $n, "$prefix: missing 'notification_type'");
+			$this->assertIsInt($n['notification_type'], "$prefix: 'notification_type' should be int");
+			$this->assertArrayHasKey('read', $n, "$prefix: missing 'read'");
+			$this->assertArrayHasKey('created_at', $n, "$prefix: missing 'created_at'");
+			$this->assertIsString($n['created_at'], "$prefix: 'created_at' should be string");
+			$this->assertArrayHasKey('slug', $n, "$prefix: missing 'slug'");
+
+			$type = $n['notification_type'];
+
+			// Only validate type-specific fields for types the Dashboard actually handles.
+			// Other types are filtered out and never rendered.
+			if (!in_array($type, DASHBOARD_TYPES)) {
+				continue;
+			}
+
+			// getTargetTitle accesses n.fancy_title as a fallback for all non-MODERATOR_OR_ADMIN_INBOX types
+			if ($type !== TYPES_MODERATOR_OR_ADMIN_INBOX) {
+				$this->assertArrayHasKey('fancy_title', $n, "$prefix: missing 'fancy_title'");
+			}
+
+			// n.data is accessed by virtually every method for handled types
+			$this->assertArrayHasKey('data', $n, "$prefix: missing 'data'");
+			$this->assertIsArray($n['data'], "$prefix: 'data' should be an array");
+			$data = $n['data'];
+
+			switch ($type) {
+				case TYPES_MENTION:
+				case TYPES_PRIVATE_MESSAGE:
+					// getNotificationTarget -> n.slug, n.topic_id
+					$this->assertArrayHasKey('topic_id', $n, "$prefix: missing 'topic_id'");
+					// getNotificationImage -> n.data.original_username
+					$this->assertArrayHasKey('original_username', $data, "$prefix: missing 'data.original_username'");
+					// getDisplayAndOriginalUsername (via getSubline) -> n.data.display_username, n.data.original_username
+					$this->assertArrayHasKey('display_username', $data, "$prefix: missing 'data.display_username'");
+					break;
+
+				case TYPES_REPLY:
+				case TYPES_REPLY_2:
+				case TYPES_LIKE:
+					// getNotificationTarget -> n.slug, n.topic_id, n.post_number
+					$this->assertArrayHasKey('topic_id', $n, "$prefix: missing 'topic_id'");
+					$this->assertArrayHasKey('post_number', $n, "$prefix: missing 'post_number'");
+					// getNotificationImage -> n.data.original_username
+					$this->assertArrayHasKey('original_username', $data, "$prefix: missing 'data.original_username'");
+					// getDisplayAndOriginalUsername (via getSubline) -> n.data.display_username
+					$this->assertArrayHasKey('display_username', $data, "$prefix: missing 'data.display_username'");
+					break;
+
+				case TYPES_SOLVED:
+					// getNotificationTarget -> n.slug, n.topic_id, n.post_number
+					$this->assertArrayHasKey('topic_id', $n, "$prefix: missing 'topic_id'");
+					$this->assertArrayHasKey('post_number', $n, "$prefix: missing 'post_number'");
+					// getNotificationImage -> n.data.display_username
+					$this->assertArrayHasKey('display_username', $data, "$prefix: missing 'data.display_username'");
+					// getSubline -> n.data.display_username (already checked above)
+					break;
+
+				case TYPES_BADGE_EARNED:
+					// getNotificationTarget -> n.data.badge_id, n.data.badge_slug, n.data.username
+					$this->assertArrayHasKey('badge_id', $data, "$prefix: missing 'data.badge_id'");
+					$this->assertArrayHasKey('badge_slug', $data, "$prefix: missing 'data.badge_slug'");
+					$this->assertArrayHasKey('username', $data, "$prefix: missing 'data.username'");
+					// getSubline -> n.data.badge_name
+					$this->assertArrayHasKey('badge_name', $data, "$prefix: missing 'data.badge_name'");
+					break;
+
+				case TYPES_MODERATOR_OR_ADMIN_INBOX:
+					// getTargetTitle accesses n.data.group_name, n.data.inbox_count (guarded by && checks, so won't crash)
+					// nbAdminInboxItem / nbModeratorInboxItem -> n.data.group_name (guarded by n.data && check)
+					// These are safe even if missing since the code guards with `n.data && n.data.group_name`
+					// but we still verify they are present for correctness
+					$this->assertArrayHasKey('group_name', $data, "$prefix: missing 'data.group_name'");
+					$this->assertArrayHasKey('inbox_count', $data, "$prefix: missing 'data.inbox_count'");
+					break;
+			}
 		}
 	}
 
