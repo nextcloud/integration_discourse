@@ -11,9 +11,9 @@
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
 		"test:unit": "phpunit --config tests/phpunit.xml",
-		"psalm": "psalm.phar --no-cache",
-		"psalm:update-baseline": "psalm.phar --threads=1 --update-baseline",
-		"psalm:update-baseline:force": "psalm.phar --threads=1 --update-baseline --set-baseline=tests/psalm-baseline.xml",
+		"psalm": "psalm --no-cache",
+		"psalm:update-baseline": "psalm --threads=1 --update-baseline",
+		"psalm:update-baseline:force": "psalm --threads=1 --update-baseline --set-baseline=tests/psalm-baseline.xml",
 		"post-install-cmd": [
 			"composer dump-autoload"
 		],
@@ -22,12 +22,24 @@
 		]
 	},
     "require": {
-        "phpseclib/phpseclib": "^2.0.28"
+        "phpseclib/phpseclib": "^2.0.28",
+		"bamarni/composer-bin-plugin": "^1.9"
     },
     "require-dev": {
-		"psalm/phar": "^6.13",
 		"nextcloud/ocp": "dev-master",
 		"nextcloud/coding-standard": "^1.1",
 		"phpunit/phpunit": "^9.5"
+	},
+	"config": {
+		"allow-plugins": {
+			"bamarni/composer-bin-plugin": true
+		}
+	},
+	"extra": {
+		"bamarni-bin": {
+			"bin-links": true,
+			"target-directory": "vendor-bin",
+			"forward-command": true
+		}
 	}
 }
