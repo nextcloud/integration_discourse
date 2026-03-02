@@ -4,20 +4,77 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fff1ed2748699524d48c59bb420c7e3",
+    "content-hash": "fa343f0b5996e05351e4bc96c57afe5b",
     "packages": [
         {
-            "name": "phpseclib/phpseclib",
-            "version": "2.0.49",
+            "name": "bamarni/composer-bin-plugin",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "4de468f48f0ab9709fc875aca0762abdc81cfa9b"
+                "url": "https://github.com/bamarni/composer-bin-plugin.git",
+                "reference": "641d0663f5ac270b1aeec4337b7856f76204df47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/4de468f48f0ab9709fc875aca0762abdc81cfa9b",
-                "reference": "4de468f48f0ab9709fc875aca0762abdc81cfa9b",
+                "url": "https://api.github.com/repos/bamarni/composer-bin-plugin/zipball/641d0663f5ac270b1aeec4337b7856f76204df47",
+                "reference": "641d0663f5ac270b1aeec4337b7856f76204df47",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2.0",
+                "php": "^7.2.5 || ^8.0"
+            },
+            "require-dev": {
+                "composer/composer": "^2.2.26",
+                "ext-json": "*",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.8 || ^2.0",
+                "phpstan/phpstan-phpunit": "^1.1 || ^2.0",
+                "phpunit/phpunit": "^8.5 || ^9.6 || ^10.0",
+                "symfony/console": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
+                "symfony/finder": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
+                "symfony/process": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Bamarni\\Composer\\Bin\\BamarniBinPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bamarni\\Composer\\Bin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "No conflicts for your bin dependencies",
+            "keywords": [
+                "composer",
+                "conflict",
+                "dependency",
+                "executable",
+                "isolation",
+                "tool"
+            ],
+            "support": {
+                "issues": "https://github.com/bamarni/composer-bin-plugin/issues",
+                "source": "https://github.com/bamarni/composer-bin-plugin/tree/1.9.1"
+            },
+            "time": "2026-02-04T10:18:12+00:00"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "2.0.51",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "ed661e7cdaeb8c419e609e2f3203551a13c2ed48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/ed661e7cdaeb8c419e609e2f3203551a13c2ed48",
+                "reference": "ed661e7cdaeb8c419e609e2f3203551a13c2ed48",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +155,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/2.0.49"
+                "source": "https://github.com/phpseclib/phpseclib/tree/2.0.51"
             },
             "funding": [
                 {
@@ -114,7 +171,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-10-06T01:05:33+00:00"
+            "time": "2026-01-27T09:11:52+00:00"
         }
     ],
     "packages-dev": [
@@ -190,16 +247,16 @@
         },
         {
             "name": "kubawerlos/php-cs-fixer-custom-fixers",
-            "version": "v3.35.1",
+            "version": "v3.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers.git",
-                "reference": "2a35f80ae24ca77443a7af1599c3a3db1b6bd395"
+                "reference": "e1f97f6463f0b2a22e0dd320948a04132ff9c501"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kubawerlos/php-cs-fixer-custom-fixers/zipball/2a35f80ae24ca77443a7af1599c3a3db1b6bd395",
-                "reference": "2a35f80ae24ca77443a7af1599c3a3db1b6bd395",
+                "url": "https://api.github.com/repos/kubawerlos/php-cs-fixer-custom-fixers/zipball/e1f97f6463f0b2a22e0dd320948a04132ff9c501",
+                "reference": "e1f97f6463f0b2a22e0dd320948a04132ff9c501",
                 "shasum": ""
             },
             "require": {
@@ -209,7 +266,7 @@
                 "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.6.24 || ^10.5.51 || ^11.5.32"
+                "phpunit/phpunit": "^9.6.24 || ^10.5.51 || ^11.5.44"
             },
             "type": "library",
             "autoload": {
@@ -230,7 +287,7 @@
             "description": "A set of custom fixers for PHP CS Fixer",
             "support": {
                 "issues": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers/issues",
-                "source": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers/tree/v3.35.1"
+                "source": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers/tree/v3.36.0"
             },
             "funding": [
                 {
@@ -238,7 +295,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-09-28T18:43:35+00:00"
+            "time": "2026-01-31T07:02:11+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -351,16 +408,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "b831025b4235e2afcd11be1f319ae923a44e5fa1"
+                "reference": "4d2dc6df2f6aef41a7791dac3ffb07068210ca1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/b831025b4235e2afcd11be1f319ae923a44e5fa1",
-                "reference": "b831025b4235e2afcd11be1f319ae923a44e5fa1",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/4d2dc6df2f6aef41a7791dac3ffb07068210ca1d",
+                "reference": "4d2dc6df2f6aef41a7791dac3ffb07068210ca1d",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4",
+                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4 || ~8.5",
                 "psr/clock": "^1.0",
                 "psr/container": "^2.0.2",
                 "psr/event-dispatcher": "^1.0",
@@ -370,7 +427,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "33.0.0-dev"
+                    "dev-master": "34.0.0-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -392,7 +449,7 @@
                 "issues": "https://github.com/nextcloud-deps/ocp/issues",
                 "source": "https://github.com/nextcloud-deps/ocp/tree/master"
             },
-            "time": "2025-12-06T00:51:12+00:00"
+            "time": "2026-02-27T01:06:47+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -572,16 +629,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.91.3",
+            "version": "v3.94.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "ea5bb24909d3b00ad09daeaaa6f2ba66e0891678"
+                "reference": "80fd29f44a736136a2f05bae5464816a444b91d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/ea5bb24909d3b00ad09daeaaa6f2ba66e0891678",
-                "reference": "ea5bb24909d3b00ad09daeaaa6f2ba66e0891678",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/80fd29f44a736136a2f05bae5464816a444b91d1",
+                "reference": "80fd29f44a736136a2f05bae5464816a444b91d1",
                 "shasum": ""
             },
             "require": {
@@ -618,9 +675,9 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.91.3"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.94.2"
             },
-            "time": "2025-12-05T19:46:58+00:00"
+            "time": "2026-02-20T16:14:17+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -943,16 +1000,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.31",
+            "version": "9.6.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "945d0b7f346a084ce5549e95289962972c4272e5"
+                "reference": "b36f02317466907a230d3aa1d34467041271ef4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/945d0b7f346a084ce5549e95289962972c4272e5",
-                "reference": "945d0b7f346a084ce5549e95289962972c4272e5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b36f02317466907a230d3aa1d34467041271ef4a",
+                "reference": "b36f02317466907a230d3aa1d34467041271ef4a",
                 "shasum": ""
             },
             "require": {
@@ -974,7 +1031,7 @@
                 "phpunit/php-timer": "^5.0.3",
                 "sebastian/cli-parser": "^1.0.2",
                 "sebastian/code-unit": "^1.0.8",
-                "sebastian/comparator": "^4.0.9",
+                "sebastian/comparator": "^4.0.10",
                 "sebastian/diff": "^4.0.6",
                 "sebastian/environment": "^5.1.5",
                 "sebastian/exporter": "^4.0.8",
@@ -1026,7 +1083,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.31"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.34"
             },
             "funding": [
                 {
@@ -1050,42 +1107,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-06T07:45:52+00:00"
-        },
-        {
-            "name": "psalm/phar",
-            "version": "6.13.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/psalm/phar.git",
-                "reference": "e143bcacd037f1cbc5a738b76d846841e787a62f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/e143bcacd037f1cbc5a738b76d846841e787a62f",
-                "reference": "e143bcacd037f1cbc5a738b76d846841e787a62f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.2"
-            },
-            "conflict": {
-                "vimeo/psalm": "*"
-            },
-            "bin": [
-                "psalm.phar"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Composer-based Psalm Phar",
-            "support": {
-                "issues": "https://github.com/psalm/phar/issues",
-                "source": "https://github.com/psalm/phar/tree/6.13.1"
-            },
-            "time": "2025-08-07T12:36:48+00:00"
+            "time": "2026-01-27T05:45:00+00:00"
         },
         {
             "name": "psr/clock",
@@ -1457,16 +1479,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "4.0.9",
+            "version": "4.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "67a2df3a62639eab2cc5906065e9805d4fd5dfc5"
+                "reference": "e4df00b9b3571187db2831ae9aada2c6efbd715d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/67a2df3a62639eab2cc5906065e9805d4fd5dfc5",
-                "reference": "67a2df3a62639eab2cc5906065e9805d4fd5dfc5",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/e4df00b9b3571187db2831ae9aada2c6efbd715d",
+                "reference": "e4df00b9b3571187db2831ae9aada2c6efbd715d",
                 "shasum": ""
             },
             "require": {
@@ -1519,7 +1541,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/comparator/issues",
-                "source": "https://github.com/sebastianbergmann/comparator/tree/4.0.9"
+                "source": "https://github.com/sebastianbergmann/comparator/tree/4.0.10"
             },
             "funding": [
                 {
@@ -1539,7 +1561,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-10T06:51:50+00:00"
+            "time": "2026-01-24T09:22:56+00:00"
         },
         {
             "name": "sebastian/complexity",
@@ -2359,5 +2381,8 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
+    "platform-overrides": {
+        "php": "8.2"
+    },
     "plugin-api-version": "2.6.0"
 }
