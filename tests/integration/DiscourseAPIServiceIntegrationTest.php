@@ -80,6 +80,8 @@ class DiscourseAPIServiceIntegrationTest extends TestCase {
 		$this->assertIsArray($result);
 		$this->assertArrayNotHasKey('error', $result);
 
+		// echo json_encode($result, JSON_PRETTY_PRINT);
+
 		$this->assertGreaterThan(0, count($result), 'test data requires at least one notification');
 
 		foreach ($result as $i => $n) {
@@ -168,6 +170,84 @@ class DiscourseAPIServiceIntegrationTest extends TestCase {
 					$this->assertArrayHasKey('inbox_count', $data, "$prefix: missing 'data.inbox_count'");
 					break;
 			}
+		}
+	}
+
+	/**
+	 * Test that searchTopics returns results whose structure matches
+	 * what DiscourseSearchTopicsProvider expects:
+	 *   getMainText -> $entry['title']
+	 *   getSubline -> $entry['id'], $entry['posts_count']
+	 *   getLinkToDiscourse -> $entry['slug'], $entry['id']
+	 */
+	public function testSearchTopics(): void {
+		$this->requireCredentials();
+
+		$result = $this->service->searchTopics($this->discourseUrl, $this->discourseToken, 'error', 0, 5);
+
+		$this->assertIsArray($result);
+		$this->assertArrayNotHasKey('error', $result);
+		$this->assertNotEmpty($result, 'Searching "error" should return at least one topic');
+
+		// echo json_encode($result, JSON_PRETTY_PRINT);
+		// echo '-----------------------------------------------';
+
+		foreach ($result as $i => $entry) {
+			$prefix = "topic[$i] (id=" . ($entry['id'] ?? '?') . ')';
+
+			// DiscourseSearchTopicsProvider::getMainText
+			$this->assertArrayHasKey('title', $entry, "$prefix: missing 'title'");
+			$this->assertIsString($entry['title'], "$prefix: 'title' should be a string");
+
+			// DiscourseSearchTopicsProvider::getSubline
+			$this->assertArrayHasKey('id', $entry, "$prefix: missing 'id'");
+			$this->assertArrayHasKey('posts_count', $entry, "$prefix: missing 'posts_count'");
+			$this->assertIsInt($entry['posts_count'], "$prefix: 'posts_count' should be an int");
+
+			// DiscourseSearchTopicsProvider::getLinkToDiscourse
+			$this->assertArrayHasKey('slug', $entry, "$prefix: missing 'slug'");
+			$this->assertIsString($entry['slug'], "$prefix: 'slug' should be a string");
+		}
+	}
+
+	/**
+	 * Test that searchPosts returns results whose structure matches
+	 * what DiscourseSearchPostsProvider expects:
+	 *   getMainText -> $entry['blurb'] ?? $entry['username']
+	 *   getSubline -> $entry['topic_id']
+	 *   getLinkToDiscourse -> $entry['topic_id']
+	 *   getThumbnailUrl -> $entry['username']
+	 */
+	public function testSearchPosts(): void {
+		$this->requireCredentials();
+
+		$result = $this->service->searchPosts($this->discourseUrl, $this->discourseToken, 'error', 0, 5);
+
+		$this->assertIsArray($result);
+		$this->assertArrayNotHasKey('error', $result);
+		$this->assertNotEmpty($result, 'Searching "error" should return at least one post');
+
+		// echo json_encode($result, JSON_PRETTY_PRINT);
+		// echo '-----------------------------------------------';
+
+		foreach ($result as $i => $entry) {
+			$prefix = "post[$i] (id=" . ($entry['id'] ?? '?') . ')';
+
+			// DiscourseSearchPostsProvider::getMainText -> $entry['blurb'] ?? $entry['username']
+			// At least one of blurb or username must be present
+			$this->assertTrue(
+				isset($entry['blurb']) || isset($entry['username']),
+				"$prefix: at least one of 'blurb' or 'username' must be present"
+			);
+
+			// DiscourseSearchPostsProvider::getSubline and getLinkToDiscourse
+			$this->assertArrayHasKey('topic_id', $entry, "$prefix: missing 'topic_id'");
+
+			// DiscourseSearchPostsProvider::getThumbnailUrl
+			// username is used for the avatar URL; the provider falls back to a static
+			// icon when it is absent, but it is always present in practice
+			$this->assertArrayHasKey('username', $entry, "$prefix: missing 'username'");
+			$this->assertIsString($entry['username'], "$prefix: 'username' should be a string");
 		}
 	}
 
