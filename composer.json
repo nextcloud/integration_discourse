@@ -11,6 +11,7 @@
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
 		"test:unit": "phpunit --config tests/phpunit.xml",
+		"test:integration": "phpunit --config tests/phpunit.integration.xml",
 		"psalm": "psalm --no-cache",
 		"psalm:update-baseline": "psalm --threads=1 --update-baseline",
 		"psalm:update-baseline:force": "psalm --threads=1 --update-baseline --set-baseline=tests/psalm-baseline.xml",
