@@ -140,7 +140,7 @@ class ConfigController extends Controller {
 		$payloadArray = json_decode($rsadec, true);
 
 		// anyway, reset nonce
-		$this->config->setUserValue($this->userId, Application::APP_ID, 'nonce', '');
+		$this->config->deleteUserValue($this->userId, Application::APP_ID, 'nonce');
 
 		if (is_array($payloadArray) && $configNonce !== '' && $configNonce === $payloadArray['nonce']) {
 			if (isset($payloadArray['key'])) {
