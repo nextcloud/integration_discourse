@@ -29,7 +29,7 @@
     "require-dev": {
 		"nextcloud/ocp": "dev-master",
 		"nextcloud/coding-standard": "^1.1",
-		"phpunit/phpunit": "^9.5"
+		"phpunit/phpunit": "^11"
 	},
 	"config": {
 		"allow-plugins": {
