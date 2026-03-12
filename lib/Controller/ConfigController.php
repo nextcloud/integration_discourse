@@ -56,10 +56,6 @@ class ConfigController extends Controller {
 		foreach ($values as $key => $value) {
 			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
 		}
-		if (isset($values['token']) && $values['token'] === '') {
-			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_id', '');
-			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_name', '');
-		}
 		return new DataResponse(1);
 	}
 
@@ -71,6 +67,12 @@ class ConfigController extends Controller {
 	public function setSensitiveConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
+		}
+		if (isset($values['token']) && $values['token'] === '') {
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'user_id');
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'user_name');
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'token');
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'nonce');
 		}
 		return new DataResponse('');
 	}
@@ -91,9 +93,9 @@ class ConfigController extends Controller {
 				. '?discourseToken=error&message=' . urlencode($result)
 			);
 		}
-		$parts = parse_url($url);
-		parse_str($parts['query'], $params);
-		return $this->oauthRedirect($params['payload'] ?? '');
+		$queryParams = parse_url($url, PHP_URL_QUERY);
+		parse_str($queryParams, $paramsArray);
+		return $this->oauthRedirect($paramsArray['payload'] ?? '');
 	}
 
 	/**

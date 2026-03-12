@@ -3,7 +3,7 @@
   - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
-<phpunit bootstrap="bootstrap.php" timeoutForSmallTests="900" timeoutForMediumTests="900" timeoutForLargeTests="900" cacheDirectory=".phpunit.cache">
+<phpunit bootstrap="bootstrap.php" timeoutForSmallTests="900" timeoutForMediumTests="900" timeoutForLargeTests="900">
   <coverage>
     <report>
       <clover outputFile="./clover.xml"/>
