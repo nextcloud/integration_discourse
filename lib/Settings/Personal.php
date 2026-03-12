@@ -18,7 +18,7 @@ use OCP\Security\ICrypto;
 use OCP\Settings\ISettings;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
-use phpseclib\Crypt\RSA;
+use phpseclib3\Crypt\RSA;
 
 class Personal implements ISettings {
 
@@ -61,12 +61,10 @@ class Personal implements ISettings {
 			$this->config->setUserValue($this->userId, Application::APP_ID, 'client_id', $clientID);
 		}
 		if ($pubKey === '' || $privKey === '') {
-			$rsa = new RSA();
-			$rsa->setPrivateKeyFormat(RSA::PRIVATE_FORMAT_PKCS1);
-			$rsa->setPublicKeyFormat(RSA::PUBLIC_FORMAT_PKCS1);
-			$keys = $rsa->createKey(2048);
-			$pubKey = $keys['publickey'];
-			$privKey = $keys['privatekey'];
+			$privateKey = RSA::createKey(2048);
+			$publicKey = $privateKey->getPublicKey();
+			$pubKey = $publicKey->toString('PKCS1');
+			$privKey = $privateKey->toString('PKCS1');
 
 			$this->appConfig->setValueString(Application::APP_ID, 'public_key', $pubKey, lazy: true);
 			$this->appConfig->setValueString(Application::APP_ID, 'private_key', $privKey, lazy: true, sensitive: true);

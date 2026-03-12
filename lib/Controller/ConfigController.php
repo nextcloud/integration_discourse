@@ -26,7 +26,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use OCP\PreConditionNotMetException;
 use OCP\Security\ICrypto;
-use phpseclib\Crypt\RSA;
+use phpseclib3\Crypt\PublicKeyLoader;
+use phpseclib3\Crypt\RSA;
+use phpseclib3\Crypt\RSA\PrivateKey as RSAPrivateKey;
 
 class ConfigController extends Controller {
 
@@ -117,11 +119,24 @@ class ConfigController extends Controller {
 		}
 		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce');
 		$privKey = $this->appConfig->getValueString(Application::APP_ID, 'private_key', lazy: true);
-		$decPayload = base64_decode($payload);
-		$rsa = new RSA();
-		$rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
-		$rsa->loadKey($privKey);
-		$rsadec = $rsa->decrypt($decPayload);
+		$decPayload = base64_decode($payload, true);
+		if ($decPayload === false) {
+			$message = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse(
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+				. '?discourseToken=error&message=' . urlencode($message)
+			);
+		}
+		$loadedKey = PublicKeyLoader::loadPrivateKey($privKey);
+		if (!$loadedKey instanceof RSAPrivateKey) {
+			$message = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse(
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+				. '?discourseToken=error&message=' . urlencode($message)
+			);
+		}
+		$privateKey = $loadedKey->withPadding(RSA::ENCRYPTION_PKCS1);
+		$rsadec = $privateKey->decrypt($decPayload);
 		$payloadArray = json_decode($rsadec, true);
 
 		// anyway, reset nonce
