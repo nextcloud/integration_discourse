@@ -3,14 +3,14 @@
   - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="bootstrap.php" timeoutForSmallTests="900" timeoutForMediumTests="900" timeoutForLargeTests="900" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.4/phpunit.xsd" cacheDirectory=".phpunit.cache">
+<phpunit bootstrap="bootstrap.php" timeoutForSmallTests="900" timeoutForMediumTests="900" timeoutForLargeTests="900" cacheDirectory=".phpunit.cache">
   <coverage>
     <report>
       <clover outputFile="./clover.xml"/>
     </report>
   </coverage>
   <testsuite name="Nextcloud Discourse integration App Tests">
-    <directory suffix="Test.php">.</directory>
+    <directory suffix="Test.php">./unit</directory>
   </testsuite>
   <!-- filters for code coverage -->
   <logging>

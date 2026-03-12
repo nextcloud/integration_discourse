@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  - SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<phpunit bootstrap="bootstrap.php" timeoutForSmallTests="900" timeoutForMediumTests="900" timeoutForLargeTests="900" cacheDirectory=".phpunit.cache">
+  <coverage>
+    <include>
+      <directory suffix=".php">../appinfo</directory>
+      <directory suffix=".php">../lib</directory>
+    </include>
+  </coverage>
+  <testsuite name="Discourse Integration Tests">
+    <directory suffix="Test.php">./integration</directory>
+  </testsuite>
+</phpunit>
