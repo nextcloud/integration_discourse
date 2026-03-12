@@ -23,7 +23,7 @@
 		]
 	},
     "require": {
-        "phpseclib/phpseclib": "^2.0.28",
+        "phpseclib/phpseclib": "^3",
 		"bamarni/composer-bin-plugin": "^1.9"
     },
     "require-dev": {
