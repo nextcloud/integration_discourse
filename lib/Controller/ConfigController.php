@@ -136,7 +136,12 @@ class ConfigController extends Controller {
 			);
 		}
 		$privateKey = $loadedKey->withPadding(RSA::ENCRYPTION_PKCS1);
-		$rsadec = $privateKey->decrypt($decPayload);
+		try {
+			$rsadec = $privateKey->decrypt($decPayload);
+		} catch (\RuntimeException|\LengthException|\OutOfRangeException $e) {
+			$message = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse($this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) . '?discourseToken=error&message=' . urlencode($message));
+		}
 		$payloadArray = json_decode($rsadec, true);
 
 		// anyway, reset nonce
