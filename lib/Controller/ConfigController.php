@@ -26,7 +26,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use OCP\PreConditionNotMetException;
 use OCP\Security\ICrypto;
-use phpseclib\Crypt\RSA;
+use phpseclib3\Crypt\PublicKeyLoader;
+use phpseclib3\Crypt\RSA;
+use phpseclib3\Crypt\RSA\PrivateKey as RSAPrivateKey;
 
 class ConfigController extends Controller {
 
@@ -56,10 +58,6 @@ class ConfigController extends Controller {
 		foreach ($values as $key => $value) {
 			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
 		}
-		if (isset($values['token']) && $values['token'] === '') {
-			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_id', '');
-			$this->config->setUserValue($this->userId, Application::APP_ID, 'user_name', '');
-		}
 		return new DataResponse(1);
 	}
 
@@ -71,6 +69,12 @@ class ConfigController extends Controller {
 	public function setSensitiveConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			$this->config->setUserValue($this->userId, Application::APP_ID, $key, $value);
+		}
+		if (isset($values['token']) && $values['token'] === '') {
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'user_id');
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'user_name');
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'token');
+			$this->config->deleteUserValue($this->userId, Application::APP_ID, 'nonce');
 		}
 		return new DataResponse('');
 	}
@@ -91,9 +95,9 @@ class ConfigController extends Controller {
 				. '?discourseToken=error&message=' . urlencode($result)
 			);
 		}
-		$parts = parse_url($url);
-		parse_str($parts['query'], $params);
-		return $this->oauthRedirect($params['payload'] ?? '');
+		$queryParams = parse_url($url, PHP_URL_QUERY);
+		parse_str($queryParams, $paramsArray);
+		return $this->oauthRedirect($paramsArray['payload'] ?? '');
 	}
 
 	/**
@@ -115,15 +119,33 @@ class ConfigController extends Controller {
 		}
 		$configNonce = $this->config->getUserValue($this->userId, Application::APP_ID, 'nonce');
 		$privKey = $this->appConfig->getValueString(Application::APP_ID, 'private_key', lazy: true);
-		$decPayload = base64_decode($payload);
-		$rsa = new RSA();
-		$rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
-		$rsa->loadKey($privKey);
-		$rsadec = $rsa->decrypt($decPayload);
+		$decPayload = base64_decode($payload, true);
+		if ($decPayload === false) {
+			$message = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse(
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+				. '?discourseToken=error&message=' . urlencode($message)
+			);
+		}
+		$loadedKey = PublicKeyLoader::loadPrivateKey($privKey);
+		if (!$loadedKey instanceof RSAPrivateKey) {
+			$message = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse(
+				$this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts'])
+				. '?discourseToken=error&message=' . urlencode($message)
+			);
+		}
+		$privateKey = $loadedKey->withPadding(RSA::ENCRYPTION_PKCS1);
+		try {
+			$rsadec = $privateKey->decrypt($decPayload);
+		} catch (\RuntimeException|\LengthException|\OutOfRangeException $e) {
+			$message = $this->l->t('Error during authentication exchanges');
+			return new RedirectResponse($this->urlGenerator->linkToRoute('settings.PersonalSettings.index', ['section' => 'connected-accounts']) . '?discourseToken=error&message=' . urlencode($message));
+		}
 		$payloadArray = json_decode($rsadec, true);
 
 		// anyway, reset nonce
-		$this->config->setUserValue($this->userId, Application::APP_ID, 'nonce', '');
+		$this->config->deleteUserValue($this->userId, Application::APP_ID, 'nonce');
 
 		if (is_array($payloadArray) && $configNonce !== '' && $configNonce === $payloadArray['nonce']) {
 			if (isset($payloadArray['key'])) {

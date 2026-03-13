@@ -76,4 +76,6 @@ jobs:
         env:
           DISCOURSE_URL: ${{ secrets.DISCOURSE_URL }}
           DISCOURSE_TOKEN: ${{ secrets.DISCOURSE_TOKEN }}
-        run: phpunit -c tests/phpunit.integration.xml
+          DISCOURSE_USER_LOGIN: ${{ secrets.DISCOURSE_USER_LOGIN }}
+          DISCOURSE_USER_PASSWORD: ${{ secrets.DISCOURSE_USER_PASSWORD }}
+        run: composer run test:integration

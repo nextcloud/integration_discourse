@@ -78,7 +78,7 @@ class DiscourseAPIServiceIntegrationTest extends TestCase {
 		$result = $this->service->getNotifications($this->discourseUrl, $this->discourseToken);
 
 		$this->assertIsArray($result);
-		$this->assertArrayNotHasKey('error', $result);
+		$this->assertArrayNotHasKey('error', $result, 'there was an error when getting the notifications: ' . ($result['error'] ?? ''));
 
 		// echo json_encode($result, JSON_PRETTY_PRINT);
 
