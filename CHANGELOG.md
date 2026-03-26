@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 3.2.0 - 2026-03-26
+
+### Added
+
+- Add integration tests covering real notification parsing plus topic and post search behavior @julien-nc [#98](https://github.com/nextcloud/integration_discourse/pull/98)
+
+### Changed
+
+- Move app config to lazy and sensitive values, refresh the settings form, update frontend and composer dependencies, and avoid double-encrypting the private key @julien-nc [#88](https://github.com/nextcloud/integration_discourse/pull/88)
+- Update maintenance tooling with vendor-bin Psalm, npm package refreshes, Nextcloud 34 support, and PHP platform 8.2 targeting @julien-nc [#97](https://github.com/nextcloud/integration_discourse/pull/97)
+- Add OAuth integration coverage, upgrade to PHPUnit 11 and phpseclib 3, improve RSA decryption safety, and clear used nonces instead of blanking them @julien-nc [#101](https://github.com/nextcloud/integration_discourse/pull/101)
+
 ## 3.1.0 - 2025-12-03
 
 ### Changed
