@@ -12,6 +12,7 @@ OC.L10N.register(
     "Successfully connected to Discourse!" : "Conectado com sucesso ao Discourse!",
     "Failed to save Discourse options" : "Erro ao salvar as opções do Discourse",
     "Failed to save Discourse nonce" : "Erro ao salvar o Discourse nonce",
+    "Enable navigation link" : "Ativar link de navegação",
     "No Discourse notifications!" : "Sem notificações do Discourse!"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
