@@ -2,6 +2,7 @@ OC.L10N.register(
     "integration_discourse",
     {
     "Discourse" : "Discourse",
+    "Error during authentication exchanges" : "Erro durante as trocas de autenticação",
     "Discourse read notifications" : "Notificações de leitura do Discourse",
     "Discourse notifications" : "Notificações do Discourse",
     "Discourse topics and posts" : "Tópicos e postagens do Discourse",
@@ -11,6 +12,7 @@ OC.L10N.register(
     "Bad credentials" : "Credenciais inválidas",
     "Connected accounts" : "Contas conectadas",
     "Discourse integration" : "Integração do Discourse",
+    "Integration of Discourse forum and mailing list management system" : "Integração do fórum Discourse e sistema de gerenciamento de listas de e-mail",
     "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "A integração do Discourse fornece um widget de painel exibindo suas notificações importantes.\n     e a capacidade de encontrar tópicos e postagens com a pesquisa unificada do Nextcloud.",
     "For example, https://help.nextcloud.com" : "Por exemplo, https://help.nextcloud.com",
     "Successfully connected to Discourse!" : "Conectado com sucesso ao Discourse!",
@@ -31,6 +33,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Desconectar do Discourse",
     "Enable searching for posts" : "Ativar a pesquisa por postagens",
     "No Discourse account connected" : "Nenhuma conta do Discourse conectada",
-    "No Discourse notifications!" : "Sem notificações do Discourse!"
+    "No Discourse notifications!" : "Sem notificações do Discourse!",
+    "Failed to get Discourse notifications" : "Erro ao obter as notificações do Discourse"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
