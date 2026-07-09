@@ -1,6 +1,6 @@
 {
 	"name": "integration_discourse",
-	"version": "0.0.1",
+	"version": "2.0.6",
 	"description": "Discourse integration",
 	"main": "index.js",
 	"directories": {
