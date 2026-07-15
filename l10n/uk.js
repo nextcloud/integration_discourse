@@ -20,7 +20,7 @@ OC.L10N.register(
     "Successfully connected to Discourse!" : "Успішно підключено до Дискурсу!",
     "Discourse API-key could not be obtained:" : "Не вдалося отримати API-ключ Discourse:",
     "Nextcloud Discourse integration on {ncUrl}" : "Nextcloud Інтеграція дискурсу на {ncUrl}",
-    "Discourse URL is invalid" : "URL-адреса дискурсу невірна",
+    "Discourse URL is invalid" : "Недійсна адреса URL дискурсу",
     "Discourse options saved" : "Параметри дискурсу збережено",
     "Failed to save Discourse options" : "Не вдалося зберегти параметри дискурсу",
     "Failed to save Discourse nonce" : "Не вдалося врятувати Discourse nonce",
