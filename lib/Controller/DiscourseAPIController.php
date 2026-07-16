@@ -13,7 +13,6 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\AppFramework\Http\DataResponse;
-
 use OCP\IConfig;
 use OCP\IRequest;
 use OCP\Security\ICrypto;

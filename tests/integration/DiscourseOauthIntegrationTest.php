@@ -179,7 +179,6 @@ class DiscourseOauthIntegrationTest extends TestCase {
 		$this->assertArrayHasKey('csrf', $decodedBody);
 		$csrfToken = $decodedBody['csrf'];
 
-
 		$sessionUrl = $this->discourseUrl . '/session';
 		$sessionResponse = $this->client->post($sessionUrl, [
 			'headers' => [

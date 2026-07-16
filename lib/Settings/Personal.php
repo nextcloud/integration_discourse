@@ -14,7 +14,6 @@ use OCP\IAppConfig;
 use OCP\IConfig;
 use OCP\PreConditionNotMetException;
 use OCP\Security\ICrypto;
-
 use OCP\Settings\ISettings;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
