@@ -7,8 +7,6 @@
 
 namespace OCA\Discourse\Tests\Integration;
 
-use DOMDocument;
-use DOMXPath;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use OCA\Discourse\AppInfo\Application;
@@ -110,18 +108,6 @@ class DiscourseOauthIntegrationTest extends TestCase {
 		return $nonce;
 	}
 
-	private function resolveDiscourseUrl(string $url): string {
-		if (str_starts_with($url, 'http://') || str_starts_with($url, 'https://')) {
-			return $url;
-		}
-
-		if (str_starts_with($url, '/')) {
-			return rtrim($this->discourseUrl, '/') . $url;
-		}
-
-		return rtrim($this->discourseUrl, '/') . '/' . ltrim($url, '/');
-	}
-
 	private function getOauthStartUrl(): string {
 		$this->personalSettings->getForm();
 
@@ -145,22 +131,16 @@ class DiscourseOauthIntegrationTest extends TestCase {
 		return $this->discourseUrl . '/user-api-key/new?' . $query;
 	}
 
-	private function getFinalResponseUrl($response, string $fallbackUrl): string {
-		$redirectHistory = $response->getHeader('X-Guzzle-Redirect-History');
-		if ($redirectHistory !== []) {
-			return end($redirectHistory);
-		}
-
-		return $fallbackUrl;
-	}
-
 	/**
 	 * When submitting the login form in a browser, a first GET to /session/csrf is done
 	 * to get the csrf token in a JSON payload
 	 * Then a request to /session is done which sets a few cookies
 	 * Then a POST to /login returns a 302 that redirects to /user-api-key/new which is now the "authorize" page with a confirmation button
+	 *
+	 * @return string the CSRF token from /session/csrf, which is also valid for the
+	 *                subsequent POST to /user-api-key
 	 */
-	private function loginToDiscourse(string $oauthStartUrl, string $username, string $password) {
+	private function loginToDiscourse(string $oauthStartUrl, string $username, string $password): string {
 		// load the page that is actually requested in real life by the browser in case we get some cookies from it
 		$this->client->get($oauthStartUrl);
 
@@ -210,7 +190,7 @@ class DiscourseOauthIntegrationTest extends TestCase {
 		// post to login
 		$loginUrl = $this->discourseUrl . '/login';
 		$redirect = str_replace($this->discourseUrl, '', $oauthStartUrl);
-		return $this->client->post($loginUrl, [
+		$loginResponse = $this->client->post($loginUrl, [
 			'form_params' => [
 				'username' => $username,
 				'password' => $password,
@@ -218,43 +198,53 @@ class DiscourseOauthIntegrationTest extends TestCase {
 				'redirect' => $redirect,
 			],
 		]);
+		$loginStatusCode = $loginResponse->getStatusCode();
+		$this->assertSame(Http::STATUS_OK, $loginStatusCode, 'the request to /login has failed');
+
+		return $csrfToken;
 	}
 
 	/**
-	 * The authorize page contains a form with a lot of hidden inputs and a submit button
+	 * Post the authorization request directly to the Discourse user-api-key endpoint.
+	 * This is what the client-side JavaScript on the authorize page does in the browser;
+	 * we cannot rely on parsing a server-rendered form because newer Discourse versions
+	 * (Ember-based) render the authorize page entirely client-side.
+	 * The endpoint returns a JSON payload containing the custom protocol redirect URL
+	 * (web+nextclouddiscourse://auth-redirect?payload=...) which the browser would then visit.
 	 */
-	private function submitAuthorizePage($loginResponse, string $authorizePageUrl) {
-		$doc = new DOMDocument();
-		$doc->loadHtml($loginResponse->getBody()->getContents());
-		$selector = new DOMXpath($doc);
-		$result = $selector->query('//form');
-		$form = $result->item(0);
-		$this->assertNotNull($form, 'Authorize form not found on page: ' . $authorizePageUrl);
-		$formAction = $form->getAttribute('action');
-		$formActionUrl = $formAction === '' ? $authorizePageUrl : $this->resolveDiscourseUrl($formAction);
-		$formParams = [];
-		$hiddenInputs = $selector->query('.//input[@type="hidden" and @name]', $form);
-		foreach ($hiddenInputs as $hiddenInput) {
-			$formParams[$hiddenInput->getAttribute('name')] = $hiddenInput->getAttribute('value');
+	private function authorizeUserApiKey(string $oauthStartUrl, string $csrfToken): string {
+		$parsedUrl = parse_url($oauthStartUrl);
+		parse_str($parsedUrl['query'] ?? '', $params);
+		foreach (['client_id', 'auth_redirect', 'application_name', 'nonce', 'public_key', 'scopes'] as $required) {
+			$this->assertArrayHasKey($required, $params, "missing $required in OAuth start URL");
 		}
-		$this->assertNotEmpty($hiddenInputs, 'hiddenInputs should not be empty');
-		$this->assertArrayHasKey('authenticity_token', $formParams);
-		$this->assertArrayHasKey('nonce', $formParams);
-		$this->assertArrayHasKey('client_id', $formParams);
-		$this->assertArrayHasKey('auth_redirect', $formParams);
-		$this->assertArrayHasKey('application_name', $formParams);
-		$this->assertArrayHasKey('public_key', $formParams);
 
-		$submitButton = $selector->query('.//input[@type="submit" and @name="commit"]', $form)?->item(0);
-		$submitValue = $submitButton?->getAttribute('value') ?? 'Authorize';
-		$formParams['commit'] = $submitValue;
-		libxml_clear_errors();
-
-		return $this->client->post($formActionUrl, [
-			// we need the custom protocol redirect URL so we don't allow redirects for this request
-			'allow_redirects' => false,
-			'form_params' => $formParams,
+		$authorizeResponse = $this->client->post($this->discourseUrl . '/user-api-key', [
+			'headers' => [
+				'Accept' => 'application/json, text/javascript, */*; q=0.01',
+				'X-Requested-With' => 'XMLHttpRequest',
+				'X-CSRF-Token' => $csrfToken,
+			],
+			'form_params' => [
+				'application_name' => $params['application_name'],
+				'public_key' => $params['public_key'],
+				'nonce' => $params['nonce'],
+				'client_id' => $params['client_id'],
+				'auth_redirect' => $params['auth_redirect'],
+				'scopes' => $params['scopes'],
+			],
 		]);
+		$status = $authorizeResponse->getStatusCode();
+		$body = $authorizeResponse->getBody()->getContents();
+		$this->assertSame(
+			Http::STATUS_OK,
+			$status,
+			'POST /user-api-key did not return 200: ' . $body,
+		);
+		$decodedBody = json_decode($body, true);
+		$this->assertIsArray($decodedBody, 'the decoded /user-api-key response body is not an array: ' . $body);
+		$this->assertArrayHasKey('redirect_url', $decodedBody, 'no redirect_url in /user-api-key response: ' . $body);
+		return $decodedBody['redirect_url'];
 	}
 
 	public function testOauthLogin(): void {
@@ -265,16 +255,10 @@ class DiscourseOauthIntegrationTest extends TestCase {
 		// make request to authorize page with the same GET parameters as we do in the personal settings
 		$oauthStartUrl = $this->getOauthStartUrl();
 		// submit the discourse login form with the user login (login-account-name) and password (login-account-password)
-		$loginResponse = $this->loginToDiscourse($oauthStartUrl, $this->discourseLogin, $this->discoursePassword);
-		$status = $loginResponse->getStatusCode();
-		self::assertSame(Http::STATUS_OK, $status);
-		$authorizePageUrl = $this->getFinalResponseUrl($loginResponse, $oauthStartUrl);
+		$csrfToken = $this->loginToDiscourse($oauthStartUrl, $this->discourseLogin, $this->discoursePassword);
 
-		// in the new loaded page, submit the authorize form
-		$authorizeResponse = $this->submitAuthorizePage($loginResponse, $authorizePageUrl);
-		$status = $authorizeResponse->getStatusCode();
-		self::assertSame(Http::STATUS_FOUND, $status);
-		$customProtocolLocation = $authorizeResponse->getHeaderLine('location');
+		// authorize the user-api-key request directly, like the browser's client-side JavaScript does
+		$customProtocolLocation = $this->authorizeUserApiKey($oauthStartUrl, $csrfToken);
 
 		// redirected to the custom protocol URL, call the controller method
 		$oauthRedirectResponse = $this->configController->oauthProtocolRedirect($customProtocolLocation);
