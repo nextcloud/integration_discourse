@@ -14,7 +14,6 @@ use OCA\Discourse\Reference\DiscourseReferenceProvider;
 use OCA\Discourse\Search\DiscourseSearchPostsProvider;
 use OCA\Discourse\Search\DiscourseSearchTopicsProvider;
 use OCP\AppFramework\App;
-
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
