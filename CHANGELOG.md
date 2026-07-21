@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 3.3.0 - 2026-07-21
+
+### Changed
+
+- Update dependencies, fix integration tests, and adjust CI PHP versions @julien-nc [#111](https://github.com/nextcloud/integration_discourse/pull/111)
+- Bump max NC version to 35 @julien-nc
+
 ## 3.2.0 - 2026-03-26
 
 ### Added
