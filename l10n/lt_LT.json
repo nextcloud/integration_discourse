@@ -17,7 +17,7 @@
     "For example, https://help.nextcloud.com" : "Pavyzdžiui, https://help.nextcloud.com",
     "Successfully connected to Discourse!" : "Sėkmingai prisijungta prie „Discourse“!",
     "Discourse API-key could not be obtained:" : "Nepavyko gauti „Discourse“ API rakto:",
-    "Nextcloud Discourse integration on {ncUrl}" : "Nextcloud „Discourse“ integracija ties {ncUrl}",
+    "Nextcloud Discourse integration on {ncUrl}" : "„Nextcloud Discourse“ integracija ties {ncUrl}",
     "Discourse URL is invalid" : "Diskurso URL neteisingas",
     "Discourse options saved" : "„Discourse“ parinktys įrašytos",
     "Failed to save Discourse options" : "Nepavyko įrašyti „Discourse“ parinkčių",
