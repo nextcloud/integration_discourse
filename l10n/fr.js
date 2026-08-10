@@ -42,6 +42,7 @@ OC.L10N.register(
     "Disconnect from Discourse" : "Se déconnecter de Discourse",
     "Enable unified search for topics" : "Activer la recherche unifiée pour les sujets",
     "Enable searching for posts" : "Activer la recherche de publications",
+    "Everything you type in the search bar will be sent to your Discourse instance." : "Tout ce que vous tapez dans la barre de recherche sera envoyé à votre instance Discourse.",
     "No Discourse account connected" : "Aucun compte Discourse connecté",
     "Error connecting to Discourse" : "Erreur de connexion à Discourse",
     "No Discourse notifications!" : "Pas de notification Discourse !",
