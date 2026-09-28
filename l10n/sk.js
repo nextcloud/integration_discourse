@@ -32,7 +32,7 @@ OC.L10N.register(
     "Register protocol handler" : "Zaregistrovať obslužný program protokolu",
     "With Chrome/Chromium, you should see a popup on browser top-left to authorize this page to open \"web+nextclouddiscourse\" links." : "V prípade prehliadača Chrome/Chromium by sa v hornej ľavej časti tejto stránky mala zobraziť lišta, ktorá autorizuje túto stránku na otváranie odkazov „web + nextclouddiscourse.",
     "If you don't see the popup, you can still click on this icon in the address bar." : "Ak nevidíte vyskakovacie okno, stále môžete kliknúť na túto ikonu v paneli s adresou.",
-    "Then authorize this page to open \"web+nextclouddiscourse\" links." : "Potom autorizujte túto stránku na otvorenie odkazov „web + nextclouddiscourse“.",
+    "Then authorize this page to open \"web+nextclouddiscourse\" links." : "Potom autorizujte túto stránku na otvorenie odkazov „web+nextclouddiscourse\".",
     "If you still don't manage to get the protocol registered, check your settings on this page:" : "Ak sa vám nepodarí protokol zaregistrovať, skontrolujte svoje nastavenia na tejto stránke:",
     "With Firefox, you should see a bar on top of this page to authorize this page to open \"web+nextclouddiscourse\" links." : "V prípade prehliadača Firefox by sa v hornej časti tejto stránky mala zobraziť lišta, ktorá autorizuje túto stránku na otváranie odkazov „web + nextclouddiscourse“.",
     "Enable navigation link" : "Povoliť navigačný odkaz",
