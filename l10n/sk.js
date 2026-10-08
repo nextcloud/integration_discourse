@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Discourse" : "Discourse",
     "Error during authentication exchanges" : "Chyba počas výmeny autentifikácie",
-    "No API key returned by Discourse" : "Discurse nevrátil žiadny API kľúč",
+    "No API key returned by Discourse" : "Discourse nevrátil žiadny API kľúč",
     "Discourse read notifications" : "Discourse upozornenia na prečítanie.",
     "Discourse notifications" : "Discourse upozornenia",
     "Discourse topics and posts" : "Témy a príspevky Discourse",
