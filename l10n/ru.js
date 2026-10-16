@@ -15,7 +15,7 @@ OC.L10N.register(
     "Connected accounts" : "Подключённые учётные записи",
     "Discourse integration" : "Интеграция Discourse",
     "Integration of Discourse forum and mailing list management system" : "Интеграция форума Discourse и системы управления списками рассылки",
-    "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Интеграция Discourse предоставляет виджет панели инструментов, отображающий ваши важные уведомления.\n     и возможность находить темы и сообщения с помощью единого поиска Nextcloud.",
+    "Discourse integration provides a dashboard widget displaying your important notifications\n    and the ability to find topics and posts with Nextcloud's unified search." : "Интеграция Discourse предоставляет виджет панели, показывающий ваши важные уведомления,\nи возможность находить темы и сообщения с помощью единого поиска Nextcloud.",
     "For example, https://help.nextcloud.com" : "Например, https://help.nextcloud.com",
     "Successfully connected to Discourse!" : "Успешно подключено к Discourse!",
     "Discourse API-key could not be obtained:" : "Не удалось получить API-ключ Discourse:",
